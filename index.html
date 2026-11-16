@@ -736,6 +736,30 @@ select {
   font-size: 14.5px;
 }
 
+.login-box .auth-field { margin-top: 10px; }
+.login-box .auth-switch {
+  margin-top: 10px;
+  background: transparent;
+  color: #874e6c;
+  box-shadow: none;
+  text-decoration: underline;
+}
+.auth-status {
+  min-height: 20px;
+  margin-top: 8px;
+  color: #6e3554;
+  font-size: 12px;
+  font-weight: 700;
+}
+.sync-status {
+  font-size: 11px;
+  color: #6e3554;
+  background: rgba(255,255,255,.72);
+  border-radius: 9px;
+  padding: 4px 8px;
+  margin-top: 8px;
+  display: inline-block;
+}
 .login-error {
   min-height: 22px;
   color: #c34d76;
@@ -773,6 +797,24 @@ footer {
   font-weight: 600;
   margin-top: 24px;
 }
+
+/* Automatic study planner */
+.planner-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
+.planner-form label,.chapter-difficulty label{display:grid;gap:5px;font-size:12px;font-weight:800;color:#783b5b}
+.planner-form input,.planner-form select,.chapter-difficulty select{width:100%;padding:10px;border:1px solid #efd5e2;border-radius:10px;background:#fffcfd;color:#382736;font:inherit}
+.planner-form button,.planner-actions button{border:0;border-radius:11px;padding:11px 15px;background:#d95d91;color:white;font:inherit;font-weight:800;cursor:pointer}
+.chapter-editor{display:grid;gap:8px;margin-top:12px}
+.chapter-difficulty{display:grid;grid-template-columns:1fr 150px;gap:8px;align-items:center;background:#fff8fb;border:1px solid #f4e1eb;border-radius:10px;padding:9px}
+.plan-days{display:grid;gap:10px;margin-top:14px}
+.plan-day{border:1px solid #efd5e2;background:#fffafd;border-radius:13px;padding:12px}
+.plan-day h3{font-size:14px;color:#783b5b;margin-bottom:8px}
+.plan-task{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-top:1px dashed #f0dce7;font-size:13px}
+.plan-task input{margin-top:4px;accent-color:#d95d91}
+.plan-task.done span{text-decoration:line-through;color:#8a9b91}
+.subject-chip{display:flex;justify-content:space-between;gap:8px;align-items:center;background:#fff5fa;border:1px solid #f2dce7;border-radius:10px;padding:9px 11px;margin-top:8px;font-size:13px}
+.subject-chip button{border:0;background:transparent;color:#bd4778;font-weight:800;cursor:pointer}
+.planner-hint{font-size:12px;color:#7d677a;margin-top:8px}
+
 </style>
 </head>
 
@@ -785,10 +827,14 @@ footer {
     <h1>هاتِ السر يا لجونتي!</h1>
     <p>بديش تحكيلي نسيتيه.. اعطيني كلمة السر السحرية عشان تفتحي عفشك الدراسي 😌✨</p>
     <form id="loginForm">
-      <input id="passwordInput" type="password" placeholder="اكتبي السر هون..." autocomplete="off" required>
-      <button type="submit">افتحي خليني انصدم بالدراسة 🚪</button>
+      <input class="auth-field" id="nameInput" type="text" placeholder="اسمك (لإنشاء الحساب)" autocomplete="name" hidden>
+      <input class="auth-field" id="emailInput" type="email" placeholder="البريد الإلكتروني" autocomplete="email" required>
+      <input class="auth-field" id="passwordInput" type="password" placeholder="كلمة المرور" autocomplete="current-password" minlength="8" required>
+      <button id="authSubmit" type="submit">تسجيل الدخول 🚪</button>
     </form>
+    <button class="auth-switch" id="authModeBtn" type="button">ما عندك حساب؟ أنشئي حساباً جديداً</button>
     <div class="login-error" id="loginError" aria-live="polite"></div>
+    <div class="auth-status" id="authStatus" aria-live="polite"></div>
     <small style="color:#ad91a1; font-weight:600;">سجن دراسي راقي برعاية حمود 🌸</small>
   </div>
 </div>
@@ -802,7 +848,7 @@ footer {
       <h1>عذاب لجونتي الدراسي 💀💗</h1>
       <p>يلا شدي هالبصرة! تراه المادة ما بتخلص لحالها.. خلصي وخذي ليزر شوبينغ 🛍️😂</p>
     </div>
-    <button class="logout" id="logoutBtn" type="button">هروب 🏃🏻‍♀️</button>
+    <div><button class="logout" id="logoutBtn" type="button">هروب 🏃🏻‍♀️</button><div class="sync-status" id="syncStatus">غير متصل</div></div>
   </div>
   <div class="pills-row">
     <span class="pill">🌸 مصطلحات: 22/11 (اجباري تبصمي)</span>
@@ -906,6 +952,32 @@ footer {
     </div>
   </aside>
 </div>
+
+
+<!-- Smart study planner -->
+<section class="card" id="smartPlanner">
+  <div class="card-header"><div><h2>🧠 خطتي الدراسية الذكية</h2><p class="mini">أضيفي موادك وموعد كل امتحان، والنظام بوزّع الشابترات حسب صعوبتها</p></div></div>
+  <form id="subjectForm">
+    <div class="planner-form">
+      <label>اسم المادة<input id="subjectName" required maxlength="60" placeholder="مثلاً: تشريح"></label>
+      <label>تاريخ الامتحان<input id="examDate" type="date" required></label>
+      <label>وقت الامتحان<input id="examTime" type="time" required value="09:00"></label>
+      <label>عدد الشابترات<input id="chapterCount" type="number" min="1" max="100" required value="5"></label>
+      <label>كم ساعة بتقدر تدرس باليوم؟<input id="dailyHours" type="number" min="1" max="16" step="0.5" required value="3"></label>
+      <label>بداية الدراسة<input id="startDate" type="date" required></label>
+    </div>
+    <div id="chapterEditor" class="chapter-editor"></div>
+    <p class="planner-hint">صعوبة الشابتر بتحدد حجمه بالوقت: السهل جلسة، المتوسط وقت أكثر، والصعب بياخذ أكبر حصة.</p>
+    <div class="planner-actions" style="margin-top:12px"><button type="submit">إضافة المادة وتوليد الخطة ✨</button></div>
+  </form>
+  <div id="subjectsList" style="margin-top:16px"></div>
+  <div class="planner-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+    <button type="button" id="generateAllBtn">إعادة توزيع الخطة 🔄</button>
+    <button type="button" id="clearSubjectsBtn" style="background:#8b74d6">حذف كل المواد</button>
+  </div>
+  <div id="planSummary" class="planner-hint" aria-live="polite"></div>
+  <div id="generatedPlan" class="plan-days"></div>
+</section>
 
 <!-- Schedule Section -->
 <section class="card schedule-section">
@@ -1102,9 +1174,25 @@ footer {
 <footer>مضبوطة على الموبايل وبرعاية حب حمود 💞</footer>
 </div>
 
-<script>
-// Login
-const EXPECTED_PASSWORD = 'حمودتي';
+<script type="module">
+import { createClient } from "https://esm.sh/@neondatabase/neon-js@0.1.0?bundle";
+
+// Neon project endpoints (public application endpoints; no database password here)
+const neon = createClient({
+  auth: {
+    url: "https://ep-noisy-snow-benr3avo.neonauth.c-9.us-east-2.aws.neon.tech/neondb/auth"
+  },
+  dataApi: {
+    url: "https://ep-noisy-snow-benr3avo.apirest.c-9.us-east-2.aws.neon.tech/neondb/rest/v1"
+  }
+});
+
+let currentUserId = null;
+let cloudReady = false;
+let saveTimer = null;
+let authMode = "signin";
+
+// Login and account creation
 const loginScreen = document.getElementById('loginScreen');
 const app = document.getElementById('app');
 
@@ -1113,28 +1201,128 @@ function showApp() {
   app.style.display = 'block';
 }
 
-document.getElementById('loginForm').addEventListener('submit', function(e)  {
-  e.preventDefault();
-  const entered = document.getElementById('passwordInput').value.trim();
+function showLogin() {
+  app.style.display = 'none';
+  loginScreen.style.display = 'flex';
+}
 
-  if (entered === EXPECTED_PASSWORD) {
-    sessionStorage.setItem('lajonatiLoggedIn', 'yes');
-    document.getElementById('loginError').textContent = '';
-    showApp();
-  } else {
-    document.getElementById('loginError').textContent = 'خطأ يا عيوني 🥺 كلمة السر مش هاي!';
-    document.getElementById('passwordInput').value = '';
+const authForm = document.getElementById('loginForm');
+const authModeBtn = document.getElementById('authModeBtn');
+const nameInput = document.getElementById('nameInput');
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+const authSubmit = document.getElementById('authSubmit');
+const loginError = document.getElementById('loginError');
+const authStatus = document.getElementById('authStatus');
+const syncStatus = document.getElementById('syncStatus');
+
+function setAuthMode(mode) {
+  authMode = mode;
+  const signingUp = mode === 'signup';
+  nameInput.hidden = !signingUp;
+  nameInput.required = signingUp;
+  passwordInput.autocomplete = signingUp ? 'new-password' : 'current-password';
+  authSubmit.textContent = signingUp ? 'إنشاء الحساب 💗' : 'تسجيل الدخول 🚪';
+  authModeBtn.textContent = signingUp ? 'عندك حساب؟ سجّلي الدخول' : 'ما عندك حساب؟ أنشئي حساباً جديداً';
+  loginError.textContent = '';
+  authStatus.textContent = '';
+}
+
+authModeBtn.addEventListener('click', () => setAuthMode(authMode === 'signin' ? 'signup' : 'signin'));
+
+function extractUser(result) {
+  const payload = result?.data ?? result;
+  return payload?.user ?? payload?.session?.user ?? null;
+}
+
+function showAuthError(error) {
+  console.error(error);
+  loginError.textContent = error?.message || 'تعذّر إكمال العملية. افحصي البيانات وحاولي مرة ثانية.';
+}
+
+authForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
+  loginError.textContent = '';
+  authStatus.textContent = 'لحظة، بنتأكد من الحساب...';
+  authSubmit.disabled = true;
+  authModeBtn.disabled = true;
+  try {
+    const email = emailInput.value.trim();
+    const password = passwordInput.value;
+    let result;
+
+    if (authMode === 'signup') {
+      result = await neon.auth.signUp.email({
+        name: nameInput.value.trim(),
+        email,
+        password
+      });
+    } else {
+      result = await neon.auth.signIn.email({ email, password });
+    }
+
+    if (result?.error) throw new Error(result.error.message || 'فشلت عملية المصادقة.');
+
+    let user = extractUser(result);
+    if (!user?.id) {
+      const sessionResult = await neon.auth.getSession();
+      if (sessionResult?.error) throw new Error(sessionResult.error.message);
+      user = extractUser(sessionResult);
+    }
+
+    if (!user?.id) {
+      setAuthMode('signin');
+      passwordInput.value = '';
+      authStatus.textContent = 'تم إنشاء الحساب. إذا طُلب تأكيد البريد، افتحي رسالة التفعيل ثم سجّلي الدخول.';
+      return;
+    }
+
+    await enterDashboard(user);
+  } catch (error) {
+    showAuthError(error);
+  } finally {
+    authSubmit.disabled = false;
+    authModeBtn.disabled = false;
   }
 });
 
-document.getElementById('logoutBtn').addEventListener('click', () => {
-  sessionStorage.removeItem('lajonatiLoggedIn');
-  app.style.display = 'none';
-  loginScreen.style.display = 'flex';
-  document.getElementById('passwordInput').value = '';
-});
+async function logout() {
+  try { await neon.auth.signOut(); }
+  catch (error) { console.warn('Sign out warning:', error); }
+  clearInterval(timerInterval);
+  isRunning = false;
+  currentUserId = null;
+  cloudReady = false;
+  if (saveTimer) clearTimeout(saveTimer);
+  showLogin();
+  passwordInput.value = '';
+  syncStatus.textContent = 'غير متصل';
+}
 
-if (sessionStorage.getItem('lajonatiLoggedIn') === 'yes') showApp();
+document.getElementById('logoutBtn').addEventListener('click', logout);
+
+async function enterDashboard(user) {
+  currentUserId = user.id;
+  authStatus.textContent = '';
+  showApp();
+  syncStatus.textContent = 'جارٍ تحميل بياناتك...';
+  cloudReady = false;
+  try {
+    await loadCloudData();
+    renderPlan();
+    makeChapters('terms', 9);
+    makeChapters('physio', 5);
+    update();
+    updateClockDisplay();
+    cloudReady = true;
+    syncStatus.textContent = 'متصل — تمت المزامنة 💗';
+  } catch (error) {
+    console.error(error);
+    syncStatus.textContent = 'تعذّر تحميل البيانات';
+    alert('تعذّر تحميل بيانات الدراسة من Neon: ' + (error.message || 'خطأ غير معروف'));
+    showLogin();
+  }
+}
 
 // Precise Countdown: Days, Hours, Minutes, Seconds
 function countdownTo(target, elementId) {
@@ -1163,28 +1351,160 @@ function updateExamCountdowns() {
 updateExamCountdowns();
 setInterval(updateExamCountdowns, 1000);
 
-// Save data
+// Study data: Neon is the source of truth; localStorage is used only for first-time migration/cache.
 const KEY = 'lajonatiStudyPlan_v2';
-let saved = {};
-
-try {
-  saved = JSON.parse(localStorage.getItem(KEY) || '{}');
-} catch (e) {
-  saved = {};
-}
-
-let completed = saved.completed || {};
-let sessions = Number(saved.sessions || 0);
-let notes = saved.notes || {};
-let tasks = saved.tasks || [];
-let studyDays = saved.studyDays || [];
+let completed = {};
+let sessions = 0;
+let notes = {};
+let tasks = [];
+let studyDays = [];
+let plannerSubjects = [];
+let plannerTasks = [];
 const total = 14;
 
-function save() {
-  localStorage.setItem(KEY, JSON.stringify({
-    completed, sessions, notes, tasks, studyDays
-  }));
+function currentStudyData() {
+  return { completed, sessions, notes, tasks, studyDays, plannerSubjects, plannerTasks };
 }
+
+function applyStudyData(data = {}) {
+  completed = data.completed && typeof data.completed === 'object' ? data.completed : {};
+  sessions = Number(data.sessions || 0);
+  notes = data.notes && typeof data.notes === 'object' ? data.notes : {};
+  tasks = Array.isArray(data.tasks) ? data.tasks : [];
+  studyDays = Array.isArray(data.studyDays) ? data.studyDays : [];
+  plannerSubjects = Array.isArray(data.plannerSubjects) ? data.plannerSubjects : [];
+  plannerTasks = Array.isArray(data.plannerTasks) ? data.plannerTasks : [];
+}
+
+async function loadCloudData() {
+  const { data, error } = await neon
+    .from('study_plans')
+    .select('data')
+    .eq('user_id', currentUserId)
+    .limit(1);
+  if (error) throw new Error(error.message || 'Database read failed');
+
+  const userCacheKey = `${KEY}:${currentUserId}`;
+  if (data && data.length > 0 && data[0].data) {
+    applyStudyData(data[0].data);
+    localStorage.setItem(userCacheKey, JSON.stringify(currentStudyData()));
+  } else {
+    // Import the legacy browser-only plan for the first account only, then remove the shared key.
+    let oldData = {};
+    try { oldData = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
+    applyStudyData(oldData);
+    await syncCloudNow();
+    localStorage.removeItem(KEY);
+  }
+}
+
+async function syncCloudNow() {
+  if (!currentUserId) return;
+  const payload = currentStudyData();
+  const { error } = await neon.from('study_plans').upsert({
+    user_id: currentUserId,
+    data: payload,
+    updated_at: new Date().toISOString()
+  }, { onConflict: 'user_id' });
+  if (error) throw new Error(error.message || 'Database save failed');
+  localStorage.setItem(`${KEY}:${currentUserId}`, JSON.stringify(payload));
+  syncStatus.textContent = 'متصل — تم الحفظ 💗';
+}
+
+function save() {
+  const payload = currentStudyData();
+  if (currentUserId) localStorage.setItem(`${KEY}:${currentUserId}`, JSON.stringify(payload));
+  if (!currentUserId || !cloudReady) return;
+  syncStatus.textContent = 'جارٍ حفظ التغييرات...';
+  if (saveTimer) clearTimeout(saveTimer);
+  saveTimer = setTimeout(async () => {
+    try { await syncCloudNow(); }
+    catch (error) {
+      console.error(error);
+      syncStatus.textContent = 'فشل الحفظ — افحصي الاتصال';
+    }
+  }, 450);
+}
+
+
+// Smart planner: distributes weighted chapters across available study days.
+const chapterCountInput = document.getElementById('chapterCount');
+const chapterEditor = document.getElementById('chapterEditor');
+const todayISO = () => { const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+document.getElementById('startDate').value = todayISO();
+document.getElementById('examDate').min = todayISO();
+function buildChapterInputs(){
+  const count=Math.max(1,Math.min(100,Number(chapterCountInput.value)||1));
+  chapterEditor.innerHTML='';
+  for(let i=1;i<=count;i++){
+    const row=document.createElement('div'); row.className='chapter-difficulty';
+    const title=document.createElement('strong'); title.textContent=`الشابتر ${i}`;
+    const label=document.createElement('label'); label.textContent='مستوى الصعوبة';
+    const select=document.createElement('select'); select.dataset.chapter=String(i);
+    [['easy','سهل'],['medium','متوسط'],['hard','صعب']].forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;select.append(o)});
+    label.append(select); row.append(title,label); chapterEditor.append(row);
+  }
+}
+chapterCountInput.addEventListener('input',buildChapterInputs); buildChapterInputs();
+function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function renderSubjects(){
+ const host=document.getElementById('subjectsList'); host.innerHTML='';
+ plannerSubjects.forEach(sub=>{const row=document.createElement('div');row.className='subject-chip';
+ const info=document.createElement('span');info.textContent=`${sub.name} — ${sub.chapters.length} شابتر — الامتحان ${sub.examDate} الساعة ${sub.examTime}`;
+ const del=document.createElement('button');del.type='button';del.textContent='حذف';del.addEventListener('click',()=>{plannerSubjects=plannerSubjects.filter(x=>x.id!==sub.id);plannerTasks=plannerTasks.filter(t=>t.subjectId!==sub.id);renderSubjects();renderPlan();save();});row.append(info,del);host.append(row);});
+}
+function makePlan(){
+ const tasks=[]; const now=todayISO();
+ plannerSubjects.forEach(sub=>{
+  const start=new Date(sub.startDate+'T12:00:00'); const exam=new Date(sub.examDate+'T12:00:00');
+  const available=Math.floor((exam-start)/86400000);
+  if(available<1) throw new Error(`لازم يكون في يوم دراسة واحد على الأقل قبل امتحان مادة ${sub.name}.`);
+  const weights={easy:1,medium:1.5,hard:2.25};
+  const units=sub.chapters.reduce((sum,ch)=>sum+weights[ch.difficulty],0);
+  const dailyCapacity=Number(sub.dailyHours);
+  const totalDays=available;
+  // distribute one chapter across the days using weighted workload and keep final day for revision
+  let dayIndex=0, used=0;
+  sub.chapters.forEach((ch,i)=>{
+    const workload=weights[ch.difficulty];
+    if(used>0 && used+workload>dailyCapacity && dayIndex<totalDays-1){dayIndex++;used=0;}
+    const date=new Date(start); date.setDate(date.getDate()+dayIndex);
+    const mins=Math.round((workload/units)*(Math.max(1,totalDays)*dailyCapacity)*60);
+    tasks.push({id:`${sub.id}-${i+1}`,subjectId:sub.id,subject:sub.name,chapter:i+1,difficulty:ch.difficulty,date:date.toISOString().slice(0,10),minutes:Math.max(30,mins),done:false});
+    used+=workload;
+  });
+  const revisionDate=new Date(exam); revisionDate.setDate(revisionDate.getDate()-1);
+  tasks.push({id:`${sub.id}-revision`,subjectId:sub.id,subject:sub.name,chapter:0,difficulty:'revision',date:revisionDate.toISOString().slice(0,10),minutes:Math.round(dailyCapacity*60),done:false});
+ });
+ // preserve completed flags when regenerating
+ const old=new Map(plannerTasks.map(t=>[t.id,t.done]));
+ plannerTasks=tasks.map(t=>({...t,done:old.get(t.id)||false}));
+}
+function renderPlan(){
+ renderSubjects(); const host=document.getElementById('generatedPlan');host.innerHTML='';
+ const grouped={}; plannerTasks.sort((a,b)=>a.date.localeCompare(b.date)).forEach(t=>(grouped[t.date]??=[]).push(t));
+ const total=plannerTasks.length, done=plannerTasks.filter(t=>t.done).length;
+ document.getElementById('planSummary').textContent=total?`إنجاز الخطة: ${done} من ${total} مهمة (${Math.round(done/total*100)}%)`:'أضيفي مادة حتى تظهر خطتك هون.';
+ Object.entries(grouped).forEach(([date,items])=>{
+  const card=document.createElement('div');card.className='plan-day';
+  const h=document.createElement('h3');h.textContent=new Date(date+'T12:00:00').toLocaleDateString('ar-JO',{weekday:'long',year:'numeric',month:'long',day:'numeric'});card.append(h);
+  items.forEach(t=>{const label=document.createElement('label');label.className='plan-task'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=t.done;cb.addEventListener('change',()=>{t.done=cb.checked;renderPlan();save();});
+   const span=document.createElement('span');const diff={easy:'سهل',medium:'متوسط',hard:'صعب',revision:'مراجعة قبل الامتحان'}[t.difficulty];span.textContent=t.chapter?`${t.subject} — شابتر ${t.chapter} (${diff}) — ${t.minutes} دقيقة`:`${t.subject} — ${diff} — ${t.minutes} دقيقة`;
+   label.append(cb,span);card.append(label);});host.append(card);
+ });
+}
+document.getElementById('subjectForm').addEventListener('submit',e=>{
+ e.preventDefault();try{
+  const name=document.getElementById('subjectName').value.trim();const examDate=document.getElementById('examDate').value;const startDate=document.getElementById('startDate').value;
+  if(!name||!examDate||!startDate)throw new Error('عبّي جميع الحقول.');
+  if(examDate<=startDate)throw new Error('تاريخ الامتحان لازم يكون بعد بداية الدراسة.');
+  const chapters=[...chapterEditor.querySelectorAll('select')].map(x=>({difficulty:x.value}));
+  const subject={id:`sub-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,name,examDate,examTime:document.getElementById('examTime').value,startDate,dailyHours:Number(document.getElementById('dailyHours').value),chapters};
+  plannerSubjects.push(subject);makePlan();renderPlan();save();document.getElementById('subjectName').value='';
+ }catch(err){alert(err.message||'تعذّر إنشاء الخطة.');}
+});
+document.getElementById('generateAllBtn').addEventListener('click',()=>{try{makePlan();renderPlan();save();}catch(err){alert(err.message);}});
+document.getElementById('clearSubjectsBtn').addEventListener('click',()=>{if(!confirm('متأكد إنك بدك تحذف كل المواد والخطة؟'))return;plannerSubjects=[];plannerTasks=[];renderPlan();save();});
 
 // Chapters
 function makeChapters(id, count) {
@@ -1367,7 +1687,12 @@ function renderTasks() {
   tasks.forEach((task, index) => {
     const item = document.createElement('div');
     item.className = 'task-item' + (task.done ? ' done' : '');
-    item.innerHTML = `<span>${task.done ? '✔️' : '⭕'}</span> <span style="flex:1">${task.text}</span>`;
+    const mark = document.createElement('span');
+    mark.textContent = task.done ? '✔️' : '⭕';
+    const taskText = document.createElement('span');
+    taskText.style.flex = '1';
+    taskText.textContent = task.text;
+    item.append(mark, taskText);
     item.addEventListener('click', () => {
       tasks[index].done = !tasks[index].done;
       save();
@@ -1432,11 +1757,23 @@ function renderNotes() {
   });
 }
 
-// Initializations
-makeChapters('terms', 9);
-makeChapters('physio', 5);
-update();
-updateClockDisplay();
+// Restore an existing Neon session, if present.
+(async function boot() {
+  try {
+    const sessionResult = await neon.auth.getSession();
+    if (sessionResult?.error) throw new Error(sessionResult.error.message);
+    const user = extractUser(sessionResult);
+    if (user?.id) {
+      await enterDashboard(user);
+    } else {
+      showLogin();
+    }
+  } catch (error) {
+    console.error('Neon initialization failed:', error);
+    showLogin();
+    authStatus.textContent = 'تعذّر الاتصال بخدمة تسجيل الدخول. تأكدي من تشغيل الصفحة عبر HTTPS أو localhost.';
+  }
+})();
 </script>
 
 </body>
