@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl" data-theme="light">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>منصة الإنجاز الأكاديمي الذكية | MOHAMMAD RUM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -87,6 +87,7 @@ header {
   overflow: hidden;
   box-shadow: var(--shadow-md);
   color: #ffffff;
+  margin-bottom: 16px;
 }
 
 .header-top {
@@ -939,6 +940,114 @@ footer {
   letter-spacing: 1.5px;
   color: var(--primary);
 }
+
+/* Sequential App Steps Styling */
+.app-step-panel {
+  display: none;
+}
+.app-step-panel.active-seq-step {
+  display: block;
+  animation: stepFadeIn 0.35s ease;
+}
+
+.seq-navigation-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 14px 18px;
+  margin-top: 20px;
+  box-shadow: var(--shadow-sm);
+}
+
+.seq-step-indicator {
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+/* Advanced study management tools */
+.desktop-sidebar { display:none; }
+@media (min-width:1400px) {
+  .desktop-sidebar { position:fixed; right:14px; top:150px; z-index:18; width:145px; display:grid; gap:5px; padding:10px; background:var(--surface); border:1px solid var(--border-light); border-radius:13px; box-shadow:var(--shadow-sm); }
+  .desktop-sidebar strong { font-size:11px; color:var(--primary-dark); margin-bottom:3px; }
+  .desktop-sidebar a { text-decoration:none; color:var(--text-main); background:var(--surface-soft); border-radius:7px; padding:5px 7px; font-size:10.5px; font-weight:800; }
+  .desktop-sidebar a:hover { color:var(--primary-dark); background:var(--primary-light); }
+}
+
+.tools-nav {
+  position: sticky; top: 8px; z-index: 20; display: flex; flex-wrap: wrap; gap: 7px;
+  padding: 10px; margin: 12px 0; background: var(--surface); border: 1px solid var(--border-light);
+  border-radius: 14px; box-shadow: var(--shadow-sm);
+}
+.tools-nav a { text-decoration: none; color: var(--primary-dark); background: var(--surface-soft); border: 1px solid var(--border-light); border-radius: 9px; padding: 6px 10px; font-size: 11.5px; font-weight: 800; }
+.tools-nav a:hover { border-color: var(--primary); background: var(--primary-light); }
+.tools-toolbar { display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.tools-toolbar input { flex:1; min-width:190px; }
+.tool-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; }
+.tool-panel { background:var(--surface-soft); border:1px solid var(--border-light); border-radius:12px; padding:12px; min-width:0; }
+.tool-panel h3 { font-size:14px; margin-bottom:8px; color:var(--primary-dark); }
+.tool-fields { display:grid; grid-template-columns:repeat(auto-fit,minmax(145px,1fr)); gap:9px; }
+.tool-fields label,.tool-label { display:grid; gap:4px; font-size:12px; font-weight:800; color:var(--text-main); }
+.tool-fields input,.tool-fields select,.tool-fields textarea,.tool-input {
+  width:100%; min-width:0; padding:9px 10px; border-radius:9px; border:1px solid var(--border-light);
+  background:var(--surface); color:var(--text-main); font:inherit; font-size:12.5px;
+}
+.tool-fields textarea { min-height:70px; resize:vertical; }
+.tool-actions { display:flex; flex-wrap:wrap; gap:7px; margin-top:10px; }
+.tool-actions button { padding:8px 12px; font-size:12px; }
+.tool-table { width:100%; border-collapse:collapse; font-size:12px; margin-top:8px; }
+.tool-table th,.tool-table td { padding:8px 7px; text-align:right; border-bottom:1px solid var(--border-light); vertical-align:middle; }
+.tool-table th { color:var(--primary-dark); background:var(--surface-soft); font-weight:900; }
+.tool-table input,.tool-table select { max-width:145px; padding:5px; border:1px solid var(--border-light); border-radius:7px; background:var(--surface); color:var(--text-main); font:inherit; }
+.tool-list { display:grid; gap:8px; margin-top:9px; }
+.tool-item { display:flex; justify-content:space-between; gap:10px; align-items:flex-start; padding:10px; border:1px solid var(--border-light); background:var(--surface); border-radius:10px; font-size:12px; }
+.tool-item-main { min-width:0; flex:1; }
+.tool-item-title { font-weight:900; color:var(--text-main); }
+.tool-muted { color:var(--text-muted); font-size:11px; }
+.tool-empty { color:var(--text-muted); font-size:12px; text-align:center; padding:12px; }
+.tool-chip { display:inline-flex; align-items:center; padding:2px 7px; border-radius:20px; font-size:10px; font-weight:900; background:var(--primary-light); color:var(--primary-dark); margin-inline-start:4px; }
+.priority-high { background:var(--accent-danger-bg); color:var(--accent-danger); }
+.priority-medium { background:var(--accent-warn-bg); color:var(--accent-warn); }
+.priority-low { background:var(--accent-success-bg); color:var(--accent-success); }
+.week-days { display:grid; grid-template-columns:repeat(7,minmax(0,1fr)); gap:7px; margin-top:10px; }
+.week-day { min-width:0; background:var(--surface-soft); border:1px solid var(--border-light); border-radius:10px; padding:8px; }
+.week-day h4 { font-size:11px; color:var(--primary-dark); margin-bottom:4px; }
+.week-day .tool-muted { margin-bottom:6px; }
+.week-task { padding:6px; border-radius:7px; background:var(--surface); margin-top:5px; font-size:10.5px; overflow-wrap:anywhere; border-right:3px solid var(--primary); }
+.week-task.done { opacity:.55; text-decoration:line-through; }
+.week-task input[type=date] { width:100%; margin-top:5px; font:inherit; font-size:10px; }
+.search-results { display:grid; gap:6px; margin-top:8px; }
+.search-result { text-align:right; padding:8px 10px; background:var(--surface-soft); color:var(--text-main); border:1px solid var(--border-light); border-radius:9px; box-shadow:none; }
+.task-detail { width:100%; display:grid; gap:6px; margin-top:7px; }
+.task-detail input[type=text] { width:100%; padding:6px; border:1px solid var(--border-light); border-radius:7px; background:var(--surface); color:var(--text-main); font:inherit; font-size:11px; }
+.task-step-row { display:flex; align-items:center; gap:6px; font-size:11px; }
+.status-ok { color:var(--accent-success); font-weight:900; }
+.status-warn { color:var(--accent-warn); font-weight:900; }
+.status-bad { color:var(--accent-danger); font-weight:900; }
+.progress-small { height:7px; background:var(--border-light); border-radius:20px; overflow:hidden; margin-top:6px; }
+.progress-small span { display:block; height:100%; background:linear-gradient(90deg,var(--primary),var(--secondary)); }
+@media (max-width:700px) {
+  .tools-nav { position:static; }
+  .tools-nav a { flex:1 1 auto; text-align:center; }
+  .week-days { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .tool-table { display:block; overflow-x:auto; white-space:nowrap; }
+  .tools-toolbar button { flex:1; }
+  .card { padding:15px 12px; }
+  .header-top { flex-direction:column; }
+  .header-actions { align-items:stretch; width:100%; }
+  .btn-group-top { flex-wrap:wrap; }
+  .icon-btn { flex:1; }
+}
+@media print {
+  body { background:#fff !important; color:#000 !important; }
+  .login-screen,.tools-nav,.desktop-sidebar,.tools-toolbar,.tool-actions,button,.confetti-layer { display:none !important; }
+  .wrap { max-width:100%; padding:0; }
+  .card,.subject-block,.plan-day { box-shadow:none !important; break-inside:avoid; }
+  #app { display:block !important; }
+}
 </style>
 </head>
 
@@ -957,7 +1066,7 @@ footer {
       <input id="passwordInput" type="password" placeholder="كلمة السر (8 خانات وطالع)" autocomplete="current-password" minlength="8" required>
       <button id="authSubmit" type="submit">يلا نفوت عالحساب 🚀</button>
     </form>
-    <button class="quick-btn" id="guestBtn" type="button">فوت عالسريع بدون حساب (حفظ عالجهاز) ⚡</button>
+    <button class="quick-btn" id="guestBtn" type="button">تجربة مؤقتة بدون حفظ ⚡</button>
     <button class="auth-switch" id="authModeBtn" type="button">جديد هون؟ اعمل حسابك بثواني يا قمر ✨</button>
     <div class="login-error" id="loginError" aria-live="polite"></div>
     <div class="auth-status" id="authStatus" aria-live="polite"></div>
@@ -988,236 +1097,502 @@ footer {
   </div>
 </header>
 
-<!-- Dynamic Exam Countdowns -->
-<section class="card">
-  <div class="card-header" style="margin-bottom:4px">
-    <h2>⏰ دير بالك! العد التنازلي للامتحانات 🔥</h2>
-    <span class="mini">كل ثانية بتمر بتقربك من الامتحان.. لا تسرح! 👀</span>
-  </div>
-  <div class="exam-grid" id="dynamicCountdowns">
-    <div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة تحت وخلينا نبلش الجد 💪</div>
-  </div>
-</section>
+<nav class="tools-nav" aria-label="التنقل السريع">
+  <a href="#seqStep1">1️⃣ البحث والعد</a>
+  <a href="#seqStep2">2️⃣ المواد والخطة</a>
+  <a href="#seqStep3">3️⃣ الإنجاز والمؤقت</a>
+  <a href="#seqStep4">4️⃣ الجدول اليومي</a>
+  <a href="#seqStep5">5️⃣ الملفات والمراجعة</a>
+  <a href="#seqStep6">6️⃣ العلامات والمعدل</a>
+  <a href="#seqStep7">7️⃣ التخرج والأهداف</a>
+  <a href="#seqStep8">8️⃣ الإعدادات والأرشيف</a>
+</nav>
 
-<!-- Smart Study Planner Step-by-Step Wizard Form -->
-<section class="card" id="smartPlanner">
-  <div class="card-header">
-    <div>
-      <h2>🧠 ضيف مادتك حبة حبة وبدون عجقة</h2>
-      <p class="mini">عبّي كل خانة واضغط «التالي» عشان تفتحلك اللي بعدها بكل رواق وبساطة 😎✨</p>
+<aside class="desktop-sidebar" aria-label="القائمة الجانبية">
+  <strong>الخطوات المتسلسلة</strong>
+  <a href="#seqStep1">1. البحث والعد</a>
+  <a href="#seqStep2">2. المواد والخطة</a>
+  <a href="#seqStep3">3. الإنجاز والمؤقت</a>
+  <a href="#seqStep4">4. الجدول اليومي</a>
+  <a href="#seqStep5">5. الملفات والمراجعة</a>
+  <a href="#seqStep6">6. العلامات والمعدل</a>
+  <a href="#seqStep7">7. التخرج والأهداف</a>
+  <a href="#seqStep8">8. الإعدادات والأرشيف</a>
+</aside>
+
+<!-- ==========================================
+     STEP 1: Search & Exam Countdowns
+     ========================================== -->
+<div class="app-step-panel active-seq-step" id="seqStep1">
+  <section class="card" id="searchToolsSection">
+    <div class="card-header"><h2>🔎 البحث والنسخ الاحتياطي</h2><span class="mini">ابحث في المواد والمهام والملاحظات، أو احفظ نسخة من بياناتك</span></div>
+    <div class="tools-toolbar">
+      <input class="tool-input" id="globalSearch" type="search" placeholder="ابحث عن مادة، شابتر، مهمة، وسم أو ملاحظة..." aria-label="بحث شامل">
+      <button type="button" class="secondary" id="exportBackupBtn">⬇️ تصدير نسخة</button>
+      <button type="button" class="secondary" id="importBackupBtn">⬆️ استيراد نسخة</button>
+      <button type="button" class="secondary" id="printPlanBtn">🖨️ طباعة / حفظ PDF</button>
+      <input id="importBackupFile" type="file" accept="application/json,.json" hidden>
     </div>
-    <button type="button" class="secondary" id="resetWizardBtn" style="font-size:12px; padding:6px 12px;">🔄 بلّش من أول خطوة</button>
-  </div>
+    <div id="searchResults" class="search-results" aria-live="polite"></div>
+  </section>
 
-  <div class="wizard-progress-bar">
-    <span id="wizardProgressText">الخطوة 1 من 7 — يلا نبلش باسم المادة 🚀</span>
-    <span id="wizardStepDots">🔵⚪⚪⚪⚪⚪⚪</span>
-  </div>
-
-  <form id="subjectForm" class="wizard-container">
-
-    <!-- Step 1: Subject Name -->
-    <div class="wizard-step" id="step-1">
-      <div class="step-header">
-        <span class="step-badge">الخطوة 1</span>
-      </div>
-      <label>شو اسم المادة يا بطل؟ 📘
-        <input id="subjectName" required maxlength="60" placeholder="مثلاً: تشريح / برمجة / فيزياء">
-      </label>
-      <div class="step-actions">
-        <button type="button" class="next-step-btn" data-next="2">التالي ⬇️</button>
-      </div>
+  <section class="card" id="examSection">
+    <div class="card-header" style="margin-bottom:4px">
+      <h2>⏰ دير بالك! العد التنازلي للامتحانات 🔥</h2>
+      <span class="mini">كل ثانية بتمر بتقربك من الامتحان.. لا تسرح! 👀</span>
     </div>
-
-    <!-- Step 2: Exam Date -->
-    <div class="wizard-step" id="step-2" hidden>
-      <div class="step-header">
-        <span class="step-badge">الخطوة 2</span>
-      </div>
-      <label>متى الامتحان؟ (دير بالك!) 📅
-        <input id="examDate" type="date" required>
-      </label>
-      <div class="step-actions">
-        <button type="button" class="next-step-btn" data-next="3">التالي ⬇️</button>
-      </div>
-    </div>
-
-    <!-- Step 3: Exam Time -->
-    <div class="wizard-step" id="step-3" hidden>
-      <div class="step-header">
-        <span class="step-badge">الخطوة 3</span>
-      </div>
-      <label>أي ساعة الامتحان؟ ⏰
-        <input id="examTime" type="time" required value="09:00">
-      </label>
-      <div class="step-actions">
-        <button type="button" class="next-step-btn" data-next="4">التالي ⬇️</button>
-      </div>
-    </div>
-
-    <!-- Step 4: Chapter Count -->
-    <div class="wizard-step" id="step-4" hidden>
-      <div class="step-header">
-        <span class="step-badge">الخطوة 4</span>
-      </div>
-      <label>كم شابتر عندك بالمادة؟ 📚
-        <input id="chapterCount" type="number" min="1" max="60" required value="5">
-      </label>
-      <div class="step-actions">
-        <button type="button" class="next-step-btn" data-next="5">التالي ⬇️</button>
-      </div>
-    </div>
-
-    <!-- Step 5: Daily Study Hours -->
-    <div class="wizard-step" id="step-5" hidden>
-      <div class="step-header">
-        <span class="step-badge">الخطوة 5</span>
-      </div>
-      <label>كم ساعة ناوي تدرس باليوم؟ ⏳
-        <input id="dailyHours" type="number" min="0.5" max="16" step="0.5" required value="3">
-      </label>
-      <div class="step-actions">
-        <button type="button" class="next-step-btn" data-next="6">التالي ⬇️</button>
-      </div>
-    </div>
-
-    <!-- Step 6: Start Date -->
-    <div class="wizard-step" id="step-6" hidden>
-      <div class="step-header">
-        <span class="step-badge">الخطوة 6</span>
-      </div>
-      <label>متى ناوي تبلش جد؟ 🔥
-        <input id="startDate" type="date" required>
-      </label>
-      <div class="step-actions">
-        <button type="button" class="next-step-btn" data-next="7">التالي ⬇️</button>
-      </div>
-    </div>
-
-    <!-- Step 7: Chapter Difficulty & Submit -->
-    <div class="wizard-step" id="step-7" hidden>
-      <div class="step-header">
-        <span class="step-badge">الخطوة الأخيرة 7 من 7 🎉</span>
-      </div>
-      <span style="font-size:14px; font-weight:800; color:var(--primary-dark);">احكيلنا كيف وضع كل شابتر (سهل، متوسط، ولا بده قعدة؟):</span>
-      <div id="chapterEditor" class="chapter-editor"></div>
-
-      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-        <button type="submit">➕ اعتمد المادة وطلّع الجدول 🚀</button>
-      </div>
-    </div>
-
-    <!-- General Management Buttons -->
-    <div style="margin-top:6px; display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border-light); padding-top:12px;">
-      <button type="button" class="secondary" id="generateAllBtn">🔄 رتّب الجدول من أول وجديد</button>
-      <button type="button" class="secondary" id="clearSubjectsBtn" style="color:var(--accent-danger);">🗑️ امسح كل إشي</button>
-    </div>
-  </form>
-</section>
-
-<!-- Main Dashboard: Progress & Timer -->
-<div class="grid-main">
-
-  <!-- Progress & Subjects -->
-  <section class="card">
-    <div class="card-header">
-      <h2>📊 وين صرت بالإنجاز يا وحش؟</h2>
-      <span class="big-pct" id="overall">0%</span>
-    </div>
-    <div class="track"><div class="fill" id="overallBar"></div></div>
-
-    <div class="stats">
-      <div class="stat"><b id="doneCount">0</b>شابترات خلصتهم 💪</div>
-      <div class="stat"><b id="leftCount">0</b>شابترات بستنوك 👀</div>
-      <div class="stat"><b id="sessions">0</b>جلسات تركيز 🔥</div>
-    </div>
-
-    <div id="subjectsProgressList">
-      <p class="mini" style="text-align:center; margin-top:18px;">بس تضيف موادك فوق رح تلاقيهم مصفوفين هون بانتظارك يا غالي 😉</p>
+    <div class="exam-grid" id="dynamicCountdowns">
+      <div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة بالخطوة التالية وخلينا نبلش الجد 💪</div>
     </div>
   </section>
 
-  <!-- Study Timer -->
-  <aside class="card timer-card">
-    <div>
-      <h2 style="justify-content:center">⏳ مؤقت التركيز (بدون تلفون!)</h2>
-      <div class="timer-icon">🎯</div>
-      <div class="mini" id="timerLabel">حط التلفون ع جنب وركز شوي يا حلو 😉</div>
-      <div class="clock-box">
-        <div class="clock" id="clock">25:00</div>
-      </div>
-
-      <select id="duration" aria-label="مدة المؤقت" style="width:100%; padding:10px; border-radius:10px; border:1.5px solid var(--border-light); background:var(--surface-soft); color:var(--text-main); font:inherit; font-weight:700; margin-bottom:10px; text-align:center;">
-        <option value="25">25 دقيقة — جلسة رايقة وخفيفة ☕</option>
-        <option value="45">45 دقيقة — جلسة شغل مرتب 💪</option>
-        <option value="50">50 دقيقة — وضع الوحش شغال 🔥</option>
-        <option value="5">5 دقائق — بريك نسكافيه سريع ☕</option>
-        <option value="10">10 دقائق — ريّح عيونك شوي 😌</option>
-      </select>
-
-      <div class="timer-controls">
-        <button id="startBtn" type="button">يلا بلّش! 🚀</button>
-        <button class="secondary" id="pauseBtn" type="button">وقّف شوي ⏸️</button>
-        <button class="secondary" id="resetBtn" type="button">صفّر العداد 🔄</button>
-      </div>
-    </div>
-
-    <div>
-      <div class="quote" id="encourage">«يا حلو الدراسة بدها رواق وكاسة شاي، مش توتر! إنت قدها وقدود 💙✨»</div>
-    </div>
-  </aside>
+  <div class="seq-navigation-bar">
+    <span></span>
+    <span class="seq-step-indicator">الخطوة 1 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
+  </div>
 </div>
 
-<!-- Generated Daily Schedule -->
-<section class="card">
-  <div class="card-header">
-    <div>
-      <h2>🗓️ جدولك اليومي المقسّم عالتمام</h2>
-      <p class="mini" id="planSummary">ضيف موادك فوق عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.</p>
+<!-- ==========================================
+     STEP 2: Smart Study Planner Wizard
+     ========================================== -->
+<div class="app-step-panel" id="seqStep2">
+  <section class="card" id="smartPlanner">
+    <div class="card-header">
+      <div>
+        <h2>🧠 ضيف مادتك حبة حبة وبدون عجقة</h2>
+        <p class="mini">عبّي كل خانة واضغط «التالي» عشان تفتحلك اللي بعدها بكل رواق وبساطة 😎✨</p>
+      </div>
+      <button type="button" class="secondary" id="resetWizardBtn" style="font-size:12px; padding:6px 12px;">🔄 بلّش من أول خطوة</button>
     </div>
+
+    <div class="wizard-progress-bar">
+      <span id="wizardProgressText">الخطوة 1 من 7 — يلا نبلش باسم المادة 🚀</span>
+      <span id="wizardStepDots">🔵⚪⚪⚪⚪⚪⚪</span>
+    </div>
+
+    <form id="subjectForm" class="wizard-container">
+      <!-- Step 1: Subject Name -->
+      <div class="wizard-step" id="step-1">
+        <div class="step-header">
+          <span class="step-badge">الخطوة 1</span>
+        </div>
+        <label>شو اسم المادة يا بطل؟ 📘
+          <input id="subjectName" required maxlength="60" placeholder="مثلاً: تشريح / برمجة / فيزياء">
+        </label>
+        <div class="step-actions">
+          <button type="button" class="next-step-btn" data-next="2">التالي ⬇️</button>
+        </div>
+      </div>
+
+      <!-- Step 2: Exam Date -->
+      <div class="wizard-step" id="step-2" hidden>
+        <div class="step-header">
+          <span class="step-badge">الخطوة 2</span>
+        </div>
+        <label>متى الامتحان؟ (دير بالك!) 📅
+          <input id="examDate" type="date" required>
+        </label>
+        <div class="step-actions">
+          <button type="button" class="next-step-btn" data-next="3">التالي ⬇️</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Exam Time -->
+      <div class="wizard-step" id="step-3" hidden>
+        <div class="step-header">
+          <span class="step-badge">الخطوة 3</span>
+        </div>
+        <label>أي ساعة الامتحان؟ ⏰
+          <input id="examTime" type="time" required value="09:00">
+        </label>
+        <div class="step-actions">
+          <button type="button" class="next-step-btn" data-next="4">التالي ⬇️</button>
+        </div>
+      </div>
+
+      <!-- Step 4: Chapter Count -->
+      <div class="wizard-step" id="step-4" hidden>
+        <div class="step-header">
+          <span class="step-badge">الخطوة 4</span>
+        </div>
+        <label>كم شابتر عندك بالمادة؟ 📚
+          <input id="chapterCount" type="number" min="1" max="60" required value="5">
+        </label>
+        <div class="step-actions">
+          <button type="button" class="next-step-btn" data-next="5">التالي ⬇️</button>
+        </div>
+      </div>
+
+      <!-- Step 5: Daily Study Hours -->
+      <div class="wizard-step" id="step-5" hidden>
+        <div class="step-header">
+          <span class="step-badge">الخطوة 5</span>
+        </div>
+        <label>كم ساعة ناوي تدرس باليوم؟ ⏳
+          <input id="dailyHours" type="number" min="0.5" max="16" step="0.5" required value="3">
+        </label>
+        <div class="step-actions">
+          <button type="button" class="next-step-btn" data-next="6">التالي ⬇️</button>
+        </div>
+      </div>
+
+      <!-- Step 6: Start Date -->
+      <div class="wizard-step" id="step-6" hidden>
+        <div class="step-header">
+          <span class="step-badge">الخطوة 6</span>
+        </div>
+        <label>متى ناوي تبلش جد؟ 🔥
+          <input id="startDate" type="date" required>
+        </label>
+        <div class="step-actions">
+          <button type="button" class="next-step-btn" data-next="7">التالي ⬇️</button>
+        </div>
+      </div>
+
+      <!-- Step 7: Chapter Difficulty & Submit -->
+      <div class="wizard-step" id="step-7" hidden>
+        <div class="step-header">
+          <span class="step-badge">الخطوة الأخيرة 7 من 7 🎉</span>
+        </div>
+        <span style="font-size:14px; font-weight:800; color:var(--primary-dark);">احكيلنا كيف وضع كل شابتر (سهل، متوسط، ولا بده قعدة؟):</span>
+        <div id="chapterEditor" class="chapter-editor"></div>
+        <div class="tool-panel" style="margin-top:10px">
+          <h3>بيانات إضافية للمادة</h3>
+          <div class="tool-fields">
+            <label>عدد الساعات المعتمدة<input id="subjectCredits" type="number" min="0" max="30" step="0.5" value="3"></label>
+            <label>وسم المادة<input id="subjectTag" maxlength="30" placeholder="مثلاً: تخصص / جامعة"></label>
+            <label style="grid-column:1/-1">المتطلبات السابقة (افصل بينها بفاصلة)<input id="subjectPrerequisites" maxlength="180" placeholder="مثلاً: برمجة 1، رياضيات منفصلة"></label>
+          </div>
+        </div>
+
+        <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+          <button type="submit">➕ اعتمد المادة وطلّع الجدول 🚀</button>
+        </div>
+      </div>
+
+      <!-- General Management Buttons -->
+      <div style="margin-top:6px; display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border-light); padding-top:12px;">
+        <button type="button" class="secondary" id="generateAllBtn">🔄 رتّب الجدول من أول وجديد</button>
+        <button type="button" class="secondary" id="clearSubjectsBtn" style="color:var(--accent-danger);">🗑️ امسح كل إشي</button>
+      </div>
+    </form>
+  </section>
+
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 2 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
   </div>
-  <div id="generatedPlan" class="plan-days"></div>
-</section>
+</div>
 
-<!-- Rewards, Streak, Tasks & Notes -->
-<div class="feature-grid">
+<!-- ==========================================
+     STEP 3: Progress, Timer & Side Tasks
+     ========================================== -->
+<div class="app-step-panel" id="seqStep3">
+  <div class="grid-main" style="margin-top:0;">
+    <!-- Progress & Subjects -->
+    <section class="card" id="progressSection" style="margin-top:0;">
+      <div class="card-header">
+        <h2>📊 وين صرت بالإنجاز يا وحش؟</h2>
+        <span class="big-pct" id="overall">0%</span>
+      </div>
+      <div class="track"><div class="fill" id="overallBar"></div></div>
 
-  <section class="card">
+      <div class="stats">
+        <div class="stat"><b id="doneCount">0</b>شابترات خلصتهم 💪</div>
+        <div class="stat"><b id="leftCount">0</b>شابترات بستنوك 👀</div>
+        <div class="stat"><b id="sessions">0</b>جلسات تركيز 🔥</div>
+      </div>
+
+      <div id="subjectsProgressList">
+        <p class="mini" style="text-align:center; margin-top:18px;">بس تضيف موادك فوق رح تلاقيهم مصفوفين هون بانتظارك يا غالي 😉</p>
+      </div>
+    </section>
+
+    <!-- Study Timer -->
+    <aside class="card timer-card" style="margin-top:0;">
+      <div>
+        <h2 style="justify-content:center">⏳ مؤقت التركيز (بدون تلفون!)</h2>
+        <div class="timer-icon">🎯</div>
+        <div class="mini" id="timerLabel">حط التلفون ع جنب وركز شوي يا حلو 😉</div>
+        <div class="clock-box">
+          <div class="clock" id="clock">25:00</div>
+        </div>
+
+        <select id="duration" aria-label="مدة المؤقت" style="width:100%; padding:10px; border-radius:10px; border:1.5px solid var(--border-light); background:var(--surface-soft); color:var(--text-main); font:inherit; font-weight:700; margin-bottom:10px; text-align:center;">
+          <option value="25">25 دقيقة — جلسة رايقة وخفيفة ☕</option>
+          <option value="45">45 دقيقة — جلسة شغل مرتب 💪</option>
+          <option value="50">50 دقيقة — وضع الوحش شغال 🔥</option>
+          <option value="5">5 دقائق — بريك نسكافيه سريع ☕</option>
+          <option value="10">10 دقائق — ريّح عيونك شوي 😌</option>
+        </select>
+
+        <div class="timer-controls">
+          <button id="startBtn" type="button">يلا بلّش! 🚀</button>
+          <button class="secondary" id="pauseBtn" type="button">وقّف شوي ⏸️</button>
+          <button class="secondary" id="resetBtn" type="button">صفّر العداد 🔄</button>
+        </div>
+      </div>
+
+      <div>
+        <div class="quote" id="encourage">«يا حلو الدراسة بدها رواق وكاسة شاي، مش توتر! إنت قدها وقدود 💙✨»</div>
+      </div>
+    </aside>
+  </div>
+
+  <div class="feature-grid">
+    <section class="card">
+      <div class="card-header">
+        <h2>🏆 نقاطك وأوسمتك يا فخم</h2>
+        <span style="font-size:22px">🎖️</span>
+      </div>
+      <div style="display:flex; align-items:baseline; gap:8px;">
+        <div class="points-number" id="pointsTotal">0</div>
+        <span class="mini">نقطة (كل شابتر بتخلصه إلك 10 نقاط 😉)</span>
+      </div>
+      <div class="track"><div class="fill" id="pointsBar"></div></div>
+      <div class="reward-list" id="rewards">
+        <span class="reward" data-at="20">🥉 بداية بتفتح النفس (20)</span>
+        <span class="reward" data-at="50">🥈 شغال صح يا كبير (50)</span>
+        <span class="reward" data-at="100">🥇 قطاع دراسة رسمي (100)</span>
+        <span class="reward" data-at="200">💎 أسطورة الكلية بلا منازع (200)</span>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>✅ شغلات جانبية عالسريع</h2>
+      </div>
+      <div class="task-list" id="taskList"></div>
+      <div class="task-add" style="flex-wrap:wrap">
+        <input id="newTask" type="text" maxlength="90" placeholder="مثلاً: أطبع الدوسية / أسأل صاحبي...">
+        <button id="addTask" type="button">ضيف</button>
+      </div>
+      <div class="tool-fields" style="margin-top:8px">
+        <label>الأولوية<select id="newTaskPriority"><option value="medium">متوسطة</option><option value="high">عالية</option><option value="low">منخفضة</option></select></label>
+        <label>الموعد النهائي<input id="newTaskDue" type="date"></label>
+        <label>الوسم<input id="newTaskTag" maxlength="30" placeholder="مثلاً: مشروع"></label>
+        <label>مراحل المهمة (افصل بينها بفاصلة)<input id="newTaskStages" maxlength="220" placeholder="بحث، كتابة، مراجعة"></label>
+      </div>
+    </section>
+
+    <section class="card">
+      <div class="card-header">
+        <h2>📝 دفتر خربشاتك وملاحظاتك</h2>
+      </div>
+      <textarea class="note-area" id="generalNotes" placeholder="اكتب هون أي ملاحظة مهمة، قانون، أو إشي الدكتور ركّز عليه بالمحاضرة..."></textarea>
+    </section>
+  </div>
+
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 3 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
+  </div>
+</div>
+
+<!-- ==========================================
+     STEP 4: Daily Schedule & Weekly Planner
+     ========================================== -->
+<div class="app-step-panel" id="seqStep4">
+  <section class="card" id="dailyScheduleSection" style="margin-top:0;">
     <div class="card-header">
-      <h2>🏆 نقاطك وأوسمتك يا فخم</h2>
-      <span style="font-size:22px">🎖️</span>
+      <div>
+        <h2>🗓️ جدولك اليومي المقسّم عالتمام</h2>
+        <p class="mini" id="planSummary">ضيف موادك فوق عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.</p>
+      </div>
     </div>
-    <div style="display:flex; align-items:baseline; gap:8px;">
-      <div class="points-number" id="pointsTotal">0</div>
-      <span class="mini">نقطة (كل شابتر بتخلصه إلك 10 نقاط 😉)</span>
+    <div id="generatedPlan" class="plan-days"></div>
+  </section>
+
+  <section class="card" id="weeklySection">
+    <div class="card-header"><div><h2>🗓️ المخطط الأسبوعي المرن</h2><p class="mini">عدّل ساعاتك المتاحة لكل يوم، أضف جلسات مرنة، أو انقل المهام لموعد أنسب</p></div></div>
+    <div class="tool-panel"><h3>ساعات الدراسة المتاحة أسبوعياً</h3><div id="weeklyAvailability" class="tool-fields"></div><div class="tool-actions"><button type="button" id="saveAvailabilityBtn">حفظ توزيع الساعات</button></div></div>
+    <div class="tool-panel" style="margin-top:10px"><h3>إضافة جلسة / مهمة أسبوعية</h3><div class="tool-fields">
+      <label>اسم الجلسة<input id="weeklyTaskTitle" maxlength="90" placeholder="مثلاً: حل أسئلة الفصل"></label>
+      <label>التاريخ<input id="weeklyTaskDate" type="date"></label>
+      <label>المدة بالدقائق<input id="weeklyTaskMinutes" type="number" min="5" max="720" step="5" value="60"></label>
+      <label>الأولوية<select id="weeklyTaskPriority"><option value="medium">متوسطة</option><option value="high">عالية</option><option value="low">منخفضة</option></select></label>
+    </div><div class="tool-actions"><button type="button" id="addWeeklyTaskBtn">➕ أضف للجلسات</button><button type="button" class="secondary" id="catchUpBtn">🧯 أنشئ خطة تعويض للمتأخر</button></div></div>
+    <div id="weeklyView" class="week-days"></div>
+  </section>
+
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 4 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
+  </div>
+</div>
+
+<!-- ==========================================
+     STEP 5: Resources, Lectures & Spaced Reviews
+     ========================================== -->
+<div class="app-step-panel" id="seqStep5">
+  <section class="card" id="resourcesSection" style="margin-top:0;">
+    <div class="card-header"><div><h2>📎 ملفات المواد وسجل المحاضرات</h2><p class="mini">ارفع ملفات المحاضرات والدوسيات، أو احفظ روابطها، وتابع المحاضرات المنجزة</p></div></div>
+    <div class="tool-grid">
+      <form id="resourceForm" class="tool-panel">
+        <h3>إضافة ملف أو رابط للمادة</h3>
+        <div class="tool-fields">
+          <label>اسم الملف / المورد<input id="resourceTitle" maxlength="80" placeholder="مثلاً: محاضرة 1 - PDF" required></label>
+          <label>المادة<select id="resourceSubject"><option value="">عام / بدون مادة</option></select></label>
+          <label>اختر ملفاً<input id="resourceFile" type="file" accept=".pdf,.doc,.docx,.ppt,.pptx,.xls,.xlsx,.txt,.jpg,.jpeg,.png,.zip"></label>
+          <label>أو رابط للمادة<input id="resourceUrl" type="url" placeholder="https://..."></label>
+          <label style="grid-column:1/-1">ملاحظة<input id="resourceNote" maxlength="150" placeholder="الفصل أو وصف مختصر"></label>
+        </div>
+        <div class="tool-actions"><button type="submit">حفظ المورد</button></div>
+        <p class="tool-muted" style="margin-top:7px">المرفقات تُخزّن في المتصفح الحالي. لتُنقل إلى جهاز آخر، استخدم تصدير النسخة الاحتياطية؛ الروابط والبيانات تتزامن مع حسابك.</p>
+      </form>
+      <form id="lectureForm" class="tool-panel">
+        <h3>تسجيل محاضرة</h3>
+        <div class="tool-fields">
+          <label>المادة<select id="lectureSubject" required></select></label>
+          <label>عنوان المحاضرة<input id="lectureTitle" maxlength="90" required placeholder="مثلاً: المحاضرة الثالثة"></label>
+          <label>التاريخ<input id="lectureDate" type="date" required></label>
+          <label>المدة بالدقائق<input id="lectureMinutes" type="number" min="1" max="600" value="50"></label>
+          <label>الحالة<select id="lectureStatus"><option value="done">تمت دراستها</option><option value="pending">لم تُدرس بعد</option><option value="recorded">مسجلة للمراجعة</option></select></label>
+        </div><div class="tool-actions"><button type="submit">إضافة المحاضرة</button></div>
+      </form>
     </div>
-    <div class="track"><div class="fill" id="pointsBar"></div></div>
-    <div class="reward-list" id="rewards">
-      <span class="reward" data-at="20">🥉 بداية بتفتح النفس (20)</span>
-      <span class="reward" data-at="50">🥈 شغال صح يا كبير (50)</span>
-      <span class="reward" data-at="100">🥇 قطاع دراسة رسمي (100)</span>
-      <span class="reward" data-at="200">💎 أسطورة الكلية بلا منازع (200)</span>
+    <div class="tool-grid" style="margin-top:10px"><div class="tool-panel"><h3>المرفقات والروابط</h3><div id="resourcesList" class="tool-list"></div></div><div class="tool-panel"><h3>سجل المحاضرات</h3><div id="lecturesList" class="tool-list"></div></div></div>
+  </section>
+
+  <section class="card" id="reviewSection">
+    <div class="card-header"><div><h2>🔁 المراجعة المتباعدة</h2><p class="mini">عند إنهاء شابتر، بنضيف مراجعات بعد يوم و3 أيام و7 أيام تلقائياً</p></div></div>
+    <div id="reviewList" class="tool-list"></div>
+  </section>
+
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 5 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
+  </div>
+</div>
+
+<!-- ==========================================
+     STEP 6: Grades, GPA Simulator & Attendance
+     ========================================== -->
+<div class="app-step-panel" id="seqStep6">
+  <section class="card" id="gradeSection" style="margin-top:0;">
+    <div class="card-header"><div><h2>🎯 حاسبة العلامة والمعدل</h2><p class="mini">احسب العلامة المطلوبة في النهائي وتابع معدلك بناءً على العلامات والساعات التي تدخلها</p></div></div>
+    <form id="gradeForm" class="tool-panel">
+      <div class="tool-fields">
+        <label>اسم المادة<input id="gradeSubject" required maxlength="60" placeholder="اسم المادة"></label>
+        <label>الفصل الدراسي<input id="gradeSemester" maxlength="40" placeholder="مثلاً: 2026-2027 الأول"></label>
+        <label>الساعات المعتمدة<input id="gradeCredits" type="number" min="0.5" max="30" step="0.5" value="3" required></label>
+        <label>علامتك الحالية<input id="gradeCurrent" type="number" min="0" step="0.1" value="35" required></label>
+        <label>العلامة الكلية الحالية<input id="gradeCurrentMax" type="number" min="1" step="0.1" value="40" required></label>
+        <label>علامة النهائي الكاملة<input id="gradeFinalMax" type="number" min="1" step="0.1" value="60" required></label>
+        <label>العلامة النهائية المستهدفة (%)<input id="gradeTarget" type="number" min="0" max="100" step="0.5" value="85" required></label>
+        <label>علامة النهائي المتوقعة (اختياري)<input id="gradeFinalExpected" type="number" min="0" step="0.1" placeholder="اتركها فارغة للحساب فقط"></label>
+      </div>
+      <div class="tool-actions"><button type="submit">احسب واحفظ المادة</button></div>
+      <div id="gradeCalculatorResult" class="mini" style="margin-top:8px" aria-live="polite"></div>
+    </form>
+    <div class="tool-grid" style="margin-top:10px">
+      <div class="tool-panel"><h3>نتائج المواد</h3><div id="gradesList" class="tool-list"></div></div>
+      <div class="tool-panel"><h3>المعدل التراكمي المسجل</h3><div id="gpaSummary" class="tool-list"></div></div>
     </div>
   </section>
 
-  <section class="card">
-    <div class="card-header">
-      <h2>✅ شغلات جانبية عالسريع</h2>
-    </div>
-    <div class="task-list" id="taskList"></div>
-    <div class="task-add">
-      <input id="newTask" type="text" maxlength="90" placeholder="مثلاً: أطبع الدوسية / أسأل صاحبي...">
-      <button id="addTask" type="button">ضيف</button>
-    </div>
+  <section class="card" id="simulatorSection">
+    <div class="card-header"><div><h2>🧮 محاكي المعدل للفصل القادم</h2><p class="mini">جرّب سيناريوهات مختلفة لتعرف المعدل المطلوب في الساعات القادمة</p></div></div>
+    <div class="tool-panel"><div class="tool-fields">
+      <label>المعدل التراكمي الحالي (من 4)<input id="simCurrentGpa" type="number" min="0" max="4" step="0.01" value="0"></label>
+      <label>الساعات المنجزة<input id="simCompletedCredits" type="number" min="0" step="1" value="0"></label>
+      <label>ساعات الفصل القادم<input id="simNextCredits" type="number" min="1" step="1" value="15"></label>
+      <label>المعدل التراكمي المستهدف<input id="simTargetGpa" type="number" min="0" max="4" step="0.01" value="3.5"></label>
+    </div><div class="tool-actions"><button type="button" id="simulateGpaBtn">احسب المعدل المطلوب</button></div><div id="simulatorResult" class="mini" style="margin-top:8px"></div></div>
   </section>
 
-  <section class="card">
-    <div class="card-header">
-      <h2>📝 دفتر خربشاتك وملاحظاتك</h2>
-    </div>
-    <textarea class="note-area" id="generalNotes" placeholder="اكتب هون أي ملاحظة مهمة، قانون، أو إشي الدكتور ركّز عليه بالمحاضرة..."></textarea>
+  <section class="card" id="attendanceSection">
+    <div class="card-header"><div><h2>🧾 سجل الحضور والغياب</h2><p class="mini">سجل حضور كل مادة وتابع عدد مرات الغياب ونسبتك</p></div></div>
+    <form id="attendanceForm" class="tool-panel"><div class="tool-fields">
+      <label>المادة<select id="attendanceSubject" required></select></label>
+      <label>التاريخ<input id="attendanceDate" type="date" required></label>
+      <label>الحالة<select id="attendanceStatus"><option value="present">حضور</option><option value="absent">غياب</option><option value="excused">غياب بعذر</option></select></label>
+      <label>ملاحظة<input id="attendanceNote" maxlength="100" placeholder="اختياري"></label>
+    </div><div class="tool-actions"><button type="submit">حفظ السجل</button></div></form>
+    <div id="attendanceSummary" class="tool-grid" style="margin-top:10px"></div><div id="attendanceList" class="tool-list"></div>
   </section>
 
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 6 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
+  </div>
+</div>
+
+<!-- ==========================================
+     STEP 7: Graduation, Goals & Notifications
+     ========================================== -->
+<div class="app-step-panel" id="seqStep7">
+  <section class="card" id="graduationSection" style="margin-top:0;">
+    <div class="card-header"><div><h2>🎓 مخطط التخرج والمتطلبات السابقة</h2><p class="mini">حدد عدد ساعات التخرج، واربط المواد بمتطلباتها السابقة</p></div></div>
+    <div class="tool-panel"><div class="tool-fields">
+      <label>إجمالي ساعات التخرج المطلوبة<input id="requiredGradCredits" type="number" min="1" max="300" step="1" placeholder="أدخل ساعات خطتك"></label>
+      <label>ساعات محتسبة من خارج المواد المسجلة<input id="externalGradCredits" type="number" min="0" max="300" step="1" value="0"></label>
+    </div><div class="tool-actions"><button type="button" id="saveGradSettingsBtn">حفظ بيانات التخرج</button></div><div id="graduationProgress" style="margin-top:10px"></div></div>
+    <div id="prerequisiteList" class="tool-list"></div>
+  </section>
+
+  <section class="card" id="goalsSection">
+    <div class="card-header"><div><h2>🏁 أهداف الفصل الدراسي</h2><p class="mini">حدد أهدافك وقسّمها إلى خطوات قابلة للمتابعة</p></div></div>
+    <div class="tool-panel"><div class="tool-fields">
+      <label>اسم الفصل<input id="semesterName" maxlength="45" placeholder="مثلاً: الفصل الأول 2026"></label>
+      <label>الهدف الأسبوعي بالساعات<input id="weeklyTargetHours" type="number" min="1" max="100" step="1" value="20"></label>
+      <label>الهدف الدراسي<input id="newGoalTitle" maxlength="90" placeholder="مثلاً: إنهاء 4 مواد"></label>
+      <label>موعد الهدف<input id="newGoalDue" type="date"></label>
+    </div><div class="tool-actions"><button type="button" id="addGoalBtn">➕ أضف الهدف</button><button type="button" class="secondary" id="saveSemesterSettingsBtn">حفظ إعدادات الفصل</button></div></div>
+    <div id="goalsList" class="tool-list"></div>
+  </section>
+
+  <section class="card" id="notificationsSection">
+    <div class="card-header"><div><h2>🔔 مركز التنبيهات</h2><p class="mini">امتحانات قريبة، مهام متأخرة ومراجعات مستحقة — تنبيهات داخل المنصة بدون AI</p></div><button class="secondary" type="button" id="markNotificationsReadBtn">تحديد كمقروء</button></div>
+    <div id="notificationsList" class="tool-list"></div>
+  </section>
+
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 7 من 8</span>
+    <button type="button" class="next-seq-btn">التالي ➡️</button>
+  </div>
+</div>
+
+<!-- ==========================================
+     STEP 8: Settings, Archive, Activity & Trash
+     ========================================== -->
+<div class="app-step-panel" id="seqStep8">
+  <section class="card" id="settingsSection" style="margin-top:0;">
+    <div class="card-header"><h2>⚙️ إعدادات وتخصيص</h2></div>
+    <div class="tool-panel"><div class="tool-fields">
+      <label>التنبيه قبل الامتحان (أيام)<input id="reminderDays" type="number" min="0" max="30" value="3"></label>
+      <label>مدة جلسة التركيز الافتراضية (دقيقة)<input id="defaultFocusMinutes" type="number" min="5" max="180" step="5" value="25"></label>
+      <label>حجم الخط<select id="fontScale"><option value="0.95">صغير</option><option value="1" selected>عادي</option><option value="1.08">كبير</option><option value="1.15">أكبر</option></select></label>
+    </div><div class="tool-actions"><button type="button" id="savePreferencesBtn">حفظ التخصيص</button><button type="button" class="secondary" id="browserNotificationsBtn">تفعيل إشعارات المتصفح</button></div><div id="settingsMessage" class="mini" style="margin-top:7px"></div></div>
+  </section>
+
+  <section class="card" id="archiveSection">
+    <div class="card-header"><div><h2>🗂️ أرشيف الفصول ومقارنة الأداء</h2><p class="mini">احفظ نسخة للفصل المكتمل وقارن المعدل والساعات والإنجاز بين الفصول</p></div><button type="button" class="secondary" id="archiveSemesterBtn">أرشف الفصل الحالي</button></div>
+    <div id="semesterComparison" class="tool-grid"></div><div id="archiveList" class="tool-list"></div>
+  </section>
+
+  <section class="card" id="activitySection">
+    <div class="card-header"><h2>📜 سجل النشاطات</h2><button type="button" class="secondary" id="clearActivityBtn">مسح السجل</button></div>
+    <div id="activityList" class="tool-list"></div>
+  </section>
+
+  <section class="card" id="trashSection">
+    <div class="card-header"><h2>🗑️ سلة المحذوفات</h2><button type="button" class="danger-btn" id="emptyTrashBtn">إفراغ السلة</button></div>
+    <div id="trashList" class="tool-list"></div>
+  </section>
+
+  <div class="seq-navigation-bar">
+    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
+    <span class="seq-step-indicator">الخطوة 8 من 8</span>
+    <span></span>
+  </div>
 </div>
 
 <div class="confetti-layer" id="confettiLayer"></div>
@@ -1239,7 +1614,6 @@ const NEON_DATA_URL = "https://ep-noisy-snow-benr3avo.apirest.c-9.us-east-2.aws.
 const LOCAL_KEY = 'mohammad_rum_study_plan_v3';
 const GUEST_FLAG = 'mohammad_rum_guest_mode';
 const SESSION_KEY = 'mohammad_rum_neon_session';
-const THEME_KEY = 'mohammad_rum_theme';
 
 let currentUserId = null;
 let currentUserName = '';
@@ -1255,7 +1629,9 @@ let state = {
   sessions: 0,
   tasks: [],
   generalNotes: '',
-  studyDays: []
+  studyDays: [],
+  reviews: [], timeLogs: [], grades: [], attendance: [], goals: [], activity: [], trash: [], archives: [], weeklyTasks: [], resources: [], lectures: [],
+  prefs: { weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2}, reminderDays: 3, defaultFocusMinutes: 25, fontScale: 1, requiredGradCredits: 0, externalGradCredits: 0, semesterName: '', weeklyTargetHours: 20, notificationsReadAt: '', theme: 'light' }
 };
 
 const jordanianFlirtQuotes = [
@@ -1269,10 +1645,12 @@ const jordanianFlirtQuotes = [
 // Theme Handling
 const themeToggle = document.getElementById('themeToggle');
 function applyTheme(theme) {
-  document.documentElement.setAttribute('data-theme', theme);
-  localStorage.setItem(THEME_KEY, theme);
+  const selected = theme === 'dark' ? 'dark' : 'light';
+  document.documentElement.setAttribute('data-theme', selected);
+  if (state?.prefs) state.prefs.theme = selected;
+  if (currentUserId && cloudReady) saveState();
 }
-applyTheme(localStorage.getItem(THEME_KEY) || 'light');
+applyTheme(state.prefs.theme || 'light');
 themeToggle.addEventListener('click', () => {
   const cur = document.documentElement.getAttribute('data-theme');
   applyTheme(cur === 'dark' ? 'light' : 'dark');
@@ -1369,26 +1747,28 @@ async function neonDbRead(userId, token) {
   return await res.json();
 }
 
-async function neonDbUpsert(userId, payload, token) {
-  const headers = {
-    'Content-Type': 'application/json',
-    'Prefer': 'resolution=merge-duplicates,return=minimal'
-  };
+async function neonRpcRequest(functionName, args, token) {
+  const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
   if (token) headers['Authorization'] = `Bearer ${token}`;
-  const res = await fetch(`${NEON_DATA_URL}/study_plans?on_conflict=user_id`, {
-    method: 'POST',
-    headers,
-    credentials: 'include',
-    body: JSON.stringify({
-      user_id: userId,
-      data: payload,
-      updated_at: new Date().toISOString()
-    })
+  const res = await fetch(`${NEON_DATA_URL}/rpc/${functionName}`, {
+    method: 'POST', headers, credentials: 'include', body: JSON.stringify(args || {})
   });
+  const bodyText = await res.text();
+  let body = null;
+  try { body = bodyText ? JSON.parse(bodyText) : null; } catch (_) { body = bodyText; }
   if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`DB Upsert Error (${res.status}): ${errText}`);
+    const message = typeof body === 'string' ? body : (body?.message || body?.details || body?.hint || JSON.stringify(body));
+    throw new Error(`قاعدة البيانات رفضت العملية (${res.status}): ${message}`);
   }
+  return body;
+}
+
+async function neonDbLoadNormalized(token) {
+  return neonRpcRequest('load_academic_state', {}, token);
+}
+
+async function neonDbSaveNormalized(payload, token) {
+  return neonRpcRequest('save_academic_state', { p_state: payload }, token);
 }
 
 authForm.addEventListener('submit', async (e) => {
@@ -1452,10 +1832,11 @@ document.getElementById('guestBtn').addEventListener('click', () => {
   currentUserName = '';
   accessToken = null;
   cloudReady = false;
-  localStorage.setItem(GUEST_FLAG, '1');
-  loadLocalData();
+  localStorage.removeItem(GUEST_FLAG);
+  applyData({});
+  applyTheme(state.prefs.theme || 'light');
   showApp();
-  syncStatus.textContent = 'حفظ عالجهاز — أمورك بالسليم ✓';
+  syncStatus.textContent = 'وضع تجربة مؤقت — البيانات لا تُحفظ. سجّل الدخول للحفظ في قاعدة البيانات.';
   renderAll();
 });
 
@@ -1466,6 +1847,9 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
   localStorage.removeItem(GUEST_FLAG);
   localStorage.removeItem(SESSION_KEY);
   clearInterval(timerInterval);
+  if (saveTimer) clearTimeout(saveTimer);
+  uploadedResourceIds.clear();
+  cloudSaveQueued = false;
   isRunning = false;
   currentUserId = null;
   currentUserName = '';
@@ -1481,81 +1865,205 @@ function applyData(raw = {}) {
     sessions: Number(raw.sessions || 0),
     tasks: Array.isArray(raw.tasks) ? raw.tasks : [],
     generalNotes: typeof raw.generalNotes === 'string' ? raw.generalNotes : '',
-    studyDays: Array.isArray(raw.studyDays) ? raw.studyDays : []
+    studyDays: Array.isArray(raw.studyDays) ? raw.studyDays : [],
+    reviews: Array.isArray(raw.reviews) ? raw.reviews : [],
+    timeLogs: Array.isArray(raw.timeLogs) ? raw.timeLogs : [],
+    grades: Array.isArray(raw.grades) ? raw.grades : [],
+    attendance: Array.isArray(raw.attendance) ? raw.attendance : [],
+    goals: Array.isArray(raw.goals) ? raw.goals : [],
+    activity: Array.isArray(raw.activity) ? raw.activity : [],
+    trash: Array.isArray(raw.trash) ? raw.trash : [],
+    archives: Array.isArray(raw.archives) ? raw.archives : [],
+    weeklyTasks: Array.isArray(raw.weeklyTasks) ? raw.weeklyTasks : [],
+    resources: Array.isArray(raw.resources) ? raw.resources : [],
+    lectures: Array.isArray(raw.lectures) ? raw.lectures : [],
+    prefs: { weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2}, reminderDays: 3, defaultFocusMinutes: 25, fontScale: 1, requiredGradCredits: 0, externalGradCredits: 0, semesterName: '', weeklyTargetHours: 20, notificationsReadAt: '', theme: 'light', ...(raw.prefs && typeof raw.prefs === 'object' ? raw.prefs : {}), weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2, ...(raw.prefs?.weeklyHours || {})} }
   };
 }
 
-function loadLocalData() {
-  try {
-    const raw = JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}');
-    applyData(raw);
-  } catch (_) {
-    applyData({});
+const uploadedResourceIds = new Set();
+let cloudSaveInFlight = false;
+let cloudSaveQueued = false;
+
+function dataUrlFromBlob(blob) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result || ''));
+    reader.onerror = () => reject(reader.error || new Error('تعذر قراءة الملف'));
+    reader.readAsDataURL(blob);
+  });
+}
+
+async function attachLegacyFilesFromIndexedDb() {
+  for (const resource of (state.resources || [])) {
+    if (resource.fileName && !resource.fileData) {
+      try {
+        const oldFile = await plannerFileGet(resource.id);
+        if (oldFile?.blob) resource.fileData = await dataUrlFromBlob(oldFile.blob);
+      } catch (err) { console.warn('Legacy file migration skipped:', resource.id, err); }
+    }
   }
+}
+
+function collectUploadedResourceIds(sourceState) {
+  const ids = [];
+  (sourceState.resources || []).forEach(r => { if (r.fileData && r.id) ids.push(r.id); });
+  (sourceState.trash || []).forEach(t => {
+    if (t.type === 'resource' && t.payload?.id && t.payload?.fileData) ids.push(t.payload.id);
+  });
+  return ids;
+}
+
+function makeDatabaseSnapshot() {
+  const snapshot = JSON.parse(JSON.stringify(state));
+  snapshot.resources.forEach(r => { if (uploadedResourceIds.has(r.id)) delete r.fileData; });
+  snapshot.trash.forEach(t => {
+    if (t.type === 'resource' && t.payload?.id && uploadedResourceIds.has(t.payload.id)) delete t.payload.fileData;
+  });
+  return snapshot;
 }
 
 async function enterCloudDashboard(userId, token, userName = '') {
   currentUserId = userId;
   currentUserName = userName;
   accessToken = token;
+  isGuestMode = false;
   authStatus.textContent = '';
   showApp();
-  syncStatus.textContent = 'بنجيبلك جدولك... ⏳';
+  syncStatus.textContent = 'بنجيب بياناتك من قاعدة البيانات... ⏳';
   cloudReady = false;
 
   try {
-    const rows = await neonDbRead(currentUserId, accessToken);
-    if (Array.isArray(rows) && rows.length > 0 && rows[0].data) {
-      applyData(rows[0].data);
-      localStorage.setItem(`${LOCAL_KEY}:${currentUserId}`, JSON.stringify(state));
+    const normalized = await neonDbLoadNormalized(accessToken);
+    if (normalized && typeof normalized === 'object' && !Array.isArray(normalized)) {
+      applyData(normalized);
+      applyTheme(state.prefs.theme || 'light');
+      state.resources.forEach(r => { if (r.fileData) uploadedResourceIds.add(r.id); });
+      state.trash.forEach(t => { if (t.type === 'resource' && t.payload?.fileData) uploadedResourceIds.add(t.payload.id); });
     } else {
-      let localBackup = {};
-      try { localBackup = JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); } catch (_) {}
-      applyData(localBackup);
-      await neonDbUpsert(currentUserId, state, accessToken);
+      let legacy = null;
+      try {
+        const rows = await neonDbRead(currentUserId, accessToken);
+        if (Array.isArray(rows) && rows[0]?.data) legacy = rows[0].data;
+      } catch (legacyErr) { console.info('No legacy study_plans record found:', legacyErr.message); }
+      if (!legacy) {
+        try { legacy = JSON.parse(localStorage.getItem(`${LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LOCAL_KEY) || 'null'); }
+        catch (_) { legacy = null; }
+      }
+      applyData(legacy || {});
+      applyTheme(state.prefs.theme || 'light');
+      await attachLegacyFilesFromIndexedDb();
+      await neonDbSaveNormalized(state, accessToken);
+      collectUploadedResourceIds(state).forEach(id => uploadedResourceIds.add(id));
     }
 
     cloudReady = true;
-    syncStatus.textContent = 'متصل ومحفوظ عالسحابة ✓';
+    syncStatus.textContent = 'متصل بقاعدة البيانات — جميع بيانات الحساب محفوظة ✓';
     renderAll();
   } catch (err) {
-    console.warn('Cloud sync fallback to local cache:', err);
-    try {
-      const cached = JSON.parse(localStorage.getItem(`${LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LOCAL_KEY) || '{}');
-      applyData(cached);
-    } catch (_) {
-      applyData({});
-    }
-    cloudReady = true;
-    syncStatus.textContent = 'محفوظ عالجهاز مؤقتاً ✓';
+    console.error('Normalized database connection failed:', err);
+    cloudReady = false;
+    let legacyCache = {};
+    try { legacyCache = JSON.parse(localStorage.getItem(`${LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LOCAL_KEY) || '{}'); } catch (_) {}
+    applyData(legacyCache);
+    syncStatus.textContent = 'قاعدة البيانات غير مهيّأة أو الاتصال فشل. نفّذ ملف smart_academic_planner_database.sql في Neon أولاً.';
     renderAll();
+    loginError.textContent = 'الحساب اتصل، لكن جداول المنصة الجديدة غير جاهزة. شغّل ملف SQL المرفق من Neon SQL Editor ثم حدّث الصفحة.';
   }
 }
 
 function saveState() {
   if (isGuestMode || !currentUserId) {
-    localStorage.setItem(LOCAL_KEY, JSON.stringify(state));
-    syncStatus.textContent = 'انحفظ عالجهاز ✓';
+    syncStatus.textContent = 'وضع تجربة مؤقت — سجّل الدخول حتى تُحفظ البيانات في قاعدة البيانات.';
+    return;
+  }
+  if (!cloudReady) {
+    syncStatus.textContent = 'غير محفوظ — قاعدة البيانات غير متصلة أو لم يتم إعداد الجداول بعد.';
     return;
   }
 
-  localStorage.setItem(`${LOCAL_KEY}:${currentUserId}`, JSON.stringify(state));
-  if (!cloudReady) return;
-
-  syncStatus.textContent = 'بنحفظ شغلك...';
+  syncStatus.textContent = 'جاري حفظ بياناتك في PostgreSQL...';
   if (saveTimer) clearTimeout(saveTimer);
-  saveTimer = setTimeout(async () => {
-    try {
-      await neonDbUpsert(currentUserId, state, accessToken);
-      syncStatus.textContent = 'انحفظ عالسحابة يا كبير ✓';
-    } catch (err) {
-      console.warn('Save sync warning:', err);
-      syncStatus.textContent = 'انحفظ عالجهاز ✓';
-    }
-  }, 500);
+  saveTimer = setTimeout(() => { flushCloudSave(); }, 650);
 }
 
-// Step-by-step Wizard Logic
+async function flushCloudSave() {
+  if (!cloudReady || !currentUserId) return;
+  if (cloudSaveInFlight) { cloudSaveQueued = true; return; }
+  cloudSaveInFlight = true;
+  do {
+    cloudSaveQueued = false;
+    const snapshot = makeDatabaseSnapshot();
+    const newlyUploadedIds = collectUploadedResourceIds(snapshot).filter(id => !uploadedResourceIds.has(id));
+    try {
+      await neonDbSaveNormalized(snapshot, accessToken);
+      newlyUploadedIds.forEach(id => uploadedResourceIds.add(id));
+      syncStatus.textContent = 'انحفظت كل بياناتك في قاعدة البيانات ✓';
+    } catch (err) {
+      console.error('Database save failed:', err);
+      syncStatus.textContent = 'فشل الحفظ في قاعدة البيانات. لا تغلق الصفحة قبل معالجة الاتصال.';
+      cloudSaveQueued = false;
+      break;
+    }
+  } while (cloudSaveQueued);
+  cloudSaveInFlight = false;
+}
+
+// Sequential App Steps Navigation Logic
+let currentSeqStep = 1;
+const totalSeqSteps = 8;
+
+function showSeqStep(stepNum) {
+  if (stepNum < 1 || stepNum > totalSeqSteps) return;
+  currentSeqStep = stepNum;
+  document.querySelectorAll('.app-step-panel').forEach(panel => {
+    panel.classList.remove('active-seq-step');
+  });
+  const targetPanel = document.getElementById(`seqStep${currentSeqStep}`);
+  if (targetPanel) {
+    targetPanel.classList.add('active-seq-step');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  document.querySelectorAll('.seq-step-indicator').forEach(ind => {
+    ind.textContent = `الخطوة ${currentSeqStep} من ${totalSeqSteps}`;
+  });
+}
+
+document.querySelectorAll('.next-seq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (currentSeqStep < totalSeqSteps) {
+      showSeqStep(currentSeqStep + 1);
+    }
+  });
+});
+
+document.querySelectorAll('.prev-seq-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    if (currentSeqStep > 1) {
+      showSeqStep(currentSeqStep - 1);
+    }
+  });
+});
+
+document.querySelectorAll('.tools-nav a, .desktop-sidebar a').forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    const href = link.getAttribute('href');
+    const targetEl = document.querySelector(href);
+    if (targetEl) {
+      const parentStep = targetEl.closest('.app-step-panel');
+      if (parentStep) {
+        const stepId = parentStep.id;
+        const stepNum = parseInt(stepId.replace('seqStep', ''));
+        if (!isNaN(stepNum)) {
+          showSeqStep(stepNum);
+        }
+      }
+    }
+  });
+});
+
+// Step-by-Step Wizard Form inside Step 2
 const chapterCountInput = document.getElementById('chapterCount');
 const chapterEditor = document.getElementById('chapterEditor');
 const wizardProgressText = document.getElementById('wizardProgressText');
@@ -1599,14 +2107,13 @@ function resetWizard() {
 
 document.getElementById('resetWizardBtn').addEventListener('click', resetWizard);
 
-document.querySelectorAll('.next-step-btn').forEach(btn => {
+document.querySelectorAll('#seqStep2 .next-step-btn').forEach(btn => {
   btn.addEventListener('click', () => {
     const nextStepNum = Number(btn.dataset.next);
     const currentStepNum = nextStepNum - 1;
     const currentStepEl = document.getElementById(`step-${currentStepNum}`);
     const input = currentStepEl.querySelector('input');
 
-    // Validate current input before showing the next step
     if (input) {
       const val = input.value.trim();
       if (!val) {
@@ -1629,11 +2136,9 @@ document.querySelectorAll('.next-step-btn').forEach(btn => {
       }
     }
 
-    // Mark current step completed and hide its "التالي" button
     currentStepEl.classList.add('completed-step');
     btn.style.display = 'none';
 
-    // Reveal next step smoothly
     const nextStepEl = document.getElementById(`step-${nextStepNum}`);
     if (nextStepEl) {
       nextStepEl.hidden = false;
@@ -1648,7 +2153,6 @@ document.querySelectorAll('.next-step-btn').forEach(btn => {
   });
 });
 
-// Allow pressing Enter inside step inputs to advance to the next step instead of submitting prematurely
 document.querySelectorAll('.wizard-step input').forEach(inp => {
   inp.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
@@ -1669,6 +2173,8 @@ const todayISO = () => {
 };
 
 document.getElementById('startDate').value = todayISO();
+document.getElementById('weeklyTaskDate').value = todayISO();
+document.getElementById('attendanceDate').value = todayISO();
 document.getElementById('examDate').min = todayISO();
 
 function buildChapterInputs() {
@@ -1833,17 +2339,25 @@ document.getElementById('subjectForm').addEventListener('submit', (e) => {
       examTime,
       startDate,
       dailyHours,
+      credits: Number(document.getElementById('subjectCredits').value || 0),
+      tag: document.getElementById('subjectTag').value.trim(),
+      prerequisites: document.getElementById('subjectPrerequisites').value.trim(),
       chapters
     };
 
     state.subjects.push(newSubject);
+    logActivity('مادة جديدة', `تمت إضافة مادة ${name}`);
     regenerateFullSchedule();
     saveState();
     renderAll();
 
     document.getElementById('subjectName').value = '';
+    document.getElementById('subjectCredits').value = '3';
+    document.getElementById('subjectTag').value = '';
+    document.getElementById('subjectPrerequisites').value = '';
     resetWizard();
     triggerConfetti();
+    showSeqStep(3); // Move automatically to Step 3 (Progress & Tasks) upon adding a subject!
   } catch (err) {
     alert(err.message);
   }
@@ -1865,8 +2379,10 @@ document.getElementById('generateAllBtn').addEventListener('click', () => {
 
 document.getElementById('clearSubjectsBtn').addEventListener('click', () => {
   if (!confirm('متأكد بدك تمسح كل المواد والجدول؟ فكّر مرتين يا غالي!')) return;
+  state.subjects.forEach(sub => state.trash.unshift({ id:`trash-${Date.now()}-${sub.id}`, type:'subject', title:sub.name, payload:sub, schedule:state.schedule.filter(t=>t.subjectId===sub.id), deletedAt:new Date().toISOString() }));
   state.subjects = [];
   state.schedule = [];
+  logActivity('حذف جميع المواد','نُقلت المواد إلى سلة المحذوفات');
   saveState();
   renderAll();
 });
@@ -1877,7 +2393,7 @@ function renderCountdownsAndHeader() {
 
   if (state.subjects.length === 0) {
     pillsHost.innerHTML = '<span class="pill">📅 لسا ما ضفت امتحانات.. يلا شد حيلك وضيفهم تحت!</span>';
-    gridHost.innerHTML = '<div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة تحت وخلينا نبلش الجد 💪</div>';
+    gridHost.innerHTML = '<div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة بالخطوة التالية وخلينا نبلش الجد 💪</div>';
     return;
   }
 
@@ -1968,7 +2484,7 @@ function renderSubjectsAndProgress() {
   let doneCh = 0;
 
   if (state.subjects.length === 0) {
-    host.innerHTML = '<p class="mini" style="text-align:center; margin-top:18px;">بس تضيف موادك فوق رح تلاقيهم مصفوفين هون بانتظارك يا غالي 😉</p>';
+    host.innerHTML = '<p class="mini" style="text-align:center; margin-top:18px;">بس تضيف موادك بالخطوة السابقة رح تلاقيهم مصفوفين هون بانتظارك يا غالي 😉</p>';
   } else {
     const diffLabels = { easy: 'سهل', medium: 'متوسط', hard: 'صعب' };
 
@@ -1985,7 +2501,7 @@ function renderSubjectsAndProgress() {
       head.className = 'subject-head';
 
       const title = document.createElement('h3');
-      title.textContent = `📘 ${sub.name}`;
+      title.textContent = `📘 ${sub.name}${sub.tag ? ` • #${sub.tag}` : ''}`;
 
       const rightControls = document.createElement('div');
       rightControls.style.display = 'flex';
@@ -2002,8 +2518,10 @@ function renderSubjectsAndProgress() {
       delBtn.textContent = 'شيل المادة';
       delBtn.addEventListener('click', () => {
         if (!confirm(`متأكد بدك تشيل مادة "${sub.name}" من الجدول؟`)) return;
+        state.trash.unshift({ id: `trash-${Date.now()}`, type: 'subject', title: sub.name, payload: sub, schedule: state.schedule.filter(t => t.subjectId === sub.id), deletedAt: new Date().toISOString() });
         state.subjects = state.subjects.filter(s => s.id !== sub.id);
         state.schedule = state.schedule.filter(t => t.subjectId !== sub.id);
+        logActivity('حذف مادة', `نُقلت مادة ${sub.name} إلى سلة المحذوفات`);
         saveState();
         renderAll();
       });
@@ -2048,6 +2566,8 @@ function renderSubjectsAndProgress() {
           if (schedItem) schedItem.done = cb.checked;
           if (cb.checked) {
             markStudyDay();
+            createSpacedReviews(sub, ch);
+            logActivity('إنجاز شابتر', `أنهيت شابتر ${ch.num} من ${sub.name}`);
             triggerConfetti();
           }
           saveState();
@@ -2085,7 +2605,7 @@ function renderGeneratedSchedule() {
   host.innerHTML = '';
 
   if (state.schedule.length === 0) {
-    summaryEl.textContent = 'ضيف موادك فوق عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.';
+    summaryEl.textContent = 'ضيف موادك بالخطوة السابقة عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.';
     return;
   }
 
@@ -2152,10 +2672,14 @@ function renderGeneratedSchedule() {
         if (!item.isExam && !item.isRevision) {
           const sub = state.subjects.find(s => s.id === item.subjectId);
           const ch = sub?.chapters.find(c => c.num === item.chapterNum);
-          if (ch) ch.done = cb.checked;
+          if (ch) {
+            ch.done = cb.checked;
+            if (cb.checked) createSpacedReviews(sub, ch);
+          }
         }
         if (cb.checked) {
           markStudyDay();
+          logActivity('إنجاز مهمة', `أنهيت مهمة ${item.subjectName}`);
           triggerConfetti();
         }
         saveState();
@@ -2176,33 +2700,51 @@ function renderTasksAndNotes() {
   if (state.tasks.length === 0) {
     taskList.innerHTML = '<div class="mini" style="text-align:center; padding:8px;">ما عندك مهام جانبية حالياً، رايق يا باشا 😎</div>';
   } else {
+    const priorityNames = { high: 'عالية', medium: 'متوسطة', low: 'منخفضة' };
     state.tasks.forEach((task, idx) => {
       const item = document.createElement('div');
-      item.className = 'task-item' + (task.done ? ' done' : '');
-      item.textContent = (task.done ? '✔️ ' : '⬜ ') + task.text;
-      item.addEventListener('click', () => {
-        state.tasks[idx].done = !state.tasks[idx].done;
-        saveState();
-        renderTasksAndNotes();
-      });
-      taskList.append(item);
+      item.className = 'tool-item';
+      const main = document.createElement('div'); main.className = 'tool-item-main';
+      const title = document.createElement('div'); title.className = 'tool-item-title'; title.textContent = `${task.done ? '✅' : '⬜'} ${task.text}`;
+      const meta = document.createElement('div'); meta.className = 'tool-muted';
+      meta.innerHTML = `<span class="tool-chip priority-${task.priority || 'medium'}">أولوية ${priorityNames[task.priority || 'medium']}</span>`;
+      if (task.dueDate) meta.append(` • الموعد: ${task.dueDate}`);
+      if (task.tag) meta.append(` • #${task.tag}`);
+      main.append(title, meta);
+      if (Array.isArray(task.stages) && task.stages.length) {
+        const stageWrap = document.createElement('div'); stageWrap.className = 'task-detail';
+        task.stages.forEach((stage, stageIdx) => {
+          const row = document.createElement('label'); row.className = 'task-step-row';
+          const cb = document.createElement('input'); cb.type = 'checkbox'; cb.checked = !!stage.done;
+          cb.addEventListener('change', () => { state.tasks[idx].stages[stageIdx].done = cb.checked; saveState(); renderTasksAndNotes(); });
+          const text = document.createElement('span'); text.textContent = stage.text;
+          row.append(cb, text); stageWrap.append(row);
+        });
+        const completed = task.stages.filter(x => x.done).length;
+        const progress = document.createElement('div'); progress.className='progress-small';
+        const fill = document.createElement('span'); fill.style.width = `${Math.round(completed / task.stages.length * 100)}%`; progress.append(fill);
+        stageWrap.append(progress); main.append(stageWrap);
+      }
+      const controls = document.createElement('div'); controls.style.display='flex'; controls.style.gap='5px'; controls.style.flexWrap='wrap';
+      const doneBtn = document.createElement('button'); doneBtn.type='button'; doneBtn.className='secondary'; doneBtn.textContent=task.done?'إلغاء الإنجاز':'إنجاز'; doneBtn.addEventListener('click',()=>{ task.done=!task.done; if(task.done) logActivity('إنجاز مهمة جانبية',task.text); saveState(); renderAll(); });
+      const delBtn = document.createElement('button'); delBtn.type='button'; delBtn.className='danger-btn'; delBtn.textContent='حذف'; delBtn.addEventListener('click',()=>{ state.trash.unshift({id:`trash-${Date.now()}`,type:'task',title:task.text,payload:task,deletedAt:new Date().toISOString()}); state.tasks.splice(idx,1); logActivity('حذف مهمة',`نُقلت المهمة ${task.text} للسلة`); saveState(); renderAll(); });
+      controls.append(doneBtn,delBtn); item.append(main,controls); taskList.append(item);
     });
   }
-
   const notesEl = document.getElementById('generalNotes');
-  if (notesEl.value !== state.generalNotes) {
-    notesEl.value = state.generalNotes;
-  }
+  if (notesEl.value !== state.generalNotes) notesEl.value = state.generalNotes;
 }
 
 document.getElementById('addTask').addEventListener('click', () => {
   const input = document.getElementById('newTask');
   const val = input.value.trim();
   if (val) {
-    state.tasks.push({ text: val, done: false });
-    input.value = '';
+    const stages = document.getElementById('newTaskStages').value.split(',').map(x => x.trim()).filter(Boolean).map(text => ({ text, done: false }));
+    state.tasks.push({ id: `task-${Date.now()}`, text: val, done: false, priority: document.getElementById('newTaskPriority').value, dueDate: document.getElementById('newTaskDue').value, tag: document.getElementById('newTaskTag').value.trim(), stages });
+    logActivity('مهمة جديدة', `أضفت مهمة: ${val}`);
+    input.value = ''; document.getElementById('newTaskStages').value = ''; document.getElementById('newTaskTag').value = ''; document.getElementById('newTaskDue').value = '';
     saveState();
-    renderTasksAndNotes();
+    renderAll();
   }
 });
 
@@ -2221,6 +2763,8 @@ function markStudyDay() {
 let timerInterval = null;
 let timeLeft = 25 * 60;
 let isRunning = false;
+let timerStartedAt = null;
+let timerSessionMinutes = 25;
 
 const clockEl = document.getElementById('clock');
 const durationSelect = document.getElementById('duration');
@@ -2244,6 +2788,8 @@ function updateClockDisplay() {
 startBtn.addEventListener('click', () => {
   if (isRunning) return;
   isRunning = true;
+  timerStartedAt = Date.now();
+  timerSessionMinutes = Math.max(1, Math.round((parseInt(durationSelect.value) * 60 - timeLeft) / 60 + (timeLeft / 60)));
   startBtn.textContent = 'شغالين تركيز.. لا تفتح الريلز! 👀🔥';
   timerInterval = setInterval(() => {
     if (timeLeft > 0) {
@@ -2253,8 +2799,15 @@ startBtn.addEventListener('click', () => {
       clearInterval(timerInterval);
       isRunning = false;
       startBtn.textContent = 'يلا بلّش! 🚀';
-      state.sessions++;
-      markStudyDay();
+      const focusMins = Math.max(1, Number(timerSessionMinutes || durationSelect.value));
+      if (focusMins > 10) {
+        state.sessions++;
+        state.timeLogs.unshift({ id: `time-${Date.now()}`, date: todayISO(), minutes: focusMins, subject: '', source: 'مؤقت التركيز', note: 'جلسة مكتملة' });
+        markStudyDay();
+        logActivity('جلسة تركيز', `أنهيت جلسة تركيز لمدة ${focusMins} دقيقة`);
+      } else {
+        logActivity('استراحة', `انتهت استراحة لمدة ${focusMins} دقائق`);
+      }
       saveState();
       renderSubjectsAndProgress();
       triggerConfetti();
@@ -2266,12 +2819,14 @@ startBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
   clearInterval(timerInterval);
   isRunning = false;
+  timerStartedAt = null;
   startBtn.textContent = 'كمّل الجلسة 💪';
 });
 
 resetBtn.addEventListener('click', () => {
   clearInterval(timerInterval);
   isRunning = false;
+  timerStartedAt = null;
   timeLeft = parseInt(durationSelect.value) * 60;
   updateClockDisplay();
   startBtn.textContent = 'يلا بلّش! 🚀';
@@ -2294,25 +2849,307 @@ function triggerConfetti() {
   setTimeout(() => { layer.innerHTML = ''; }, 3000);
 }
 
+// ---------- Advanced features ----------
+const DAY_NAMES_AR = ['الأحد','الإثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+const isoDate = (date) => { const d = new Date(date); d.setMinutes(d.getMinutes() - d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+const addDaysISO = (dateStr, days) => { const d = new Date(dateStr + 'T12:00:00'); d.setDate(d.getDate()+days); return isoDate(d); };
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+function logActivity(type, message) {
+  if (!Array.isArray(state.activity)) state.activity = [];
+  state.activity.unshift({ id:`activity-${Date.now()}-${Math.random().toString(36).slice(2,5)}`, type, message, at:new Date().toISOString() });
+  state.activity = state.activity.slice(0,250);
+}
+function createSpacedReviews(subject, chapter) {
+  [1,3,7].forEach(offset => {
+    const id = `${subject.id}-ch-${chapter.num}-review-${offset}`;
+    if (!state.reviews.some(r => r.id === id)) state.reviews.push({ id, subjectId:subject.id, subjectName:subject.name, chapterNum:chapter.num, interval:offset, dueDate:addDaysISO(todayISO(),offset), done:false, createdAt:new Date().toISOString() });
+  });
+}
+function formatDateAr(dateStr) { return dateStr ? new Date(dateStr+'T12:00:00').toLocaleDateString('ar-JO',{year:'numeric',month:'short',day:'numeric'}) : '—'; }
+function getSubjectName(id) { return state.subjects.find(s=>s.id===id)?.name || 'مادة محذوفة'; }
+
+function renderWeeklyAvailability() {
+  const host=document.getElementById('weeklyAvailability'); if(!host) return; host.innerHTML='';
+  DAY_NAMES_AR.forEach((day,idx)=>{
+    const label=document.createElement('label'); label.textContent=day;
+    const input=document.createElement('input'); input.type='number'; input.min='0'; input.max='16'; input.step='0.5'; input.value=Number(state.prefs.weeklyHours?.[idx] ?? 3); input.dataset.day=String(idx);
+    label.append(input); host.append(label);
+  });
+}
+function renderWeeklyView() {
+  const host=document.getElementById('weeklyView'); if(!host) return; host.innerHTML='';
+  const now=new Date(); const sunday=new Date(now); sunday.setDate(now.getDate()-now.getDay());
+  for(let i=0;i<7;i++){
+    const day=new Date(sunday); day.setDate(sunday.getDate()+i); const date=isoDate(day);
+    const items=[...state.schedule.filter(x=>x.date===date),...state.weeklyTasks.filter(x=>x.date===date)];
+    const planned=items.reduce((sum,x)=>sum+(Number(x.minutes)||0),0); const available=Number(state.prefs.weeklyHours?.[i] ?? 3)*60;
+    const box=document.createElement('div'); box.className='week-day';
+    const h=document.createElement('h4'); h.textContent=`${DAY_NAMES_AR[i]} • ${day.getDate()}/${day.getMonth()+1}`;
+    const meta=document.createElement('div'); meta.className='tool-muted'; meta.textContent=`${(planned/60).toFixed(1)} / ${(available/60).toFixed(1)} ساعة`;
+    box.append(h,meta);
+    if(!items.length){const empty=document.createElement('div');empty.className='tool-muted';empty.textContent='ما في مهام';box.append(empty);}
+    items.forEach(item=>{
+      const row=document.createElement('div');row.className='week-task'+(item.done?' done':'');
+      const title=document.createElement('div');title.textContent=item.isExam?`🏆 امتحان ${item.subjectName}`:item.isRevision?`🔁 مراجعة ${item.subjectName}`:item.subjectName?`${item.subjectName} • شابتر ${item.chapterNum||''}`:item.title;
+      row.append(title);
+      if(item.id){
+        const dateInput=document.createElement('input');dateInput.type='date';dateInput.value=item.date;dateInput.title='انقل المهمة لتاريخ آخر';
+        dateInput.addEventListener('change',()=>{item.date=dateInput.value;saveState();renderAll();}); row.append(dateInput);
+      }
+      if(item.title && !item.subjectId){
+        const controls=document.createElement('div');controls.style.display='flex';controls.style.gap='4px';
+        const done=document.createElement('button');done.type='button';done.className='secondary';done.style.padding='3px 6px';done.textContent=item.done?'إلغاء':'إنجاز';done.addEventListener('click',()=>{item.done=!item.done;saveState();renderAll();});
+        const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='×';del.addEventListener('click',()=>{state.weeklyTasks=state.weeklyTasks.filter(x=>x.id!==item.id);saveState();renderAll();});controls.append(done,del);row.append(controls);
+      }
+      box.append(row);
+    });
+    if(planned>available){const warn=document.createElement('div');warn.className='status-warn';warn.textContent='حمولة أعلى من المتاح';box.append(warn);}
+    host.append(box);
+  }
+}
+function renderReviews() {
+  const host=document.getElementById('reviewList'); if(!host) return; host.innerHTML='';
+  const list=[...state.reviews].sort((a,b)=>a.dueDate.localeCompare(b.dueDate));
+  if(!list.length){host.innerHTML='<div class="tool-empty">لسا ما في مراجعات. لما تنهي شابتر رح تنضاف تلقائياً بعد يوم و3 و7 أيام.</div>';return;}
+  list.forEach(r=>{
+    const row=document.createElement('div');row.className='tool-item';
+    const main=document.createElement('div');main.className='tool-item-main';
+    const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${r.done?'✅':'🔁'} ${r.subjectName} — شابتر ${r.chapterNum}`;
+    const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`مراجعة بعد ${r.interval} ${r.interval===1?'يوم':'أيام'} • ${formatDateAr(r.dueDate)} ${r.dueDate<todayISO()&&!r.done?'• متأخرة':''}`;
+    main.append(title,meta);
+    const btn=document.createElement('button');btn.type='button';btn.className=r.done?'secondary':' ';btn.textContent=r.done?'تمت':'تمت المراجعة';btn.addEventListener('click',()=>{r.done=!r.done;if(r.done)logActivity('مراجعة',`راجعت شابتر ${r.chapterNum} من ${r.subjectName}`);saveState();renderAll();});
+    row.append(main,btn);host.append(row);
+  });
+}
+function gradePointFromPercent(p){ if(p>=90)return 4; if(p>=85)return 3.7; if(p>=80)return 3.3; if(p>=75)return 3; if(p>=70)return 2.7; if(p>=65)return 2.3; if(p>=60)return 2; if(p>=50)return 1; return 0; }
+function currentGpa(){const items=state.grades.filter(g=>Number(g.finalExpected)!==null && g.finalExpected!=='' && Number(g.credits)>0);const credits=items.reduce((a,g)=>a+Number(g.credits),0);const points=items.reduce((a,g)=>a+gradePointFromPercent(Number(g.percent))*Number(g.credits),0);return {gpa:credits?points/credits:null,credits};}
+function renderGrades(){
+  const list=document.getElementById('gradesList');const summary=document.getElementById('gpaSummary');if(!list||!summary)return;list.innerHTML='';summary.innerHTML='';
+  if(!state.grades.length)list.innerHTML='<div class="tool-empty">أضف نتائجك لتظهر هون.</div>';
+  state.grades.forEach((g,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const t=document.createElement('div');t.className='tool-item-title';t.textContent=`${g.subject} — ${Number(g.percent).toFixed(1)}%`;
+    const m=document.createElement('div');m.className='tool-muted';m.textContent=`${g.semester||'الفصل الحالي'} • ${g.credits} ساعات • المتوقع/المسجل`;
+    main.append(t,m);const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.trash.unshift({id:`trash-${Date.now()}`,type:'grade',title:g.subject,payload:g,deletedAt:new Date().toISOString()});state.grades.splice(i,1);saveState();renderAll();});row.append(main,del);list.append(row);});
+  const result=currentGpa();const box=document.createElement('div');box.className='tool-item';box.textContent=result.gpa===null?'أدخل علامة نهائية متوقعة أو فعلية لمادتين أو أكثر لحساب المعدل.':`المعدل التقديري على سلم 4: ${result.gpa.toFixed(2)} / 4 • ${result.credits} ساعة محتسبة`;summary.append(box);
+}
+document.getElementById('gradeForm').addEventListener('submit',e=>{
+  e.preventDefault();const subject=document.getElementById('gradeSubject').value.trim();const current=Number(document.getElementById('gradeCurrent').value);const currentMax=Number(document.getElementById('gradeCurrentMax').value);const finalMax=Number(document.getElementById('gradeFinalMax').value);const target=Number(document.getElementById('gradeTarget').value);const expected=document.getElementById('gradeFinalExpected').value;
+  if(!subject||currentMax<=0||finalMax<=0||current>currentMax){alert('راجع العلامات المدخلة، لازم العلامة الحالية ما تتجاوز العلامة الكلية.');return;}
+  const required=(target/100*(currentMax+finalMax)-current)/finalMax*100;const clamped=Math.max(0,required);const result=document.getElementById('gradeCalculatorResult');
+  result.textContent=required>100?`للوصول إلى ${target}% تحتاج ${required.toFixed(1)}% في النهائي، وهذا أعلى من 100%؛ راجع توزيع العلامات.`:`للوصول إلى ${target}% تحتاج ${clamped.toFixed(1)}% من علامة النهائي (أي ${(clamped/100*finalMax).toFixed(1)} من ${finalMax}).`;
+  const finalScore=expected===''?null:Number(expected);if(finalScore!==null&&(finalScore<0||finalScore>finalMax)){alert('علامة النهائي المتوقعة يجب أن تكون ضمن مدى علامة النهائي.');return;}
+  const totalPercent=finalScore===null?null:((current+finalScore)/(currentMax+finalMax))*100;
+  const rec={id:`grade-${Date.now()}`,subject,semester:document.getElementById('gradeSemester').value.trim()||state.prefs.semesterName,credits:Number(document.getElementById('gradeCredits').value),current,currentMax,finalMax,target,finalExpected:finalScore===null?'':finalScore,percent:totalPercent===null?0:totalPercent,createdAt:new Date().toISOString()};
+  state.grades.unshift(rec);logActivity('حساب علامة',`تم حفظ بيانات العلامة لمادة ${subject}`);saveState();renderAll();
+});
+
+document.getElementById('simulateGpaBtn').addEventListener('click',()=>{
+  const current=Number(document.getElementById('simCurrentGpa').value),done=Number(document.getElementById('simCompletedCredits').value),next=Number(document.getElementById('simNextCredits').value),target=Number(document.getElementById('simTargetGpa').value);
+  if(done<0||next<=0||current<0||current>4||target<0||target>4){document.getElementById('simulatorResult').textContent='تأكد من إدخال القيم ضمن النطاق الصحيح.';return;}
+  const required=(target*(done+next)-current*done)/next;document.getElementById('simulatorResult').textContent=required<=0?'معدلك الحالي يحقق الهدف حتى لو كانت نتيجة الفصل القادم منخفضة.':required>4?`تحتاج معدل ${required.toFixed(2)} من 4، وهذا غير ممكن حسابياً بهذا عدد الساعات.`:`تحتاج معدل فصلي يقارب ${required.toFixed(2)} من 4 لتحقيق المعدل التراكمي المستهدف.`;
+});
+
+function renderAttendance(){
+  const sel=document.getElementById('attendanceSubject');const selected=sel.value;sel.innerHTML='';
+  state.subjects.forEach(sub=>{const o=document.createElement('option');o.value=sub.id;o.textContent=sub.name;sel.append(o);});if(state.subjects.some(x=>x.id===selected))sel.value=selected;
+  const summary=document.getElementById('attendanceSummary'),list=document.getElementById('attendanceList');summary.innerHTML='';list.innerHTML='';
+  if(!state.subjects.length){summary.innerHTML='<div class="tool-empty">أضف مادة أولاً حتى تسجل الحضور.</div>';}
+  state.subjects.forEach(sub=>{const records=state.attendance.filter(a=>a.subjectId===sub.id);const abs=records.filter(a=>a.status==='absent').length;const exc=records.filter(a=>a.status==='excused').length;const present=records.filter(a=>a.status==='present').length;const total=records.length;const box=document.createElement('div');box.className='tool-panel';box.innerHTML=`<h3>${escapeHtml(sub.name)}</h3><div class="tool-muted">حضور: ${present} • غياب: ${abs} • بعذر: ${exc}</div><div class="progress-small"><span style="width:${total?Math.round(present/total*100):0}%"></span></div>`;summary.append(box);});
+  if(!state.attendance.length)list.innerHTML='<div class="tool-empty">ما تم تسجيل أي محاضرة بعد.</div>';
+  state.attendance.slice().sort((a,b)=>b.date.localeCompare(a.date)).forEach(a=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${getSubjectName(a.subjectId)} • ${formatDateAr(a.date)}`;const m=document.createElement('div');m.className='tool-muted';m.textContent=`${a.status==='present'?'حضور':a.status==='absent'?'غياب':'غياب بعذر'}${a.note?' • '+a.note:''}`;main.append(title,m);const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.attendance=state.attendance.filter(x=>x.id!==a.id);saveState();renderAttendance();});row.append(main,del);list.append(row);});
+}
+document.getElementById('attendanceDate').value=todayISO();
+document.getElementById('attendanceForm').addEventListener('submit',e=>{e.preventDefault();if(!state.subjects.length){alert('أضف مادة أولاً.');return;}const r={id:`att-${Date.now()}`,subjectId:document.getElementById('attendanceSubject').value,date:document.getElementById('attendanceDate').value,status:document.getElementById('attendanceStatus').value,note:document.getElementById('attendanceNote').value.trim()};state.attendance.unshift(r);logActivity('تسجيل حضور',`تم تسجيل ${r.status==='present'?'حضور':r.status==='absent'?'غياب':'غياب بعذر'} في ${getSubjectName(r.subjectId)}`);document.getElementById('attendanceNote').value='';saveState();renderAll();});
+
+function renderGraduation(){
+  const progress=document.getElementById('graduationProgress'),list=document.getElementById('prerequisiteList');progress.innerHTML='';list.innerHTML='';
+  const earned=Number(state.prefs.externalGradCredits||0)+state.subjects.reduce((sum,s)=>sum+(s.chapters.length>0&&s.chapters.every(c=>c.done)?Number(s.credits||0):0),0);
+  const required=Number(state.prefs.requiredGradCredits||0);const pct=required>0?Math.min(100,earned/required*100):0;
+  const box=document.createElement('div');box.className='tool-panel';box.innerHTML=`<strong>${earned.toFixed(1)} / ${required?required:'—'} ساعة</strong><div class="progress-small"><span style="width:${pct}%"></span></div><div class="tool-muted">${required?`${pct.toFixed(1)}% من متطلبات الساعات`: 'أدخل إجمالي ساعات التخرج المطلوبة لعرض النسبة'}</div>`;progress.append(box);
+  if(!state.subjects.length)list.innerHTML='<div class="tool-empty">أضف موادك وحدد متطلباتها السابقة وساعاتها المعتمدة.</div>';
+  state.subjects.forEach(sub=>{const reqs=(sub.prerequisites||'').split(/[،,]/).map(x=>x.trim()).filter(Boolean);const missing=reqs.filter(req=>!state.subjects.some(other=>other.name.trim().toLowerCase()===req.toLowerCase()&&other.chapters.every(c=>c.done)));const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${sub.name} • ${Number(sub.credits||0)} ساعات`;
+    const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=reqs.length?`المتطلبات: ${reqs.join('، ')}`:'لا توجد متطلبات مسجلة';
+    const status=document.createElement('div');status.className=missing.length?'status-warn':'status-ok';status.textContent=missing.length?`تحقق من إنهاء: ${missing.join('، ')}`:'المتطلبات السابقة مكتملة أو لا يوجد متطلبات';main.append(title,meta,status);row.append(main);list.append(row);});
+}
+document.getElementById('saveGradSettingsBtn').addEventListener('click',()=>{state.prefs.requiredGradCredits=Number(document.getElementById('requiredGradCredits').value||0);state.prefs.externalGradCredits=Number(document.getElementById('externalGradCredits').value||0);saveState();renderGraduation();});
+
+function renderGoals(){const host=document.getElementById('goalsList');host.innerHTML='';if(!state.goals.length){host.innerHTML='<div class="tool-empty">اكتب هدفاً دراسياً صغيراً وابدأ بإنجازه.</div>';return;}state.goals.forEach((g,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const label=document.createElement('label');label.className='task-step-row';const cb=document.createElement('input');cb.type='checkbox';cb.checked=!!g.done;cb.addEventListener('change',()=>{g.done=cb.checked;saveState();renderGoals();});const title=document.createElement('span');title.className='tool-item-title';title.textContent=g.title;label.append(cb,title);const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=g.dueDate?`الموعد: ${formatDateAr(g.dueDate)}`:'بدون موعد';main.append(label,meta);const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.goals.splice(i,1);saveState();renderGoals();});row.append(main,del);host.append(row);});}
+document.getElementById('addGoalBtn').addEventListener('click',()=>{const title=document.getElementById('newGoalTitle').value.trim();if(!title)return;state.goals.push({id:`goal-${Date.now()}`,title,dueDate:document.getElementById('newGoalDue').value,done:false});logActivity('هدف جديد',`أضفت هدفاً: ${title}`);document.getElementById('newGoalTitle').value='';saveState();renderGoals();});
+document.getElementById('saveSemesterSettingsBtn').addEventListener('click',()=>{state.prefs.semesterName=document.getElementById('semesterName').value.trim();state.prefs.weeklyTargetHours=Number(document.getElementById('weeklyTargetHours').value||20);saveState();document.getElementById('settingsMessage').textContent='تم حفظ إعدادات الفصل.';});
+
+function buildNotifications(){const notes=[];const today=todayISO();const days=Number(state.prefs.reminderDays??3);
+  state.subjects.forEach(s=>{const diff=Math.ceil((new Date(s.examDate+'T'+(s.examTime||'09:00')+':00')-new Date())/86400000);if(diff>=0&&diff<=days)notes.push({id:`exam-${s.id}`,level:diff<=1?'high':'medium',text:`امتحان ${s.name} ${diff===0?'اليوم':`بعد ${diff} يوم`}`});});
+  state.schedule.filter(x=>!x.done&&!x.isExam&&x.date<today).forEach(x=>notes.push({id:`late-${x.id}`,level:'high',text:`مهمة متأخرة: ${x.subjectName} — ${x.isRevision?'مراجعة':`شابتر ${x.chapterNum}`}`}));
+  state.reviews.filter(x=>!x.done&&x.dueDate<=today).forEach(x=>notes.push({id:`review-${x.id}`,level:'medium',text:`مراجعة مستحقة: ${x.subjectName} — شابتر ${x.chapterNum}`}));
+  state.tasks.filter(x=>!x.done&&x.dueDate&&x.dueDate<=today).forEach(x=>notes.push({id:`task-${x.id}`,level:'high',text:`مهمة جانبية ${x.dueDate<today?'متأخرة':'مستحقة اليوم'}: ${x.text}`}));return notes;
+}
+function renderNotifications(){const host=document.getElementById('notificationsList');host.innerHTML='';const notes=buildNotifications();if(!notes.length){host.innerHTML='<div class="tool-empty">أمورك تمام! ما في تنبيهات مستحقة حالياً ✅</div>';return;}notes.forEach(n=>{const row=document.createElement('div');row.className='tool-item';const text=document.createElement('div');text.className='tool-item-main';text.textContent=n.text;const chip=document.createElement('span');chip.className=`tool-chip priority-${n.level==='high'?'high':'medium'}`;chip.textContent=n.level==='high'?'مهم':'تنبيه';row.append(text,chip);host.append(row);});}
+document.getElementById('markNotificationsReadBtn').addEventListener('click',()=>{state.prefs.notificationsReadAt=new Date().toISOString();saveState();document.getElementById('notificationsList').innerHTML='<div class="tool-empty">تم تعليم التنبيهات الحالية كمقروءة. ستظل تظهر هنا طالما لم تُعالج.</div>';});
+
+function renderSemesterArchive(){const host=document.getElementById('archiveList'),compare=document.getElementById('semesterComparison');host.innerHTML='';compare.innerHTML='';const g=currentGpa();const current=document.createElement('div');current.className='tool-panel';current.innerHTML=`<h3>الفصل الحالي: ${escapeHtml(state.prefs.semesterName||'غير محدد')}</h3><div class="tool-muted">المعدل المحسوب: ${g.gpa===null?'غير متوفر':g.gpa.toFixed(2)+' / 4'} • الساعات ذات العلامة: ${g.credits}</div>`;compare.append(current);
+  state.archives.forEach((a,i)=>{const box=document.createElement('div');box.className='tool-panel';box.innerHTML=`<h3>${escapeHtml(a.name||'فصل مؤرشف')}</h3><div class="tool-muted">معدل: ${a.gpa===null?'غير متوفر':Number(a.gpa).toFixed(2)+' / 4'} • ساعات: ${a.credits||0} • إنجاز: ${a.doneChapters||0}/${a.totalChapters||0}</div>`;compare.append(box);const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';main.innerHTML=`<div class="tool-item-title">${escapeHtml(a.name||'فصل مؤرشف')}</div><div class="tool-muted">تاريخ الأرشفة: ${formatDateAr((a.archivedAt||'').slice(0,10))}</div>`;const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const restore=document.createElement('button');restore.type='button';restore.className='secondary';restore.textContent='استعادة الفصل';restore.addEventListener('click',()=>{const hasCurrent=state.subjects.length||state.grades.length||state.attendance.length;if(hasCurrent&&!confirm('الاستعادة ستستبدل بيانات الفصل الحالي. هل تريد المتابعة؟'))return;state.subjects=JSON.parse(JSON.stringify(a.subjects||[]));state.schedule=JSON.parse(JSON.stringify(a.schedule||[]));state.grades=JSON.parse(JSON.stringify(a.grades||[]));state.attendance=JSON.parse(JSON.stringify(a.attendance||[]));state.goals=JSON.parse(JSON.stringify(a.goals||[]));state.reviews=JSON.parse(JSON.stringify(a.reviews||[]));state.weeklyTasks=JSON.parse(JSON.stringify(a.weeklyTasks||[]));state.resources=JSON.parse(JSON.stringify(a.resources||[]));state.lectures=JSON.parse(JSON.stringify(a.lectures||[]));state.timeLogs=JSON.parse(JSON.stringify(a.timeLogs||[]));state.prefs.semesterName=a.name||'';logActivity('استعادة فصل',`تمت استعادة ${a.name}`);saveState();renderAll();});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف الأرشيف';del.addEventListener('click',()=>{state.archives.splice(i,1);saveState();renderSemesterArchive();});actions.append(restore,del);row.append(main,actions);host.append(row);});if(!state.archives.length)host.innerHTML='<div class="tool-empty">لا يوجد فصول مؤرشفة بعد.</div>';}
+document.getElementById('archiveSemesterBtn').addEventListener('click',()=>{if(!confirm('سيتم حفظ ملخص الفصل الحالي ثم إفراغ المواد والعلامات والحضور والأهداف من العرض الحالي. هل تريد المتابعة؟'))return;const total=state.subjects.reduce((a,s)=>a+s.chapters.length,0),done=state.subjects.reduce((a,s)=>a+s.chapters.filter(c=>c.done).length,0),g=currentGpa();const snap={id:`archive-${Date.now()}`,name:state.prefs.semesterName||`فصل ${state.archives.length+1}`,archivedAt:new Date().toISOString(),gpa:g.gpa,credits:g.credits,totalChapters:total,doneChapters:done,subjects:JSON.parse(JSON.stringify(state.subjects)),schedule:JSON.parse(JSON.stringify(state.schedule)),grades:JSON.parse(JSON.stringify(state.grades)),attendance:JSON.parse(JSON.stringify(state.attendance)),goals:JSON.parse(JSON.stringify(state.goals)),reviews:JSON.parse(JSON.stringify(state.reviews)),weeklyTasks:JSON.parse(JSON.stringify(state.weeklyTasks)),resources:JSON.parse(JSON.stringify(state.resources)),lectures:JSON.parse(JSON.stringify(state.lectures)),timeLogs:JSON.parse(JSON.stringify(state.timeLogs))};state.archives.unshift(snap);state.subjects=[];state.schedule=[];state.reviews=[];state.grades=[];state.attendance=[];state.goals=[];state.weeklyTasks=[];state.resources=[];state.lectures=[];state.timeLogs=[];state.prefs.semesterName='';logActivity('أرشفة فصل',`تمت أرشفة ${snap.name}`);saveState();renderAll();});
+
+function renderActivity(){const host=document.getElementById('activityList');host.innerHTML='';if(!state.activity.length){host.innerHTML='<div class="tool-empty">سجل النشاطات رح يظهر هون.</div>';return;}state.activity.slice(0,70).forEach(a=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=a.type;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`${a.message} • ${new Date(a.at).toLocaleString('ar-JO')}`;main.append(title,meta);row.append(main);host.append(row);});}
+document.getElementById('clearActivityBtn').addEventListener('click',()=>{if(confirm('تمسح سجل النشاطات؟')){state.activity=[];saveState();renderActivity();}});
+function renderTrash(){const host=document.getElementById('trashList');host.innerHTML='';if(!state.trash.length){host.innerHTML='<div class="tool-empty">السلة فارغة.</div>';return;}state.trash.forEach((item,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${item.title} • ${item.type}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`تاريخ الحذف: ${formatDateAr((item.deletedAt||'').slice(0,10))}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const restore=document.createElement('button');restore.type='button';restore.className='secondary';restore.textContent='استعادة';restore.addEventListener('click',()=>{if(item.type==='subject'){state.subjects.push(item.payload);state.schedule.push(...(item.schedule||[]));}else if(item.type==='task')state.tasks.push(item.payload);else if(item.type==='grade')state.grades.push(item.payload);else if(item.type==='resource')state.resources.push(item.payload);state.trash.splice(i,1);logActivity('استعادة عنصر',`تمت استعادة ${item.title}`);saveState();renderAll();});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='نهائي';del.addEventListener('click',()=>{state.trash.splice(i,1);saveState();renderTrash();});actions.append(restore,del);row.append(main,actions);host.append(row);});}
+document.getElementById('emptyTrashBtn').addEventListener('click',async()=>{if(confirm('حذف كل محتويات سلة المحذوفات نهائياً؟')){for(const item of state.trash){if(item.type==='resource'){try{await plannerFileDelete(item.payload.id);}catch(_){}}}state.trash=[];saveState();renderTrash();}});
+
+function renderPrefs(){document.getElementById('semesterName').value=state.prefs.semesterName||'';document.getElementById('weeklyTargetHours').value=state.prefs.weeklyTargetHours??20;document.getElementById('reminderDays').value=state.prefs.reminderDays??3;document.getElementById('defaultFocusMinutes').value=state.prefs.defaultFocusMinutes??25;document.getElementById('fontScale').value=String(state.prefs.fontScale??1);document.getElementById('requiredGradCredits').value=state.prefs.requiredGradCredits||'';document.getElementById('externalGradCredits').value=state.prefs.externalGradCredits||0;document.documentElement.style.fontSize=`${(state.prefs.fontScale||1)*16}px`;}
+document.getElementById('savePreferencesBtn').addEventListener('click',()=>{state.prefs.reminderDays=Number(document.getElementById('reminderDays').value||0);state.prefs.defaultFocusMinutes=Number(document.getElementById('defaultFocusMinutes').value||25);state.prefs.fontScale=Number(document.getElementById('fontScale').value||1);document.documentElement.style.fontSize=`${state.prefs.fontScale*16}px`;saveState();document.getElementById('settingsMessage').textContent='تم حفظ الإعدادات بنجاح.';renderNotifications();});
+document.getElementById('browserNotificationsBtn').addEventListener('click',async()=>{const el=document.getElementById('settingsMessage');if(!('Notification'in window)){el.textContent='المتصفح لا يدعم إشعارات النظام.';return;}try{const permission=await Notification.requestPermission();el.textContent=permission==='granted'?'تم تفعيل إشعارات المتصفح. افتح المنصة لمراجعة التنبيهات.':'لم يتم السماح بالإشعارات.';if(permission==='granted'){const notes=buildNotifications().slice(0,3);if(notes.length)new Notification('منصة الإنجاز الأكاديمي',{body:notes.map(n=>n.text).join(' | ')});}}catch(_){el.textContent='تعذر تفعيل الإشعارات في هذا المتصفح.';}});
+
+function renderSubjectPickers(){const a=document.getElementById('attendanceSubject');if(!a)return;const current=a.value;a.innerHTML='';state.subjects.forEach(sub=>{const o=document.createElement('option');o.value=sub.id;o.textContent=sub.name;a.append(o);});if(state.subjects.some(s=>s.id===current))a.value=current;}
+
+document.getElementById('saveAvailabilityBtn').addEventListener('click',()=>{const hours={};document.querySelectorAll('#weeklyAvailability input').forEach(inp=>{hours[inp.dataset.day]=Math.max(0,Math.min(16,Number(inp.value)||0));});state.prefs.weeklyHours=hours;saveState();renderWeeklyView();});
+document.getElementById('weeklyTaskDate').value=todayISO();
+document.getElementById('addWeeklyTaskBtn').addEventListener('click',()=>{const title=document.getElementById('weeklyTaskTitle').value.trim(),date=document.getElementById('weeklyTaskDate').value,minutes=Number(document.getElementById('weeklyTaskMinutes').value);if(!title||!date||minutes<=0){alert('اكتب اسم الجلسة وحدد التاريخ والمدة.');return;}state.weeklyTasks.push({id:`week-${Date.now()}`,title,date,minutes,priority:document.getElementById('weeklyTaskPriority').value,done:false});logActivity('جلسة أسبوعية',`أضفت جلسة ${title}`);document.getElementById('weeklyTaskTitle').value='';saveState();renderAll();});
+document.getElementById('catchUpBtn').addEventListener('click',()=>{const today=todayISO();const late=state.schedule.filter(x=>!x.done&&!x.isExam&&x.date<today).sort((a,b)=>({hard:0,medium:1,easy:2,revision:3}[a.difficulty]??4)-({hard:0,medium:1,easy:2,revision:3}[b.difficulty]??4));if(!late.length){alert('ما في مهام متأخرة تحتاج تعويض.');return;}let day=addDaysISO(today,0),used=0;late.forEach(task=>{let limit=(Number(state.prefs.weeklyHours?.[new Date(day+'T12:00:00').getDay()]??3))*60;if(limit<=0)limit=120;if(used+Number(task.minutes||30)>limit){day=addDaysISO(day,1);used=0;limit=Number(state.prefs.weeklyHours?.[new Date(day+'T12:00:00').getDay()]??3)*60||120;}task.date=day;used+=Number(task.minutes||30);});logActivity('خطة تعويض',`تمت إعادة توزيع ${late.length} مهمة متأخرة`);saveState();renderAll();alert(`تم نقل ${late.length} مهمة إلى الأيام القادمة حسب الساعات المتاحة.`);});
+
+document.getElementById('globalSearch').addEventListener('input', e => {
+  const q = e.target.value.trim().toLowerCase();
+  const host = document.getElementById('searchResults');
+  if (!host) return;
+  
+  host.innerHTML = '';
+  if (q.length < 2) return;
+  
+  const hits = [];
+  const subjects = Array.isArray(state?.subjects) ? state.subjects : [];
+  const tasks = Array.isArray(state?.tasks) ? state.tasks : [];
+  const goals = Array.isArray(state?.goals) ? state.goals : [];
+  const generalNotes = typeof state?.generalNotes === 'string' ? state.generalNotes : '';
+
+  // البحث في المواد والفصول
+  subjects.forEach(sub => {
+    const subName = String(sub?.name || '').toLowerCase();
+    const subTag = String(sub?.tag || '').toLowerCase();
+    const subPrereq = String(sub?.prerequisites || '').toLowerCase();
+
+    if (subName.includes(q) || subTag.includes(q) || subPrereq.includes(q)) {
+      hits.push({ label: `مادة: ${sub.name}`, target: 'seqStep3' });
+    }
+
+    const chapters = Array.isArray(sub?.chapters) ? sub.chapters : [];
+    chapters.forEach(ch => {
+      const text = `${sub?.name || ''} شابتر ${ch?.num || ''}`;
+      if (text.toLowerCase().includes(q)) {
+        hits.push({ label: text, target: 'seqStep3' });
+      }
+    });
+  });
+
+  // البحث في المهام
+  tasks.forEach(t => {
+    const taskText = `${t?.text || ''} ${t?.tag || ''}`.toLowerCase();
+    if (taskText.includes(q)) {
+      hits.push({ label: `مهمة: ${t?.text || ''}`, target: 'seqStep3' });
+    }
+  });
+
+  // البحث في الملاحظات العامة
+  if (generalNotes.toLowerCase().includes(q)) {
+    hits.push({ label: 'نتيجة في الملاحظات العامة', target: 'seqStep3' });
+  }
+
+  // البحث في الأهداف (إن وجدت)
+  goals.forEach(g => {
+    const gTitle = String(g?.title || '').toLowerCase();
+    if (gTitle.includes(q)) {
+      hits.push({ label: `هدف: ${g?.title || ''}`, target: 'seqStep7' });
+    }
+  });
+
+  if (!hits.length) {
+    host.innerHTML = '<div class="tool-empty">ما لقيت نتائج مطابقة.</div>';
+    return;
+  }
+
+  hits.slice(0, 20).forEach(hit => {
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'search-result';
+    btn.textContent = hit.label;
+    btn.addEventListener('click', () => {
+      const target = document.getElementById(hit.target);
+      if (target) {
+        const parentStep = target.closest('.app-step-panel');
+        if (parentStep && typeof showSeqStep === 'function') {
+          showSeqStep(parseInt(parentStep.id.replace('seqStep', '')));
+        }
+        target.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      }
+    });
+    host.append(btn);
+  });
+});
+document.getElementById('printPlanBtn').addEventListener('click',()=>window.print());
+document.getElementById('exportBackupBtn').addEventListener('click',()=>{try{const backup={...JSON.parse(JSON.stringify(state)),exportedAt:new Date().toISOString(),backupVersion:2};const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`smart-academic-planner-${todayISO()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);logActivity('نسخة احتياطية','تم تصدير نسخة تشمل بيانات قاعدة البيانات والمرفقات');saveState();}catch(err){alert(`تعذر تصدير النسخة: ${err.message}`);}});
+document.getElementById('importBackupBtn').addEventListener('click',()=>document.getElementById('importBackupFile').click());
+document.getElementById('importBackupFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const raw=JSON.parse(await file.text());if(!raw||typeof raw!=='object'||!Array.isArray(raw.subjects)||!Array.isArray(raw.schedule))throw new Error('صيغة الملف غير صحيحة');if(!confirm('سيتم استبدال بيانات المنصة في قاعدة البيانات بالنسخة المختارة. هل تريد المتابعة؟'))return;applyData(raw);for(const item of (raw.attachmentFiles||[])){if(item.dataUrl){const resource=state.resources.find(r=>r.id===item.id);if(resource)resource.fileData=item.dataUrl;}}uploadedResourceIds.clear();logActivity('استيراد نسخة','تم استيراد نسخة احتياطية');saveState();renderAll();alert('تم استيراد النسخة إلى قاعدة البيانات.');}catch(err){alert(`تعذر استيراد الملف: ${err.message}`);}finally{e.target.value='';}});
+
+let plannerFilesDbPromise = null;
+function plannerFilesDb(){
+  if(!('indexedDB' in window)) return Promise.reject(new Error('IndexedDB غير مدعوم في هذا المتصفح'));
+  if(!plannerFilesDbPromise) plannerFilesDbPromise=new Promise((resolve,reject)=>{
+    const req=indexedDB.open('smartAcademicPlannerFiles',1);
+    req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('files'))db.createObjectStore('files',{keyPath:'id'});};
+    req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('تعذر فتح مخزن الملفات'));
+  });
+  return plannerFilesDbPromise;
+}
+async function plannerFilePut(record){const db=await plannerFilesDb();return new Promise((resolve,reject)=>{const tx=db.transaction('files','readwrite');tx.objectStore('files').put(record);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);});}
+async function plannerFileGet(id){const db=await plannerFilesDb();return new Promise((resolve,reject)=>{const req=db.transaction('files','readonly').objectStore('files').get(id);req.onsuccess=()=>resolve(req.result||null);req.onerror=()=>reject(req.error);});}
+async function plannerFileDelete(id){const db=await plannerFilesDb();return new Promise((resolve,reject)=>{const tx=db.transaction('files','readwrite');tx.objectStore('files').delete(id);tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error);});}
+function fillResourceAndLectureSubjects(){
+  ['resourceSubject','lectureSubject'].forEach(id=>{const sel=document.getElementById(id),old=sel.value;sel.innerHTML=id==='resourceSubject'?'<option value="">عام / بدون مادة</option>':'';state.subjects.forEach(sub=>{const o=document.createElement('option');o.value=sub.id;o.textContent=sub.name;sel.append(o);});if(state.subjects.some(x=>x.id===old))sel.value=old;});
+}
+function renderResourcesAndLectures(){
+  const resourcesHost=document.getElementById('resourcesList'),lecturesHost=document.getElementById('lecturesList');if(!resourcesHost||!lecturesHost)return;
+  fillResourceAndLectureSubjects();resourcesHost.innerHTML='';lecturesHost.innerHTML='';
+  if(!state.resources.length)resourcesHost.innerHTML='<div class="tool-empty">لم تتم إضافة ملفات أو روابط بعد.</div>';
+  state.resources.forEach((r,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`📄 ${r.title}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`${getSubjectName(r.subjectId)} • ${r.fileName||r.url||'رابط/ملف'}${r.note?' • '+r.note:''}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const open=document.createElement('button');open.type='button';open.className='secondary';open.textContent=r.url?'فتح الرابط':'تنزيل';open.addEventListener('click',async()=>{try{if(r.url){window.open(r.url,'_blank','noopener');return;}let blob=null;if(r.fileData){blob=await (await fetch(r.fileData)).blob();}else{const found=await plannerFileGet(r.id);if(found?.blob)blob=found.blob;}if(!blob){alert('محتوى الملف غير موجود في قاعدة البيانات. ارفع الملف مرة أخرى.');return;}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=r.fileName||r.title;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(err){alert(err.message||'تعذر تنزيل الملف');}});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.trash.unshift({id:`trash-${Date.now()}`,type:'resource',title:r.title,payload:r,deletedAt:new Date().toISOString()});state.resources.splice(i,1);logActivity('حذف ملف',`نُقل المورد ${r.title} إلى سلة المحذوفات`);saveState();renderResourcesAndLectures();});actions.append(open,del);row.append(main,actions);resourcesHost.append(row);});
+  if(!state.lectures.length)lecturesHost.innerHTML='<div class="tool-empty">سجّل أول محاضرة حتى تتابع إنجازك.</div>';
+  state.lectures.forEach((l,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${l.status==='done'?'✅':l.status==='recorded'?'🎧':'⏳'} ${l.title}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`${getSubjectName(l.subjectId)} • ${formatDateAr(l.date)} • ${l.minutes} دقيقة • ${l.status==='done'?'منجزة':l.status==='recorded'?'مسجلة':'لم تُدرس'}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const toggle=document.createElement('button');toggle.type='button';toggle.className='secondary';toggle.textContent=l.status==='done'?'إعادة فتح':'تمت';toggle.addEventListener('click',()=>{l.status=l.status==='done'?'pending':'done';saveState();renderResourcesAndLectures();});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.lectures.splice(i,1);saveState();renderResourcesAndLectures();});actions.append(toggle,del);row.append(main,actions);lecturesHost.append(row);});
+}
+document.getElementById('lectureDate').value=todayISO();
+document.getElementById('resourceForm').addEventListener('submit',async e=>{
+  e.preventDefault();const title=document.getElementById('resourceTitle').value.trim(),file=document.getElementById('resourceFile').files?.[0],url=document.getElementById('resourceUrl').value.trim();if(!title||(!file&&!url)){alert('أدخل اسم المورد واختر ملفاً أو أضف رابطاً.');return;}if(file&&url){alert('اختر ملفاً أو رابطاً، وليس الاثنين معاً.');return;}if(url&&!/^https?:\/\//i.test(url)){alert('الرابط يجب أن يبدأ بـ https:// أو http://');return;}if(file&&file.size>3*1024*1024){alert('للحفظ داخل قاعدة البيانات، الحد الأقصى للملف الواحد 3 ميغابايت.');return;}
+  const id=`resource-${Date.now()}`;const record={id,title,subjectId:document.getElementById('resourceSubject').value,fileName:file?.name||'',fileType:file?.type||'',size:file?.size||0,url,note:document.getElementById('resourceNote').value.trim(),createdAt:new Date().toISOString()};
+  try{if(file)record.fileData=await dataUrlFromBlob(file);state.resources.unshift(record);logActivity('إضافة مورد دراسي',`أضفت ${title}`);document.getElementById('resourceTitle').value='';document.getElementById('resourceFile').value='';document.getElementById('resourceUrl').value='';document.getElementById('resourceNote').value='';saveState();renderResourcesAndLectures();}catch(err){alert(`تعذر تجهيز المورد للحفظ: ${err.message}`);}
+});
+document.getElementById('lectureForm').addEventListener('submit',e=>{e.preventDefault();const subjectId=document.getElementById('lectureSubject').value;if(!subjectId){alert('أضف مادة أولاً حتى تربط المحاضرة بها.');return;}const item={id:`lecture-${Date.now()}`,subjectId,title:document.getElementById('lectureTitle').value.trim(),date:document.getElementById('lectureDate').value,minutes:Number(document.getElementById('lectureMinutes').value)||50,status:document.getElementById('lectureStatus').value};state.lectures.unshift(item);logActivity('إضافة محاضرة',`أضفت محاضرة ${item.title}`);document.getElementById('lectureTitle').value='';saveState();renderResourcesAndLectures();});
+
+const timePanel=document.createElement('section');timePanel.className='card';timePanel.id='timeTrackingSection';timePanel.innerHTML=`<div class="card-header"><h2>⏱️ سجل الوقت الفعلي للدراسة</h2><span class="mini" id="totalStudyTime">0 ساعة</span></div><form id="manualTimeForm" class="tool-panel"><div class="tool-fields"><label>عدد الدقائق<input id="manualMinutes" type="number" min="1" max="1440" value="30" required></label><label>المادة (اختياري)<select id="manualTimeSubject"><option value="">بدون تحديد</option></select></label><label>ملاحظة<input id="manualTimeNote" maxlength="100" placeholder="مثلاً: حل واجب"></label><label>التاريخ<input id="manualTimeDate" type="date" value="${todayISO()}"></label></div><div class="tool-actions"><button type="submit">إضافة وقت دراسة</button></div></form><div id="timeLogList" class="tool-list"></div>`;
+document.getElementById('weeklySection').after(timePanel);
+document.getElementById('manualTimeForm').addEventListener('submit',e=>{e.preventDefault();const minutes=Number(document.getElementById('manualMinutes').value);if(minutes<=0)return;state.timeLogs.unshift({id:`time-${Date.now()}`,date:document.getElementById('manualTimeDate').value||todayISO(),minutes,subject:document.getElementById('manualTimeSubject').value?getSubjectName(document.getElementById('manualTimeSubject').value):'',source:'إدخال يدوي',note:document.getElementById('manualTimeNote').value.trim()});logActivity('تسجيل وقت دراسة',`سجلت ${minutes} دقيقة دراسة`);document.getElementById('manualTimeNote').value='';saveState();renderTimeLogs();});
+function renderTimeLogs(){const host=document.getElementById('timeLogList');if(!host)return;host.innerHTML='';const total=state.timeLogs.reduce((a,x)=>a+Number(x.minutes||0),0);document.getElementById('totalStudyTime').textContent=`${(total/60).toFixed(1)} ساعة إجمالي`;
+  const subjectSel=document.getElementById('manualTimeSubject');if(subjectSel){const val=subjectSel.value;subjectSel.innerHTML='<option value="">بدون تحديد</option>';state.subjects.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.name;subjectSel.append(o);});subjectSel.value=val;}
+  if(!state.timeLogs.length){host.innerHTML='<div class="tool-empty">وقت الدراسة المسجل سيظهر هنا.</div>';return;}state.timeLogs.slice(0,30).forEach((l,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';main.innerHTML=`<div class="tool-item-title">${l.minutes} دقيقة • ${escapeHtml(l.source||'دراسة')}</div><div class="tool-muted">${formatDateAr(l.date)} ${l.subject?'• '+escapeHtml(l.subject):''} ${l.note?'• '+escapeHtml(l.note):''}</div>`;const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.timeLogs.splice(i,1);saveState();renderTimeLogs();});row.append(main,del);host.append(row);});}
+
 function renderAll() {
   renderCountdownsAndHeader();
   renderSubjectsAndProgress();
   renderGeneratedSchedule();
   renderTasksAndNotes();
+  renderWeeklyAvailability();
+  renderWeeklyView();
+  renderReviews();
+  renderGrades();
+  renderAttendance();
+  renderGraduation();
+  renderGoals();
+  renderNotifications();
+  renderSemesterArchive();
+  renderActivity();
+  renderTrash();
+  renderPrefs();
+  renderTimeLogs();
+  renderResourcesAndLectures();
   updateClockDisplay();
 }
 
 (async function boot() {
-  if (localStorage.getItem(GUEST_FLAG) === '1') {
-    isGuestMode = true;
-    currentUserName = '';
-    loadLocalData();
-    showApp();
-    syncStatus.textContent = 'حفظ عالجهاز — أمورك بالسليم ✓';
-    renderAll();
-    return;
-  }
-
+  localStorage.removeItem(GUEST_FLAG);
   try {
     const savedSess = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
     if (savedSess?.userId) {
