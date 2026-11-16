@@ -110,6 +110,18 @@ header {
   text-transform: uppercase;
 }
 
+.welcome-banner {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.22);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 5px 14px;
+  border-radius: 12px;
+  font-size: 14.5px;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
 h1 {
   font-size: clamp(20px, 4.5vw, 28px);
   font-weight: 900;
@@ -117,9 +129,9 @@ h1 {
 }
 
 header p {
-  color: rgba(255, 255, 255, 0.92);
+  color: rgba(255, 255, 255, 0.94);
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .header-actions {
@@ -210,7 +222,7 @@ header p {
 }
 
 .mini {
-  font-size: 12px;
+  font-size: 12.5px;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -228,7 +240,7 @@ header p {
   }
 }
 
-/* Dynamic Exam Countdown Grid */
+/* Exam Grid */
 .exam-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -274,6 +286,12 @@ header p {
   color: var(--primary);
   font-variant-numeric: tabular-nums;
   direction: ltr;
+}
+
+.exam-alert-note {
+  font-size: 11.5px;
+  font-weight: 800;
+  color: var(--accent-warn);
 }
 
 /* Progress Section */
@@ -326,44 +344,124 @@ header p {
   margin-bottom: 2px;
 }
 
-/* Smart Study Planner Form */
-.planner-form {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
-  gap: 12px;
-  margin-top: 12px;
+/* Step-by-Step Wizard Form */
+.wizard-container {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
 }
 
-.planner-form label, .chapter-difficulty label {
-  display: grid;
-  gap: 5px;
+.wizard-progress-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 12px;
+  padding: 8px 14px;
   font-size: 12.5px;
+  font-weight: 800;
+  color: var(--primary-dark);
+}
+
+.wizard-step {
+  background: var(--surface-soft);
+  border: 1.5px solid var(--border-light);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  animation: stepFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wizard-step.completed-step {
+  border-color: var(--accent-success);
+  background: var(--surface);
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.step-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.step-badge {
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  font-size: 11.5px;
+  font-weight: 800;
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+
+.wizard-step.completed-step .step-badge {
+  background: var(--accent-success-bg);
+  color: var(--accent-success);
+}
+
+.wizard-step label {
+  display: grid;
+  gap: 6px;
+  font-size: 14px;
   font-weight: 800;
   color: var(--text-main);
 }
 
-.planner-form input, .planner-form select, .chapter-difficulty select {
+.wizard-step input, .chapter-difficulty select {
   width: 100%;
-  padding: 10px 12px;
+  padding: 12px 14px;
   border: 1.5px solid var(--border-light);
   border-radius: 10px;
-  background: var(--surface-soft);
+  background: var(--surface);
   color: var(--text-main);
   font: inherit;
-  font-size: 13.5px;
+  font-size: 14px;
   outline: none;
   transition: border-color 0.2s;
 }
 
-.planner-form input:focus, .planner-form select:focus, .chapter-difficulty select:focus {
+.wizard-step input:focus, .chapter-difficulty select:focus {
   border-color: var(--primary);
+}
+
+.step-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.next-step-btn {
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
+  color: #fff;
+  padding: 9px 18px;
+  border-radius: 10px;
+  font-size: 13.5px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .chapter-editor {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
   gap: 10px;
-  margin-top: 14px;
+  margin-top: 8px;
   max-height: 300px;
   overflow-y: auto;
   padding: 4px;
@@ -374,7 +472,7 @@ header p {
   justify-content: space-between;
   gap: 8px;
   align-items: center;
-  background: var(--surface-soft);
+  background: var(--surface);
   border: 1px solid var(--border-light);
   border-radius: 10px;
   padding: 8px 12px;
@@ -386,12 +484,12 @@ header p {
 }
 
 .chapter-difficulty select {
-  width: 115px;
+  width: 130px;
   padding: 6px 8px;
   font-size: 12.5px;
 }
 
-/* Subject Chips & Dynamic Chapters */
+/* Subject Chips & Chapters */
 .subject-block {
   margin-top: 16px;
   padding: 14px;
@@ -425,7 +523,7 @@ header p {
 
 .chapters-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
   gap: 8px;
   margin-top: 10px;
 }
@@ -475,7 +573,7 @@ input[type=checkbox] {
   flex-shrink: 0;
 }
 
-/* Generated Timeline Plan */
+/* Timeline Plan */
 .plan-days {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -546,7 +644,7 @@ input[type=checkbox] {
   text-decoration: line-through;
 }
 
-/* Study Timer */
+/* Timer */
 .timer-card {
   text-align: center;
   display: flex;
@@ -632,7 +730,7 @@ button.danger-btn {
   border-radius: var(--radius-sm);
   padding: 11px;
   color: var(--primary-dark);
-  font-size: 12px;
+  font-size: 12.5px;
   font-weight: 700;
 }
 
@@ -751,7 +849,7 @@ button.danger-btn {
 .login-box p {
   color: var(--text-muted);
   margin-bottom: 16px;
-  font-size: 13px;
+  font-size: 13.5px;
 }
 
 .login-box input {
@@ -849,18 +947,18 @@ footer {
 <!-- Login Screen -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
-    <div style="font-size:44px;">🎓</div>
+    <div style="font-size:44px;">☕🎓</div>
     <span class="brand-tag" style="background:var(--primary-light);color:var(--primary-dark);">MOHAMMAD RUM</span>
-    <h1>منصة التخطيط الأكاديمي</h1>
-    <p>سجّل دخولك لمزامنة جدولك الدراسي مع قاعدة البيانات السحابية، أو ابدأ مباشرة بالحفظ المحلي.</p>
+    <h1>هلا بالحلو! نورت منصتك ✨</h1>
+    <p>فوت بحسابك عشان نحفظ جدولك عالسحابة وما يضيع إشي، أو ادخل عالسريع وبلّش دراسة ع طول 😉</p>
     <form id="loginForm">
-      <input id="nameInput" type="text" placeholder="الاسم الكامل" autocomplete="name" hidden>
-      <input id="emailInput" type="email" placeholder="البريد الإلكتروني" autocomplete="email" required>
-      <input id="passwordInput" type="password" placeholder="كلمة المرور (8 أحرف فأكثر)" autocomplete="current-password" minlength="8" required>
-      <button id="authSubmit" type="submit">تسجيل الدخول السحابي</button>
+      <input id="nameInput" type="text" placeholder="اسمك الحلو (عشان ندلعك جوا) 😍" autocomplete="name" hidden>
+      <input id="emailInput" type="email" placeholder="إيميلك يا غالي" autocomplete="email" required>
+      <input id="passwordInput" type="password" placeholder="كلمة السر (8 خانات وطالع)" autocomplete="current-password" minlength="8" required>
+      <button id="authSubmit" type="submit">يلا نفوت عالحساب 🚀</button>
     </form>
-    <button class="quick-btn" id="guestBtn" type="button">الدخول السريع (بدون حساب — حفظ محلي) ⚡</button>
-    <button class="auth-switch" id="authModeBtn" type="button">ليس لديك حساب؟ إنشاء حساب جديد</button>
+    <button class="quick-btn" id="guestBtn" type="button">فوت عالسريع بدون حساب (حفظ عالجهاز) ⚡</button>
+    <button class="auth-switch" id="authModeBtn" type="button">جديد هون؟ اعمل حسابك بثواني يا قمر ✨</button>
     <div class="login-error" id="loginError" aria-live="polite"></div>
     <div class="auth-status" id="authStatus" aria-live="polite"></div>
   </div>
@@ -873,72 +971,146 @@ footer {
   <div class="header-top">
     <div>
       <span class="brand-tag">MOHAMMAD RUM • SMART PLANNER</span>
-      <h1>منصة الإنجاز الأكاديمي الذكية</h1>
-      <p>أدخل امتحاناتك، عدد الفصول، ومستوى صعوبة كل فصل — وسيتولى النظام بناء جدولك الزمني بدقة.</p>
+      <div class="welcome-banner" id="welcomeGreeting">أهلين برجعتك يا حلو! شو عندك اليوم؟ 😍☕</div>
+      <h1>منصة الدراسة الرايقة والذكية</h1>
+      <p>حط موادك خطوة بخطوة وريح راسك يا قلبي.. إحنا بنرتبلك الأيام وبنذكرك قبل ما يزنقك الوقت 😉🔥</p>
     </div>
     <div class="header-actions">
       <div class="btn-group-top">
-        <button class="icon-btn" id="themeToggle" type="button">🌓 المظهر</button>
-        <button class="icon-btn" id="logoutBtn" type="button">خروج</button>
+        <button class="icon-btn" id="themeToggle" type="button">🌓 غيّر الجو</button>
+        <button class="icon-btn" id="logoutBtn" type="button">طلعة 👋</button>
       </div>
-      <div class="sync-status" id="syncStatus">جاهز</div>
+      <div class="sync-status" id="syncStatus">أمورك تمام التمام ✓</div>
     </div>
   </div>
   <div class="pills-row" id="headerExamsPills">
-    <span class="pill">📅 أضف موادك أدناه لعرض مواعيد الاختبارات</span>
+    <span class="pill">📅 لسا ما ضفت امتحانات.. يلا شد حيلك وضيفهم تحت!</span>
   </div>
 </header>
 
 <!-- Dynamic Exam Countdowns -->
 <section class="card">
   <div class="card-header" style="margin-bottom:4px">
-    <h2>⏱️ العد التنازلي للاختبارات القادمة</h2>
-    <span class="mini">يُحدّث تلقائياً حسب التاريخ والوقت المدخل</span>
+    <h2>⏰ دير بالك! العد التنازلي للامتحانات 🔥</h2>
+    <span class="mini">كل ثانية بتمر بتقربك من الامتحان.. لا تسرح! 👀</span>
   </div>
   <div class="exam-grid" id="dynamicCountdowns">
-    <div class="mini" style="padding:10px;">لا توجد اختبارات مسجلة حالياً. أضف مادتك الأولى من الموزع الذكي أدناه.</div>
+    <div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة تحت وخلينا نبلش الجد 💪</div>
   </div>
 </section>
 
-<!-- Smart Study Planner Form -->
+<!-- Smart Study Planner Step-by-Step Wizard Form -->
 <section class="card" id="smartPlanner">
   <div class="card-header">
     <div>
-      <h2>🧠 إضافة مادة وتوليد الجدول الذكي</h2>
-      <p class="mini">يوزع النظام الفصول على الأيام المتاحة قبل الامتحان حسب وزن الصعوبة (سهل / متوسط / صعب) مع تخصيص يوم للمراجعة النهائية.</p>
+      <h2>🧠 ضيف مادتك حبة حبة وبدون عجقة</h2>
+      <p class="mini">عبّي كل خانة واضغط «التالي» عشان تفتحلك اللي بعدها بكل رواق وبساطة 😎✨</p>
     </div>
+    <button type="button" class="secondary" id="resetWizardBtn" style="font-size:12px; padding:6px 12px;">🔄 بلّش من أول خطوة</button>
   </div>
-  <form id="subjectForm">
-    <div class="planner-form">
-      <label>اسم المادة / الامتحان
-        <input id="subjectName" required maxlength="60" placeholder="مثلاً: التشريح / البرمجة">
+
+  <div class="wizard-progress-bar">
+    <span id="wizardProgressText">الخطوة 1 من 7 — يلا نبلش باسم المادة 🚀</span>
+    <span id="wizardStepDots">🔵⚪⚪⚪⚪⚪⚪</span>
+  </div>
+
+  <form id="subjectForm" class="wizard-container">
+
+    <!-- Step 1: Subject Name -->
+    <div class="wizard-step" id="step-1">
+      <div class="step-header">
+        <span class="step-badge">الخطوة 1</span>
+      </div>
+      <label>شو اسم المادة يا بطل؟ 📘
+        <input id="subjectName" required maxlength="60" placeholder="مثلاً: تشريح / برمجة / فيزياء">
       </label>
-      <label>تاريخ الامتحان
+      <div class="step-actions">
+        <button type="button" class="next-step-btn" data-next="2">التالي ⬇️</button>
+      </div>
+    </div>
+
+    <!-- Step 2: Exam Date -->
+    <div class="wizard-step" id="step-2" hidden>
+      <div class="step-header">
+        <span class="step-badge">الخطوة 2</span>
+      </div>
+      <label>متى الامتحان؟ (دير بالك!) 📅
         <input id="examDate" type="date" required>
       </label>
-      <label>وقت الامتحان
+      <div class="step-actions">
+        <button type="button" class="next-step-btn" data-next="3">التالي ⬇️</button>
+      </div>
+    </div>
+
+    <!-- Step 3: Exam Time -->
+    <div class="wizard-step" id="step-3" hidden>
+      <div class="step-header">
+        <span class="step-badge">الخطوة 3</span>
+      </div>
+      <label>أي ساعة الامتحان؟ ⏰
         <input id="examTime" type="time" required value="09:00">
       </label>
-      <label>عدد الشابترات (الفصول)
+      <div class="step-actions">
+        <button type="button" class="next-step-btn" data-next="4">التالي ⬇️</button>
+      </div>
+    </div>
+
+    <!-- Step 4: Chapter Count -->
+    <div class="wizard-step" id="step-4" hidden>
+      <div class="step-header">
+        <span class="step-badge">الخطوة 4</span>
+      </div>
+      <label>كم شابتر عندك بالمادة؟ 📚
         <input id="chapterCount" type="number" min="1" max="60" required value="5">
       </label>
-      <label>ساعات الدراسة اليومية المتاحة
+      <div class="step-actions">
+        <button type="button" class="next-step-btn" data-next="5">التالي ⬇️</button>
+      </div>
+    </div>
+
+    <!-- Step 5: Daily Study Hours -->
+    <div class="wizard-step" id="step-5" hidden>
+      <div class="step-header">
+        <span class="step-badge">الخطوة 5</span>
+      </div>
+      <label>كم ساعة ناوي تدرس باليوم؟ ⏳
         <input id="dailyHours" type="number" min="0.5" max="16" step="0.5" required value="3">
       </label>
-      <label>تاريخ بدء الدراسة
+      <div class="step-actions">
+        <button type="button" class="next-step-btn" data-next="6">التالي ⬇️</button>
+      </div>
+    </div>
+
+    <!-- Step 6: Start Date -->
+    <div class="wizard-step" id="step-6" hidden>
+      <div class="step-header">
+        <span class="step-badge">الخطوة 6</span>
+      </div>
+      <label>متى ناوي تبلش جد؟ 🔥
         <input id="startDate" type="date" required>
       </label>
+      <div class="step-actions">
+        <button type="button" class="next-step-btn" data-next="7">التالي ⬇️</button>
+      </div>
     </div>
 
-    <div style="margin-top:12px;">
-      <span class="mini" style="font-weight:800; color:var(--primary-dark);">حدد مستوى صعوبة كل شابتر (لتحديد الوقت اللازم له):</span>
+    <!-- Step 7: Chapter Difficulty & Submit -->
+    <div class="wizard-step" id="step-7" hidden>
+      <div class="step-header">
+        <span class="step-badge">الخطوة الأخيرة 7 من 7 🎉</span>
+      </div>
+      <span style="font-size:14px; font-weight:800; color:var(--primary-dark);">احكيلنا كيف وضع كل شابتر (سهل، متوسط، ولا بده قعدة؟):</span>
       <div id="chapterEditor" class="chapter-editor"></div>
+
+      <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
+        <button type="submit">➕ اعتمد المادة وطلّع الجدول 🚀</button>
+      </div>
     </div>
 
-    <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
-      <button type="submit">➕ إضافة المادة وتوليد الخطة</button>
-      <button type="button" class="secondary" id="generateAllBtn">🔄 إعادة موازنة الجدول بالكامل</button>
-      <button type="button" class="secondary" id="clearSubjectsBtn" style="color:var(--accent-danger);">🗑️ مسح جميع المواد</button>
+    <!-- General Management Buttons -->
+    <div style="margin-top:6px; display:flex; gap:10px; flex-wrap:wrap; border-top:1px solid var(--border-light); padding-top:12px;">
+      <button type="button" class="secondary" id="generateAllBtn">🔄 رتّب الجدول من أول وجديد</button>
+      <button type="button" class="secondary" id="clearSubjectsBtn" style="color:var(--accent-danger);">🗑️ امسح كل إشي</button>
     </div>
   </form>
 </section>
@@ -949,49 +1121,49 @@ footer {
   <!-- Progress & Subjects -->
   <section class="card">
     <div class="card-header">
-      <h2>📊 مؤشر الإنجاز ومتابعة الشابترات</h2>
+      <h2>📊 وين صرت بالإنجاز يا وحش؟</h2>
       <span class="big-pct" id="overall">0%</span>
     </div>
     <div class="track"><div class="fill" id="overallBar"></div></div>
 
     <div class="stats">
-      <div class="stat"><b id="doneCount">0</b>شابترات منجزة</div>
-      <div class="stat"><b id="leftCount">0</b>شابترات متبقية</div>
-      <div class="stat"><b id="sessions">0</b>جلسات تركيز</div>
+      <div class="stat"><b id="doneCount">0</b>شابترات خلصتهم 💪</div>
+      <div class="stat"><b id="leftCount">0</b>شابترات بستنوك 👀</div>
+      <div class="stat"><b id="sessions">0</b>جلسات تركيز 🔥</div>
     </div>
 
     <div id="subjectsProgressList">
-      <p class="mini" style="text-align:center; margin-top:18px;">ستظهر هنا موادك وشابتراتها فور إضافتها أعلاه.</p>
+      <p class="mini" style="text-align:center; margin-top:18px;">بس تضيف موادك فوق رح تلاقيهم مصفوفين هون بانتظارك يا غالي 😉</p>
     </div>
   </section>
 
   <!-- Study Timer -->
   <aside class="card timer-card">
     <div>
-      <h2 style="justify-content:center">⏳ مؤقت التركيز العميق</h2>
+      <h2 style="justify-content:center">⏳ مؤقت التركيز (بدون تلفون!)</h2>
       <div class="timer-icon">🎯</div>
-      <div class="mini" id="timerLabel">تقنية بومودورو لإدارة جلسات الدراسة</div>
+      <div class="mini" id="timerLabel">حط التلفون ع جنب وركز شوي يا حلو 😉</div>
       <div class="clock-box">
         <div class="clock" id="clock">25:00</div>
       </div>
 
       <select id="duration" aria-label="مدة المؤقت" style="width:100%; padding:10px; border-radius:10px; border:1.5px solid var(--border-light); background:var(--surface-soft); color:var(--text-main); font:inherit; font-weight:700; margin-bottom:10px; text-align:center;">
-        <option value="25">25 دقيقة — جلسة تركيز قياسية</option>
-        <option value="45">45 دقيقة — جلسة دراسة مكثفة</option>
-        <option value="50">50 دقيقة — جلسة إنجاز عميق</option>
-        <option value="5">5 دقائق — استراحة قصيرة</option>
-        <option value="10">10 دقائق — استراحة تجديد نشاط</option>
+        <option value="25">25 دقيقة — جلسة رايقة وخفيفة ☕</option>
+        <option value="45">45 دقيقة — جلسة شغل مرتب 💪</option>
+        <option value="50">50 دقيقة — وضع الوحش شغال 🔥</option>
+        <option value="5">5 دقائق — بريك نسكافيه سريع ☕</option>
+        <option value="10">10 دقائق — ريّح عيونك شوي 😌</option>
       </select>
 
       <div class="timer-controls">
-        <button id="startBtn" type="button">بدء الجلسة</button>
-        <button class="secondary" id="pauseBtn" type="button">إيقاف مؤقت</button>
-        <button class="secondary" id="resetBtn" type="button">إعادة ضبط</button>
+        <button id="startBtn" type="button">يلا بلّش! 🚀</button>
+        <button class="secondary" id="pauseBtn" type="button">وقّف شوي ⏸️</button>
+        <button class="secondary" id="resetBtn" type="button">صفّر العداد 🔄</button>
       </div>
     </div>
 
     <div>
-      <div class="quote" id="encourage">«تنظيم الوقت هو الخطوة الأولى نحو التفوق الأكاديمي.»</div>
+      <div class="quote" id="encourage">«يا حلو الدراسة بدها رواق وكاسة شاي، مش توتر! إنت قدها وقدود 💙✨»</div>
     </div>
   </aside>
 </div>
@@ -1000,8 +1172,8 @@ footer {
 <section class="card">
   <div class="card-header">
     <div>
-      <h2>🗓️ الجدول الزمني الموزع حسب الأيام</h2>
-      <p class="mini" id="planSummary">أضف موادك ليقوم النظام بتوزيع الشابترات وتحديد الساعات المطلوبة يومياً.</p>
+      <h2>🗓️ جدولك اليومي المقسّم عالتمام</h2>
+      <p class="mini" id="planSummary">ضيف موادك فوق عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.</p>
     </div>
   </div>
   <div id="generatedPlan" class="plan-days"></div>
@@ -1012,38 +1184,38 @@ footer {
 
   <section class="card">
     <div class="card-header">
-      <h2>🏆 نقاط الإنجاز والأوسمة</h2>
+      <h2>🏆 نقاطك وأوسمتك يا فخم</h2>
       <span style="font-size:22px">🎖️</span>
     </div>
     <div style="display:flex; align-items:baseline; gap:8px;">
       <div class="points-number" id="pointsTotal">0</div>
-      <span class="mini">نقطة مكتسبة (10 نقاط لكل شابتر)</span>
+      <span class="mini">نقطة (كل شابتر بتخلصه إلك 10 نقاط 😉)</span>
     </div>
     <div class="track"><div class="fill" id="pointsBar"></div></div>
     <div class="reward-list" id="rewards">
-      <span class="reward" data-at="20">🥉 انطلاقة قوية (20)</span>
-      <span class="reward" data-at="50">🥈 التزام مستمر (50)</span>
-      <span class="reward" data-at="100">🥇 إنجاز متقدم (100)</span>
-      <span class="reward" data-at="200">💎 نجم التفوق (200)</span>
+      <span class="reward" data-at="20">🥉 بداية بتفتح النفس (20)</span>
+      <span class="reward" data-at="50">🥈 شغال صح يا كبير (50)</span>
+      <span class="reward" data-at="100">🥇 قطاع دراسة رسمي (100)</span>
+      <span class="reward" data-at="200">💎 أسطورة الكلية بلا منازع (200)</span>
     </div>
   </section>
 
   <section class="card">
     <div class="card-header">
-      <h2>✅ قائمة المهام السريعة</h2>
+      <h2>✅ شغلات جانبية عالسريع</h2>
     </div>
     <div class="task-list" id="taskList"></div>
     <div class="task-add">
-      <input id="newTask" type="text" maxlength="90" placeholder="أضف مهمة جانبية (مثلاً: طباعة ملخص)...">
-      <button id="addTask" type="button">إضافة</button>
+      <input id="newTask" type="text" maxlength="90" placeholder="مثلاً: أطبع الدوسية / أسأل صاحبي...">
+      <button id="addTask" type="button">ضيف</button>
     </div>
   </section>
 
   <section class="card">
     <div class="card-header">
-      <h2>📝 دفتر الملاحظات الدراسية</h2>
+      <h2>📝 دفتر خربشاتك وملاحظاتك</h2>
     </div>
-    <textarea class="note-area" id="generalNotes" placeholder="دوّن هنا ملاحظاتك الهامة، القوانين، أو مواضيع التركيز للاختبارات..."></textarea>
+    <textarea class="note-area" id="generalNotes" placeholder="اكتب هون أي ملاحظة مهمة، قانون، أو إشي الدكتور ركّز عليه بالمحاضرة..."></textarea>
   </section>
 
 </div>
@@ -1051,13 +1223,12 @@ footer {
 <div class="confetti-layer" id="confettiLayer"></div>
 
 <footer>
-  <div>تم التصميم والتطوير بواسطة</div>
+  <div>انعمل بكل حب وروقان بواسطة</div>
   <div class="signature-badge">MOHAMMAD RUM</div>
 </footer>
 </div>
 
 <script>
-// Global Error Catcher so nothing fails silently
 window.addEventListener('error', (e) => {
   console.error('Runtime error:', e.message);
 });
@@ -1070,15 +1241,14 @@ const GUEST_FLAG = 'mohammad_rum_guest_mode';
 const SESSION_KEY = 'mohammad_rum_neon_session';
 const THEME_KEY = 'mohammad_rum_theme';
 
-let neonClient = null;
 let currentUserId = null;
+let currentUserName = '';
 let accessToken = null;
 let isGuestMode = false;
 let cloudReady = false;
 let saveTimer = null;
 let authMode = 'signin';
 
-// Main Data Structure stored inside `data` JSONB column in `public.study_plans`
 let state = {
   subjects: [],
   schedule: [],
@@ -1087,6 +1257,14 @@ let state = {
   generalNotes: '',
   studyDays: []
 };
+
+const jordanianFlirtQuotes = [
+  "«يا حلو الدراسة بدها رواق وكاسة شاي، مش توتر! إنت قدها وقدود 💙✨»",
+  "«يسعدلي هالهمة! كل شابتر بتخلصه بقربك خطوة من العلامة الكاملة يا قمر 🌟»",
+  "«دير بالك الوقت بركض، بس مع هالترتيب إنت مسيطر عالوضع 100% 😎🔥»",
+  "«قوم اعملك كاسة قهوة وارجع كمل، العيون الحلوة هاي بتستاهل أعلى المعدلات ☕😍»",
+  "«لا تخلي المادة تتراكم عليك، خلّص أول بأول عشان تنام مرتاح البال 🛌💤»"
+];
 
 // Theme Handling
 const themeToggle = document.getElementById('themeToggle');
@@ -1112,10 +1290,26 @@ const authSubmit = document.getElementById('authSubmit');
 const loginError = document.getElementById('loginError');
 const authStatus = document.getElementById('authStatus');
 const syncStatus = document.getElementById('syncStatus');
+const welcomeGreeting = document.getElementById('welcomeGreeting');
+
+function updateWelcomeGreeting(name) {
+  const cleanName = (name || '').trim();
+  if (cleanName) {
+    const firstName = cleanName.split(' ')[0];
+    welcomeGreeting.textContent = `أهلين برجعتك يا حلو يا ${firstName}! شو عندك اليوم؟ 😍☕`;
+  } else {
+    welcomeGreeting.textContent = `أهلين برجعتك يا حلو! شو عندك اليوم؟ 😍☕`;
+  }
+}
 
 function showApp() {
   loginScreen.style.display = 'none';
   app.style.display = 'block';
+  updateWelcomeGreeting(currentUserName);
+  const quoteEl = document.getElementById('encourage');
+  if (quoteEl) {
+    quoteEl.textContent = jordanianFlirtQuotes[Math.floor(Math.random() * jordanianFlirtQuotes.length)];
+  }
 }
 
 function showLogin() {
@@ -1129,13 +1323,12 @@ authModeBtn.addEventListener('click', () => {
   nameInput.hidden = !signingUp;
   nameInput.required = signingUp;
   passwordInput.autocomplete = signingUp ? 'new-password' : 'current-password';
-  authSubmit.textContent = signingUp ? 'إنشاء حساب سحابي جديد' : 'تسجيل الدخول السحابي';
-  authModeBtn.textContent = signingUp ? 'لديك حساب بالفعل؟ تسجيل الدخول' : 'ليس لديك حساب؟ إنشاء حساب جديد';
+  authSubmit.textContent = signingUp ? 'اعمل الحساب وفوت 🚀' : 'يلا نفوت عالحساب 🚀';
+  authModeBtn.textContent = signingUp ? 'عندك حساب من قبل؟ فوت من هون 😉' : 'جديد هون؟ اعمل حسابك بثواني يا قمر ✨';
   loginError.textContent = '';
   authStatus.textContent = '';
 });
 
-// Direct REST API helpers for Neon Auth & PostgREST (No external ESM import failures!)
 async function neonAuthRequest(endpoint, body) {
   const res = await fetch(`${NEON_AUTH_URL}${endpoint}`, {
     method: 'POST',
@@ -1147,7 +1340,7 @@ async function neonAuthRequest(endpoint, body) {
   let json = {};
   try { json = text ? JSON.parse(text) : {}; } catch (_) {}
   if (!res.ok) {
-    throw new Error(json?.message || json?.error || `خطأ في المصادقة (${res.status})`);
+    throw new Error(json?.message || json?.error || `صار في مشكلة صغيرة (${res.status})`);
   }
   return json;
 }
@@ -1201,7 +1394,7 @@ async function neonDbUpsert(userId, payload, token) {
 authForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   loginError.textContent = '';
-  authStatus.textContent = 'جارٍ الاتصال بقاعدة البيانات...';
+  authStatus.textContent = 'ثواني بنجهزلك القعدة... ☕';
   authSubmit.disabled = true;
 
   try {
@@ -1234,34 +1427,35 @@ authForm.addEventListener('submit', async (e) => {
     if (!user?.id) {
       authMode = 'signin';
       nameInput.hidden = true;
-      authSubmit.textContent = 'تسجيل الدخول السحابي';
-      authStatus.textContent = 'تم إنشاء الحساب بنجاح. يرجى تسجيل الدخول الآن.';
+      authSubmit.textContent = 'يلا نفوت عالحساب 🚀';
+      authStatus.textContent = 'يسعد دينك! حسابك صار جاهز، سجل دخولك هسا 😍';
       return;
     }
 
+    const resolvedName = user.name || nameInput.value.trim() || email.split('@')[0];
     isGuestMode = false;
     localStorage.removeItem(GUEST_FLAG);
-    if (token) localStorage.setItem(SESSION_KEY, JSON.stringify({ userId: user.id, token }));
-    await enterCloudDashboard(user.id, token);
+    localStorage.setItem(SESSION_KEY, JSON.stringify({ userId: user.id, name: resolvedName, token }));
+    await enterCloudDashboard(user.id, token, resolvedName);
   } catch (err) {
     console.error(err);
-    loginError.textContent = err?.message || 'تعذر الاتصال بالسحابة. يمكنك الدخول بالوضع المحلي الفوري بالأسفل.';
+    loginError.textContent = err?.message || 'شكله النت بعافية شوي.. جرب ادخل عالسريع من الزر اللي تحت ⚡';
     authStatus.textContent = '';
   } finally {
     authSubmit.disabled = false;
   }
 });
 
-// Guest / Local Mode (Guaranteed 100% offline/local execution)
 document.getElementById('guestBtn').addEventListener('click', () => {
   isGuestMode = true;
   currentUserId = null;
+  currentUserName = '';
   accessToken = null;
   cloudReady = false;
   localStorage.setItem(GUEST_FLAG, '1');
   loadLocalData();
   showApp();
-  syncStatus.textContent = 'وضع محلي (محفوظ على جهازك) ✓';
+  syncStatus.textContent = 'حفظ عالجهاز — أمورك بالسليم ✓';
   renderAll();
 });
 
@@ -1274,12 +1468,12 @@ document.getElementById('logoutBtn').addEventListener('click', async () => {
   clearInterval(timerInterval);
   isRunning = false;
   currentUserId = null;
+  currentUserName = '';
   accessToken = null;
   cloudReady = false;
   showLogin();
 });
 
-// Data Hydration & Persistence
 function applyData(raw = {}) {
   state = {
     subjects: Array.isArray(raw.subjects) ? raw.subjects : [],
@@ -1300,12 +1494,13 @@ function loadLocalData() {
   }
 }
 
-async function enterCloudDashboard(userId, token) {
+async function enterCloudDashboard(userId, token, userName = '') {
   currentUserId = userId;
+  currentUserName = userName;
   accessToken = token;
   authStatus.textContent = '';
   showApp();
-  syncStatus.textContent = 'جارٍ مزامنة بياناتك...';
+  syncStatus.textContent = 'بنجيبلك جدولك... ⏳';
   cloudReady = false;
 
   try {
@@ -1321,7 +1516,7 @@ async function enterCloudDashboard(userId, token) {
     }
 
     cloudReady = true;
-    syncStatus.textContent = 'متصل بالسحابة — متزامن ✓';
+    syncStatus.textContent = 'متصل ومحفوظ عالسحابة ✓';
     renderAll();
   } catch (err) {
     console.warn('Cloud sync fallback to local cache:', err);
@@ -1332,7 +1527,7 @@ async function enterCloudDashboard(userId, token) {
       applyData({});
     }
     cloudReady = true;
-    syncStatus.textContent = 'محفوظ محلياً (بانتظار المزامنة)';
+    syncStatus.textContent = 'محفوظ عالجهاز مؤقتاً ✓';
     renderAll();
   }
 }
@@ -1340,29 +1535,133 @@ async function enterCloudDashboard(userId, token) {
 function saveState() {
   if (isGuestMode || !currentUserId) {
     localStorage.setItem(LOCAL_KEY, JSON.stringify(state));
-    syncStatus.textContent = 'محفوظ محلياً ✓';
+    syncStatus.textContent = 'انحفظ عالجهاز ✓';
     return;
   }
 
   localStorage.setItem(`${LOCAL_KEY}:${currentUserId}`, JSON.stringify(state));
   if (!cloudReady) return;
 
-  syncStatus.textContent = 'جارٍ الحفظ...';
+  syncStatus.textContent = 'بنحفظ شغلك...';
   if (saveTimer) clearTimeout(saveTimer);
   saveTimer = setTimeout(async () => {
     try {
       await neonDbUpsert(currentUserId, state, accessToken);
-      syncStatus.textContent = 'تم الحفظ في قاعدة البيانات ✓';
+      syncStatus.textContent = 'انحفظ عالسحابة يا كبير ✓';
     } catch (err) {
       console.warn('Save sync warning:', err);
-      syncStatus.textContent = 'محفوظ محلياً ✓';
+      syncStatus.textContent = 'انحفظ عالجهاز ✓';
     }
   }, 500);
 }
 
-// Form: Dynamic Chapter Difficulty Inputs
+// Step-by-step Wizard Logic
 const chapterCountInput = document.getElementById('chapterCount');
 const chapterEditor = document.getElementById('chapterEditor');
+const wizardProgressText = document.getElementById('wizardProgressText');
+const wizardStepDots = document.getElementById('wizardStepDots');
+
+const stepTitles = {
+  1: "الخطوة 1 من 7 — يلا نبلش باسم المادة 🚀",
+  2: "الخطوة 2 من 7 — حدد موعد الامتحان 📅",
+  3: "الخطوة 3 من 7 — أي ساعة الامتحان؟ ⏰",
+  4: "الخطوة 4 من 7 — كم شابتر عندك؟ 📚",
+  5: "الخطوة 5 من 7 — ساعات الدراسة باليوم ⏳",
+  6: "الخطوة 6 من 7 — متى رح تبلش دراسة؟ 🔥",
+  7: "الخطوة 7 من 7 — صعوبة الشابترات واعتمد! 🎉"
+};
+
+let currentMaxStep = 1;
+
+function updateWizardIndicator(stepNum) {
+  currentMaxStep = Math.max(currentMaxStep, stepNum);
+  wizardProgressText.textContent = stepTitles[currentMaxStep] || "";
+  let dots = "";
+  for (let i = 1; i <= 7; i++) {
+    if (i < currentMaxStep) dots += "🟢";
+    else if (i === currentMaxStep) dots += "🔵";
+    else dots += "⚪";
+  }
+  wizardStepDots.textContent = dots;
+}
+
+function resetWizard() {
+  currentMaxStep = 1;
+  for (let i = 1; i <= 7; i++) {
+    const stepEl = document.getElementById(`step-${i}`);
+    stepEl.hidden = i !== 1;
+    stepEl.classList.remove('completed-step');
+    const nextBtn = stepEl.querySelector('.next-step-btn');
+    if (nextBtn) nextBtn.style.display = 'inline-flex';
+  }
+  updateWizardIndicator(1);
+}
+
+document.getElementById('resetWizardBtn').addEventListener('click', resetWizard);
+
+document.querySelectorAll('.next-step-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const nextStepNum = Number(btn.dataset.next);
+    const currentStepNum = nextStepNum - 1;
+    const currentStepEl = document.getElementById(`step-${currentStepNum}`);
+    const input = currentStepEl.querySelector('input');
+
+    // Validate current input before showing the next step
+    if (input) {
+      const val = input.value.trim();
+      if (!val) {
+        alert('عبّي هالخانة أول يا حلو عشان نكمل للي تحتها 😉');
+        input.focus();
+        return;
+      }
+      if (input.type === 'number' && Number(val) <= 0) {
+        alert('حط رقم منطقي يا غالي 😅');
+        input.focus();
+        return;
+      }
+      if (currentStepNum === 6) {
+        const examDateVal = document.getElementById('examDate').value;
+        if (examDateVal && val >= examDateVal) {
+          alert('تاريخ بداية الدراسة لازم يكون قبل يوم الامتحان يا بطل! زبط التاريخ 😉');
+          input.focus();
+          return;
+        }
+      }
+    }
+
+    // Mark current step completed and hide its "التالي" button
+    currentStepEl.classList.add('completed-step');
+    btn.style.display = 'none';
+
+    // Reveal next step smoothly
+    const nextStepEl = document.getElementById(`step-${nextStepNum}`);
+    if (nextStepEl) {
+      nextStepEl.hidden = false;
+      updateWizardIndicator(nextStepNum);
+      if (nextStepNum === 7) {
+        buildChapterInputs();
+      }
+      const nextInput = nextStepEl.querySelector('input, select');
+      if (nextInput) nextInput.focus();
+      nextStepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+});
+
+// Allow pressing Enter inside step inputs to advance to the next step instead of submitting prematurely
+document.querySelectorAll('.wizard-step input').forEach(inp => {
+  inp.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const stepEl = inp.closest('.wizard-step');
+      const nextBtn = stepEl?.querySelector('.next-step-btn');
+      if (nextBtn && nextBtn.style.display !== 'none') {
+        nextBtn.click();
+      }
+    }
+  });
+});
+
 const todayISO = () => {
   const d = new Date();
   d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
@@ -1385,9 +1684,9 @@ function buildChapterInputs() {
     const select = document.createElement('select');
     select.dataset.chapter = String(i);
     [
-      ['easy', 'سهل (1x)'],
-      ['medium', 'متوسط (1.5x)'],
-      ['hard', 'صعب (2.25x)']
+      ['easy', 'سهل ولطيف 😊'],
+      ['medium', 'متوسط 🤔'],
+      ['hard', 'صعب وبده قعدة 🔥']
     ].forEach(([val, label]) => {
       const opt = document.createElement('option');
       opt.value = val;
@@ -1403,7 +1702,7 @@ function buildChapterInputs() {
 chapterCountInput.addEventListener('input', buildChapterInputs);
 buildChapterInputs();
 
-// Core Smart Scheduling Algorithm
+// Simple & Logical Scheduling Algorithm
 function regenerateFullSchedule() {
   const oldDoneMap = new Map(state.schedule.map(item => [item.id, item.done]));
   const newSchedule = [];
@@ -1418,11 +1717,11 @@ function regenerateFullSchedule() {
     const totalDaysBeforeExam = Math.floor((exam - start) / 86400000);
 
     if (totalDaysBeforeExam < 1) {
-      throw new Error(`تاريخ امتحان "${sub.name}" يجب أن يكون بعد تاريخ بدء الدراسة بيوم واحد على الأقل.`);
+      throw new Error(`يا حلو تاريخ امتحان "${sub.name}" لازم يكون بعد تاريخ البداية بيوم واحد عالأقل!`);
     }
 
     const studyDaysCount = totalDaysBeforeExam >= 2 ? totalDaysBeforeExam - 1 : 1;
-    const weights = { easy: 1.0, medium: 1.5, hard: 2.25 };
+    const weights = { easy: 1, medium: 2, hard: 3 };
     const totalWeight = sub.chapters.reduce((acc, ch) => acc + weights[ch.difficulty], 0);
     const totalAvailableMinutes = studyDaysCount * Number(sub.dailyHours) * 60;
 
@@ -1515,10 +1814,10 @@ document.getElementById('subjectForm').addEventListener('submit', (e) => {
     const dailyHours = Number(document.getElementById('dailyHours').value);
 
     if (!name || !examDate || !startDate) {
-      throw new Error('يرجى تعبئة جميع الحقول المطلوبة.');
+      throw new Error('عبّي كل الخانات يا قمر عشان نعرف نرتبلك الجدول!');
     }
     if (examDate <= startDate) {
-      throw new Error('تاريخ الامتحان يجب أن يكون بعد تاريخ بدء الدراسة.');
+      throw new Error('كيف الامتحان قبل أو بنفس يوم البداية؟ زبط التاريخ يا غالي 😅');
     }
 
     const chapters = [...chapterEditor.querySelectorAll('select')].map((sel, index) => ({
@@ -1543,6 +1842,7 @@ document.getElementById('subjectForm').addEventListener('submit', (e) => {
     renderAll();
 
     document.getElementById('subjectName').value = '';
+    resetWizard();
     triggerConfetti();
   } catch (err) {
     alert(err.message);
@@ -1552,7 +1852,7 @@ document.getElementById('subjectForm').addEventListener('submit', (e) => {
 document.getElementById('generateAllBtn').addEventListener('click', () => {
   try {
     if (state.subjects.length === 0) {
-      alert('أضف مادة واحدة على الأقل أولاً.');
+      alert('ضيف مادة وحدة عالأقل أول يا حلو 😉');
       return;
     }
     regenerateFullSchedule();
@@ -1564,21 +1864,20 @@ document.getElementById('generateAllBtn').addEventListener('click', () => {
 });
 
 document.getElementById('clearSubjectsBtn').addEventListener('click', () => {
-  if (!confirm('هل أنت متأكد من حذف جميع المواد والجدول بالكامل؟')) return;
+  if (!confirm('متأكد بدك تمسح كل المواد والجدول؟ فكّر مرتين يا غالي!')) return;
   state.subjects = [];
   state.schedule = [];
   saveState();
   renderAll();
 });
 
-// Render Header Pills & Dynamic Countdowns
 function renderCountdownsAndHeader() {
   const pillsHost = document.getElementById('headerExamsPills');
   const gridHost = document.getElementById('dynamicCountdowns');
 
   if (state.subjects.length === 0) {
-    pillsHost.innerHTML = '<span class="pill">📅 أضف امتحاناتك أعلاه لعرضها هنا</span>';
-    gridHost.innerHTML = '<div class="mini" style="padding:10px;">لا توجد امتحانات مضافة حالياً. ابدأ بإضافة مادتك الأولى من النموذج أعلاه.</div>';
+    pillsHost.innerHTML = '<span class="pill">📅 لسا ما ضفت امتحانات.. يلا شد حيلك وضيفهم تحت!</span>';
+    gridHost.innerHTML = '<div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة تحت وخلينا نبلش الجد 💪</div>';
     return;
   }
 
@@ -1614,7 +1913,12 @@ function renderCountdownsAndHeader() {
     clockDiv.textContent = '--';
     clockBox.append(clockDiv);
 
-    card.append(info, clockBox);
+    const alertNote = document.createElement('div');
+    alertNote.className = 'exam-alert-note';
+    alertNote.dataset.alertFor = `${sub.examDate}T${sub.examTime}:00`;
+    alertNote.textContent = '';
+
+    card.append(info, clockBox, alertNote);
     gridHost.append(card);
   });
 
@@ -1626,12 +1930,15 @@ function tickExamCountdowns() {
   document.querySelectorAll('.exam-clock[data-target]').forEach(el => {
     const target = new Date(el.dataset.target);
     const diff = target - now;
+    const noteEl = el.closest('.exam')?.querySelector('.exam-alert-note');
+
     if (isNaN(target.getTime())) {
-      el.textContent = 'تاريخ غير صالح';
+      el.textContent = 'تاريخ مش زابط';
       return;
     }
     if (diff <= 0) {
-      el.textContent = 'حان موعد الامتحان! بالتوفيق 🎓';
+      el.textContent = 'بلّش الامتحان! فالك الفل يا وحش 🎓🔥';
+      if (noteEl) noteEl.textContent = 'توكل على الله وبدّع!';
       return;
     }
     const days = Math.floor(diff / 86400000);
@@ -1639,11 +1946,20 @@ function tickExamCountdowns() {
     const mins = Math.floor((diff % 3600000) / 60000);
     const secs = Math.floor((diff % 60000) / 1000);
     el.textContent = `${days}ي ${String(hours).padStart(2, '0')}س ${String(mins).padStart(2, '0')}د ${String(secs).padStart(2, '0')}ث`;
+
+    if (noteEl) {
+      if (days <= 2) {
+        noteEl.textContent = '🚨 دير بالك قرب الامتحان كتير! شد الهمة يا بطل!';
+      } else if (days <= 5) {
+        noteEl.textContent = '⚡ قرب الموعد يا حلو، لا تأجل شغل اليوم لبكرا!';
+      } else {
+        noteEl.textContent = '✨ معك وقت مرتب، امشي عالجدول وأمورك لوز!';
+      }
+    }
   });
 }
 setInterval(tickExamCountdowns, 1000);
 
-// Render Subjects & Interactive Chapters Progress
 function renderSubjectsAndProgress() {
   const host = document.getElementById('subjectsProgressList');
   host.innerHTML = '';
@@ -1652,7 +1968,7 @@ function renderSubjectsAndProgress() {
   let doneCh = 0;
 
   if (state.subjects.length === 0) {
-    host.innerHTML = '<p class="mini" style="text-align:center; margin-top:18px;">ستظهر هنا موادك وشابتراتها فور إضافتها أعلاه.</p>';
+    host.innerHTML = '<p class="mini" style="text-align:center; margin-top:18px;">بس تضيف موادك فوق رح تلاقيهم مصفوفين هون بانتظارك يا غالي 😉</p>';
   } else {
     const diffLabels = { easy: 'سهل', medium: 'متوسط', hard: 'صعب' };
 
@@ -1678,14 +1994,14 @@ function renderSubjectsAndProgress() {
 
       const badge = document.createElement('span');
       badge.className = 'badge-count';
-      badge.textContent = `${subDone} / ${subTotal}`;
+      badge.textContent = `منجز ${subDone} من ${subTotal}`;
 
       const delBtn = document.createElement('button');
       delBtn.type = 'button';
       delBtn.className = 'danger-btn';
-      delBtn.textContent = 'حذف المادة';
+      delBtn.textContent = 'شيل المادة';
       delBtn.addEventListener('click', () => {
-        if (!confirm(`حذف مادة "${sub.name}" من الخطة؟`)) return;
+        if (!confirm(`متأكد بدك تشيل مادة "${sub.name}" من الجدول؟`)) return;
         state.subjects = state.subjects.filter(s => s.id !== sub.id);
         state.schedule = state.schedule.filter(t => t.subjectId !== sub.id);
         saveState();
@@ -1730,7 +2046,10 @@ function renderSubjectsAndProgress() {
           ch.done = cb.checked;
           const schedItem = state.schedule.find(s => s.subjectId === sub.id && s.chapterNum === ch.num);
           if (schedItem) schedItem.done = cb.checked;
-          if (cb.checked) markStudyDay();
+          if (cb.checked) {
+            markStudyDay();
+            triggerConfetti();
+          }
           saveState();
           renderAll();
         });
@@ -1760,21 +2079,20 @@ function renderSubjectsAndProgress() {
   });
 }
 
-// Render Generated Daily Timeline Schedule
 function renderGeneratedSchedule() {
   const host = document.getElementById('generatedPlan');
   const summaryEl = document.getElementById('planSummary');
   host.innerHTML = '';
 
   if (state.schedule.length === 0) {
-    summaryEl.textContent = 'أضف موادك أعلاه ليقوم النظام بتوزيع الشابترات وتحديد الدقائق المطلوبة يومياً.';
+    summaryEl.textContent = 'ضيف موادك فوق عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.';
     return;
   }
 
   const studyTasks = state.schedule.filter(t => !t.isExam);
   const doneTasks = studyTasks.filter(t => t.done).length;
   const pct = studyTasks.length ? Math.round((doneTasks / studyTasks.length) * 100) : 0;
-  summaryEl.textContent = `إنجاز الجدول الزمني: ${doneTasks} من ${studyTasks.length} مهمة دراسية (${pct}%)`;
+  summaryEl.textContent = `إنجازك بالخطة: خلّصت ${doneTasks} من أصل ${studyTasks.length} مهمة (${pct}%) — وحش! 💪`;
 
   const grouped = {};
   [...state.schedule]
@@ -1803,7 +2121,7 @@ function renderGeneratedSchedule() {
 
     const loadBadge = document.createElement('span');
     loadBadge.className = 'day-load-badge';
-    loadBadge.textContent = totalMins > 0 ? `العبء: ${hoursFormatted} ساعة` : 'يوم امتحان 🏆';
+    loadBadge.textContent = totalMins > 0 ? `دراسة: ${hoursFormatted} ساعة` : 'يوم الحسم 🏆🔥';
 
     header.append(title, loadBadge);
     card.append(header);
@@ -1822,7 +2140,7 @@ function renderGeneratedSchedule() {
 
       const span = document.createElement('span');
       if (item.isExam) {
-        span.textContent = `🏆 امتحان ${item.subjectName} — الساعة ${item.examTime}`;
+        span.textContent = `🏆 امتحان ${item.subjectName} — الساعة ${item.examTime} (فالك الفل!)`;
       } else if (item.isRevision) {
         span.textContent = `🔄 مراجعة شاملة: ${item.subjectName} (${item.minutes} دقيقة)`;
       } else {
@@ -1836,7 +2154,10 @@ function renderGeneratedSchedule() {
           const ch = sub?.chapters.find(c => c.num === item.chapterNum);
           if (ch) ch.done = cb.checked;
         }
-        if (cb.checked) markStudyDay();
+        if (cb.checked) {
+          markStudyDay();
+          triggerConfetti();
+        }
         saveState();
         renderAll();
       });
@@ -1849,12 +2170,11 @@ function renderGeneratedSchedule() {
   });
 }
 
-// Tasks & Notes
 function renderTasksAndNotes() {
   const taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
   if (state.tasks.length === 0) {
-    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:8px;">لا توجد مهام إضافية حالياً.</div>';
+    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:8px;">ما عندك مهام جانبية حالياً، رايق يا باشا 😎</div>';
   } else {
     state.tasks.forEach((task, idx) => {
       const item = document.createElement('div');
@@ -1898,7 +2218,6 @@ function markStudyDay() {
   }
 }
 
-// Study Timer (Pomodoro)
 let timerInterval = null;
 let timeLeft = 25 * 60;
 let isRunning = false;
@@ -1925,7 +2244,7 @@ function updateClockDisplay() {
 startBtn.addEventListener('click', () => {
   if (isRunning) return;
   isRunning = true;
-  startBtn.textContent = 'جلسة التركيز قيد التشغيل...';
+  startBtn.textContent = 'شغالين تركيز.. لا تفتح الريلز! 👀🔥';
   timerInterval = setInterval(() => {
     if (timeLeft > 0) {
       timeLeft--;
@@ -1933,13 +2252,13 @@ startBtn.addEventListener('click', () => {
     } else {
       clearInterval(timerInterval);
       isRunning = false;
-      startBtn.textContent = 'بدء الجلسة';
+      startBtn.textContent = 'يلا بلّش! 🚀';
       state.sessions++;
       markStudyDay();
       saveState();
       renderSubjectsAndProgress();
       triggerConfetti();
-      alert('أحسنت! اكتملت جلسة التركيز بنجاح.');
+      alert('يسعد دينك يا وحش! خلصت الجلسة بنجاح، خذلك بريك وكافئ حالك ☕🎉');
     }
   }, 1000);
 });
@@ -1947,7 +2266,7 @@ startBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
   clearInterval(timerInterval);
   isRunning = false;
-  startBtn.textContent = 'استئناف الجلسة';
+  startBtn.textContent = 'كمّل الجلسة 💪';
 });
 
 resetBtn.addEventListener('click', () => {
@@ -1955,10 +2274,9 @@ resetBtn.addEventListener('click', () => {
   isRunning = false;
   timeLeft = parseInt(durationSelect.value) * 60;
   updateClockDisplay();
-  startBtn.textContent = 'بدء الجلسة';
+  startBtn.textContent = 'يلا بلّش! 🚀';
 });
 
-// Confetti
 function triggerConfetti() {
   const layer = document.getElementById('confettiLayer');
   layer.innerHTML = '';
@@ -1984,13 +2302,13 @@ function renderAll() {
   updateClockDisplay();
 }
 
-// App Boot
 (async function boot() {
   if (localStorage.getItem(GUEST_FLAG) === '1') {
     isGuestMode = true;
+    currentUserName = '';
     loadLocalData();
     showApp();
-    syncStatus.textContent = 'وضع محلي (محفوظ على جهازك) ✓';
+    syncStatus.textContent = 'حفظ عالجهاز — أمورك بالسليم ✓';
     renderAll();
     return;
   }
@@ -1998,12 +2316,13 @@ function renderAll() {
   try {
     const savedSess = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
     if (savedSess?.userId) {
-      await enterCloudDashboard(savedSess.userId, savedSess.token);
+      await enterCloudDashboard(savedSess.userId, savedSess.token, savedSess.name || '');
       return;
     }
     const sess = await neonGetSession();
     if (sess?.user?.id) {
-      await enterCloudDashboard(sess.user.id, sess?.session?.token || null);
+      const uName = sess.user.name || (sess.user.email ? sess.user.email.split('@')[0] : '');
+      await enterCloudDashboard(sess.user.id, sess?.session?.token || null, uName);
       return;
     }
   } catch (err) {
