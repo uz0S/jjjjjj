@@ -37,7 +37,7 @@
 }
 
 body {
-  background:
+  background: 
     radial-gradient(circle at 12% 8%, #ffe3ef 0%, transparent 32%),
     radial-gradient(circle at 88% 18%, #ebe3ff 0%, transparent 35%),
     var(--bg-main);
@@ -138,6 +138,8 @@ header p {
   box-shadow: none;
   transition: 0.2s;
   z-index: 2;
+  cursor: pointer;
+  border: none;
 }
 
 .logout:hover {
@@ -465,7 +467,7 @@ select {
   margin-top: 12px;
 }
 
-/* Redesigned Professional Schedule */
+/* Schedule Section */
 .schedule-section {
   margin-top: 22px;
 }
@@ -1083,7 +1085,7 @@ footer {
   </aside>
 </div>
 
-<!-- Clear, Structured Study Schedule -->
+<!-- Schedule Section -->
 <section class="card schedule-section">
   <div class="card-header">
     <div>
@@ -1400,6 +1402,7 @@ function save() {
 // Chapters
 function makeChapters(id, count) {
   const host = document.getElementById(id);
+  host.innerHTML = '';
 
   for (let i = 1; i <= count; i++) {
     const key = id + i;
@@ -1426,7 +1429,7 @@ function makeChapters(id, count) {
   }
 }
 
-// Main progress
+// Main progress & update UI
 function update() {
   const t = Array.from({ length: 9 }, (_, i) => !!completed['terms' + (i + 1)]).filter(Boolean).length;
   const p = Array.from({ length: 5 }, (_, i) => !!completed['physio' + (i + 1)]).filter(Boolean).length;
@@ -1440,253 +1443,215 @@ function update() {
   document.getElementById('leftCount').textContent = total - done;
   document.getElementById('sessions').textContent = sessions;
 
+  // Terms progress
   document.getElementById('termsPct').textContent = t + ' / 9';
+  document.getElementById('termsBar').style.width = Math.round((t / 9) * 100) + '%';
+
+  // Physio progress
   document.getElementById('physioPct').textContent = p + ' / 5';
+  document.getElementById('physioBar').style.width = Math.round((p / 5) * 100) + '%';
 
-  document.getElementById('termsBar').style.width = (t / 9) * 100 + '%';
-  document.getElementById('physioBar').style.width = (p / 5) * 100 + '%';
+  // Chart
+  const tPct = Math.round((t / 9) * 100);
+  const pPct = Math.round((p / 5) * 100);
+  document.getElementById('termsChartValue').textContent = tPct + '%';
+  document.getElementById('termsChartBar').style.height = tPct + '%';
+  document.getElementById('physioChartValue').textContent = pPct + '%';
+  document.getElementById('physioChartBar').style.height = pPct + '%';
 
-  // Points
-  document.getElementById('pointsTotal').textContent = done * 10;
-  document.getElementById('pointsBar').style.width = Math.min(100, ((done * 10) / 140) * 100) + '%';
+  // Points & Rewards
+  const points = done * 10;
+  document.getElementById('pointsTotal').textContent = points;
+  document.getElementById('pointsBar').style.width = Math.min(100, Math.round((points / 140) * 100)) + '%';
 
-  document.getElementById('pointsHint').textContent =
-    done * 10 >= 140
-      ? 'وصلتي لأعلى رتبة يا ملكة! 👑'
-      : 'باقيلك ' + Math.max(0, 140 - done * 10) + ' نقطة للمكافأة الكبرى.';
-
-  document.querySelectorAll('.reward').forEach(r => {
-    r.classList.toggle('unlocked', done * 10 >= Number(r.dataset.at));
+  document.querySelectorAll('.reward').forEach(el => {
+    const at = Number(el.getAttribute('data-at'));
+    if (points >= at) {
+      el.classList.add('unlocked');
+    } else {
+      el.classList.remove('unlocked');
+    }
   });
 
-  // Progress chart
-  document.getElementById('termsChartValue').textContent = Math.round((t / 9) * 100) + '%';
-  document.getElementById('physioChartValue').textContent = Math.round((p / 5) * 100) + '%';
+  // Streak
+  document.getElementById('streakCount').textContent = studyDays.length;
+  if (studyDays.length > 0) {
+    document.getElementById('streakMessage').textContent = 'استمرار رائع جداً! حافظي على هذا النشاط المذهل 🌸';
+  }
 
-  document.getElementById('termsChartBar').style.height = (t / 9) * 100 + '%';
-  document.getElementById('physioChartBar').style.height = (p / 5) * 100 + '%';
-
-  updateStreak();
-
-  const msg =
-    pct === 100 ? 'يا سلام يا لجونتي! خلصتي كل الشباتر، فخورة فيكي! 🥹💗' :
-    pct >= 75 ? 'واااو! ضايل شوي وتوصلي، كمّلي يا بطلة 🌸' :
-    pct >= 40 ? 'شغلك حلو يا لجونتي، كل شابتر بقرّبك من هدفك ✨' :
-    'كل بداية صعبة، بس إنتِ قدّها يا لجونتي! 💕';
-
-  document.getElementById('encourage').textContent = msg;
-
-  if (done === total) celebrate();
-  else celebrated = false;
-}
-
-// Streak
-function localDateKey(date = new Date()) {
-  const y = date.getFullYear();
-  const m = String(date.getMonth() + 1).padStart(2, '0');
-  const d = String(date.getDate()).padStart(2, '0');
-  return `${y}-${m}-${d}`;
+  renderTasks();
+  renderNotes();
 }
 
 function markStudyDay() {
-  const today = localDateKey();
-  if (!studyDays.includes(today)) studyDays.push(today);
-}
-
-function updateStreak() {
-  const set = new Set(studyDays);
-  const today = new Date();
-  const todayKey = localDateKey(today);
-
-  let cursor = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  if (!set.has(todayKey)) cursor.setDate(cursor.getDate() - 1);
-
-  let count = 0;
-  while (set.has(localDateKey(cursor))) {
-    count++;
-    cursor.setDate(cursor.getDate() - 1);
+  const todayStr = new Date().toISOString().slice(0, 10);
+  if (!studyDays.includes(todayStr)) {
+    studyDays.push(todayStr);
   }
-
-  document.getElementById('streakCount').textContent = count;
-  document.getElementById('streakMessage').textContent =
-    count >= 3 ? 'يا سلام! ' + count + ' أيام ورا بعض، لجونتي ملتزمة وبتجنن 🔥' :
-    count === 2 ? 'يومين متتالين! خلي الحماس مكمل 🌷' :
-    count === 1 ? 'برافو! سجلتي إنجاز اليوم، حافظي على السلسلة 💗' :
-    'ابدئي اليوم وسجّلي أول إنجاز حتى تبدأ سلسلتك يا لجونتي!';
 }
 
-// Daily tasks
+// Confetti Effect
+function triggerConfetti() {
+  const layer = document.getElementById('confettiLayer');
+  layer.innerHTML = '';
+  const colors = ['#d95d91', '#8b74d6', '#2c8c64', '#f6b3cf', '#ffd1dc'];
+  for (let i = 0; i < 40; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.width = (Math.random() * 8 + 6) + 'px';
+    piece.style.height = (Math.random() * 12 + 8) + 'px';
+    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    piece.style.animationDelay = (Math.random() * 0.5) + 's';
+    layer.appendChild(piece);
+  }
+  setTimeout(() => { layer.innerHTML = ''; }, 3500);
+}
+
+// Study Timer
+let timerInterval = null;
+let timeLeft = 25 * 60;
+let isRunning = false;
+
+const clockEl = document.getElementById('clock');
+const durationSelect = document.getElementById('duration');
+const startBtn = document.getElementById('startBtn');
+const pauseBtn = document.getElementById('pauseBtn');
+const resetBtn = document.getElementById('resetBtn');
+
+durationSelect.addEventListener('change', () => {
+  if (!isRunning) {
+    timeLeft = parseInt(durationSelect.value) * 60;
+    updateClockDisplay();
+  }
+});
+
+function updateClockDisplay() {
+  const m = Math.floor(timeLeft / 60);
+  const s = timeLeft % 60;
+  clockEl.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+}
+
+startBtn.addEventListener('click', () => {
+  if (isRunning) return;
+  isRunning = true;
+  startBtn.textContent = 'شغال... ⏳';
+  
+  timerInterval = setInterval(() => {
+    if (timeLeft > 0) {
+      timeLeft--;
+      updateClockDisplay();
+    } else {
+      clearInterval(timerInterval);
+      isRunning = false;
+      startBtn.textContent = 'ابدئي الجلسة 💗';
+      sessions++;
+      markStudyDay();
+      save();
+      update();
+      triggerConfetti();
+      alert('أتممت جلسة التركيز بكل نجاح! كفو يا بطلة 🎉');
+    }
+  }, 1000);
+});
+
+pauseBtn.addEventListener('click', () => {
+  clearInterval(timerInterval);
+  isRunning = false;
+  startBtn.textContent = 'استئناف 💗';
+});
+
+resetBtn.addEventListener('click', () => {
+  clearInterval(timerInterval);
+  isRunning = false;
+  timeLeft = parseInt(durationSelect.value) * 60;
+  updateClockDisplay();
+  startBtn.textContent = 'ابدئي الجلسة 💗';
+});
+
+// Tasks handling
 function renderTasks() {
-  const host = document.getElementById('taskList');
-  host.innerHTML = '';
-
-  if (!tasks.length) {
-    const empty = document.createElement('div');
-    empty.className = 'mini';
-    empty.textContent = 'لسه ما في مهام إضافية. أضيفي أول مهمة يا شطورة!';
-    host.append(empty);
+  const taskList = document.getElementById('taskList');
+  taskList.innerHTML = '';
+  if (tasks.length === 0) {
+    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:10px;">لا توجد مهام إضافية حالياً ✨</div>';
+    return;
   }
-
-  tasks.forEach(task => {
-    const label = document.createElement('label');
-    label.className = 'task-item' + (task.done ? ' done' : '');
-
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = !!task.done;
-
-    const span = document.createElement('span');
-    span.textContent = task.text;
-
-    cb.addEventListener('change', () => {
-      task.done = cb.checked;
-      label.classList.toggle('done', cb.checked);
-      if (cb.checked) markStudyDay();
+  tasks.forEach((task, index) => {
+    const item = document.createElement('div');
+    item.className = 'task-item' + (task.done ? ' done' : '');
+    item.innerHTML = `<span>${task.done ? '✔️' : '⭕'}</span> <span style="flex:1">${task.text}</span>`;
+    item.addEventListener('click', () => {
+      tasks[index].done = !tasks[index].done;
       save();
       update();
     });
-
-    label.append(cb, span);
-    host.append(label);
+    taskList.appendChild(item);
   });
 }
 
 document.getElementById('addTask').addEventListener('click', () => {
   const input = document.getElementById('newTask');
-  const value = input.value.trim();
-  if (!value) return;
-
-  tasks.push({ text: value, done: false });
-  input.value = '';
-  save();
-  renderTasks();
+  const val = input.value.trim();
+  if (val) {
+    tasks.push({ text: val, done: false });
+    input.value = '';
+    save();
+    update();
+  }
 });
 
-document.getElementById('newTask').addEventListener('keydown', e => {
-  if (e.key === 'Enter') document.getElementById('addTask').click();
-});
-
-// Notes
+// Notes handling
 function renderNotes() {
-  const host = document.getElementById('notesList');
-  host.innerHTML = '';
+  const notesList = document.getElementById('notesList');
+  notesList.innerHTML = '';
+  
+  const allChapters = [
+    { id: 'terms1', name: 'مصطلحات - شابتر 1' },
+    { id: 'terms2', name: 'مصطلحات - شابتر 2' },
+    { id: 'terms3', name: 'مصطلحات - شابتر 3' },
+    { id: 'terms4', name: 'مصطلحات - شابتر 4' },
+    { id: 'terms5', name: 'مصطلحات - شابتر 5' },
+    { id: 'terms6', name: 'مصطلحات - شابتر 6' },
+    { id: 'terms7', name: 'مصطلحات - شابتر 7' },
+    { id: 'terms8', name: 'مصطلحات - شابتر 8' },
+    { id: 'terms9', name: 'مصطلحات - شابتر 9' },
+    { id: 'physio1', name: 'فسيو - شابتر 1' },
+    { id: 'physio2', name: 'فسيو - شابتر 2' },
+    { id: 'physio3', name: 'فسيو - شابتر 3' },
+    { id: 'physio4', name: 'فسيو - شابتر 4' },
+    { id: 'physio5', name: 'فسيو - شابتر 5' },
+  ];
 
-  [['terms', 'مصطلحات', 9], ['physio', 'فسيو', 5]].forEach(([prefix, name, count]) => {
-    for (let i = 1; i <= count; i++) {
-      const row = document.createElement('div');
-      row.className = 'note-row';
+  allChapters.forEach(ch => {
+    const row = document.createElement('div');
+    row.className = 'note-row';
 
-      const label = document.createElement('label');
-      label.textContent = name + ' — شابتر ' + i;
+    const label = document.createElement('label');
+    label.textContent = ch.name;
 
-      const area = document.createElement('textarea');
-      area.className = 'note-area';
-      area.rows = 2;
-      area.placeholder = 'اكتبي ملاحظتك هون...';
-      area.value = notes[prefix + i] || '';
+    const textarea = document.createElement('textarea');
+    textarea.className = 'note-area';
+    textarea.placeholder = 'اكتبي ملاحظات أو تنبيهات مهمة هنا...';
+    textarea.value = notes[ch.id] || '';
 
-      area.addEventListener('input', () => {
-        notes[prefix + i] = area.value;
-        save();
-      });
+    textarea.addEventListener('input', () => {
+      notes[ch.id] = textarea.value;
+      save();
+    });
 
-      row.append(label, area);
-      host.append(row);
-    }
+    row.append(label, textarea);
+    notesList.append(row);
   });
 }
 
-// Celebration
-let celebrated = false;
-
-function celebrate() {
-  if (celebrated) return;
-  celebrated = true;
-
-  const layer = document.getElementById('confettiLayer');
-  const symbols = ['🎉', '💗', '🌸', '✨', '🎀', '⭐'];
-
-  for (let i = 0; i < 65; i++) {
-    const piece = document.createElement('span');
-    piece.className = 'confetti-piece';
-    piece.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-    piece.style.left = Math.random() * 100 + '%';
-    piece.style.animationDelay = Math.random() * 1.2 + 's';
-    piece.style.fontSize = (16 + Math.random() * 18) + 'px';
-    layer.append(piece);
-  }
-
-  document.getElementById('encourage').textContent =
-    'يااا لجونتييي! خلصتي كل الشباتر! فخورة فيكي قد الدنيااا 🥹🎉💗';
-
-  setTimeout(() => { layer.innerHTML = ''; }, 4800);
-}
-
-// Initialize
-renderTasks();
-renderNotes();
+// Initializations
 makeChapters('terms', 9);
 makeChapters('physio', 5);
 update();
-
-// Study timer
-let remaining = 25 * 60;
-let interval = null;
-let running = false;
-
-const clock = document.getElementById('clock');
-const duration = document.getElementById('duration');
-
-function showTime() {
-  clock.textContent =
-    String(Math.floor(remaining / 60)).padStart(2, '0') + ':' +
-    String(remaining % 60).padStart(2, '0');
-}
-
-function stop() {
-  if (interval) clearInterval(interval);
-  interval = null;
-  running = false;
-}
-
-duration.addEventListener('change', () => {
-  stop();
-  remaining = Number(duration.value) * 60;
-  document.getElementById('timerLabel').textContent =
-    Number(duration.value) <= 10 ? 'وقت الاستراحة ☕' : 'جلسة تركيز 📚';
-  showTime();
-});
-
-document.getElementById('startBtn').addEventListener('click', () => {
-  if (running) return;
-  running = true;
-
-  interval = setInterval(() => {
-    remaining--;
-    showTime();
-
-    if (remaining <= 0) {
-      stop();
-      sessions++;
-      markStudyDay();
-      save();
-      update();
-
-      document.getElementById('encourage').textContent =
-        'خلصت الجلسة يا لجونتي! خذي استراحة، إنتِ بطلة 🥳💗';
-    }
-  }, 1000);
-});
-
-document.getElementById('pauseBtn').addEventListener('click', stop);
-
-document.getElementById('resetBtn').addEventListener('click', () => {
-  stop();
-  remaining = Number(duration.value) * 60;
-  showTime();
-});
-
-showTime();
+updateClockDisplay();
 </script>
+
 </body>
 </html>
