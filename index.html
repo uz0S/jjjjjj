@@ -1,33 +1,59 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="ar" dir="rtl" data-theme="light">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>مستشفى العذاب النفسي (خطة لجونتي) 💗</title>
+<title>منصة الإنجاز الأكاديمي الذكية | MOHAMMAD RUM</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap" rel="stylesheet">
 
 <style>
 :root {
-  --bg-main: #fdf8fb;
+  --bg-main: #f4f7fb;
   --surface: #ffffff;
-  --surface-soft: #fff5fa;
-  --primary: #d95d91;
-  --primary-light: #f6b3cf;
-  --primary-dark: #a63d6a;
-  --secondary: #8b74d6;
-  --secondary-soft: #f3effd;
-  --accent-mint: #2c8c64;
-  --accent-mint-bg: #eefaf4;
-  --text-main: #382736;
-  --text-muted: #7d677a;
-  --border-light: #f2dce7;
-  --shadow-sm: 0 4px 14px rgba(166, 61, 106, 0.05);
-  --shadow-md: 0 12px 32px rgba(166, 61, 106, 0.09);
+  --surface-soft: #f8fafc;
+  --primary: #2563eb;
+  --primary-light: #dbeafe;
+  --primary-dark: #1e40af;
+  --secondary: #0ea5e9;
+  --secondary-soft: #e0f2fe;
+  --accent-success: #10b981;
+  --accent-success-bg: #ecfdf5;
+  --accent-warn: #f59e0b;
+  --accent-warn-bg: #fffbeb;
+  --accent-danger: #ef4444;
+  --accent-danger-bg: #fef2f2;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-light: #e2e8f0;
+  --shadow-sm: 0 4px 12px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 12px 28px rgba(37, 99, 235, 0.08);
   --radius-lg: 20px;
   --radius-md: 14px;
   --radius-sm: 10px;
+}
+
+[data-theme="dark"] {
+  --bg-main: #0b1120;
+  --surface: #1e293b;
+  --surface-soft: #0f172a;
+  --primary: #3b82f6;
+  --primary-light: #1e3a8a;
+  --primary-dark: #60a5fa;
+  --secondary: #38bdf8;
+  --secondary-soft: #0c4a6e;
+  --accent-success: #34d399;
+  --accent-success-bg: #064e3b;
+  --accent-warn: #fbbf24;
+  --accent-warn-bg: #451a03;
+  --accent-danger: #f87171;
+  --accent-danger-bg: #450a0a;
+  --text-main: #f8fafc;
+  --text-muted: #94a3b8;
+  --border-light: #334155;
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --shadow-md: 0 12px 28px rgba(0, 0, 0, 0.4);
 }
 
 * {
@@ -38,81 +64,120 @@
 }
 
 body {
-  background: 
-    radial-gradient(circle at 12% 8%, #ffe3ef 0%, transparent 32%),
-    radial-gradient(circle at 88% 18%, #ebe3ff 0%, transparent 35%),
-    var(--bg-main);
+  background: var(--bg-main);
   color: var(--text-main);
-  font-family: 'Tajawal', Tahoma, Arial, sans-serif;
-  line-height: 1.6;
+  font-family: 'Cairo', Tahoma, Arial, sans-serif;
+  line-height: 1.65;
+  transition: background 0.3s ease, color 0.3s ease;
 }
 
 .wrap {
   width: 100%;
-  max-width: 100%;
+  max-width: 1020px;
   margin: auto;
-  padding: 12px 10px 40px;
+  padding: 16px 14px 48px;
 }
 
 /* Header */
 header {
-  background: linear-gradient(135deg, #f9b8d2 0%, #e4d8ff 100%);
+  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 55%, #0ea5e9 100%);
   border-radius: var(--radius-lg);
-  padding: 20px 16px;
+  padding: 24px 20px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  border: 1px solid rgba(255, 255, 255, 0.6);
+  color: #ffffff;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 8px;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.brand-tag {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+  padding: 3px 10px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1px;
   margin-bottom: 6px;
+  text-transform: uppercase;
 }
 
 h1 {
   font-size: clamp(20px, 4.5vw, 28px);
   font-weight: 900;
-  color: #5e2947;
+  color: #ffffff;
 }
 
 header p {
-  color: #6b3d57;
-  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 14px;
   font-weight: 500;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.btn-group-top {
+  display: flex;
+  gap: 6px;
+}
+
+.icon-btn {
+  font-size: 12px;
+  font-weight: 700;
+  padding: 7px 12px;
+  background: rgba(255, 255, 255, 0.18);
+  color: #ffffff;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 0.2s;
+}
+
+.icon-btn:hover {
+  background: rgba(255, 255, 255, 0.28);
+}
+
+.sync-status {
+  font-size: 11px;
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.18);
+  border-radius: 8px;
+  padding: 4px 10px;
+  font-weight: 700;
 }
 
 .pills-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 12px;
+  gap: 8px;
+  margin-top: 14px;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  background: rgba(255, 255, 255, 0.9);
-  padding: 5px 10px;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(4px);
+  padding: 6px 12px;
   border-radius: 20px;
-  font-size: 11.5px;
+  font-size: 12px;
   font-weight: 700;
-  color: #783b5b;
-}
-
-.logout {
-  font-size: 11.5px;
-  font-weight: 700;
-  padding: 6px 10px;
-  background: rgba(255, 255, 255, 0.8);
-  color: #783b5b;
-  border-radius: 10px;
-  cursor: pointer;
-  border: none;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.22);
 }
 
 /* Cards & Layout */
@@ -120,82 +185,91 @@ header p {
   background: var(--surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: 16px 14px;
+  padding: 20px 18px;
   box-shadow: var(--shadow-sm);
-  margin-top: 14px;
+  margin-top: 16px;
+  transition: background 0.3s, border-color 0.3s;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 12px;
+  margin-bottom: 14px;
   gap: 8px;
+  flex-wrap: wrap;
 }
 
 .card h2 {
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 800;
-  color: #6e3554;
+  color: var(--text-main);
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .mini {
-  font-size: 11.5px;
+  font-size: 12px;
   color: var(--text-muted);
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .grid-main {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 14px;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-top: 16px;
 }
 
-/* Countdown Section */
+@media (min-width: 768px) {
+  .grid-main {
+    grid-template-columns: 1.45fr 1fr;
+  }
+}
+
+/* Dynamic Exam Countdown Grid */
 .exam-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
   margin-top: 10px;
 }
 
 .exam {
-  background: linear-gradient(145deg, #fff6fa 0%, #f4f0ff 100%);
-  border: 1px solid #eed6e4;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-md);
-  padding: 12px;
+  padding: 14px;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
   text-align: center;
+  position: relative;
 }
 
 .exam-info h3 {
-  color: #6e3554;
-  font-size: 14.5px;
+  color: var(--primary-dark);
+  font-size: 15px;
   font-weight: 800;
 }
 
 .exam-info small {
   color: var(--text-muted);
-  font-size: 11px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
 .exam-clock-box {
-  background: #fff;
-  padding: 8px;
+  background: var(--surface);
+  padding: 10px;
   border-radius: var(--radius-sm);
-  border: 1px solid #f2dce7;
+  border: 1px solid var(--border-light);
   text-align: center;
-  box-shadow: 0 2px 6px rgba(168, 78, 120, 0.04);
 }
 
 .exam .exam-clock {
-  font-size: 14.5px;
+  font-size: 15.5px;
   font-weight: 900;
   color: var(--primary);
   font-variant-numeric: tabular-nums;
@@ -204,7 +278,7 @@ header p {
 
 /* Progress Section */
 .big-pct {
-  font-size: 26px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--primary);
   line-height: 1;
@@ -212,7 +286,7 @@ header p {
 
 .track {
   height: 10px;
-  background: #f6e7ef;
+  background: var(--border-light);
   border-radius: 20px;
   overflow: hidden;
   margin: 10px 0;
@@ -221,7 +295,7 @@ header p {
 .fill {
   height: 100%;
   width: 0;
-  background: linear-gradient(90deg, #ef8eb7, #a48ce6);
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
   border-radius: 20px;
   transition: width 0.45s cubic-bezier(0.22, 1, 0.36, 1);
 }
@@ -229,83 +303,169 @@ header p {
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 8px;
-  margin-top: 12px;
+  gap: 10px;
+  margin-top: 14px;
 }
 
 .stat {
   background: var(--surface-soft);
-  border: 1px solid #f7e3ed;
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 8px 4px;
+  padding: 10px 6px;
   text-align: center;
-  font-size: 11px;
+  font-size: 11.5px;
   color: var(--text-muted);
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .stat b {
   display: block;
-  color: #6e3554;
-  font-size: 17px;
+  color: var(--primary-dark);
+  font-size: 19px;
   font-weight: 900;
   margin-bottom: 2px;
 }
 
-.subject {
+/* Smart Study Planner Form */
+.planner-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.planner-form label, .chapter-difficulty label {
+  display: grid;
+  gap: 5px;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: var(--text-main);
+}
+
+.planner-form input, .planner-form select, .chapter-difficulty select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1.5px solid var(--border-light);
+  border-radius: 10px;
+  background: var(--surface-soft);
+  color: var(--text-main);
+  font: inherit;
+  font-size: 13.5px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.planner-form input:focus, .planner-form select:focus, .chapter-difficulty select:focus {
+  border-color: var(--primary);
+}
+
+.chapter-editor {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 4px;
+}
+
+.chapter-difficulty {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  align-items: center;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-light);
+  border-radius: 10px;
+  padding: 8px 12px;
+}
+
+.chapter-difficulty strong {
+  font-size: 13px;
+  color: var(--primary-dark);
+}
+
+.chapter-difficulty select {
+  width: 115px;
+  padding: 6px 8px;
+  font-size: 12.5px;
+}
+
+/* Subject Chips & Dynamic Chapters */
+.subject-block {
   margin-top: 16px;
-  padding-top: 14px;
-  border-top: 1px dashed #f0d8e5;
+  padding: 14px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius-md);
 }
 
 .subject-head {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .subject-head h3 {
-  font-size: 14.5px;
+  font-size: 15px;
   font-weight: 800;
-  color: #6e3554;
+  color: var(--text-main);
 }
 
 .badge-count {
   background: var(--secondary-soft);
-  color: var(--secondary);
+  color: var(--primary-dark);
   font-weight: 800;
-  font-size: 11px;
-  padding: 2px 8px;
+  font-size: 12px;
+  padding: 3px 10px;
   border-radius: 20px;
 }
 
-.chapters {
+.chapters-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(145px, 1fr));
   gap: 8px;
   margin-top: 10px;
 }
 
-.chapter {
-  border: 1.5px solid #f1dce7;
-  background: #fffcfd;
+.chapter-item {
+  border: 1.5px solid var(--border-light);
+  background: var(--surface);
   border-radius: var(--radius-sm);
   padding: 9px 10px;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: space-between;
+  gap: 6px;
   font-size: 12.5px;
   font-weight: 700;
   color: var(--text-main);
   cursor: pointer;
   user-select: none;
+  transition: all 0.2s;
 }
 
-.chapter.done {
-  background: var(--accent-mint-bg);
-  border-color: #b7e2cc;
-  color: var(--accent-mint);
+.chapter-item:hover {
+  border-color: var(--primary);
 }
+
+.chapter-item.done {
+  background: var(--accent-success-bg);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
+}
+
+.diff-tag {
+  font-size: 10px;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 800;
+}
+.diff-easy { background: var(--accent-success-bg); color: var(--accent-success); }
+.diff-medium { background: var(--accent-warn-bg); color: var(--accent-warn); }
+.diff-hard { background: var(--accent-danger-bg); color: var(--accent-danger); }
 
 input[type=checkbox] {
   accent-color: var(--primary);
@@ -315,68 +475,150 @@ input[type=checkbox] {
   flex-shrink: 0;
 }
 
+/* Generated Timeline Plan */
+.plan-days {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.plan-day {
+  border: 1.5px solid var(--border-light);
+  background: var(--surface-soft);
+  border-radius: var(--radius-md);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.plan-day.exam-highlight {
+  border-color: var(--accent-warn);
+  background: var(--accent-warn-bg);
+}
+
+.plan-day-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 8px;
+}
+
+.plan-day h3 {
+  font-size: 14px;
+  font-weight: 900;
+  color: var(--primary-dark);
+}
+
+.day-load-badge {
+  font-size: 11px;
+  font-weight: 800;
+  background: var(--primary-light);
+  color: var(--primary-dark);
+  padding: 2px 8px;
+  border-radius: 12px;
+}
+
+.plan-task {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 8px 10px;
+  background: var(--surface);
+  border-radius: 8px;
+  border-right: 4px solid var(--primary);
+  font-size: 12.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.plan-task.task-easy { border-right-color: var(--accent-success); }
+.plan-task.task-medium { border-right-color: var(--accent-warn); }
+.plan-task.task-hard { border-right-color: var(--accent-danger); }
+.plan-task.task-revision { border-right-color: var(--secondary); background: var(--secondary-soft); }
+.plan-task.task-exam { border-right-color: var(--accent-warn); background: var(--accent-warn-bg); }
+
+.plan-task.done {
+  opacity: 0.65;
+  text-decoration: line-through;
+}
+
 /* Study Timer */
 .timer-card {
   text-align: center;
-  background: linear-gradient(170deg, #ffffff 0%, #fff4fa 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.study-girl {
-  font-size: 42px;
+.timer-icon {
+  font-size: 38px;
   margin: 4px 0;
 }
 
 .clock-box {
-  background: #fff;
-  border: 1.5px solid #f3dce8;
+  background: var(--surface-soft);
+  border: 1.5px solid var(--border-light);
   border-radius: 16px;
-  padding: 10px;
-  margin: 8px 0 12px;
+  padding: 12px;
+  margin: 10px 0 12px;
 }
 
 .clock {
-  font-size: 38px;
+  font-size: 40px;
   font-weight: 900;
-  letter-spacing: 1px;
-  color: var(--primary-dark);
+  letter-spacing: 2px;
+  color: var(--primary);
   font-variant-numeric: tabular-nums;
-}
-
-button, select {
-  font-family: inherit;
-  border: 0;
-  border-radius: var(--radius-sm);
-  padding: 10px 14px;
-  font-size: 13px;
-  font-weight: 700;
-  cursor: pointer;
+  direction: ltr;
 }
 
 button {
-  background: linear-gradient(135deg, #e573a3, #c86492);
+  font-family: inherit;
+  border: 0;
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  font-size: 13.5px;
+  font-weight: 700;
+  cursor: pointer;
+  background: linear-gradient(135deg, var(--primary), var(--secondary));
   color: white;
-  box-shadow: 0 4px 12px rgba(217, 93, 145, 0.2);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.22);
+  transition: transform 0.15s, opacity 0.2s;
+}
+
+button:active {
+  transform: scale(0.98);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 button.secondary {
-  background: #f6e7ef;
-  color: #783b5b;
+  background: var(--surface-soft);
+  color: var(--text-main);
+  border: 1px solid var(--border-light);
   box-shadow: none;
 }
 
-select {
-  width: 100%;
-  background: #fff;
-  color: #6e3554;
-  border: 1.5px solid #efd3e1;
-  margin-bottom: 10px;
-  text-align: center;
+button.danger-btn {
+  background: var(--accent-danger-bg);
+  color: var(--accent-danger);
+  border: 1px solid var(--accent-danger);
+  box-shadow: none;
+  padding: 5px 10px;
+  font-size: 11.5px;
 }
 
 .timer-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 8px;
 }
 
 .timer-controls #startBtn {
@@ -384,128 +626,22 @@ select {
 }
 
 .quote {
-  margin-top: 12px;
-  background: var(--secondary-soft);
-  border: 1px solid #e3dafb;
-  border-radius: var(--radius-sm);
-  padding: 10px;
-  color: #5b488a;
-  font-size: 12px;
-  font-weight: 600;
-}
-
-/* Schedule Section */
-.schedule-section {
   margin-top: 14px;
-}
-
-.schedule-legend {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 12px;
-}
-
-.legend-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 4px;
-  font-size: 11px;
-  font-weight: 700;
-  padding: 4px 10px;
-  border-radius: 20px;
-}
-
-.legend-terms { background: #ffeaf3; color: #b53d72; }
-.legend-physio { background: #ede8ff; color: #6246b5; }
-.legend-exam { background: #fff3d6; color: #9e6b00; }
-
-.timeline-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.day-card {
-  background: #fffcfd;
-  border: 1.5px solid #f1dce7;
-  border-radius: var(--radius-md);
-  padding: 12px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.day-card.exam-day {
-  background: linear-gradient(145deg, #fff9ec 0%, #fff2f7 100%);
-  border-color: #f3ce88;
-}
-
-.day-card-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid #f5e6ee;
-  padding-bottom: 8px;
-}
-
-.day-name {
-  font-size: 14.5px;
-  font-weight: 900;
-  color: #5e2947;
-}
-
-.day-date {
-  font-size: 11px;
-  font-weight: 700;
-  color: var(--text-muted);
-}
-
-.day-badge {
-  font-size: 10.5px;
-  font-weight: 800;
-  padding: 3px 8px;
-  border-radius: 20px;
-  background: #f9e8f1;
-  color: #9a476d;
-}
-
-.day-card.exam-day .day-badge {
-  background: #ffe6ad;
-  color: #8a5a00;
-}
-
-.day-tasks {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.task-pill {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  padding: 7px 10px;
-  border-radius: 8px;
+  background: var(--secondary-soft);
+  border: 1px solid var(--primary-light);
+  border-radius: var(--radius-sm);
+  padding: 11px;
+  color: var(--primary-dark);
   font-size: 12px;
   font-weight: 700;
 }
-
-.task-pill.terms { background: #fff0f6; color: #a63467; border-right: 3px solid #e573a3; }
-.task-pill.physio { background: #f3f0ff; color: #583da8; border-right: 3px solid #8b74d6; }
-.task-pill.review { background: #eefaf4; color: #257a56; border-right: 3px solid #38a878; }
-.task-pill.exam-alert { background: #fff5db; color: #8f5d00; border-right: 3px solid #e6a119; }
 
 /* Features Grid */
 .feature-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  margin-top: 14px;
-}
-
-.points-panel {
-  background: linear-gradient(135deg, #fff3f8 0%, #f4eeff 100%);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .points-number {
@@ -518,41 +654,24 @@ select {
 .reward-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 7px;
+  margin-top: 12px;
 }
 
 .reward {
-  font-size: 11px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 5px 10px;
+  padding: 5px 11px;
   border-radius: 20px;
-  background: #fff;
-  border: 1px solid #eed6e4;
-  color: #8c5c75;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-light);
+  color: var(--text-muted);
 }
 
 .reward.unlocked {
-  background: var(--accent-mint-bg);
-  border-color: #b4dfc9;
-  color: var(--accent-mint);
-}
-
-.streak-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin: 6px 0;
-}
-
-.streak-fire {
-  font-size: 36px;
-}
-
-.streak-number {
-  font-size: 26px;
-  font-weight: 900;
-  color: #d96b38;
+  background: var(--accent-success-bg);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
 }
 
 .task-list {
@@ -563,125 +682,49 @@ select {
 .task-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  background: #fff8fb;
-  border: 1px solid #f4e1eb;
+  gap: 10px;
+  background: var(--surface-soft);
+  border: 1px solid var(--border-light);
   border-radius: var(--radius-sm);
-  padding: 9px 10px;
+  padding: 9px 12px;
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 700;
+  cursor: pointer;
 }
 
 .task-item.done {
-  background: var(--accent-mint-bg);
-  border-color: #bfe3d0;
-  color: #5b826d;
+  background: var(--accent-success-bg);
+  border-color: var(--accent-success);
+  color: var(--accent-success);
   text-decoration: line-through;
 }
 
 .task-add {
   display: flex;
-  gap: 6px;
-  margin-top: 10px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .task-add input, .note-area {
   font-family: inherit;
-  border: 1.5px solid #efd5e2;
+  border: 1.5px solid var(--border-light);
   border-radius: var(--radius-sm);
-  background: #fffcfd;
-  padding: 9px 10px;
+  background: var(--surface-soft);
+  padding: 9px 12px;
   color: var(--text-main);
-  font-size: 12.5px;
+  font-size: 13px;
   outline: none;
 }
 
-.task-add input {
-  flex: 1;
-}
-
-.notes-list {
-  display: grid;
-  gap: 10px;
-  max-height: 260px;
-  overflow-y: auto;
-}
-
-.note-row {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.note-row label {
-  font-size: 12px;
-  font-weight: 700;
-  color: #783b5b;
-}
-
-.note-area {
-  width: 100%;
-  min-height: 48px;
-  resize: vertical;
-}
-
-/* Chart */
-.chart-wrap {
-  height: 150px;
-  display: flex;
-  align-items: flex-end;
-  justify-content: center;
-  gap: 30px;
-  padding: 10px 10px 0;
-  border-bottom: 2px solid #f0dce7;
-}
-
-.chart-col {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  height: 100%;
-  gap: 6px;
-  width: 90px;
-}
-
-.chart-bar-bg {
-  height: 100px;
-  width: 44px;
-  background: #f8edf3;
-  border-radius: 12px 12px 4px 4px;
-  display: flex;
-  align-items: flex-end;
-  overflow: hidden;
-}
-
-.chart-bar {
-  width: 100%;
-  height: 0;
-  background: linear-gradient(180deg, #9d84e8, #e573a3);
-  border-radius: 12px 12px 4px 4px;
-  transition: height 0.5s ease;
-}
-
-.chart-col strong {
-  font-size: 12.5px;
-  font-weight: 800;
-  color: #6e3554;
-}
-
-.chart-col small {
-  font-size: 11.5px;
-  font-weight: 700;
-  color: var(--text-muted);
-}
+.task-add input { flex: 1; }
+.note-area { width: 100%; min-height: 85px; resize: vertical; }
 
 /* Login Screen */
 .login-screen {
   position: fixed;
   inset: 0;
   z-index: 50;
-  background: linear-gradient(135deg, #ffe6f0 0%, #eae2ff 60%, #fffafd 100%);
+  background: radial-gradient(circle at top right, #1e3a8a, #0f172a);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -690,24 +733,19 @@ select {
 
 .login-box {
   width: 100%;
-  max-width: 380px;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border: 1px solid #f3d5e4;
+  max-width: 400px;
+  background: var(--surface);
+  border: 1px solid var(--border-light);
   border-radius: 24px;
-  padding: 28px 20px;
+  padding: 32px 24px;
   text-align: center;
-  box-shadow: 0 20px 50px rgba(168, 109, 139, 0.2);
-}
-
-.login-art {
-  font-size: 48px;
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
 }
 
 .login-box h1 {
   font-size: 22px;
-  color: #6e3554;
-  margin: 8px 0 4px;
+  color: var(--text-main);
+  margin: 10px 0 4px;
 }
 
 .login-box p {
@@ -718,57 +756,56 @@ select {
 
 .login-box input {
   width: 100%;
-  border: 1.5px solid #efcddd;
+  border: 1.5px solid var(--border-light);
   border-radius: 12px;
   padding: 12px 14px;
   font-family: inherit;
-  font-size: 14.5px;
-  text-align: center;
+  font-size: 14px;
+  text-align: right;
   outline: none;
-  background: #fffcfd;
+  background: var(--surface-soft);
   color: var(--text-main);
+  margin-top: 10px;
 }
 
 .login-box button {
   width: 100%;
   margin-top: 12px;
   padding: 12px;
-  font-size: 14.5px;
 }
 
-.login-box .auth-field { margin-top: 10px; }
-.login-box .auth-switch {
-  margin-top: 10px;
-  background: transparent;
-  color: #874e6c;
+.login-box .quick-btn {
+  background: var(--surface-soft);
+  color: var(--primary);
+  border: 1.5px solid var(--primary-light);
   box-shadow: none;
+}
+
+.login-box .auth-switch {
+  background: transparent;
+  color: var(--text-muted);
+  box-shadow: none;
+  font-size: 12.5px;
   text-decoration: underline;
 }
-.auth-status {
-  min-height: 20px;
-  margin-top: 8px;
-  color: #6e3554;
-  font-size: 12px;
-  font-weight: 700;
-}
-.sync-status {
-  font-size: 11px;
-  color: #6e3554;
-  background: rgba(255,255,255,.72);
-  border-radius: 9px;
-  padding: 4px 8px;
-  margin-top: 8px;
-  display: inline-block;
-}
+
 .login-error {
-  min-height: 22px;
-  color: #c34d76;
-  font-size: 12px;
+  min-height: 20px;
+  color: var(--accent-danger);
+  font-size: 12.5px;
   font-weight: 700;
   margin-top: 8px;
 }
 
-/* Celebration */
+.auth-status {
+  min-height: 18px;
+  color: var(--primary);
+  font-size: 12px;
+  font-weight: 700;
+  margin-top: 6px;
+}
+
+/* Confetti */
 .confetti-layer {
   position: fixed;
   inset: 0;
@@ -784,58 +821,48 @@ select {
 }
 
 @keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(720deg);
-    opacity: 0;
-  }
+  to { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 
 footer {
   text-align: center;
-  color: #9e8293;
-  font-size: 11.5px;
-  font-weight: 600;
-  margin-top: 24px;
+  color: var(--text-muted);
+  font-size: 12.5px;
+  font-weight: 700;
+  margin-top: 28px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border-light);
 }
 
-/* Automatic study planner */
-.planner-form{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-top:12px}
-.planner-form label,.chapter-difficulty label{display:grid;gap:5px;font-size:12px;font-weight:800;color:#783b5b}
-.planner-form input,.planner-form select,.chapter-difficulty select{width:100%;padding:10px;border:1px solid #efd5e2;border-radius:10px;background:#fffcfd;color:#382736;font:inherit}
-.planner-form button,.planner-actions button{border:0;border-radius:11px;padding:11px 15px;background:#d95d91;color:white;font:inherit;font-weight:800;cursor:pointer}
-.chapter-editor{display:grid;gap:8px;margin-top:12px}
-.chapter-difficulty{display:grid;grid-template-columns:1fr 150px;gap:8px;align-items:center;background:#fff8fb;border:1px solid #f4e1eb;border-radius:10px;padding:9px}
-.plan-days{display:grid;gap:10px;margin-top:14px}
-.plan-day{border:1px solid #efd5e2;background:#fffafd;border-radius:13px;padding:12px}
-.plan-day h3{font-size:14px;color:#783b5b;margin-bottom:8px}
-.plan-task{display:flex;align-items:flex-start;gap:8px;padding:7px 0;border-top:1px dashed #f0dce7;font-size:13px}
-.plan-task input{margin-top:4px;accent-color:#d95d91}
-.plan-task.done span{text-decoration:line-through;color:#8a9b91}
-.subject-chip{display:flex;justify-content:space-between;gap:8px;align-items:center;background:#fff5fa;border:1px solid #f2dce7;border-radius:10px;padding:9px 11px;margin-top:8px;font-size:13px}
-.subject-chip button{border:0;background:transparent;color:#bd4778;font-weight:800;cursor:pointer}
-.planner-hint{font-size:12px;color:#7d677a;margin-top:8px}
-
+.signature-badge {
+  display: inline-block;
+  margin-top: 4px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  color: var(--primary);
+}
 </style>
 </head>
 
 <body>
 
-<!-- Login -->
+<!-- Login Screen -->
 <div class="login-screen" id="loginScreen">
   <div class="login-box">
-    <div class="login-art">🙈😂</div>
-    <h1>هاتِ السر يا لجونتي!</h1>
-    <p>بديش تحكيلي نسيتيه.. اعطيني كلمة السر السحرية عشان تفتحي عفشك الدراسي 😌✨</p>
+    <div style="font-size:44px;">🎓</div>
+    <span class="brand-tag" style="background:var(--primary-light);color:var(--primary-dark);">MOHAMMAD RUM</span>
+    <h1>منصة التخطيط الأكاديمي</h1>
+    <p>سجّل دخولك لمزامنة جدولك الدراسي مع قاعدة البيانات السحابية، أو ابدأ مباشرة بالحفظ المحلي.</p>
     <form id="loginForm">
-      <input class="auth-field" id="nameInput" type="text" placeholder="اسمك (لإنشاء الحساب)" autocomplete="name" hidden>
-      <input class="auth-field" id="emailInput" type="email" placeholder="البريد الإلكتروني" autocomplete="email" required>
-      <input class="auth-field" id="passwordInput" type="password" placeholder="كلمة المرور" autocomplete="current-password" minlength="8" required>
-      <button id="authSubmit" type="submit">تسجيل الدخول 🚪</button>
+      <input id="nameInput" type="text" placeholder="الاسم الكامل" autocomplete="name" hidden>
+      <input id="emailInput" type="email" placeholder="البريد الإلكتروني" autocomplete="email" required>
+      <input id="passwordInput" type="password" placeholder="كلمة المرور (8 أحرف فأكثر)" autocomplete="current-password" minlength="8" required>
+      <button id="authSubmit" type="submit">تسجيل الدخول السحابي</button>
     </form>
-    <button class="auth-switch" id="authModeBtn" type="button">ما عندك حساب؟ أنشئي حساباً جديداً</button>
+    <button class="quick-btn" id="guestBtn" type="button">الدخول السريع (بدون حساب — حفظ محلي) ⚡</button>
+    <button class="auth-switch" id="authModeBtn" type="button">ليس لديك حساب؟ إنشاء حساب جديد</button>
     <div class="login-error" id="loginError" aria-live="polite"></div>
     <div class="auth-status" id="authStatus" aria-live="polite"></div>
-    <small style="color:#ad91a1; font-weight:600;">سجن دراسي راقي برعاية حمود 🌸</small>
   </div>
 </div>
 
@@ -845,356 +872,246 @@ footer {
 <header>
   <div class="header-top">
     <div>
-      <h1>عذاب لجونتي الدراسي 💀💗</h1>
-      <p>يلا شدي هالبصرة! تراه المادة ما بتخلص لحالها.. خلصي وخذي ليزر شوبينغ 🛍️😂</p>
+      <span class="brand-tag">MOHAMMAD RUM • SMART PLANNER</span>
+      <h1>منصة الإنجاز الأكاديمي الذكية</h1>
+      <p>أدخل امتحاناتك، عدد الفصول، ومستوى صعوبة كل فصل — وسيتولى النظام بناء جدولك الزمني بدقة.</p>
     </div>
-    <div><button class="logout" id="logoutBtn" type="button">هروب 🏃🏻‍♀️</button><div class="sync-status" id="syncStatus">غير متصل</div></div>
+    <div class="header-actions">
+      <div class="btn-group-top">
+        <button class="icon-btn" id="themeToggle" type="button">🌓 المظهر</button>
+        <button class="icon-btn" id="logoutBtn" type="button">خروج</button>
+      </div>
+      <div class="sync-status" id="syncStatus">جاهز</div>
+    </div>
   </div>
-  <div class="pills-row">
-    <span class="pill">🌸 مصطلحات: 22/11 (اجباري تبصمي)</span>
-    <span class="pill">🦋 فسيو: 24/11 (استعدي للجلطات)</span>
+  <div class="pills-row" id="headerExamsPills">
+    <span class="pill">📅 أضف موادك أدناه لعرض مواعيد الاختبارات</span>
   </div>
 </header>
 
-<!-- Exam Countdown -->
+<!-- Dynamic Exam Countdowns -->
 <section class="card">
   <div class="card-header" style="margin-bottom:4px">
-    <h2>العد التنازلي للجلطة (الامتحان) ⏰</h2>
-    <span class="mini">الساعة 9:00 ص مصيرك</span>
+    <h2>⏱️ العد التنازلي للاختبارات القادمة</h2>
+    <span class="mini">يُحدّث تلقائياً حسب التاريخ والوقت المدخل</span>
   </div>
-  <div class="exam-grid">
-    <div class="exam">
-      <div class="exam-info">
-        <h3>🌸 امتحان المصطلحات</h3>
-        <small>الأحد 22 نوفمبر</small>
-      </div>
-      <div class="exam-clock-box">
-        <div class="exam-clock" id="termsCountdown">--</div>
-      </div>
-    </div>
-    <div class="exam">
-      <div class="exam-info">
-        <h3>🦋 امتحان الفسيو</h3>
-        <small>الثلاثاء 24 نوفمبر</small>
-      </div>
-      <div class="exam-clock-box">
-        <div class="exam-clock" id="physioCountdown">--</div>
-      </div>
+  <div class="exam-grid" id="dynamicCountdowns">
+    <div class="mini" style="padding:10px;">لا توجد اختبارات مسجلة حالياً. أضف مادتك الأولى من الموزع الذكي أدناه.</div>
+  </div>
+</section>
+
+<!-- Smart Study Planner Form -->
+<section class="card" id="smartPlanner">
+  <div class="card-header">
+    <div>
+      <h2>🧠 إضافة مادة وتوليد الجدول الذكي</h2>
+      <p class="mini">يوزع النظام الفصول على الأيام المتاحة قبل الامتحان حسب وزن الصعوبة (سهل / متوسط / صعب) مع تخصيص يوم للمراجعة النهائية.</p>
     </div>
   </div>
+  <form id="subjectForm">
+    <div class="planner-form">
+      <label>اسم المادة / الامتحان
+        <input id="subjectName" required maxlength="60" placeholder="مثلاً: التشريح / البرمجة">
+      </label>
+      <label>تاريخ الامتحان
+        <input id="examDate" type="date" required>
+      </label>
+      <label>وقت الامتحان
+        <input id="examTime" type="time" required value="09:00">
+      </label>
+      <label>عدد الشابترات (الفصول)
+        <input id="chapterCount" type="number" min="1" max="60" required value="5">
+      </label>
+      <label>ساعات الدراسة اليومية المتاحة
+        <input id="dailyHours" type="number" min="0.5" max="16" step="0.5" required value="3">
+      </label>
+      <label>تاريخ بدء الدراسة
+        <input id="startDate" type="date" required>
+      </label>
+    </div>
+
+    <div style="margin-top:12px;">
+      <span class="mini" style="font-weight:800; color:var(--primary-dark);">حدد مستوى صعوبة كل شابتر (لتحديد الوقت اللازم له):</span>
+      <div id="chapterEditor" class="chapter-editor"></div>
+    </div>
+
+    <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+      <button type="submit">➕ إضافة المادة وتوليد الخطة</button>
+      <button type="button" class="secondary" id="generateAllBtn">🔄 إعادة موازنة الجدول بالكامل</button>
+      <button type="button" class="secondary" id="clearSubjectsBtn" style="color:var(--accent-danger);">🗑️ مسح جميع المواد</button>
+    </div>
+  </form>
 </section>
 
 <!-- Main Dashboard: Progress & Timer -->
 <div class="grid-main">
 
-  <!-- Progress -->
+  <!-- Progress & Subjects -->
   <section class="card">
     <div class="card-header">
-      <h2>نسبة النجاة والخلاص 🌷</h2>
+      <h2>📊 مؤشر الإنجاز ومتابعة الشابترات</h2>
       <span class="big-pct" id="overall">0%</span>
     </div>
     <div class="track"><div class="fill" id="overallBar"></div></div>
 
     <div class="stats">
-      <div class="stat"><b id="doneCount">0</b>طارت ✈️</div>
-      <div class="stat"><b id="leftCount">14</b>باقي وحوش 👹</div>
-      <div class="stat"><b id="sessions">0</b>قهوة/جلسة ☕</div>
+      <div class="stat"><b id="doneCount">0</b>شابترات منجزة</div>
+      <div class="stat"><b id="leftCount">0</b>شابترات متبقية</div>
+      <div class="stat"><b id="sessions">0</b>جلسات تركيز</div>
     </div>
 
-    <div class="subject">
-      <div class="subject-head">
-        <h3>🌸 مادة المصطلحات (9 بلاوي)</h3>
-        <span class="badge-count" id="termsPct">0 / 9</span>
-      </div>
-      <div class="track"><div class="fill" id="termsBar"></div></div>
-      <div class="chapters" id="terms"></div>
+    <div id="subjectsProgressList">
+      <p class="mini" style="text-align:center; margin-top:18px;">ستظهر هنا موادك وشابتراتها فور إضافتها أعلاه.</p>
     </div>
-
-    <div class="subject">
-      <div class="subject-head">
-        <h3>🦋 مادة الفسيو (5 كوارث)</h3>
-        <span class="badge-count" id="physioPct">0 / 5</span>
-      </div>
-      <div class="track"><div class="fill" id="physioBar"></div></div>
-      <div class="chapters" id="physio"></div>
-    </div>
-
-    <p class="note" style="text-align:center; margin-top:12px;">اكشطي على الشابتر اللي خلصتيه عشان تطمني روحك البريئة 💕</p>
   </section>
 
   <!-- Study Timer -->
   <aside class="card timer-card">
     <div>
-      <h2 style="justify-content:center">غرفة التعذيب (التركيز) ⏳</h2>
-      <div class="study-girl">🤦🏻‍♀️📖</div>
-      <div class="mini" id="timerLabel" style="font-weight:700; color:#874e6c;">ممنوع فتح التيك توك!</div>
+      <h2 style="justify-content:center">⏳ مؤقت التركيز العميق</h2>
+      <div class="timer-icon">🎯</div>
+      <div class="mini" id="timerLabel">تقنية بومودورو لإدارة جلسات الدراسة</div>
       <div class="clock-box">
         <div class="clock" id="clock">25:00</div>
       </div>
 
-      <select id="duration" aria-label="مدة المؤقت">
-        <option value="25">25 دقيقة عذاب (تركيز)</option>
-        <option value="45">45 دقيقة صياح هادئ</option>
-        <option value="50">50 دقيقة تحشيش علمي</option>
-        <option value="5">5 دقائق صفن بالحيط (استراحة)</option>
-        <option value="10">10 دقائق سناك وتنهيدة</option>
+      <select id="duration" aria-label="مدة المؤقت" style="width:100%; padding:10px; border-radius:10px; border:1.5px solid var(--border-light); background:var(--surface-soft); color:var(--text-main); font:inherit; font-weight:700; margin-bottom:10px; text-align:center;">
+        <option value="25">25 دقيقة — جلسة تركيز قياسية</option>
+        <option value="45">45 دقيقة — جلسة دراسة مكثفة</option>
+        <option value="50">50 دقيقة — جلسة إنجاز عميق</option>
+        <option value="5">5 دقائق — استراحة قصيرة</option>
+        <option value="10">10 دقائق — استراحة تجديد نشاط</option>
       </select>
 
       <div class="timer-controls">
-        <button id="startBtn">اربطي الحزام وابدئي 🚀</button>
-        <button class="secondary" id="pauseBtn">بدي أصيح (إيقاف)</button>
-        <button class="secondary" id="resetBtn">كنسلة</button>
+        <button id="startBtn" type="button">بدء الجلسة</button>
+        <button class="secondary" id="pauseBtn" type="button">إيقاف مؤقت</button>
+        <button class="secondary" id="resetBtn" type="button">إعادة ضبط</button>
       </div>
     </div>
 
     <div>
-      <div class="quote" id="encourage">يلا يا لجونتي بلا دلع.. عيونك اللي بتبكي اليوم رح تلمع بكرا (أو تنعس بالامتحان) 😌🌸</div>
+      <div class="quote" id="encourage">«تنظيم الوقت هو الخطوة الأولى نحو التفوق الأكاديمي.»</div>
     </div>
   </aside>
 </div>
 
-
-<!-- Smart study planner -->
-<section class="card" id="smartPlanner">
-  <div class="card-header"><div><h2>🧠 خطتي الدراسية الذكية</h2><p class="mini">أضيفي موادك وموعد كل امتحان، والنظام بوزّع الشابترات حسب صعوبتها</p></div></div>
-  <form id="subjectForm">
-    <div class="planner-form">
-      <label>اسم المادة<input id="subjectName" required maxlength="60" placeholder="مثلاً: تشريح"></label>
-      <label>تاريخ الامتحان<input id="examDate" type="date" required></label>
-      <label>وقت الامتحان<input id="examTime" type="time" required value="09:00"></label>
-      <label>عدد الشابترات<input id="chapterCount" type="number" min="1" max="100" required value="5"></label>
-      <label>كم ساعة بتقدر تدرس باليوم؟<input id="dailyHours" type="number" min="1" max="16" step="0.5" required value="3"></label>
-      <label>بداية الدراسة<input id="startDate" type="date" required></label>
-    </div>
-    <div id="chapterEditor" class="chapter-editor"></div>
-    <p class="planner-hint">صعوبة الشابتر بتحدد حجمه بالوقت: السهل جلسة، المتوسط وقت أكثر، والصعب بياخذ أكبر حصة.</p>
-    <div class="planner-actions" style="margin-top:12px"><button type="submit">إضافة المادة وتوليد الخطة ✨</button></div>
-  </form>
-  <div id="subjectsList" style="margin-top:16px"></div>
-  <div class="planner-actions" style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
-    <button type="button" id="generateAllBtn">إعادة توزيع الخطة 🔄</button>
-    <button type="button" id="clearSubjectsBtn" style="background:#8b74d6">حذف كل المواد</button>
-  </div>
-  <div id="planSummary" class="planner-hint" aria-live="polite"></div>
-  <div id="generatedPlan" class="plan-days"></div>
-</section>
-
-<!-- Schedule Section -->
-<section class="card schedule-section">
+<!-- Generated Daily Schedule -->
+<section class="card">
   <div class="card-header">
     <div>
-      <h2>جدول الهروب الكبير 🗓️</h2>
-      <p class="mini">من 16/11 لحد ساعة الصفر 24/11</p>
+      <h2>🗓️ الجدول الزمني الموزع حسب الأيام</h2>
+      <p class="mini" id="planSummary">أضف موادك ليقوم النظام بتوزيع الشابترات وتحديد الساعات المطلوبة يومياً.</p>
     </div>
   </div>
-
-  <div class="schedule-legend">
-    <span class="legend-item legend-terms">🌸 مصطلحات</span>
-    <span class="legend-item legend-physio">🦋 فسيو</span>
-    <span class="legend-item legend-exam">🏆 يوم الحشر</span>
-  </div>
-
-  <div class="timeline-grid">
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الاثنين</span> <span class="day-date">16 نوفمبر</span></div>
-        <span class="day-badge">البداية الحزينة 🌸</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 1 + 2 (افتتاحية النفسية)</div>
-        <div class="task-pill physio">🦋 فسيو: شابتر 1 (أول صدمة)</div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الثلاثاء</span> <span class="day-date">17 نوفمبر</span></div>
-        <span class="day-badge">لساتنا متحمسين ✨</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 3 + 4</div>
-        <div class="task-pill physio">🦋 فسيو: شابتر 2</div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الأربعاء</span> <span class="day-date">18 نوفمبر</span></div>
-        <span class="day-badge">بلشت تفقد العقل 💪</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 5 + 6</div>
-        <div class="task-pill physio">🦋 فسيو: شابتر 3</div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الخميس</span> <span class="day-date">19 نوفمبر</span></div>
-        <span class="day-badge">خميسنا عذاب 🌷</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 7</div>
-        <div class="task-pill physio">🦋 فسيو: شابتر 4</div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الجمعة</span> <span class="day-date">20 نوفمبر</span></div>
-        <span class="day-badge">تختيم الفسيو 🎯</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 8</div>
-        <div class="task-pill physio">🦋 فسيو: شابتر 5 (ارتحنا من وجهه)</div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">السبت</span> <span class="day-date">21 نوفمبر</span></div>
-        <span class="day-badge">ليلة الرعب 📚</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 9 (الأخير وأخيراً!)</div>
-        <div class="task-pill review">✅ مراجعة ولطم خفيف للمصطلحات</div>
-      </div>
-    </div>
-
-    <div class="day-card exam-day">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الأحد</span> <span class="day-date">22 نوفمبر</span></div>
-        <span class="day-badge">أول دبحـة 🤍</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill exam-alert">🏆 تقديم امتحان المصطلحات (9:00 ص)</div>
-        <div class="task-pill physio">🦋 بعد الصدمة: ارمي الكتاب ونامي</div>
-      </div>
-    </div>
-
-    <div class="day-card">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الاثنين</span> <span class="day-date">23 نوفمبر</span></div>
-        <span class="day-badge">استعادة الوعي 🧠</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill review">✅ تجميعات وتذكّر اللي نسيناه بالفسيو</div>
-        <div class="task-pill physio">📝 حل أسئلة عشان نتأكد من الفشل المسبق</div>
-      </div>
-    </div>
-
-    <div class="day-card exam-day">
-      <div class="day-card-top">
-        <div class="day-title"><span class="day-name">الثلاثاء</span> <span class="day-date">24 نوفمبر</span></div>
-        <span class="day-badge">الفناء الأخير 🎀</span>
-      </div>
-      <div class="day-tasks">
-        <div class="task-pill exam-alert">🏆 امتحان الفسيو (وداعاً ياجامعة)</div>
-        <div class="task-pill review">🎉 خلصنا وطلعنا عايشين (أو لأ)!</div>
-      </div>
-    </div>
-  </div>
+  <div id="generatedPlan" class="plan-days"></div>
 </section>
 
 <!-- Rewards, Streak, Tasks & Notes -->
 <div class="feature-grid">
 
-  <section class="card points-panel">
+  <section class="card">
     <div class="card-header">
-      <h2>رصيد الدلع والرشاوى 🏆</h2>
-      <span style="font-size:24px">💎</span>
+      <h2>🏆 نقاط الإنجاز والأوسمة</h2>
+      <span style="font-size:22px">🎖️</span>
     </div>
-    <div style="display:flex; align-items:baseline; gap:6px;">
+    <div style="display:flex; align-items:baseline; gap:8px;">
       <div class="points-number" id="pointsTotal">0</div>
-      <span class="mini" style="font-weight:700;">نقطة تدلل حالها</span>
+      <span class="mini">نقطة مكتسبة (10 نقاط لكل شابتر)</span>
     </div>
     <div class="track"><div class="fill" id="pointsBar"></div></div>
     <div class="reward-list" id="rewards">
-      <span class="reward" data-at="10">🌷 شوكليت</span>
-      <span class="reward" data-at="30">🧁 قهوة ستاربكس</span>
-      <span class="reward" data-at="70">👑 طلعة فخمة</span>
-      <span class="reward" data-at="140">💖 أسطورة الجيل</span>
+      <span class="reward" data-at="20">🥉 انطلاقة قوية (20)</span>
+      <span class="reward" data-at="50">🥈 التزام مستمر (50)</span>
+      <span class="reward" data-at="100">🥇 إنجاز متقدم (100)</span>
+      <span class="reward" data-at="200">💎 نجم التفوق (200)</span>
     </div>
   </section>
 
   <section class="card">
     <div class="card-header">
-      <h2>سلسلة التعذيب (الالتزام) 🔥</h2>
-      <span class="day-badge">يوميات صامدة</span>
-    </div>
-    <div class="streak-row">
-      <div class="streak-fire">🔥</div>
-      <div>
-        <div class="streak-number"><span id="streakCount">0</span> يوم</div>
-        <div class="mini">أيام ما استسلمت فيها</div>
-      </div>
-    </div>
-    <p class="note" id="streakMessage">افتحي كتاب وخلي أول شعلة تولع يا لجونتي! 💗</p>
-  </section>
-
-  <section class="card">
-    <div class="card-header">
-      <h2>مهام جانبية (عشان تحسي حالك إنسية) 🎯</h2>
+      <h2>✅ قائمة المهام السريعة</h2>
     </div>
     <div class="task-list" id="taskList"></div>
     <div class="task-add">
-      <input id="newTask" type="text" maxlength="90" placeholder="مثلاً: شرب مي عشان ما أنشف...">
-      <button id="addTask" type="button">سجلها +</button>
+      <input id="newTask" type="text" maxlength="90" placeholder="أضف مهمة جانبية (مثلاً: طباعة ملخص)...">
+      <button id="addTask" type="button">إضافة</button>
     </div>
   </section>
 
   <section class="card">
     <div class="card-header">
-      <h2>دفتر الصياح والملاحظات 📝</h2>
+      <h2>📝 دفتر الملاحظات الدراسية</h2>
     </div>
-    <div class="notes-list" id="notesList"></div>
+    <textarea class="note-area" id="generalNotes" placeholder="دوّن هنا ملاحظاتك الهامة، القوانين، أو مواضيع التركيز للاختبارات..."></textarea>
   </section>
 
-  <section class="card">
-    <div class="card-header">
-      <h2>مقارنة الدمار (المواد) 📈</h2>
-    </div>
-    <div class="chart-wrap">
-      <div class="chart-col">
-        <strong id="termsChartValue">0%</strong>
-        <div class="chart-bar-bg"><div class="chart-bar" id="termsChartBar"></div></div>
-        <small>المصطلحات</small>
-      </div>
-      <div class="chart-col">
-        <strong id="physioChartValue">0%</strong>
-        <div class="chart-bar-bg"><div class="chart-bar" id="physioChartBar"></div></div>
-        <small>الفسيو</small>
-      </div>
-    </div>
-  </section>
 </div>
 
 <div class="confetti-layer" id="confettiLayer"></div>
 
-<footer>مضبوطة على الموبايل وبرعاية حب حمود 💞</footer>
+<footer>
+  <div>تم التصميم والتطوير بواسطة</div>
+  <div class="signature-badge">MOHAMMAD RUM</div>
+</footer>
 </div>
 
-<script type="module">
-import { createClient } from "https://esm.sh/@neondatabase/neon-js@0.1.0?bundle";
-
-// Neon project endpoints (public application endpoints; no database password here)
-const neon = createClient({
-  auth: {
-    url: "https://ep-noisy-snow-benr3avo.neonauth.c-9.us-east-2.aws.neon.tech/neondb/auth"
-  },
-  dataApi: {
-    url: "https://ep-noisy-snow-benr3avo.apirest.c-9.us-east-2.aws.neon.tech/neondb/rest/v1"
-  }
+<script>
+// Global Error Catcher so nothing fails silently
+window.addEventListener('error', (e) => {
+  console.error('Runtime error:', e.message);
 });
 
+const NEON_AUTH_URL = "https://ep-noisy-snow-benr3avo.neonauth.c-9.us-east-2.aws.neon.tech/neondb/auth";
+const NEON_DATA_URL = "https://ep-noisy-snow-benr3avo.apirest.c-9.us-east-2.aws.neon.tech/neondb/rest/v1";
+
+const LOCAL_KEY = 'mohammad_rum_study_plan_v3';
+const GUEST_FLAG = 'mohammad_rum_guest_mode';
+const SESSION_KEY = 'mohammad_rum_neon_session';
+const THEME_KEY = 'mohammad_rum_theme';
+
+let neonClient = null;
 let currentUserId = null;
+let accessToken = null;
+let isGuestMode = false;
 let cloudReady = false;
 let saveTimer = null;
-let authMode = "signin";
+let authMode = 'signin';
 
-// Login and account creation
+// Main Data Structure stored inside `data` JSONB column in `public.study_plans`
+let state = {
+  subjects: [],
+  schedule: [],
+  sessions: 0,
+  tasks: [],
+  generalNotes: '',
+  studyDays: []
+};
+
+// Theme Handling
+const themeToggle = document.getElementById('themeToggle');
+function applyTheme(theme) {
+  document.documentElement.setAttribute('data-theme', theme);
+  localStorage.setItem(THEME_KEY, theme);
+}
+applyTheme(localStorage.getItem(THEME_KEY) || 'light');
+themeToggle.addEventListener('click', () => {
+  const cur = document.documentElement.getAttribute('data-theme');
+  applyTheme(cur === 'dark' ? 'light' : 'dark');
+});
+
+// UI Elements
 const loginScreen = document.getElementById('loginScreen');
 const app = document.getElementById('app');
+const authForm = document.getElementById('loginForm');
+const authModeBtn = document.getElementById('authModeBtn');
+const nameInput = document.getElementById('nameInput');
+const emailInput = document.getElementById('emailInput');
+const passwordInput = document.getElementById('passwordInput');
+const authSubmit = document.getElementById('authSubmit');
+const loginError = document.getElementById('loginError');
+const authStatus = document.getElementById('authStatus');
+const syncStatus = document.getElementById('syncStatus');
 
 function showApp() {
   loginScreen.style.display = 'none';
@@ -1206,416 +1123,782 @@ function showLogin() {
   loginScreen.style.display = 'flex';
 }
 
-const authForm = document.getElementById('loginForm');
-const authModeBtn = document.getElementById('authModeBtn');
-const nameInput = document.getElementById('nameInput');
-const emailInput = document.getElementById('emailInput');
-const passwordInput = document.getElementById('passwordInput');
-const authSubmit = document.getElementById('authSubmit');
-const loginError = document.getElementById('loginError');
-const authStatus = document.getElementById('authStatus');
-const syncStatus = document.getElementById('syncStatus');
-
-function setAuthMode(mode) {
-  authMode = mode;
-  const signingUp = mode === 'signup';
+authModeBtn.addEventListener('click', () => {
+  authMode = authMode === 'signin' ? 'signup' : 'signin';
+  const signingUp = authMode === 'signup';
   nameInput.hidden = !signingUp;
   nameInput.required = signingUp;
   passwordInput.autocomplete = signingUp ? 'new-password' : 'current-password';
-  authSubmit.textContent = signingUp ? 'إنشاء الحساب 💗' : 'تسجيل الدخول 🚪';
-  authModeBtn.textContent = signingUp ? 'عندك حساب؟ سجّلي الدخول' : 'ما عندك حساب؟ أنشئي حساباً جديداً';
+  authSubmit.textContent = signingUp ? 'إنشاء حساب سحابي جديد' : 'تسجيل الدخول السحابي';
+  authModeBtn.textContent = signingUp ? 'لديك حساب بالفعل؟ تسجيل الدخول' : 'ليس لديك حساب؟ إنشاء حساب جديد';
   loginError.textContent = '';
   authStatus.textContent = '';
+});
+
+// Direct REST API helpers for Neon Auth & PostgREST (No external ESM import failures!)
+async function neonAuthRequest(endpoint, body) {
+  const res = await fetch(`${NEON_AUTH_URL}${endpoint}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    credentials: 'include',
+    body: JSON.stringify(body)
+  });
+  const text = await res.text();
+  let json = {};
+  try { json = text ? JSON.parse(text) : {}; } catch (_) {}
+  if (!res.ok) {
+    throw new Error(json?.message || json?.error || `خطأ في المصادقة (${res.status})`);
+  }
+  return json;
 }
 
-authModeBtn.addEventListener('click', () => setAuthMode(authMode === 'signin' ? 'signup' : 'signin'));
-
-function extractUser(result) {
-  const payload = result?.data ?? result;
-  return payload?.user ?? payload?.session?.user ?? null;
+async function neonGetSession() {
+  const res = await fetch(`${NEON_AUTH_URL}/get-session`, {
+    method: 'GET',
+    credentials: 'include'
+  });
+  if (!res.ok) return null;
+  return await res.json();
 }
 
-function showAuthError(error) {
-  console.error(error);
-  loginError.textContent = error?.message || 'تعذّر إكمال العملية. افحصي البيانات وحاولي مرة ثانية.';
+async function neonDbRead(userId, token) {
+  const headers = { 'Accept': 'application/json' };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const res = await fetch(`${NEON_DATA_URL}/study_plans?user_id=eq.${encodeURIComponent(userId)}&select=data&limit=1`, {
+    method: 'GET',
+    headers,
+    credentials: 'include'
+  });
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`DB Read Error (${res.status}): ${errText}`);
+  }
+  return await res.json();
+}
+
+async function neonDbUpsert(userId, payload, token) {
+  const headers = {
+    'Content-Type': 'application/json',
+    'Prefer': 'resolution=merge-duplicates,return=minimal'
+  };
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+  const res = await fetch(`${NEON_DATA_URL}/study_plans?on_conflict=user_id`, {
+    method: 'POST',
+    headers,
+    credentials: 'include',
+    body: JSON.stringify({
+      user_id: userId,
+      data: payload,
+      updated_at: new Date().toISOString()
+    })
+  });
+  if (!res.ok) {
+    const errText = await res.text();
+    throw new Error(`DB Upsert Error (${res.status}): ${errText}`);
+  }
 }
 
 authForm.addEventListener('submit', async (e) => {
   e.preventDefault();
   loginError.textContent = '';
-  authStatus.textContent = 'لحظة، بنتأكد من الحساب...';
+  authStatus.textContent = 'جارٍ الاتصال بقاعدة البيانات...';
   authSubmit.disabled = true;
-  authModeBtn.disabled = true;
+
   try {
     const email = emailInput.value.trim();
     const password = passwordInput.value;
     let result;
 
     if (authMode === 'signup') {
-      result = await neon.auth.signUp.email({
+      result = await neonAuthRequest('/sign-up/email', {
         name: nameInput.value.trim(),
         email,
         password
       });
     } else {
-      result = await neon.auth.signIn.email({ email, password });
+      result = await neonAuthRequest('/sign-in/email', {
+        email,
+        password
+      });
     }
 
-    if (result?.error) throw new Error(result.error.message || 'فشلت عملية المصادقة.');
+    let user = result?.user ?? result?.data?.user ?? null;
+    let token = result?.token ?? result?.session?.token ?? result?.data?.token ?? null;
 
-    let user = extractUser(result);
     if (!user?.id) {
-      const sessionResult = await neon.auth.getSession();
-      if (sessionResult?.error) throw new Error(sessionResult.error.message);
-      user = extractUser(sessionResult);
+      const sess = await neonGetSession();
+      user = sess?.user ?? null;
+      token = token || sess?.session?.token || null;
     }
 
     if (!user?.id) {
-      setAuthMode('signin');
-      passwordInput.value = '';
-      authStatus.textContent = 'تم إنشاء الحساب. إذا طُلب تأكيد البريد، افتحي رسالة التفعيل ثم سجّلي الدخول.';
+      authMode = 'signin';
+      nameInput.hidden = true;
+      authSubmit.textContent = 'تسجيل الدخول السحابي';
+      authStatus.textContent = 'تم إنشاء الحساب بنجاح. يرجى تسجيل الدخول الآن.';
       return;
     }
 
-    await enterDashboard(user);
-  } catch (error) {
-    showAuthError(error);
+    isGuestMode = false;
+    localStorage.removeItem(GUEST_FLAG);
+    if (token) localStorage.setItem(SESSION_KEY, JSON.stringify({ userId: user.id, token }));
+    await enterCloudDashboard(user.id, token);
+  } catch (err) {
+    console.error(err);
+    loginError.textContent = err?.message || 'تعذر الاتصال بالسحابة. يمكنك الدخول بالوضع المحلي الفوري بالأسفل.';
+    authStatus.textContent = '';
   } finally {
     authSubmit.disabled = false;
-    authModeBtn.disabled = false;
   }
 });
 
-async function logout() {
-  try { await neon.auth.signOut(); }
-  catch (error) { console.warn('Sign out warning:', error); }
+// Guest / Local Mode (Guaranteed 100% offline/local execution)
+document.getElementById('guestBtn').addEventListener('click', () => {
+  isGuestMode = true;
+  currentUserId = null;
+  accessToken = null;
+  cloudReady = false;
+  localStorage.setItem(GUEST_FLAG, '1');
+  loadLocalData();
+  showApp();
+  syncStatus.textContent = 'وضع محلي (محفوظ على جهازك) ✓';
+  renderAll();
+});
+
+document.getElementById('logoutBtn').addEventListener('click', async () => {
+  if (!isGuestMode) {
+    try { await neonAuthRequest('/sign-out', {}); } catch (_) {}
+  }
+  localStorage.removeItem(GUEST_FLAG);
+  localStorage.removeItem(SESSION_KEY);
   clearInterval(timerInterval);
   isRunning = false;
   currentUserId = null;
+  accessToken = null;
   cloudReady = false;
-  if (saveTimer) clearTimeout(saveTimer);
   showLogin();
-  passwordInput.value = '';
-  syncStatus.textContent = 'غير متصل';
+});
+
+// Data Hydration & Persistence
+function applyData(raw = {}) {
+  state = {
+    subjects: Array.isArray(raw.subjects) ? raw.subjects : [],
+    schedule: Array.isArray(raw.schedule) ? raw.schedule : [],
+    sessions: Number(raw.sessions || 0),
+    tasks: Array.isArray(raw.tasks) ? raw.tasks : [],
+    generalNotes: typeof raw.generalNotes === 'string' ? raw.generalNotes : '',
+    studyDays: Array.isArray(raw.studyDays) ? raw.studyDays : []
+  };
 }
 
-document.getElementById('logoutBtn').addEventListener('click', logout);
-
-async function enterDashboard(user) {
-  currentUserId = user.id;
-  authStatus.textContent = '';
-  showApp();
-  syncStatus.textContent = 'جارٍ تحميل بياناتك...';
-  cloudReady = false;
+function loadLocalData() {
   try {
-    await loadCloudData();
-    renderPlan();
-    makeChapters('terms', 9);
-    makeChapters('physio', 5);
-    update();
-    updateClockDisplay();
-    cloudReady = true;
-    syncStatus.textContent = 'متصل — تمت المزامنة 💗';
-  } catch (error) {
-    console.error(error);
-    syncStatus.textContent = 'تعذّر تحميل البيانات';
-    alert('تعذّر تحميل بيانات الدراسة من Neon: ' + (error.message || 'خطأ غير معروف'));
-    showLogin();
+    const raw = JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}');
+    applyData(raw);
+  } catch (_) {
+    applyData({});
   }
 }
 
-// Precise Countdown: Days, Hours, Minutes, Seconds
-function countdownTo(target, elementId) {
-  const el = document.getElementById(elementId);
-  const now = new Date();
-  const diff = target - now;
+async function enterCloudDashboard(userId, token) {
+  currentUserId = userId;
+  accessToken = token;
+  authStatus.textContent = '';
+  showApp();
+  syncStatus.textContent = 'جارٍ مزامنة بياناتك...';
+  cloudReady = false;
 
-  if (diff <= 0) {
-    el.textContent = 'خلص راحت عليك! الإمتحان بلش 🏃🏻‍♀️💥';
+  try {
+    const rows = await neonDbRead(currentUserId, accessToken);
+    if (Array.isArray(rows) && rows.length > 0 && rows[0].data) {
+      applyData(rows[0].data);
+      localStorage.setItem(`${LOCAL_KEY}:${currentUserId}`, JSON.stringify(state));
+    } else {
+      let localBackup = {};
+      try { localBackup = JSON.parse(localStorage.getItem(LOCAL_KEY) || '{}'); } catch (_) {}
+      applyData(localBackup);
+      await neonDbUpsert(currentUserId, state, accessToken);
+    }
+
+    cloudReady = true;
+    syncStatus.textContent = 'متصل بالسحابة — متزامن ✓';
+    renderAll();
+  } catch (err) {
+    console.warn('Cloud sync fallback to local cache:', err);
+    try {
+      const cached = JSON.parse(localStorage.getItem(`${LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LOCAL_KEY) || '{}');
+      applyData(cached);
+    } catch (_) {
+      applyData({});
+    }
+    cloudReady = true;
+    syncStatus.textContent = 'محفوظ محلياً (بانتظار المزامنة)';
+    renderAll();
+  }
+}
+
+function saveState() {
+  if (isGuestMode || !currentUserId) {
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(state));
+    syncStatus.textContent = 'محفوظ محلياً ✓';
     return;
   }
 
-  const days = Math.floor(diff / 86400000);
-  const hours = Math.floor((diff % 86400000) / 3600000);
-  const mins = Math.floor((diff % 3600000) / 60000);
-  const secs = Math.floor((diff % 60000) / 1000);
+  localStorage.setItem(`${LOCAL_KEY}:${currentUserId}`, JSON.stringify(state));
+  if (!cloudReady) return;
 
-  el.textContent = `${days}ي ${String(hours).padStart(2, '0')}س ${String(mins).padStart(2, '0')}د ${String(secs).padStart(2, '0')}ث`;
-}
-
-function updateExamCountdowns() {
-  countdownTo(new Date(2026, 10, 22, 9, 0, 0), 'termsCountdown');
-  countdownTo(new Date(2026, 10, 24, 9, 0, 0), 'physioCountdown');
-}
-
-updateExamCountdowns();
-setInterval(updateExamCountdowns, 1000);
-
-// Study data: Neon is the source of truth; localStorage is used only for first-time migration/cache.
-const KEY = 'lajonatiStudyPlan_v2';
-let completed = {};
-let sessions = 0;
-let notes = {};
-let tasks = [];
-let studyDays = [];
-let plannerSubjects = [];
-let plannerTasks = [];
-const total = 14;
-
-function currentStudyData() {
-  return { completed, sessions, notes, tasks, studyDays, plannerSubjects, plannerTasks };
-}
-
-function applyStudyData(data = {}) {
-  completed = data.completed && typeof data.completed === 'object' ? data.completed : {};
-  sessions = Number(data.sessions || 0);
-  notes = data.notes && typeof data.notes === 'object' ? data.notes : {};
-  tasks = Array.isArray(data.tasks) ? data.tasks : [];
-  studyDays = Array.isArray(data.studyDays) ? data.studyDays : [];
-  plannerSubjects = Array.isArray(data.plannerSubjects) ? data.plannerSubjects : [];
-  plannerTasks = Array.isArray(data.plannerTasks) ? data.plannerTasks : [];
-}
-
-async function loadCloudData() {
-  const { data, error } = await neon
-    .from('study_plans')
-    .select('data')
-    .eq('user_id', currentUserId)
-    .limit(1);
-  if (error) throw new Error(error.message || 'Database read failed');
-
-  const userCacheKey = `${KEY}:${currentUserId}`;
-  if (data && data.length > 0 && data[0].data) {
-    applyStudyData(data[0].data);
-    localStorage.setItem(userCacheKey, JSON.stringify(currentStudyData()));
-  } else {
-    // Import the legacy browser-only plan for the first account only, then remove the shared key.
-    let oldData = {};
-    try { oldData = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (_) {}
-    applyStudyData(oldData);
-    await syncCloudNow();
-    localStorage.removeItem(KEY);
-  }
-}
-
-async function syncCloudNow() {
-  if (!currentUserId) return;
-  const payload = currentStudyData();
-  const { error } = await neon.from('study_plans').upsert({
-    user_id: currentUserId,
-    data: payload,
-    updated_at: new Date().toISOString()
-  }, { onConflict: 'user_id' });
-  if (error) throw new Error(error.message || 'Database save failed');
-  localStorage.setItem(`${KEY}:${currentUserId}`, JSON.stringify(payload));
-  syncStatus.textContent = 'متصل — تم الحفظ 💗';
-}
-
-function save() {
-  const payload = currentStudyData();
-  if (currentUserId) localStorage.setItem(`${KEY}:${currentUserId}`, JSON.stringify(payload));
-  if (!currentUserId || !cloudReady) return;
-  syncStatus.textContent = 'جارٍ حفظ التغييرات...';
+  syncStatus.textContent = 'جارٍ الحفظ...';
   if (saveTimer) clearTimeout(saveTimer);
   saveTimer = setTimeout(async () => {
-    try { await syncCloudNow(); }
-    catch (error) {
-      console.error(error);
-      syncStatus.textContent = 'فشل الحفظ — افحصي الاتصال';
+    try {
+      await neonDbUpsert(currentUserId, state, accessToken);
+      syncStatus.textContent = 'تم الحفظ في قاعدة البيانات ✓';
+    } catch (err) {
+      console.warn('Save sync warning:', err);
+      syncStatus.textContent = 'محفوظ محلياً ✓';
     }
-  }, 450);
+  }, 500);
 }
 
-
-// Smart planner: distributes weighted chapters across available study days.
+// Form: Dynamic Chapter Difficulty Inputs
 const chapterCountInput = document.getElementById('chapterCount');
 const chapterEditor = document.getElementById('chapterEditor');
-const todayISO = () => { const d=new Date(); d.setMinutes(d.getMinutes()-d.getTimezoneOffset()); return d.toISOString().slice(0,10); };
+const todayISO = () => {
+  const d = new Date();
+  d.setMinutes(d.getMinutes() - d.getTimezoneOffset());
+  return d.toISOString().slice(0, 10);
+};
+
 document.getElementById('startDate').value = todayISO();
 document.getElementById('examDate').min = todayISO();
-function buildChapterInputs(){
-  const count=Math.max(1,Math.min(100,Number(chapterCountInput.value)||1));
-  chapterEditor.innerHTML='';
-  for(let i=1;i<=count;i++){
-    const row=document.createElement('div'); row.className='chapter-difficulty';
-    const title=document.createElement('strong'); title.textContent=`الشابتر ${i}`;
-    const label=document.createElement('label'); label.textContent='مستوى الصعوبة';
-    const select=document.createElement('select'); select.dataset.chapter=String(i);
-    [['easy','سهل'],['medium','متوسط'],['hard','صعب']].forEach(([v,t])=>{const o=document.createElement('option');o.value=v;o.textContent=t;select.append(o)});
-    label.append(select); row.append(title,label); chapterEditor.append(row);
-  }
-}
-chapterCountInput.addEventListener('input',buildChapterInputs); buildChapterInputs();
-function escapeHTML(value){return String(value).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
-function renderSubjects(){
- const host=document.getElementById('subjectsList'); host.innerHTML='';
- plannerSubjects.forEach(sub=>{const row=document.createElement('div');row.className='subject-chip';
- const info=document.createElement('span');info.textContent=`${sub.name} — ${sub.chapters.length} شابتر — الامتحان ${sub.examDate} الساعة ${sub.examTime}`;
- const del=document.createElement('button');del.type='button';del.textContent='حذف';del.addEventListener('click',()=>{plannerSubjects=plannerSubjects.filter(x=>x.id!==sub.id);plannerTasks=plannerTasks.filter(t=>t.subjectId!==sub.id);renderSubjects();renderPlan();save();});row.append(info,del);host.append(row);});
-}
-function makePlan(){
- const tasks=[]; const now=todayISO();
- plannerSubjects.forEach(sub=>{
-  const start=new Date(sub.startDate+'T12:00:00'); const exam=new Date(sub.examDate+'T12:00:00');
-  const available=Math.floor((exam-start)/86400000);
-  if(available<1) throw new Error(`لازم يكون في يوم دراسة واحد على الأقل قبل امتحان مادة ${sub.name}.`);
-  const weights={easy:1,medium:1.5,hard:2.25};
-  const units=sub.chapters.reduce((sum,ch)=>sum+weights[ch.difficulty],0);
-  const dailyCapacity=Number(sub.dailyHours);
-  const totalDays=available;
-  // distribute one chapter across the days using weighted workload and keep final day for revision
-  let dayIndex=0, used=0;
-  sub.chapters.forEach((ch,i)=>{
-    const workload=weights[ch.difficulty];
-    if(used>0 && used+workload>dailyCapacity && dayIndex<totalDays-1){dayIndex++;used=0;}
-    const date=new Date(start); date.setDate(date.getDate()+dayIndex);
-    const mins=Math.round((workload/units)*(Math.max(1,totalDays)*dailyCapacity)*60);
-    tasks.push({id:`${sub.id}-${i+1}`,subjectId:sub.id,subject:sub.name,chapter:i+1,difficulty:ch.difficulty,date:date.toISOString().slice(0,10),minutes:Math.max(30,mins),done:false});
-    used+=workload;
-  });
-  const revisionDate=new Date(exam); revisionDate.setDate(revisionDate.getDate()-1);
-  tasks.push({id:`${sub.id}-revision`,subjectId:sub.id,subject:sub.name,chapter:0,difficulty:'revision',date:revisionDate.toISOString().slice(0,10),minutes:Math.round(dailyCapacity*60),done:false});
- });
- // preserve completed flags when regenerating
- const old=new Map(plannerTasks.map(t=>[t.id,t.done]));
- plannerTasks=tasks.map(t=>({...t,done:old.get(t.id)||false}));
-}
-function renderPlan(){
- renderSubjects(); const host=document.getElementById('generatedPlan');host.innerHTML='';
- const grouped={}; plannerTasks.sort((a,b)=>a.date.localeCompare(b.date)).forEach(t=>(grouped[t.date]??=[]).push(t));
- const total=plannerTasks.length, done=plannerTasks.filter(t=>t.done).length;
- document.getElementById('planSummary').textContent=total?`إنجاز الخطة: ${done} من ${total} مهمة (${Math.round(done/total*100)}%)`:'أضيفي مادة حتى تظهر خطتك هون.';
- Object.entries(grouped).forEach(([date,items])=>{
-  const card=document.createElement('div');card.className='plan-day';
-  const h=document.createElement('h3');h.textContent=new Date(date+'T12:00:00').toLocaleDateString('ar-JO',{weekday:'long',year:'numeric',month:'long',day:'numeric'});card.append(h);
-  items.forEach(t=>{const label=document.createElement('label');label.className='plan-task'+(t.done?' done':'');const cb=document.createElement('input');cb.type='checkbox';cb.checked=t.done;cb.addEventListener('change',()=>{t.done=cb.checked;renderPlan();save();});
-   const span=document.createElement('span');const diff={easy:'سهل',medium:'متوسط',hard:'صعب',revision:'مراجعة قبل الامتحان'}[t.difficulty];span.textContent=t.chapter?`${t.subject} — شابتر ${t.chapter} (${diff}) — ${t.minutes} دقيقة`:`${t.subject} — ${diff} — ${t.minutes} دقيقة`;
-   label.append(cb,span);card.append(label);});host.append(card);
- });
-}
-document.getElementById('subjectForm').addEventListener('submit',e=>{
- e.preventDefault();try{
-  const name=document.getElementById('subjectName').value.trim();const examDate=document.getElementById('examDate').value;const startDate=document.getElementById('startDate').value;
-  if(!name||!examDate||!startDate)throw new Error('عبّي جميع الحقول.');
-  if(examDate<=startDate)throw new Error('تاريخ الامتحان لازم يكون بعد بداية الدراسة.');
-  const chapters=[...chapterEditor.querySelectorAll('select')].map(x=>({difficulty:x.value}));
-  const subject={id:`sub-${Date.now()}-${Math.random().toString(36).slice(2,7)}`,name,examDate,examTime:document.getElementById('examTime').value,startDate,dailyHours:Number(document.getElementById('dailyHours').value),chapters};
-  plannerSubjects.push(subject);makePlan();renderPlan();save();document.getElementById('subjectName').value='';
- }catch(err){alert(err.message||'تعذّر إنشاء الخطة.');}
-});
-document.getElementById('generateAllBtn').addEventListener('click',()=>{try{makePlan();renderPlan();save();}catch(err){alert(err.message);}});
-document.getElementById('clearSubjectsBtn').addEventListener('click',()=>{if(!confirm('متأكد إنك بدك تحذف كل المواد والخطة؟'))return;plannerSubjects=[];plannerTasks=[];renderPlan();save();});
 
-// Chapters
-function makeChapters(id, count) {
-  const host = document.getElementById(id);
-  host.innerHTML = '';
-
+function buildChapterInputs() {
+  const count = Math.max(1, Math.min(60, Number(chapterCountInput.value) || 1));
+  chapterEditor.innerHTML = '';
   for (let i = 1; i <= count; i++) {
-    const key = id + i;
-    const el = document.createElement('label');
-    el.className = 'chapter' + (completed[key] ? ' done' : '');
+    const row = document.createElement('div');
+    row.className = 'chapter-difficulty';
 
-    const cb = document.createElement('input');
-    cb.type = 'checkbox';
-    cb.checked = !!completed[key];
+    const title = document.createElement('strong');
+    title.textContent = `شابتر ${i}`;
 
-    const span = document.createElement('span');
-    span.textContent = 'شابتر ' + i;
-
-    cb.addEventListener('change', () => {
-      completed[key] = cb.checked;
-      el.classList.toggle('done', cb.checked);
-      if (cb.checked) markStudyDay();
-      save();
-      update();
+    const select = document.createElement('select');
+    select.dataset.chapter = String(i);
+    [
+      ['easy', 'سهل (1x)'],
+      ['medium', 'متوسط (1.5x)'],
+      ['hard', 'صعب (2.25x)']
+    ].forEach(([val, label]) => {
+      const opt = document.createElement('option');
+      opt.value = val;
+      opt.textContent = label;
+      if (val === 'medium') opt.selected = true;
+      select.append(opt);
     });
 
-    el.append(cb, span);
-    host.append(el);
+    row.append(title, select);
+    chapterEditor.append(row);
   }
 }
+chapterCountInput.addEventListener('input', buildChapterInputs);
+buildChapterInputs();
 
-// Main progress & update UI
-function update() {
-  const t = Array.from({ length: 9 }, (_, i) => !!completed['terms' + (i + 1)]).filter(Boolean).length;
-  const p = Array.from({ length: 5 }, (_, i) => !!completed['physio' + (i + 1)]).filter(Boolean).length;
+// Core Smart Scheduling Algorithm
+function regenerateFullSchedule() {
+  const oldDoneMap = new Map(state.schedule.map(item => [item.id, item.done]));
+  const newSchedule = [];
 
-  const done = t + p;
-  const pct = Math.round((done / total) * 100);
+  const sortedSubjects = [...state.subjects].sort((a, b) =>
+    `${a.examDate}T${a.examTime}`.localeCompare(`${b.examDate}T${b.examTime}`)
+  );
 
-  document.getElementById('overall').textContent = pct + '%';
-  document.getElementById('overallBar').style.width = pct + '%';
-  document.getElementById('doneCount').textContent = done;
-  document.getElementById('leftCount').textContent = total - done;
-  document.getElementById('sessions').textContent = sessions;
+  sortedSubjects.forEach(sub => {
+    const start = new Date(sub.startDate + 'T00:00:00');
+    const exam = new Date(sub.examDate + 'T00:00:00');
+    const totalDaysBeforeExam = Math.floor((exam - start) / 86400000);
 
-  // Terms progress
-  document.getElementById('termsPct').textContent = t + ' / 9';
-  document.getElementById('termsBar').style.width = Math.round((t / 9) * 100) + '%';
-
-  // Physio progress
-  document.getElementById('physioPct').textContent = p + ' / 5';
-  document.getElementById('physioBar').style.width = Math.round((p / 5) * 100) + '%';
-
-  // Chart
-  const tPct = Math.round((t / 9) * 100);
-  const pPct = Math.round((p / 5) * 100);
-  document.getElementById('termsChartValue').textContent = tPct + '%';
-  document.getElementById('termsChartBar').style.height = tPct + '%';
-  document.getElementById('physioChartValue').textContent = pPct + '%';
-  document.getElementById('physioChartBar').style.height = pPct + '%';
-
-  // Points & Rewards
-  const points = done * 10;
-  document.getElementById('pointsTotal').textContent = points;
-  document.getElementById('pointsBar').style.width = Math.min(100, Math.round((points / 140) * 100)) + '%';
-
-  document.querySelectorAll('.reward').forEach(el => {
-    const at = Number(el.getAttribute('data-at'));
-    if (points >= at) {
-      el.classList.add('unlocked');
-    } else {
-      el.classList.remove('unlocked');
+    if (totalDaysBeforeExam < 1) {
+      throw new Error(`تاريخ امتحان "${sub.name}" يجب أن يكون بعد تاريخ بدء الدراسة بيوم واحد على الأقل.`);
     }
+
+    const studyDaysCount = totalDaysBeforeExam >= 2 ? totalDaysBeforeExam - 1 : 1;
+    const weights = { easy: 1.0, medium: 1.5, hard: 2.25 };
+    const totalWeight = sub.chapters.reduce((acc, ch) => acc + weights[ch.difficulty], 0);
+    const totalAvailableMinutes = studyDaysCount * Number(sub.dailyHours) * 60;
+
+    const weightedChapters = sub.chapters.map(ch => {
+      const w = weights[ch.difficulty];
+      const mins = Math.max(30, Math.round((w / totalWeight) * totalAvailableMinutes));
+      return { ...ch, weight: w, minutes: mins };
+    });
+
+    const targetWeightPerDay = totalWeight / studyDaysCount;
+    let currentDayIdx = 0;
+    let accumulatedWeight = 0;
+
+    weightedChapters.forEach((ch) => {
+      if (
+        accumulatedWeight > 0 &&
+        accumulatedWeight + ch.weight > targetWeightPerDay * 1.15 &&
+        currentDayIdx < studyDaysCount - 1
+      ) {
+        currentDayIdx++;
+        accumulatedWeight = 0;
+      }
+
+      const taskDate = new Date(start);
+      taskDate.setDate(taskDate.getDate() + currentDayIdx);
+      const dateStr = taskDate.toISOString().slice(0, 10);
+      const taskId = `${sub.id}-ch-${ch.num}`;
+
+      newSchedule.push({
+        id: taskId,
+        subjectId: sub.id,
+        subjectName: sub.name,
+        chapterNum: ch.num,
+        difficulty: ch.difficulty,
+        date: dateStr,
+        minutes: ch.minutes,
+        isRevision: false,
+        isExam: false,
+        done: ch.done || oldDoneMap.get(taskId) || false
+      });
+
+      accumulatedWeight += ch.weight;
+    });
+
+    if (totalDaysBeforeExam >= 2) {
+      const revDate = new Date(exam);
+      revDate.setDate(revDate.getDate() - 1);
+      const revDateStr = revDate.toISOString().slice(0, 10);
+      const revId = `${sub.id}-revision`;
+      newSchedule.push({
+        id: revId,
+        subjectId: sub.id,
+        subjectName: sub.name,
+        chapterNum: 0,
+        difficulty: 'revision',
+        date: revDateStr,
+        minutes: Math.round(Number(sub.dailyHours) * 60),
+        isRevision: true,
+        isExam: false,
+        done: oldDoneMap.get(revId) || false
+      });
+    }
+
+    const examId = `${sub.id}-exam`;
+    newSchedule.push({
+      id: examId,
+      subjectId: sub.id,
+      subjectName: sub.name,
+      chapterNum: 0,
+      difficulty: 'exam',
+      date: sub.examDate,
+      examTime: sub.examTime,
+      minutes: 0,
+      isRevision: false,
+      isExam: true,
+      done: oldDoneMap.get(examId) || false
+    });
   });
 
-  // Streak
-  document.getElementById('streakCount').textContent = studyDays.length;
-  if (studyDays.length > 0) {
-    document.getElementById('streakMessage').textContent = 'كفو والله! مستمرة بالصمود 🌸';
+  state.schedule = newSchedule;
+}
+
+document.getElementById('subjectForm').addEventListener('submit', (e) => {
+  e.preventDefault();
+  try {
+    const name = document.getElementById('subjectName').value.trim();
+    const examDate = document.getElementById('examDate').value;
+    const examTime = document.getElementById('examTime').value;
+    const startDate = document.getElementById('startDate').value;
+    const dailyHours = Number(document.getElementById('dailyHours').value);
+
+    if (!name || !examDate || !startDate) {
+      throw new Error('يرجى تعبئة جميع الحقول المطلوبة.');
+    }
+    if (examDate <= startDate) {
+      throw new Error('تاريخ الامتحان يجب أن يكون بعد تاريخ بدء الدراسة.');
+    }
+
+    const chapters = [...chapterEditor.querySelectorAll('select')].map((sel, index) => ({
+      num: index + 1,
+      difficulty: sel.value,
+      done: false
+    }));
+
+    const newSubject = {
+      id: `sub-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      name,
+      examDate,
+      examTime,
+      startDate,
+      dailyHours,
+      chapters
+    };
+
+    state.subjects.push(newSubject);
+    regenerateFullSchedule();
+    saveState();
+    renderAll();
+
+    document.getElementById('subjectName').value = '';
+    triggerConfetti();
+  } catch (err) {
+    alert(err.message);
+  }
+});
+
+document.getElementById('generateAllBtn').addEventListener('click', () => {
+  try {
+    if (state.subjects.length === 0) {
+      alert('أضف مادة واحدة على الأقل أولاً.');
+      return;
+    }
+    regenerateFullSchedule();
+    saveState();
+    renderAll();
+  } catch (err) {
+    alert(err.message);
+  }
+});
+
+document.getElementById('clearSubjectsBtn').addEventListener('click', () => {
+  if (!confirm('هل أنت متأكد من حذف جميع المواد والجدول بالكامل؟')) return;
+  state.subjects = [];
+  state.schedule = [];
+  saveState();
+  renderAll();
+});
+
+// Render Header Pills & Dynamic Countdowns
+function renderCountdownsAndHeader() {
+  const pillsHost = document.getElementById('headerExamsPills');
+  const gridHost = document.getElementById('dynamicCountdowns');
+
+  if (state.subjects.length === 0) {
+    pillsHost.innerHTML = '<span class="pill">📅 أضف امتحاناتك أعلاه لعرضها هنا</span>';
+    gridHost.innerHTML = '<div class="mini" style="padding:10px;">لا توجد امتحانات مضافة حالياً. ابدأ بإضافة مادتك الأولى من النموذج أعلاه.</div>';
+    return;
   }
 
-  renderTasks();
-  renderNotes();
+  const sorted = [...state.subjects].sort((a, b) =>
+    `${a.examDate}T${a.examTime}`.localeCompare(`${b.examDate}T${b.examTime}`)
+  );
+
+  pillsHost.innerHTML = '';
+  gridHost.innerHTML = '';
+
+  sorted.forEach(sub => {
+    const pill = document.createElement('span');
+    pill.className = 'pill';
+    pill.textContent = `📘 ${sub.name}: ${sub.examDate} (${sub.examTime})`;
+    pillsHost.append(pill);
+
+    const card = document.createElement('div');
+    card.className = 'exam';
+
+    const info = document.createElement('div');
+    info.className = 'exam-info';
+    const h3 = document.createElement('h3');
+    h3.textContent = `📘 ${sub.name}`;
+    const small = document.createElement('small');
+    small.textContent = `الموعد: ${sub.examDate} — الساعة ${sub.examTime}`;
+    info.append(h3, small);
+
+    const clockBox = document.createElement('div');
+    clockBox.className = 'exam-clock-box';
+    const clockDiv = document.createElement('div');
+    clockDiv.className = 'exam-clock';
+    clockDiv.dataset.target = `${sub.examDate}T${sub.examTime}:00`;
+    clockDiv.textContent = '--';
+    clockBox.append(clockDiv);
+
+    card.append(info, clockBox);
+    gridHost.append(card);
+  });
+
+  tickExamCountdowns();
 }
+
+function tickExamCountdowns() {
+  const now = new Date();
+  document.querySelectorAll('.exam-clock[data-target]').forEach(el => {
+    const target = new Date(el.dataset.target);
+    const diff = target - now;
+    if (isNaN(target.getTime())) {
+      el.textContent = 'تاريخ غير صالح';
+      return;
+    }
+    if (diff <= 0) {
+      el.textContent = 'حان موعد الامتحان! بالتوفيق 🎓';
+      return;
+    }
+    const days = Math.floor(diff / 86400000);
+    const hours = Math.floor((diff % 86400000) / 3600000);
+    const mins = Math.floor((diff % 3600000) / 60000);
+    const secs = Math.floor((diff % 60000) / 1000);
+    el.textContent = `${days}ي ${String(hours).padStart(2, '0')}س ${String(mins).padStart(2, '0')}د ${String(secs).padStart(2, '0')}ث`;
+  });
+}
+setInterval(tickExamCountdowns, 1000);
+
+// Render Subjects & Interactive Chapters Progress
+function renderSubjectsAndProgress() {
+  const host = document.getElementById('subjectsProgressList');
+  host.innerHTML = '';
+
+  let totalCh = 0;
+  let doneCh = 0;
+
+  if (state.subjects.length === 0) {
+    host.innerHTML = '<p class="mini" style="text-align:center; margin-top:18px;">ستظهر هنا موادك وشابتراتها فور إضافتها أعلاه.</p>';
+  } else {
+    const diffLabels = { easy: 'سهل', medium: 'متوسط', hard: 'صعب' };
+
+    state.subjects.forEach(sub => {
+      const subTotal = sub.chapters.length;
+      const subDone = sub.chapters.filter(c => c.done).length;
+      totalCh += subTotal;
+      doneCh += subDone;
+
+      const block = document.createElement('div');
+      block.className = 'subject-block';
+
+      const head = document.createElement('div');
+      head.className = 'subject-head';
+
+      const title = document.createElement('h3');
+      title.textContent = `📘 ${sub.name}`;
+
+      const rightControls = document.createElement('div');
+      rightControls.style.display = 'flex';
+      rightControls.style.alignItems = 'center';
+      rightControls.style.gap = '8px';
+
+      const badge = document.createElement('span');
+      badge.className = 'badge-count';
+      badge.textContent = `${subDone} / ${subTotal}`;
+
+      const delBtn = document.createElement('button');
+      delBtn.type = 'button';
+      delBtn.className = 'danger-btn';
+      delBtn.textContent = 'حذف المادة';
+      delBtn.addEventListener('click', () => {
+        if (!confirm(`حذف مادة "${sub.name}" من الخطة؟`)) return;
+        state.subjects = state.subjects.filter(s => s.id !== sub.id);
+        state.schedule = state.schedule.filter(t => t.subjectId !== sub.id);
+        saveState();
+        renderAll();
+      });
+
+      rightControls.append(badge, delBtn);
+      head.append(title, rightControls);
+
+      const track = document.createElement('div');
+      track.className = 'track';
+      const fill = document.createElement('div');
+      fill.className = 'fill';
+      fill.style.width = subTotal ? `${Math.round((subDone / subTotal) * 100)}%` : '0%';
+      track.append(fill);
+
+      const chGrid = document.createElement('div');
+      chGrid.className = 'chapters-grid';
+
+      sub.chapters.forEach(ch => {
+        const label = document.createElement('label');
+        label.className = 'chapter-item' + (ch.done ? ' done' : '');
+
+        const leftSide = document.createElement('div');
+        leftSide.style.display = 'flex';
+        leftSide.style.alignItems = 'center';
+        leftSide.style.gap = '6px';
+
+        const cb = document.createElement('input');
+        cb.type = 'checkbox';
+        cb.checked = !!ch.done;
+
+        const txt = document.createElement('span');
+        txt.textContent = `شابتر ${ch.num}`;
+        leftSide.append(cb, txt);
+
+        const diffBadge = document.createElement('span');
+        diffBadge.className = `diff-tag diff-${ch.difficulty}`;
+        diffBadge.textContent = diffLabels[ch.difficulty];
+
+        cb.addEventListener('change', () => {
+          ch.done = cb.checked;
+          const schedItem = state.schedule.find(s => s.subjectId === sub.id && s.chapterNum === ch.num);
+          if (schedItem) schedItem.done = cb.checked;
+          if (cb.checked) markStudyDay();
+          saveState();
+          renderAll();
+        });
+
+        label.append(leftSide, diffBadge);
+        chGrid.append(label);
+      });
+
+      block.append(head, track, chGrid);
+      host.append(block);
+    });
+  }
+
+  const pct = totalCh > 0 ? Math.round((doneCh / totalCh) * 100) : 0;
+  document.getElementById('overall').textContent = `${pct}%`;
+  document.getElementById('overallBar').style.width = `${pct}%`;
+  document.getElementById('doneCount').textContent = doneCh;
+  document.getElementById('leftCount').textContent = Math.max(0, totalCh - doneCh);
+  document.getElementById('sessions').textContent = state.sessions;
+
+  const points = doneCh * 10;
+  document.getElementById('pointsTotal').textContent = points;
+  document.getElementById('pointsBar').style.width = `${Math.min(100, Math.round((points / 200) * 100))}%`;
+  document.querySelectorAll('.reward').forEach(el => {
+    const at = Number(el.getAttribute('data-at'));
+    el.classList.toggle('unlocked', points >= at);
+  });
+}
+
+// Render Generated Daily Timeline Schedule
+function renderGeneratedSchedule() {
+  const host = document.getElementById('generatedPlan');
+  const summaryEl = document.getElementById('planSummary');
+  host.innerHTML = '';
+
+  if (state.schedule.length === 0) {
+    summaryEl.textContent = 'أضف موادك أعلاه ليقوم النظام بتوزيع الشابترات وتحديد الدقائق المطلوبة يومياً.';
+    return;
+  }
+
+  const studyTasks = state.schedule.filter(t => !t.isExam);
+  const doneTasks = studyTasks.filter(t => t.done).length;
+  const pct = studyTasks.length ? Math.round((doneTasks / studyTasks.length) * 100) : 0;
+  summaryEl.textContent = `إنجاز الجدول الزمني: ${doneTasks} من ${studyTasks.length} مهمة دراسية (${pct}%)`;
+
+  const grouped = {};
+  [...state.schedule]
+    .sort((a, b) => a.date.localeCompare(b.date))
+    .forEach(item => {
+      (grouped[item.date] ??= []).push(item);
+    });
+
+  const diffAr = { easy: 'سهل', medium: 'متوسط', hard: 'صعب' };
+
+  Object.entries(grouped).forEach(([dateStr, items]) => {
+    const hasExam = items.some(i => i.isExam);
+    const totalMins = items.reduce((acc, i) => acc + (i.minutes || 0), 0);
+    const hoursFormatted = (totalMins / 60).toFixed(1).replace(/\.0$/, '');
+
+    const card = document.createElement('div');
+    card.className = 'plan-day' + (hasExam ? ' exam-highlight' : '');
+
+    const header = document.createElement('div');
+    header.className = 'plan-day-header';
+
+    const title = document.createElement('h3');
+    title.textContent = new Date(dateStr + 'T12:00:00').toLocaleDateString('ar-JO', {
+      weekday: 'long', month: 'long', day: 'numeric'
+    });
+
+    const loadBadge = document.createElement('span');
+    loadBadge.className = 'day-load-badge';
+    loadBadge.textContent = totalMins > 0 ? `العبء: ${hoursFormatted} ساعة` : 'يوم امتحان 🏆';
+
+    header.append(title, loadBadge);
+    card.append(header);
+
+    items.forEach(item => {
+      const row = document.createElement('label');
+      let typeClass = `task-${item.difficulty}`;
+      if (item.isRevision) typeClass = 'task-revision';
+      if (item.isExam) typeClass = 'task-exam';
+
+      row.className = `plan-task ${typeClass}` + (item.done ? ' done' : '');
+
+      const cb = document.createElement('input');
+      cb.type = 'checkbox';
+      cb.checked = !!item.done;
+
+      const span = document.createElement('span');
+      if (item.isExam) {
+        span.textContent = `🏆 امتحان ${item.subjectName} — الساعة ${item.examTime}`;
+      } else if (item.isRevision) {
+        span.textContent = `🔄 مراجعة شاملة: ${item.subjectName} (${item.minutes} دقيقة)`;
+      } else {
+        span.textContent = `📘 ${item.subjectName} — شابتر ${item.chapterNum} (${diffAr[item.difficulty]}) • ${item.minutes} دقيقة`;
+      }
+
+      cb.addEventListener('change', () => {
+        item.done = cb.checked;
+        if (!item.isExam && !item.isRevision) {
+          const sub = state.subjects.find(s => s.id === item.subjectId);
+          const ch = sub?.chapters.find(c => c.num === item.chapterNum);
+          if (ch) ch.done = cb.checked;
+        }
+        if (cb.checked) markStudyDay();
+        saveState();
+        renderAll();
+      });
+
+      row.append(cb, span);
+      card.append(row);
+    });
+
+    host.append(card);
+  });
+}
+
+// Tasks & Notes
+function renderTasksAndNotes() {
+  const taskList = document.getElementById('taskList');
+  taskList.innerHTML = '';
+  if (state.tasks.length === 0) {
+    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:8px;">لا توجد مهام إضافية حالياً.</div>';
+  } else {
+    state.tasks.forEach((task, idx) => {
+      const item = document.createElement('div');
+      item.className = 'task-item' + (task.done ? ' done' : '');
+      item.textContent = (task.done ? '✔️ ' : '⬜ ') + task.text;
+      item.addEventListener('click', () => {
+        state.tasks[idx].done = !state.tasks[idx].done;
+        saveState();
+        renderTasksAndNotes();
+      });
+      taskList.append(item);
+    });
+  }
+
+  const notesEl = document.getElementById('generalNotes');
+  if (notesEl.value !== state.generalNotes) {
+    notesEl.value = state.generalNotes;
+  }
+}
+
+document.getElementById('addTask').addEventListener('click', () => {
+  const input = document.getElementById('newTask');
+  const val = input.value.trim();
+  if (val) {
+    state.tasks.push({ text: val, done: false });
+    input.value = '';
+    saveState();
+    renderTasksAndNotes();
+  }
+});
+
+document.getElementById('generalNotes').addEventListener('input', (e) => {
+  state.generalNotes = e.target.value;
+  saveState();
+});
 
 function markStudyDay() {
-  const todayStr = new Date().toISOString().slice(0, 10);
-  if (!studyDays.includes(todayStr)) {
-    studyDays.push(todayStr);
+  const todayStr = todayISO();
+  if (!state.studyDays.includes(todayStr)) {
+    state.studyDays.push(todayStr);
   }
 }
 
-// Confetti Effect
-function triggerConfetti() {
-  const layer = document.getElementById('confettiLayer');
-  layer.innerHTML = '';
-  const colors = ['#d95d91', '#8b74d6', '#2c8c64', '#f6b3cf', '#ffd1dc'];
-  for (let i = 0; i < 30; i++) {
-    const piece = document.createElement('div');
-    piece.className = 'confetti-piece';
-    piece.style.left = Math.random() * 100 + 'vw';
-    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    piece.style.width = (Math.random() * 6 + 4) + 'px';
-    piece.style.height = (Math.random() * 10 + 6) + 'px';
-    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    layer.appendChild(piece);
-  }
-  setTimeout(() => { layer.innerHTML = ''; }, 3000);
-}
-
-// Study Timer
+// Study Timer (Pomodoro)
 let timerInterval = null;
 let timeLeft = 25 * 60;
 let isRunning = false;
@@ -1636,14 +1919,13 @@ durationSelect.addEventListener('change', () => {
 function updateClockDisplay() {
   const m = Math.floor(timeLeft / 60);
   const s = timeLeft % 60;
-  clockEl.textContent = String(m).padStart(2, '0') + ':' + String(s).padStart(2, '0');
+  clockEl.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 
 startBtn.addEventListener('click', () => {
   if (isRunning) return;
   isRunning = true;
-  startBtn.textContent = 'ندرس بعنف... ⏳';
-  
+  startBtn.textContent = 'جلسة التركيز قيد التشغيل...';
   timerInterval = setInterval(() => {
     if (timeLeft > 0) {
       timeLeft--;
@@ -1651,13 +1933,13 @@ startBtn.addEventListener('click', () => {
     } else {
       clearInterval(timerInterval);
       isRunning = false;
-      startBtn.textContent = 'اربطي الحزام وابدئي 🚀';
-      sessions++;
+      startBtn.textContent = 'بدء الجلسة';
+      state.sessions++;
       markStudyDay();
-      save();
-      update();
+      saveState();
+      renderSubjectsAndProgress();
       triggerConfetti();
-      alert('خلصت الجلسة! قومي تنفسي ولاقي لك لقمة يا بطلة 🎉');
+      alert('أحسنت! اكتملت جلسة التركيز بنجاح.');
     }
   }, 1000);
 });
@@ -1665,7 +1947,7 @@ startBtn.addEventListener('click', () => {
 pauseBtn.addEventListener('click', () => {
   clearInterval(timerInterval);
   isRunning = false;
-  startBtn.textContent = 'كملي يا وحشة 💗';
+  startBtn.textContent = 'استئناف الجلسة';
 });
 
 resetBtn.addEventListener('click', () => {
@@ -1673,106 +1955,62 @@ resetBtn.addEventListener('click', () => {
   isRunning = false;
   timeLeft = parseInt(durationSelect.value) * 60;
   updateClockDisplay();
-  startBtn.textContent = 'اربطي الحزام وابدئي 🚀';
+  startBtn.textContent = 'بدء الجلسة';
 });
 
-// Tasks handling
-function renderTasks() {
-  const taskList = document.getElementById('taskList');
-  taskList.innerHTML = '';
-  if (tasks.length === 0) {
-    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:6px;">ما في مهام.. فاضية مثل المادة ✨</div>';
+// Confetti
+function triggerConfetti() {
+  const layer = document.getElementById('confettiLayer');
+  layer.innerHTML = '';
+  const colors = ['#2563eb', '#0ea5e9', '#10b981', '#f59e0b'];
+  for (let i = 0; i < 30; i++) {
+    const piece = document.createElement('div');
+    piece.className = 'confetti-piece';
+    piece.style.left = Math.random() * 100 + 'vw';
+    piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+    piece.style.width = (Math.random() * 6 + 4) + 'px';
+    piece.style.height = (Math.random() * 10 + 6) + 'px';
+    piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
+    layer.append(piece);
+  }
+  setTimeout(() => { layer.innerHTML = ''; }, 3000);
+}
+
+function renderAll() {
+  renderCountdownsAndHeader();
+  renderSubjectsAndProgress();
+  renderGeneratedSchedule();
+  renderTasksAndNotes();
+  updateClockDisplay();
+}
+
+// App Boot
+(async function boot() {
+  if (localStorage.getItem(GUEST_FLAG) === '1') {
+    isGuestMode = true;
+    loadLocalData();
+    showApp();
+    syncStatus.textContent = 'وضع محلي (محفوظ على جهازك) ✓';
+    renderAll();
     return;
   }
-  tasks.forEach((task, index) => {
-    const item = document.createElement('div');
-    item.className = 'task-item' + (task.done ? ' done' : '');
-    const mark = document.createElement('span');
-    mark.textContent = task.done ? '✔️' : '⭕';
-    const taskText = document.createElement('span');
-    taskText.style.flex = '1';
-    taskText.textContent = task.text;
-    item.append(mark, taskText);
-    item.addEventListener('click', () => {
-      tasks[index].done = !tasks[index].done;
-      save();
-      update();
-    });
-    taskList.appendChild(item);
-  });
-}
 
-document.getElementById('addTask').addEventListener('click', () => {
-  const input = document.getElementById('newTask');
-  const val = input.value.trim();
-  if (val) {
-    tasks.push({ text: val, done: false });
-    input.value = '';
-    save();
-    update();
-  }
-});
-
-// Notes handling
-function renderNotes() {
-  const notesList = document.getElementById('notesList');
-  notesList.innerHTML = '';
-  
-  const allChapters = [
-    { id: 'terms1', name: 'مصطلحات - شابتر 1' },
-    { id: 'terms2', name: 'مصطلحات - شابتر 2' },
-    { id: 'terms3', name: 'مصطلحات - شابتر 3' },
-    { id: 'terms4', name: 'مصطلحات - شابتر 4' },
-    { id: 'terms5', name: 'مصطلحات - شابتر 5' },
-    { id: 'terms6', name: 'مصطلحات - شابتر 6' },
-    { id: 'terms7', name: 'مصطلحات - شابتر 7' },
-    { id: 'terms8', name: 'مصطلحات - شابتر 8' },
-    { id: 'terms9', name: 'مصطلحات - شابتر 9' },
-    { id: 'physio1', name: 'فسيو - شابتر 1' },
-    { id: 'physio2', name: 'فسيو - شابتر 2' },
-    { id: 'physio3', name: 'فسيو - شابتر 3' },
-    { id: 'physio4', name: 'فسيو - شابتر 4' },
-    { id: 'physio5', name: 'فسيو - شابتر 5' },
-  ];
-
-  allChapters.forEach(ch => {
-    const row = document.createElement('div');
-    row.className = 'note-row';
-
-    const label = document.createElement('label');
-    label.textContent = ch.name;
-
-    const textarea = document.createElement('textarea');
-    textarea.className = 'note-area';
-    textarea.placeholder = 'اكتبي فضفضتك أو القوانين اللي نسيتيها هنا...';
-    textarea.value = notes[ch.id] || '';
-
-    textarea.addEventListener('input', () => {
-      notes[ch.id] = textarea.value;
-      save();
-    });
-
-    row.append(label, textarea);
-    notesList.append(row);
-  });
-}
-
-// Restore an existing Neon session, if present.
-(async function boot() {
   try {
-    const sessionResult = await neon.auth.getSession();
-    if (sessionResult?.error) throw new Error(sessionResult.error.message);
-    const user = extractUser(sessionResult);
-    if (user?.id) {
-      await enterDashboard(user);
-    } else {
-      showLogin();
+    const savedSess = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+    if (savedSess?.userId) {
+      await enterCloudDashboard(savedSess.userId, savedSess.token);
+      return;
     }
-  } catch (error) {
-    console.error('Neon initialization failed:', error);
-    showLogin();
-    authStatus.textContent = 'تعذّر الاتصال بخدمة تسجيل الدخول. تأكدي من تشغيل الصفحة عبر HTTPS أو localhost.';
+    const sess = await neonGetSession();
+    if (sess?.user?.id) {
+      await enterCloudDashboard(sess.user.id, sess?.session?.token || null);
+      return;
+    }
+  } catch (err) {
+    console.warn('Session restore skipped:', err);
   }
+
+  showLogin();
 })();
 </script>
 
