@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>خطة لجونتي الدراسية 💗</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -25,15 +25,16 @@
   --border-light: #f2dce7;
   --shadow-sm: 0 4px 14px rgba(166, 61, 106, 0.05);
   --shadow-md: 0 12px 32px rgba(166, 61, 106, 0.09);
-  --radius-lg: 24px;
-  --radius-md: 16px;
-  --radius-sm: 12px;
+  --radius-lg: 20px;
+  --radius-md: 14px;
+  --radius-sm: 10px;
 }
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
@@ -43,21 +44,21 @@ body {
     var(--bg-main);
   color: var(--text-main);
   font-family: 'Tajawal', Tahoma, Arial, sans-serif;
-  line-height: 1.65;
-  -webkit-font-smoothing: antialiased;
+  line-height: 1.6;
 }
 
 .wrap {
-  max-width: 1120px;
+  width: 100%;
+  max-width: 100%;
   margin: auto;
-  padding: 28px 18px 60px;
+  padding: 12px 10px 40px;
 }
 
 /* Header */
 header {
   background: linear-gradient(135deg, #f9b8d2 0%, #e4d8ff 100%);
   border-radius: var(--radius-lg);
-  padding: 32px 28px;
+  padding: 20px 16px;
   position: relative;
   overflow: hidden;
   box-shadow: var(--shadow-md);
@@ -67,34 +68,24 @@ header {
 header::before {
   content: "";
   position: absolute;
-  top: -40px;
-  left: -40px;
-  width: 180px;
-  height: 180px;
+  top: -30px;
+  left: -30px;
+  width: 140px;
+  height: 140px;
   background: radial-gradient(circle, rgba(255,255,255,0.45) 0%, transparent 70%);
   border-radius: 50%;
-}
-
-header::after {
-  content: "🌸";
-  position: absolute;
-  left: 28px;
-  bottom: -10px;
-  font-size: 86px;
-  opacity: 0.35;
-  pointer-events: none;
 }
 
 .header-top {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  gap: 12px;
-  margin-bottom: 8px;
+  gap: 8px;
+  margin-bottom: 6px;
 }
 
 h1 {
-  font-size: clamp(26px, 4.5vw, 38px);
+  font-size: clamp(22px, 5vw, 32px);
   font-weight: 900;
   color: #5e2947;
   letter-spacing: -0.5px;
@@ -102,49 +93,38 @@ h1 {
 
 header p {
   color: #6b3d57;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
-  max-width: 600px;
 }
 
 .pills-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 16px;
+  gap: 6px;
+  margin-top: 12px;
 }
 
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(6px);
-  padding: 6px 14px;
-  border-radius: 30px;
-  font-size: 13.5px;
+  gap: 4px;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-size: 12px;
   font-weight: 700;
   color: #783b5b;
-  box-shadow: 0 2px 8px rgba(113, 61, 90, 0.08);
 }
 
 .logout {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 700;
-  padding: 7px 14px;
-  background: rgba(255, 255, 255, 0.75);
+  padding: 6px 12px;
+  background: rgba(255, 255, 255, 0.8);
   color: #783b5b;
-  border-radius: 12px;
-  box-shadow: none;
-  transition: 0.2s;
-  z-index: 2;
+  border-radius: 10px;
   cursor: pointer;
   border: none;
-}
-
-.logout:hover {
-  background: #fff;
-  color: var(--primary-dark);
 }
 
 /* Cards & Layout */
@@ -152,89 +132,82 @@ header p {
   background: var(--surface);
   border: 1px solid var(--border-light);
   border-radius: var(--radius-lg);
-  padding: 24px;
+  padding: 16px 14px;
   box-shadow: var(--shadow-sm);
-  transition: box-shadow 0.25s ease;
-}
-
-.card:hover {
-  box-shadow: var(--shadow-md);
+  margin-top: 14px;
 }
 
 .card-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 16px;
-  gap: 10px;
+  margin-bottom: 12px;
+  gap: 8px;
 }
 
 .card h2 {
-  font-size: 20px;
+  font-size: 17px;
   font-weight: 800;
   color: #6e3554;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .mini {
-  font-size: 13.5px;
+  font-size: 12px;
   color: var(--text-muted);
   font-weight: 500;
 }
 
 .grid-main {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 20px;
-  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
 }
 
 /* Countdown Section */
 .exam-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 10px;
 }
 
 .exam {
   background: linear-gradient(145deg, #fff6fa 0%, #f4f0ff 100%);
   border: 1px solid #eed6e4;
   border-radius: var(--radius-md);
-  padding: 18px 16px;
+  padding: 12px;
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
+  flex-direction: column;
+  gap: 8px;
+  text-align: center;
 }
 
 .exam-info h3 {
   color: #6e3554;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 800;
-  margin-bottom: 2px;
 }
 
 .exam-info small {
   color: var(--text-muted);
-  font-size: 13px;
-  font-weight: 500;
+  font-size: 11.5px;
 }
 
 .exam-clock-box {
   background: #fff;
-  padding: 10px 14px;
+  padding: 8px;
   border-radius: var(--radius-sm);
   border: 1px solid #f2dce7;
   text-align: center;
-  min-width: 135px;
-  box-shadow: 0 3px 10px rgba(168, 78, 120, 0.06);
+  box-shadow: 0 2px 6px rgba(168, 78, 120, 0.04);
 }
 
 .exam .exam-clock {
-  font-size: clamp(19px, 3vw, 24px);
+  font-size: 16px;
   font-weight: 900;
   color: var(--primary);
   font-variant-numeric: tabular-nums;
@@ -243,18 +216,18 @@ header p {
 
 /* Progress Section */
 .big-pct {
-  font-size: 36px;
+  font-size: 28px;
   font-weight: 900;
   color: var(--primary);
   line-height: 1;
 }
 
 .track {
-  height: 12px;
+  height: 10px;
   background: #f6e7ef;
   border-radius: 20px;
   overflow: hidden;
-  margin: 12px 0;
+  margin: 10px 0;
 }
 
 .fill {
@@ -268,17 +241,17 @@ header p {
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
-  margin-top: 16px;
+  gap: 8px;
+  margin-top: 12px;
 }
 
 .stat {
   background: var(--surface-soft);
   border: 1px solid #f7e3ed;
-  border-radius: var(--radius-md);
-  padding: 12px 10px;
+  border-radius: var(--radius-sm);
+  padding: 8px 4px;
   text-align: center;
-  font-size: 13.5px;
+  font-size: 11.5px;
   color: var(--text-muted);
   font-weight: 600;
 }
@@ -286,15 +259,14 @@ header p {
 .stat b {
   display: block;
   color: #6e3554;
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 900;
-  line-height: 1.2;
   margin-bottom: 2px;
 }
 
 .subject {
-  margin-top: 22px;
-  padding-top: 18px;
+  margin-top: 16px;
+  padding-top: 14px;
   border-top: 1px dashed #f0d8e5;
 }
 
@@ -305,7 +277,7 @@ header p {
 }
 
 .subject-head h3 {
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 800;
   color: #6e3554;
 }
@@ -314,38 +286,31 @@ header p {
   background: var(--secondary-soft);
   color: var(--secondary);
   font-weight: 800;
-  font-size: 13px;
-  padding: 3px 10px;
+  font-size: 11.5px;
+  padding: 2px 8px;
   border-radius: 20px;
 }
 
 .chapters {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
-  margin-top: 12px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-top: 10px;
 }
 
 .chapter {
   border: 1.5px solid #f1dce7;
   background: #fffcfd;
   border-radius: var(--radius-sm);
-  padding: 11px 12px;
+  padding: 9px 10px;
   display: flex;
   align-items: center;
-  gap: 9px;
-  font-size: 14.5px;
+  gap: 8px;
+  font-size: 13px;
   font-weight: 700;
   color: var(--text-main);
   cursor: pointer;
-  transition: all 0.2s ease;
   user-select: none;
-}
-
-.chapter:hover {
-  transform: translateY(-2px);
-  border-color: var(--primary-light);
-  background: #fff7fb;
 }
 
 .chapter.done {
@@ -356,8 +321,8 @@ header p {
 
 input[type=checkbox] {
   accent-color: var(--primary);
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   cursor: pointer;
   flex-shrink: 0;
 }
@@ -366,55 +331,43 @@ input[type=checkbox] {
 .timer-card {
   text-align: center;
   background: linear-gradient(170deg, #ffffff 0%, #fff4fa 100%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
 }
 
 .study-girl {
-  font-size: 56px;
-  line-height: 1.2;
-  margin: 6px 0;
+  font-size: 44px;
+  margin: 4px 0;
 }
 
 .clock-box {
   background: #fff;
   border: 1.5px solid #f3dce8;
-  border-radius: 20px;
-  padding: 14px 10px;
-  margin: 10px 0 14px;
-  box-shadow: inset 0 2px 8px rgba(217, 93, 145, 0.05);
+  border-radius: 16px;
+  padding: 10px;
+  margin: 8px 0 12px;
 }
 
 .clock {
-  font-size: clamp(44px, 7vw, 62px);
+  font-size: 42px;
   font-weight: 900;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   color: var(--primary-dark);
   font-variant-numeric: tabular-nums;
-  line-height: 1.1;
 }
 
 button, select {
   font-family: inherit;
   border: 0;
   border-radius: var(--radius-sm);
-  padding: 11px 16px;
-  font-size: 14.5px;
+  padding: 10px 14px;
+  font-size: 13.5px;
   font-weight: 700;
   cursor: pointer;
-  transition: all 0.2s ease;
 }
 
 button {
   background: linear-gradient(135deg, #e573a3, #c86492);
   color: white;
-  box-shadow: 0 6px 15px rgba(217, 93, 145, 0.25);
-}
-
-button:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 18px rgba(217, 93, 145, 0.35);
+  box-shadow: 0 4px 12px rgba(217, 93, 145, 0.2);
 }
 
 button.secondary {
@@ -423,27 +376,19 @@ button.secondary {
   box-shadow: none;
 }
 
-button.secondary:hover {
-  background: #edd7e3;
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
 select {
   width: 100%;
   background: #fff;
   color: #6e3554;
   border: 1.5px solid #efd3e1;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
   text-align: center;
 }
 
 .timer-controls {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 8px;
+  gap: 6px;
 }
 
 .timer-controls #startBtn {
@@ -451,82 +396,62 @@ select {
 }
 
 .quote {
-  margin-top: 16px;
+  margin-top: 12px;
   background: var(--secondary-soft);
   border: 1px solid #e3dafb;
-  border-radius: var(--radius-md);
-  padding: 13px 14px;
+  border-radius: var(--radius-sm);
+  padding: 10px;
   color: #5b488a;
-  font-size: 14px;
+  font-size: 12.5px;
   font-weight: 600;
 }
 
 .note {
-  font-size: 13px;
+  font-size: 11.5px;
   color: var(--text-muted);
-  margin-top: 12px;
+  margin-top: 8px;
 }
 
 /* Schedule Section */
 .schedule-section {
-  margin-top: 22px;
+  margin-top: 14px;
 }
 
 .schedule-legend {
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 18px;
+  gap: 6px;
+  margin-bottom: 12px;
 }
 
 .legend-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 13px;
+  gap: 4px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 5px 12px;
+  padding: 4px 10px;
   border-radius: 20px;
 }
 
-.legend-terms {
-  background: #ffeaf3;
-  color: #b53d72;
-}
-
-.legend-physio {
-  background: #ede8ff;
-  color: #6246b5;
-}
-
-.legend-exam {
-  background: #fff3d6;
-  color: #9e6b00;
-}
+.legend-terms { background: #ffeaf3; color: #b53d72; }
+.legend-physio { background: #ede8ff; color: #6246b5; }
+.legend-exam { background: #fff3d6; color: #9e6b00; }
 
 .timeline-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .day-card {
   background: #fffcfd;
   border: 1.5px solid #f1dce7;
   border-radius: var(--radius-md);
-  padding: 16px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
-  transition: all 0.2s ease;
-  position: relative;
-}
-
-.day-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--primary-light);
-  box-shadow: 0 8px 20px rgba(166, 61, 106, 0.08);
+  gap: 10px;
 }
 
 .day-card.exam-day {
@@ -539,30 +464,25 @@ select {
   justify-content: space-between;
   align-items: center;
   border-bottom: 1px solid #f5e6ee;
-  padding-bottom: 10px;
-}
-
-.day-title {
-  display: flex;
-  flex-direction: column;
+  padding-bottom: 8px;
 }
 
 .day-name {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 900;
   color: #5e2947;
 }
 
 .day-date {
-  font-size: 12.5px;
+  font-size: 11.5px;
   font-weight: 700;
   color: var(--text-muted);
 }
 
 .day-badge {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 800;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 20px;
   background: #f9e8f1;
   color: #9a476d;
@@ -576,49 +496,30 @@ select {
 .day-tasks {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
 }
 
 .task-pill {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 11px;
-  border-radius: 10px;
-  font-size: 13.5px;
+  gap: 6px;
+  padding: 7px 10px;
+  border-radius: 8px;
+  font-size: 12.5px;
   font-weight: 700;
 }
 
-.task-pill.terms {
-  background: #fff0f6;
-  color: #a63467;
-  border-right: 3.5px solid #e573a3;
-}
-
-.task-pill.physio {
-  background: #f3f0ff;
-  color: #583da8;
-  border-right: 3.5px solid #8b74d6;
-}
-
-.task-pill.review {
-  background: #eefaf4;
-  color: #257a56;
-  border-right: 3.5px solid #38a878;
-}
-
-.task-pill.exam-alert {
-  background: #fff5db;
-  color: #8f5d00;
-  border-right: 3.5px solid #e6a119;
-}
+.task-pill.terms { background: #fff0f6; color: #a63467; border-right: 3px solid #e573a3; }
+.task-pill.physio { background: #f3f0ff; color: #583da8; border-right: 3px solid #8b74d6; }
+.task-pill.review { background: #eefaf4; color: #257a56; border-right: 3px solid #38a878; }
+.task-pill.exam-alert { background: #fff5db; color: #8f5d00; border-right: 3px solid #e6a119; }
 
 /* Features Grid */
 .feature-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-  margin-top: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 14px;
 }
 
 .points-panel {
@@ -626,7 +527,7 @@ select {
 }
 
 .points-number {
-  font-size: 38px;
+  font-size: 30px;
   font-weight: 900;
   color: var(--primary);
   line-height: 1.1;
@@ -635,14 +536,14 @@ select {
 .reward-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .reward {
-  font-size: 13px;
+  font-size: 11.5px;
   font-weight: 700;
-  padding: 6px 12px;
+  padding: 5px 10px;
   border-radius: 20px;
   background: #fff;
   border: 1px solid #eed6e4;
@@ -658,37 +559,35 @@ select {
 .streak-row {
   display: flex;
   align-items: center;
-  gap: 14px;
-  margin: 8px 0;
+  gap: 10px;
+  margin: 6px 0;
 }
 
 .streak-fire {
-  font-size: 46px;
+  font-size: 38px;
 }
 
 .streak-number {
-  font-size: 34px;
+  font-size: 28px;
   font-weight: 900;
   color: #d96b38;
-  line-height: 1.1;
 }
 
 .task-list {
   display: grid;
-  gap: 9px;
+  gap: 8px;
 }
 
 .task-item {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
   background: #fff8fb;
   border: 1px solid #f4e1eb;
   border-radius: var(--radius-sm);
-  padding: 10px 12px;
-  font-size: 14.5px;
+  padding: 9px 10px;
+  font-size: 13.5px;
   font-weight: 600;
-  cursor: pointer;
 }
 
 .task-item.done {
@@ -700,8 +599,8 @@ select {
 
 .task-add {
   display: flex;
-  gap: 8px;
-  margin-top: 14px;
+  gap: 6px;
+  margin-top: 10px;
 }
 
 .task-add input, .note-area {
@@ -709,15 +608,10 @@ select {
   border: 1.5px solid #efd5e2;
   border-radius: var(--radius-sm);
   background: #fffcfd;
-  padding: 10px 12px;
+  padding: 9px 10px;
   color: var(--text-main);
-  font-size: 14px;
+  font-size: 13px;
   outline: none;
-  transition: border-color 0.2s;
-}
-
-.task-add input:focus, .note-area:focus {
-  border-color: var(--primary);
 }
 
 .task-add input {
@@ -726,49 +620,37 @@ select {
 
 .notes-list {
   display: grid;
-  gap: 12px;
-  max-height: 310px;
+  gap: 10px;
+  max-height: 260px;
   overflow-y: auto;
-  padding-left: 6px;
-}
-
-.notes-list::-webkit-scrollbar {
-  width: 6px;
-}
-
-.notes-list::-webkit-scrollbar-thumb {
-  background: #e9c8d9;
-  border-radius: 10px;
 }
 
 .note-row {
-  display: grid;
-  grid-template-columns: 125px 1fr;
-  gap: 10px;
-  align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
 }
 
 .note-row label {
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 700;
   color: #783b5b;
-  padding-top: 8px;
 }
 
 .note-area {
   width: 100%;
-  min-height: 54px;
+  min-height: 48px;
   resize: vertical;
 }
 
 /* Chart */
 .chart-wrap {
-  height: 195px;
+  height: 160px;
   display: flex;
   align-items: flex-end;
   justify-content: center;
-  gap: 48px;
-  padding: 16px 20px 0;
+  gap: 30px;
+  padding: 10px 10px 0;
   border-bottom: 2px solid #f0dce7;
 }
 
@@ -778,15 +660,15 @@ select {
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  gap: 8px;
-  width: 110px;
+  gap: 6px;
+  width: 90px;
 }
 
 .chart-bar-bg {
-  height: 135px;
-  width: 64px;
+  height: 110px;
+  width: 48px;
   background: #f8edf3;
-  border-radius: 14px 14px 4px 4px;
+  border-radius: 12px 12px 4px 4px;
   display: flex;
   align-items: flex-end;
   overflow: hidden;
@@ -796,21 +678,20 @@ select {
   width: 100%;
   height: 0;
   background: linear-gradient(180deg, #9d84e8, #e573a3);
-  border-radius: 14px 14px 4px 4px;
+  border-radius: 12px 12px 4px 4px;
   transition: height 0.5s ease;
 }
 
 .chart-col strong {
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 800;
   color: #6e3554;
 }
 
 .chart-col small {
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 700;
   color: var(--text-muted);
-  margin-bottom: 6px;
 }
 
 /* Login Screen */
@@ -822,68 +703,63 @@ select {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 20px;
+  padding: 16px;
 }
 
 .login-box {
-  width: min(430px, 100%);
-  background: rgba(255, 255, 255, 0.94);
+  width: 100%;
+  max-width: 380px;
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(10px);
   border: 1px solid #f3d5e4;
-  border-radius: 28px;
-  padding: 36px 28px;
+  border-radius: 24px;
+  padding: 28px 20px;
   text-align: center;
-  box-shadow: 0 24px 65px rgba(168, 109, 139, 0.2);
+  box-shadow: 0 20px 50px rgba(168, 109, 139, 0.2);
 }
 
 .login-art {
-  font-size: 64px;
-  line-height: 1.2;
+  font-size: 52px;
 }
 
 .login-box h1 {
-  font-size: 28px;
+  font-size: 24px;
   color: #6e3554;
-  margin: 10px 0 6px;
+  margin: 8px 0 4px;
 }
 
 .login-box p {
   color: var(--text-muted);
-  margin-bottom: 20px;
-  font-size: 15px;
+  margin-bottom: 16px;
+  font-size: 13.5px;
 }
 
 .login-box input {
   width: 100%;
   border: 1.5px solid #efcddd;
-  border-radius: 14px;
-  padding: 14px 16px;
+  border-radius: 12px;
+  padding: 12px 14px;
   font-family: inherit;
-  font-size: 16px;
+  font-size: 15px;
   text-align: center;
   outline: none;
   background: #fffcfd;
   color: var(--text-main);
 }
 
-.login-box input:focus {
-  border-color: var(--primary);
-  box-shadow: 0 0 0 4px #f9e2ed;
-}
-
 .login-box button {
   width: 100%;
-  margin-top: 14px;
-  padding: 13px;
-  font-size: 16px;
+  margin-top: 12px;
+  padding: 12px;
+  font-size: 15px;
 }
 
 .login-error {
-  min-height: 24px;
+  min-height: 22px;
   color: #c34d76;
-  font-size: 13.5px;
+  font-size: 12.5px;
   font-weight: 700;
-  margin-top: 10px;
+  margin-top: 8px;
 }
 
 /* Celebration */
@@ -911,44 +787,9 @@ select {
 footer {
   text-align: center;
   color: #9e8293;
-  font-size: 13.5px;
+  font-size: 12px;
   font-weight: 600;
-  margin-top: 32px;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .grid-main {
-    grid-template-columns: 1fr;
-  }
-  .timeline-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .exam-grid,
-  .feature-grid,
-  .timeline-grid {
-    grid-template-columns: 1fr;
-  }
-  .chapters {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .note-row {
-    grid-template-columns: 1fr;
-    gap: 4px;
-  }
-  header {
-    padding: 24px 20px;
-  }
-  .exam {
-    flex-direction: column;
-    text-align: center;
-  }
-  .exam-clock-box {
-    width: 100%;
-  }
+  margin-top: 24px;
 }
 </style>
 </head>
@@ -982,22 +823,22 @@ footer {
     <button class="logout" id="logoutBtn" type="button">خروج</button>
   </div>
   <div class="pills-row">
-    <span class="pill">🌸 المصطلحات: الأحد 22/11 (9 شباتر)</span>
-    <span class="pill">🦋 الفسيو: الثلاثاء 24/11 (5 شباتر)</span>
+    <span class="pill">🌸 المصطلحات: 22/11</span>
+    <span class="pill">🦋 الفسيو: 24/11</span>
   </div>
 </header>
 
 <!-- Exam Countdown -->
-<section class="card" style="margin-top:20px">
+<section class="card">
   <div class="card-header" style="margin-bottom:4px">
     <h2>العد التنازلي للامتحانات ⏰</h2>
-    <span class="mini">الموعد: الساعة 9:00 صباحاً</span>
+    <span class="mini">9:00 صباحاً</span>
   </div>
   <div class="exam-grid">
     <div class="exam">
       <div class="exam-info">
         <h3>🌸 امتحان المصطلحات</h3>
-        <small>الأحد 22 نوفمبر · 9:00 صباحاً</small>
+        <small>الأحد 22 نوفمبر</small>
       </div>
       <div class="exam-clock-box">
         <div class="exam-clock" id="termsCountdown">--</div>
@@ -1006,7 +847,7 @@ footer {
     <div class="exam">
       <div class="exam-info">
         <h3>🦋 امتحان الفسيو</h3>
-        <small>الثلاثاء 24 نوفمبر · 9:00 صباحاً</small>
+        <small>الثلاثاء 24 نوفمبر</small>
       </div>
       <div class="exam-clock-box">
         <div class="exam-clock" id="physioCountdown">--</div>
@@ -1027,9 +868,9 @@ footer {
     <div class="track"><div class="fill" id="overallBar"></div></div>
 
     <div class="stats">
-      <div class="stat"><b id="doneCount">0</b>شباتر منجزة</div>
-      <div class="stat"><b id="leftCount">14</b>شباتر متبقية</div>
-      <div class="stat"><b id="sessions">0</b>جلسات تركيز</div>
+      <div class="stat"><b id="doneCount">0</b>منجزة</div>
+      <div class="stat"><b id="leftCount">14</b>متبقية</div>
+      <div class="stat"><b id="sessions">0</b>جلسات</div>
     </div>
 
     <div class="subject">
@@ -1050,7 +891,7 @@ footer {
       <div class="chapters" id="physio"></div>
     </div>
 
-    <p class="note">علّمي على الشابتر أول ما تخلصيه، ونسبة الإنجاز بتتحدث لحالها وتنحفظ على جهازك 💕</p>
+    <p class="note" style="text-align:center; margin-top:12px;">علّمي على الشابتر أول ما تخلصيه 💕</p>
   </section>
 
   <!-- Study Timer -->
@@ -1080,7 +921,6 @@ footer {
 
     <div>
       <div class="quote" id="encourage">يلا يا لجونتي، ركّزي شوي… تعب اليوم هو فرحة نجاحك بكرا! 🌷</div>
-      <p class="note">كل جلسة تركيز بتكمليها بتنحسب إلك في الإحصائيات وسلسلة الالتزام.</p>
     </div>
   </aside>
 </div>
@@ -1089,68 +929,55 @@ footer {
 <section class="card schedule-section">
   <div class="card-header">
     <div>
-      <h2>خطة الدراسة اليومية (من 16/11 إلى 24/11) 🗓️</h2>
-      <p class="mini">توزيع مريح ومتوازن يضمن تختيم المادتين مع وقت كافٍ للمراجعة</p>
+      <h2>خطة الدراسة اليومية 🗓️</h2>
+      <p class="mini">من 16/11 إلى 24/11</p>
     </div>
   </div>
 
   <div class="schedule-legend">
-    <span class="legend-item legend-terms">🌸 المصطلحات (9 شباتر)</span>
-    <span class="legend-item legend-physio">🦋 الفسيو (5 شباتر)</span>
-    <span class="legend-item legend-exam">🏆 أيام الامتحانات</span>
+    <span class="legend-item legend-terms">🌸 مصطلحات</span>
+    <span class="legend-item legend-physio">🦋 فسيو</span>
+    <span class="legend-item legend-exam">🏆 الامتحانات</span>
   </div>
 
   <div class="timeline-grid">
-
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الاثنين</span>
-          <span class="day-date">16 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 1 · انطلاقة 🌸</span>
+        <div class="day-title"><span class="day-name">الاثنين</span> <span class="day-date">16 نوفمبر</span></div>
+        <span class="day-badge">اليوم 1 🌸</span>
       </div>
       <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 1 + شابتر 2</div>
+        <div class="task-pill terms">🌸 مصطلحات: شابتر 1 + 2</div>
         <div class="task-pill physio">🦋 فسيو: شابتر 1</div>
       </div>
     </div>
 
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الثلاثاء</span>
-          <span class="day-date">17 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 2 · استمرار ✨</span>
+        <div class="day-title"><span class="day-name">الثلاثاء</span> <span class="day-date">17 نوفمبر</span></div>
+        <span class="day-badge">اليوم 2 ✨</span>
       </div>
       <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 3 + شابتر 4</div>
+        <div class="task-pill terms">🌸 مصطلحات: شابتر 3 + 4</div>
         <div class="task-pill physio">🦋 فسيو: شابتر 2</div>
       </div>
     </div>
 
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الأربعاء</span>
-          <span class="day-date">18 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 3 · إنجاز حلو 💪</span>
+        <div class="day-title"><span class="day-name">الأربعاء</span> <span class="day-date">18 نوفمبر</span></div>
+        <span class="day-badge">اليوم 3 💪</span>
       </div>
       <div class="day-tasks">
-        <div class="task-pill terms">🌸 مصطلحات: شابتر 5 + شابتر 6</div>
+        <div class="task-pill terms">🌸 مصطلحات: شابتر 5 + 6</div>
         <div class="task-pill physio">🦋 فسيو: شابتر 3</div>
       </div>
     </div>
 
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الخميس</span>
-          <span class="day-date">19 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 4 · قربنا 🌷</span>
+        <div class="day-title"><span class="day-name">الخميس</span> <span class="day-date">19 نوفمبر</span></div>
+        <span class="day-badge">اليوم 4 🌷</span>
       </div>
       <div class="day-tasks">
         <div class="task-pill terms">🌸 مصطلحات: شابتر 7</div>
@@ -1160,11 +987,8 @@ footer {
 
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الجمعة</span>
-          <span class="day-date">20 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 5 · ختم الفسيو 🎯</span>
+        <div class="day-title"><span class="day-name">الجمعة</span> <span class="day-date">20 نوفمبر</span></div>
+        <span class="day-badge">اليوم 5 🎯</span>
       </div>
       <div class="day-tasks">
         <div class="task-pill terms">🌸 مصطلحات: شابتر 8</div>
@@ -1174,60 +998,47 @@ footer {
 
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">السبت</span>
-          <span class="day-date">21 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 6 · ليلة الامتحان 📚</span>
+        <div class="day-title"><span class="day-name">السبت</span> <span class="day-date">21 نوفمبر</span></div>
+        <span class="day-badge">اليوم 6 📚</span>
       </div>
       <div class="day-tasks">
         <div class="task-pill terms">🌸 مصطلحات: شابتر 9 (الأخير)</div>
-        <div class="task-pill review">✅ مراجعة شاملة للمصطلحات</div>
+        <div class="task-pill review">✅ مراجعة المصطلحات</div>
       </div>
     </div>
 
     <div class="day-card exam-day">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الأحد</span>
-          <span class="day-date">22 نوفمبر</span>
-        </div>
+        <div class="day-title"><span class="day-name">الأحد</span> <span class="day-date">22 نوفمبر</span></div>
         <span class="day-badge">امتحان المصطلحات 🤍</span>
       </div>
       <div class="day-tasks">
-        <div class="task-pill exam-alert">🏆 تقديم امتحان المصطلحات (9:00 ص)</div>
-        <div class="task-pill physio">🦋 بعد الراحة: مراجعة خفيفة للفسيو</div>
+        <div class="task-pill exam-alert">🏆 امتحان المصطلحات (9:00 ص)</div>
+        <div class="task-pill physio">🦋 مراجعة خفيفة للفسيو</div>
       </div>
     </div>
 
     <div class="day-card">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الاثنين</span>
-          <span class="day-date">23 نوفمبر</span>
-        </div>
-        <span class="day-badge">اليوم 8 · تثبيت الفسيو 🧠</span>
+        <div class="day-title"><span class="day-name">الاثنين</span> <span class="day-date">23 نوفمبر</span></div>
+        <span class="day-badge">اليوم 8 🧠</span>
       </div>
       <div class="day-tasks">
-        <div class="task-pill review">✅ مراجعة شاملة لشباتر الفسيو (1-5)</div>
+        <div class="task-pill review">✅ مراجعة شاملة للفسيو (1-5)</div>
         <div class="task-pill physio">📝 حل أسئلة وتجميعات</div>
       </div>
     </div>
 
     <div class="day-card exam-day">
       <div class="day-card-top">
-        <div class="day-title">
-          <span class="day-name">الثلاثاء</span>
-          <span class="day-date">24 نوفمبر</span>
-        </div>
+        <div class="day-title"><span class="day-name">الثلاثاء</span> <span class="day-date">24 نوفمبر</span></div>
         <span class="day-badge">امتحان الفسيو 🎀</span>
       </div>
       <div class="day-tasks">
-        <div class="task-pill exam-alert">🏆 تقديم امتحان الفسيو (9:00 ص)</div>
-        <div class="task-pill review">🎉 ختام الامتحانات بالنجاح يا بطلة!</div>
+        <div class="task-pill exam-alert">🏆 امتحان الفسيو (9:00 ص)</div>
+        <div class="task-pill review">🎉 ختام الامتحانات بالنجاح!</div>
       </div>
     </div>
-
   </div>
 </section>
 
@@ -1237,19 +1048,18 @@ footer {
   <section class="card points-panel">
     <div class="card-header">
       <h2>رصيد الدلع والإنجاز 🏆</h2>
-      <span style="font-size:32px">💎</span>
+      <span style="font-size:26px">💎</span>
     </div>
-    <div style="display:flex; align-items:baseline; gap:8px;">
+    <div style="display:flex; align-items:baseline; gap:6px;">
       <div class="points-number" id="pointsTotal">0</div>
       <span class="mini" style="font-weight:700;">نقطة لجونتي</span>
     </div>
     <div class="track"><div class="fill" id="pointsBar"></div></div>
-    <div class="mini" id="pointsHint">كل شابتر مكتمل = 10 نقاط يا بطلة!</div>
     <div class="reward-list" id="rewards">
-      <span class="reward" data-at="10">🌷 أول 10 نقاط</span>
+      <span class="reward" data-at="10">🌷 10 نقطة</span>
       <span class="reward" data-at="30">🧁 30 نقطة</span>
       <span class="reward" data-at="70">👑 70 نقطة</span>
-      <span class="reward" data-at="140">💖 أسطورة الدراسة</span>
+      <span class="reward" data-at="140">💖 أسطورة</span>
     </div>
   </section>
 
@@ -1265,8 +1075,7 @@ footer {
         <div class="mini">أيام دراسة متتالية</div>
       </div>
     </div>
-    <p class="note" id="streakMessage" style="font-weight:600; color:#6e3554;">ابدئي اليوم وسجّلي أول إنجاز حتى تبدأ سلسلتك يا لجونتي!</p>
-    <p class="mini" style="margin-top:6px;">كل يوم فيه شابتر منجز أو جلسة تركيز يُحسب تلقائياً 💗</p>
+    <p class="note" id="streakMessage">ابدئي اليوم وسجّلي أول إنجاز يا لجونتي! 💗</p>
   </section>
 
   <section class="card">
@@ -1275,7 +1084,7 @@ footer {
     </div>
     <div class="task-list" id="taskList"></div>
     <div class="task-add">
-      <input id="newTask" type="text" maxlength="90" placeholder="أضيفي مهمة سريعة (مثلاً: طباعة ملخص)...">
+      <input id="newTask" type="text" maxlength="90" placeholder="أضيفي مهمة سريعة...">
       <button id="addTask" type="button">إضافة +</button>
     </div>
   </section>
@@ -1287,10 +1096,9 @@ footer {
     <div class="notes-list" id="notesList"></div>
   </section>
 
-  <section class="card" style="grid-column:1/-1">
+  <section class="card">
     <div class="card-header">
       <h2>مقارنة تقدم المواد 📈</h2>
-      <span class="mini">يتحدث تلقائياً مع إنجازك</span>
     </div>
     <div class="chart-wrap">
       <div class="chart-col">
@@ -1309,7 +1117,7 @@ footer {
 
 <div class="confetti-layer" id="confettiLayer"></div>
 
-<footer>مصممة بكل حب للّجونتي المجتهدة 💞 لا تنسي تشربي مي وتريّحي عيونك.</footer>
+<footer>مصممة بكل حب للّجونتي المجتهدة 💞</footer>
 </div>
 
 <script>
@@ -1346,7 +1154,7 @@ document.getElementById('logoutBtn').addEventListener('click', () => {
 
 if (sessionStorage.getItem('lajonatiLoggedIn') === 'yes') showApp();
 
-// Exam countdown
+// Exam countdown structured as: days, hours, minutes, seconds
 function countdownTo(target, elementId) {
   const el = document.getElementById(elementId);
   const now = new Date();
@@ -1362,10 +1170,7 @@ function countdownTo(target, elementId) {
   const mins = Math.floor((diff % 3600000) / 60000);
   const secs = Math.floor((diff % 60000) / 1000);
 
-  el.textContent = (days ? days + 'ي ' : '') +
-    String(hours).padStart(2, '0') + ':' +
-    String(mins).padStart(2, '0') + ':' +
-    String(secs).padStart(2, '0');
+  el.textContent = `${days}ي ${String(hours).padStart(2, '0')}س ${String(mins).padStart(2, '0')}د ${String(secs).padStart(2, '0')}ث`;
 }
 
 function updateExamCountdowns() {
@@ -1476,7 +1281,7 @@ function update() {
   // Streak
   document.getElementById('streakCount').textContent = studyDays.length;
   if (studyDays.length > 0) {
-    document.getElementById('streakMessage').textContent = 'استمرار رائع جداً! حافظي على هذا النشاط المذهل 🌸';
+    document.getElementById('streakMessage').textContent = 'استمرار رائع جداً! حافظي على هذا النشاط 🌸';
   }
 
   renderTasks();
@@ -1495,18 +1300,17 @@ function triggerConfetti() {
   const layer = document.getElementById('confettiLayer');
   layer.innerHTML = '';
   const colors = ['#d95d91', '#8b74d6', '#2c8c64', '#f6b3cf', '#ffd1dc'];
-  for (let i = 0; i < 40; i++) {
+  for (let i = 0; i < 30; i++) {
     const piece = document.createElement('div');
     piece.className = 'confetti-piece';
     piece.style.left = Math.random() * 100 + 'vw';
     piece.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-    piece.style.width = (Math.random() * 8 + 6) + 'px';
-    piece.style.height = (Math.random() * 12 + 8) + 'px';
+    piece.style.width = (Math.random() * 6 + 4) + 'px';
+    piece.style.height = (Math.random() * 10 + 6) + 'px';
     piece.style.animationDuration = (Math.random() * 2 + 2) + 's';
-    piece.style.animationDelay = (Math.random() * 0.5) + 's';
     layer.appendChild(piece);
   }
-  setTimeout(() => { layer.innerHTML = ''; }, 3500);
+  setTimeout(() => { layer.innerHTML = ''; }, 3000);
 }
 
 // Study Timer
@@ -1575,7 +1379,7 @@ function renderTasks() {
   const taskList = document.getElementById('taskList');
   taskList.innerHTML = '';
   if (tasks.length === 0) {
-    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:10px;">لا توجد مهام إضافية حالياً ✨</div>';
+    taskList.innerHTML = '<div class="mini" style="text-align:center; padding:6px;">لا توجد مهام إضافية ✨</div>';
     return;
   }
   tasks.forEach((task, index) => {
@@ -1633,7 +1437,7 @@ function renderNotes() {
 
     const textarea = document.createElement('textarea');
     textarea.className = 'note-area';
-    textarea.placeholder = 'اكتبي ملاحظات أو تنبيهات مهمة هنا...';
+    textarea.placeholder = 'اكتبي ملاحظة هنا...';
     textarea.value = notes[ch.id] || '';
 
     textarea.addEventListener('input', () => {
