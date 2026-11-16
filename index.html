@@ -1,0 +1,755 @@
+
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>خطة لجونتي الدراسية 💗</title>
+
+<style>
+:root {
+  --pink:#f5a9c8;
+  --rose:#d95f91;
+  --lav:#e9e2ff;
+  --ink:#493747;
+  --muted:#907d8b;
+}
+*{box-sizing:border-box}
+body{
+ margin:0;
+ background:radial-gradient(circle at 10% 5%,#ffe6f0 0,transparent 28%),
+ radial-gradient(circle at 95% 20%,#eee8ff 0,transparent 30%),#fffafd;
+ color:var(--ink);
+ font-family:Tahoma,Arial,sans-serif;
+ line-height:1.7;
+}
+.wrap{max-width:1050px;margin:auto;padding:24px 16px 50px}
+header{
+ background:linear-gradient(125deg,#f8b7d0,#e8dfff);
+ border-radius:28px;padding:27px 25px;
+ position:relative;overflow:hidden;
+ box-shadow:0 12px 30px #dca5c333;
+}
+header:after{
+ content:"🌸";position:absolute;left:22px;top:10px;
+ font-size:70px;opacity:.55
+}
+h1{margin:0 0 5px;font-size:clamp(25px,5vw,38px);color:#713d5a}
+header p{margin:0;color:#744e67}
+.pill{display:inline-block;background:#ffffffa8;padding:5px 13px;border-radius:30px;font-size:13px;margin-top:12px}
+.grid{display:grid;grid-template-columns:1.2fr .8fr;gap:17px;margin-top:18px}
+.card{background:#fff;border:1px solid #f5dce8;border-radius:22px;padding:20px;box-shadow:0 8px 22px #a86d8b0d}
+.card h2{font-size:19px;margin:0 0 13px;color:#874e6c}
+.progress-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.big{font-size:35px;font-weight:800;color:var(--rose)}
+.track{height:13px;background:#f8eaf1;border-radius:20px;overflow:hidden;margin:10px 0}
+.fill{height:100%;width:0;background:linear-gradient(90deg,#f2a5c4,#c9a9ef);border-radius:20px;transition:width .3s}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.stat{background:#fff5fa;border-radius:15px;padding:10px;text-align:center;font-size:13px;color:var(--muted)}
+.stat b{display:block;color:#794c67;font-size:21px}
+.subject{margin-top:17px}
+.subject-head{display:flex;justify-content:space-between;align-items:center}
+.subject-head h3{margin:0;color:#874e6c}
+.mini{font-size:13px;color:var(--muted)}
+.chapters{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:12px}
+.chapter{border:1px solid #f1dce7;background:#fffafd;border-radius:13px;padding:10px;display:flex;align-items:center;gap:8px;font-size:14px;cursor:pointer;transition:.2s}
+.chapter:hover{transform:translateY(-2px);border-color:#e7a2c1}
+.chapter.done{background:#f0faf4;border-color:#b9dfc9;color:#48775e}
+input[type=checkbox]{accent-color:#dc77a3;width:18px;height:18px;cursor:pointer;flex-shrink:0}
+.schedule{margin-top:18px}
+.day{display:flex;justify-content:space-between;gap:12px;padding:11px 0;border-bottom:1px solid #f5e8ef}
+.day:last-child{border:0}
+.day strong{color:#75465f}
+.tag{font-size:12px;background:#f9e8f1;color:#9a5476;border-radius:20px;padding:3px 9px;white-space:nowrap}
+.timer-card{text-align:center;background:linear-gradient(160deg,#fff,#fff5fa)}
+.study-girl{font-size:60px;line-height:1.3;margin:0 0 4px}
+.clock{font-size:clamp(42px,9vw,60px);font-weight:800;letter-spacing:2px;color:#a84e78;font-variant-numeric:tabular-nums;margin:5px 0}
+.timer-controls{display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+button,select{font:inherit;border:0;border-radius:13px;padding:10px 15px;cursor:pointer}
+button{background:#df83aa;color:white;box-shadow:0 5px 12px #df83aa33}
+button.secondary{background:#f5e5ee;color:#854c68;box-shadow:none}
+button:active{transform:scale(.97)}
+select{background:#fff0f6;color:#75465f;border:1px solid #f0d3e1;margin-bottom:10px}
+.quote{margin-top:13px;background:#f8f0ff;border-radius:14px;padding:12px;color:#735c89;font-size:14px}
+.note{font-size:13px;color:var(--muted);margin-top:12px}
+footer{text-align:center;color:#a58a9b;font-size:12px;margin-top:20px}
+
+/* Login */
+.login-screen{
+ position:fixed;inset:0;z-index:20;
+ background:linear-gradient(135deg,#ffe6f0,#eee8ff 60%,#fffafd);
+ display:flex;align-items:center;justify-content:center;padding:20px
+}
+.login-box{
+ width:min(430px,100%);background:#ffffffed;
+ border:1px solid #f3d5e4;border-radius:28px;
+ padding:30px 24px;text-align:center;
+ box-shadow:0 22px 65px #a86d8b26
+}
+.login-art{font-size:68px;line-height:1.3}
+.login-box h1{font-size:27px;color:#874e6c;margin:8px 0}
+.login-box p{color:#907d8b;margin:5px 0 18px}
+.login-box input{
+ width:100%;border:1px solid #efcddd;border-radius:14px;
+ padding:13px 15px;font:inherit;text-align:center;
+ outline:none;background:#fffafd;color:#493747
+}
+.login-box input:focus{border-color:#df83aa;box-shadow:0 0 0 3px #f9e2ed}
+.login-box button{width:100%;margin-top:12px}
+.login-error{min-height:24px;color:#c34d76;font-size:13px;margin-top:8px}
+
+/* Countdown */
+.exam-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:12px}
+.exam{background:linear-gradient(145deg,#fff5fa,#f5f0ff);border:1px solid #f1dce7;border-radius:18px;padding:15px;text-align:center}
+.exam .emoji{font-size:29px}
+.exam h3{margin:3px 0;color:#874e6c;font-size:16px}
+.exam .exam-clock{font-size:clamp(21px,4vw,29px);font-weight:800;color:#a84e78;font-variant-numeric:tabular-nums;direction:ltr}
+.exam small{color:#907d8b}
+.logout{float:left;font-size:12px;padding:6px 11px;background:#f5e5ee;color:#854c68;box-shadow:none}
+
+/* Features */
+.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin-top:18px}
+.points-panel{background:linear-gradient(135deg,#fff3f8,#f5efff)}
+.points-number{font-size:36px;font-weight:900;color:#bd5e8a}
+.reward-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px}
+.reward{font-size:12px;padding:6px 10px;border-radius:20px;background:#fff;border:1px solid #f1dce7;color:#91627a}
+.reward.unlocked{background:#effaf3;border-color:#b8dfc8;color:#47795d}
+.streak-row{display:flex;align-items:center;gap:12px}
+.streak-fire{font-size:43px}
+.streak-number{font-size:32px;font-weight:900;color:#d87945;line-height:1.2}
+.task-list{display:grid;gap:8px}
+.task-item{display:flex;align-items:center;gap:9px;background:#fff8fb;border:1px solid #f4e3ec;border-radius:12px;padding:9px 11px;font-size:14px}
+.task-item.done{background:#f0faf4;color:#64836f;text-decoration:line-through}
+.task-add{display:flex;gap:7px;margin-top:12px}
+.task-add input,.note-area{font:inherit;border:1px solid #efd5e2;border-radius:12px;background:#fffafd;padding:10px;color:#493747;min-width:0}
+.task-add input{flex:1;width:50%}
+.task-add button{white-space:nowrap;padding:8px 12px}
+.notes-list{display:grid;gap:10px}
+.note-row{display:grid;grid-template-columns:115px 1fr;gap:9px;align-items:start}
+.note-row label{font-size:13px;color:#87536e;padding-top:8px}
+.note-area{width:100%;min-height:58px;resize:vertical}
+.chart-wrap{height:185px;display:flex;align-items:end;gap:20px;padding:12px 15px 0;border-bottom:1px solid #f0dce7}
+.chart-col{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:end;height:100%;gap:7px}
+.chart-bar-bg{height:130px;width:min(58px,80%);background:#f8edf3;border-radius:12px 12px 5px 5px;display:flex;align-items:end;overflow:hidden}
+.chart-bar{width:100%;height:0;background:linear-gradient(180deg,#c9a9ef,#ed9fc0);border-radius:12px 12px 5px 5px;transition:height .4s}
+.chart-col strong{font-size:13px;color:#80536c}
+.chart-col small{font-size:11px;color:#9c8794}
+
+/* Celebration */
+.confetti-layer{position:fixed;inset:0;pointer-events:none;z-index:50;overflow:hidden}
+.confetti-piece{position:absolute;top:-20px;font-size:22px;animation:fall 3.2s linear forwards}
+@keyframes fall{to{transform:translateY(110vh) rotate(720deg);opacity:0}}
+
+@media(max-width:720px){
+ .grid{grid-template-columns:1fr}
+ .chapters{grid-template-columns:repeat(2,1fr)}
+ header{padding:23px 18px}
+ .stats{gap:6px}
+ .card{padding:17px}
+ .feature-grid{grid-template-columns:1fr}
+ .note-row{grid-template-columns:1fr;gap:3px}
+ .chart-wrap{gap:12px}
+}
+@media(max-width:520px){
+ .exam-grid{grid-template-columns:1fr}
+ .login-box{padding:25px 18px}
+}
+</style>
+</head>
+
+<body>
+
+<!-- Login -->
+<div class="login-screen" id="loginScreen">
+ <div class="login-box">
+  <div class="login-art">🎀👩🏻‍🎓🌷</div>
+  <h1>مرحبا لجونتي 💗</h1>
+  <p>ادخلي كلمة السر المتوقعة لنفتح عالم إنجازاتك ✨</p>
+  <form id="loginForm">
+   <input id="passwordInput" type="password" placeholder="كلمة السر يا لجونتي..." autocomplete="off" required>
+   <button type="submit">افتحي خطتي الدراسية 💕</button>
+  </form>
+  <div class="login-error" id="loginError" aria-live="polite"></div>
+  <small style="color:#ad91a1">مساحتك الدراسية الصغيرة… كلها حماس ودلع 🌸</small>
+ </div>
+</div>
+
+<!-- Main App -->
+<div class="wrap" id="app" style="display:none">
+
+<header>
+ <button class="logout" id="logoutBtn" type="button">خروج</button>
+ <h1>خطة لجونتي الدراسية 💗</h1>
+ <p>هيا لجونتي، تسطيعي! خطوة صغيرة كل يوم وبتوصلي لهدفك يا شطورة 🎀</p>
+ <span class="pill">مصطلحات: الأحد 22/11 · فسيو: الثلاثاء 24/11</span>
+</header>
+
+<!-- Exam countdown -->
+<section class="card" style="margin-top:18px">
+ <h2>العد التنازلي للامتحانات ⏰</h2>
+ <p class="mini" style="margin-top:-8px">حسبنا الموعد على الساعة 9:00 صباحاً بتوقيت جهازك، يا لجونتي.</p>
+ <div class="exam-grid">
+  <div class="exam">
+   <div class="emoji">🌸📚</div>
+   <h3>امتحان المصطلحات</h3>
+   <div class="exam-clock" id="termsCountdown">--</div>
+   <small>الأحد 22 نوفمبر · 9:00 صباحاً</small>
+  </div>
+  <div class="exam">
+   <div class="emoji">🦋🧠</div>
+   <h3>امتحان الفسيو</h3>
+   <div class="exam-clock" id="physioCountdown">--</div>
+   <small>الثلاثاء 24 نوفمبر · 9:00 صباحاً</small>
+  </div>
+ </div>
+</section>
+
+<div class="grid">
+
+<!-- Progress -->
+<section class="card">
+ <div class="progress-top">
+  <h2>إنجازك الكلي يا بطلة 🌷</h2>
+  <span class="big" id="overall">0%</span>
+ </div>
+ <div class="track"><div class="fill" id="overallBar"></div></div>
+
+ <div class="stats">
+  <div class="stat"><b id="doneCount">0</b>شباتر منجزة</div>
+  <div class="stat"><b id="leftCount">14</b>شباتر متبقية</div>
+  <div class="stat"><b id="sessions">0</b>جلسات مكتملة</div>
+ </div>
+
+ <div class="subject">
+  <div class="subject-head">
+   <h3>🌸 المصطلحات</h3>
+   <span class="mini" id="termsPct">0 / 9</span>
+  </div>
+  <div class="track"><div class="fill" id="termsBar"></div></div>
+  <div class="chapters" id="terms"></div>
+ </div>
+
+ <div class="subject">
+  <div class="subject-head">
+   <h3>🦋 الفسيو</h3>
+   <span class="mini" id="physioPct">0 / 5</span>
+  </div>
+  <div class="track"><div class="fill" id="physioBar"></div></div>
+  <div class="chapters" id="physio"></div>
+ </div>
+
+ <p class="note">علّمي على الشابتر أول ما تخلصيه، ونسبة الإنجاز بتتحدث لحالها. تقدمك محفوظ على نفس الجهاز 💕</p>
+</section>
+
+<!-- Study timer -->
+<aside class="card timer-card">
+ <h2>ركن التركيز ⏳</h2>
+ <div class="study-girl">👩🏻‍🎓📚</div>
+ <div class="mini" id="timerLabel">جلسة تركيز</div>
+ <div class="clock" id="clock">25:00</div>
+
+ <select id="duration" aria-label="مدة المؤقت">
+  <option value="25">25 دقيقة تركيز</option>
+  <option value="45">45 دقيقة تركيز</option>
+  <option value="50">50 دقيقة تركيز</option>
+  <option value="5">5 دقائق استراحة</option>
+  <option value="10">10 دقائق استراحة</option>
+ </select>
+
+ <div class="timer-controls">
+  <button id="startBtn">ابدئي يا لجونتي 💗</button>
+  <button class="secondary" id="pauseBtn">إيقاف مؤقت</button>
+  <button class="secondary" id="resetBtn">إعادة</button>
+ </div>
+
+ <div class="quote" id="encourage">يلا يا لجونتي، ركّزي شوي… تعب اليوم هو فرحة نجاحك بكرا! 🌷</div>
+ <p class="note">لما يخلص المؤقت، خذي نفس واعملي استراحة صغيرة. كل جلسة تركيز كاملة بتنحسب إلك.</p>
+</aside>
+</div>
+
+<!-- Rewards and extra features -->
+<div class="feature-grid">
+
+<section class="card points-panel">
+ <h2>رصيد الدلع والإنجاز 🏆</h2>
+ <div class="progress-top">
+  <div>
+   <div class="points-number" id="pointsTotal">0</div>
+   <span class="mini">نقطة لجونتي</span>
+  </div>
+  <div style="font-size:43px">💎</div>
+ </div>
+ <div class="track"><div class="fill" id="pointsBar"></div></div>
+ <div class="mini" id="pointsHint">كل شابتر مكتمل = 10 نقاط يا بطلة!</div>
+ <div class="reward-list" id="rewards">
+  <span class="reward" data-at="10">🌷 أول 10 نقاط</span>
+  <span class="reward" data-at="30">🧁 30 نقطة</span>
+  <span class="reward" data-at="70">👑 70 نقطة</span>
+  <span class="reward" data-at="140">💖 أسطورة الدراسة</span>
+ </div>
+</section>
+
+<section class="card">
+ <h2>سلسلة الالتزام 🔥</h2>
+ <div class="streak-row">
+  <div class="streak-fire">🔥</div>
+  <div>
+   <div class="streak-number"><span id="streakCount">0</span> يوم</div>
+   <div class="mini">أيام دراسة متتالية</div>
+  </div>
+ </div>
+ <p class="note" id="streakMessage">ابدئي اليوم وسجّلي أول إنجاز حتى تبدأ سلسلتك يا لجونتي!</p>
+ <div class="tag">كل يوم فيه إنجاز أو جلسة تركيز يُحسب 💗</div>
+</section>
+
+<section class="card">
+ <h2>مهام اليوم 🎯</h2>
+ <div class="task-list" id="taskList"></div>
+ <div class="task-add">
+  <input id="newTask" type="text" maxlength="90" placeholder="أضيفي مهمة جديدة...">
+  <button id="addTask" type="button">إضافة +</button>
+ </div>
+ <p class="note">المهام المحفوظة بتضل موجودة على جهازك.</p>
+</section>
+
+<section class="card">
+ <h2>دفتر ملاحظات الشباتر 📝</h2>
+ <p class="mini">اكتبي أهم معلومة أو سؤال بدك ترجعي له لكل شابتر.</p>
+ <div class="notes-list" id="notesList"></div>
+</section>
+
+<section class="card" style="grid-column:1/-1">
+ <h2>رسم تقدم المواد 📈</h2>
+ <div class="chart-wrap">
+  <div class="chart-col">
+   <strong id="termsChartValue">0%</strong>
+   <div class="chart-bar-bg"><div class="chart-bar" id="termsChartBar"></div></div>
+   <small>المصطلحات</small>
+  </div>
+  <div class="chart-col">
+   <strong id="physioChartValue">0%</strong>
+   <div class="chart-bar-bg"><div class="chart-bar" id="physioChartBar"></div></div>
+   <small>الفسيو</small>
+  </div>
+ </div>
+ <p class="note">الرسم يتحدث تلقائياً كلما علّمتي شابتر كمكتمل.</p>
+</section>
+</div>
+
+<div class="confetti-layer" id="confettiLayer"></div>
+
+<!-- Study schedule -->
+<section class="card schedule">
+ <h2>جدولنا يا لجونتي 🗓️</h2>
+ <div class="day"><div><strong>الاثنين 16/11</strong><br><span class="mini">مصطلحات 1 + 2 · فسيو 1</span></div><span class="tag">بداية قوية 🌸</span></div>
+ <div class="day"><div><strong>الثلاثاء 17/11</strong><br><span class="mini">مصطلحات 3 + 4 · فسيو 2</span></div><span class="tag">كمّلي يا شطورة</span></div>
+ <div class="day"><div><strong>الأربعاء 18/11</strong><br><span class="mini">مصطلحات 5 + 6 · فسيو 3</span></div><span class="tag">إنجاز حلو ✨</span></div>
+ <div class="day"><div><strong>الخميس 19/11</strong><br><span class="mini">مصطلحات 7 · فسيو 4</span></div><span class="tag">قربنا</span></div>
+ <div class="day"><div><strong>الجمعة 20/11</strong><br><span class="mini">مصطلحات 8 · فسيو 5</span></div><span class="tag">آخر شابتر فسيو</span></div>
+ <div class="day"><div><strong>السبت 21/11</strong><br><span class="mini">مصطلحات 9 + مراجعة شاملة للمصطلحات</span></div><span class="tag">مراجعة أخيرة 💪</span></div>
+ <div class="day"><div><strong>الأحد 22/11</strong><br><span class="mini">امتحان المصطلحات · وبعده مراجعة خفيفة للفسيو</span></div><span class="tag">الله يوفقك 🤍</span></div>
+ <div class="day"><div><strong>الاثنين 23/11</strong><br><span class="mini">مراجعة شاملة للفسيو + حل أسئلة</span></div><span class="tag">ثبّتي المعلومات</span></div>
+ <div class="day"><div><strong>الثلاثاء 24/11</strong><br><span class="mini">امتحان الفسيو</span></div><span class="tag">قدّها يا لجونتي 🎀</span></div>
+</section>
+
+<footer>مصممة بحب للّجونتي المجتهدة 💞 لا تنسي تشربي مي وتريّحي عيونك.</footer>
+</div>
+
+<script>
+// Login
+const EXPECTED_PASSWORD = 'حمودتي';
+const loginScreen = document.getElementById('loginScreen');
+const app = document.getElementById('app');
+
+function showApp(){
+ loginScreen.style.display='none';
+ app.style.display='block';
+}
+
+document.getElementById('loginForm').addEventListener('submit',function(e){
+ e.preventDefault();
+ const entered=document.getElementById('passwordInput').value;
+
+ if(entered===EXPECTED_PASSWORD){
+  sessionStorage.setItem('lajonatiLoggedIn','yes');
+  document.getElementById('loginError').textContent='';
+  showApp();
+ }else{
+  document.getElementById('loginError').textContent='مو هي يا لجونتي 🥺 جرّبي مرة ثانية.';
+  document.getElementById('passwordInput').value='';
+ }
+});
+
+document.getElementById('logoutBtn').addEventListener('click',()=>{
+ sessionStorage.removeItem('lajonatiLoggedIn');
+ app.style.display='none';
+ loginScreen.style.display='flex';
+ document.getElementById('passwordInput').value='';
+});
+
+if(sessionStorage.getItem('lajonatiLoggedIn')==='yes')showApp();
+
+// Exam countdown
+function countdownTo(target,elementId){
+ const el=document.getElementById(elementId);
+ const now=new Date();
+ const diff=target-now;
+
+ if(diff<=0){
+  el.textContent='بدأ الموعد 💗';
+  return;
+ }
+
+ const days=Math.floor(diff/86400000);
+ const hours=Math.floor(diff%86400000/3600000);
+ const mins=Math.floor(diff%3600000/60000);
+ const secs=Math.floor(diff%60000/1000);
+
+ el.textContent=(days?days+'ي ':'')+
+  String(hours).padStart(2,'0')+':'+
+  String(mins).padStart(2,'0')+':'+
+  String(secs).padStart(2,'0');
+}
+
+function updateExamCountdowns(){
+ countdownTo(new Date(2026,10,22,9,0,0),'termsCountdown');
+ countdownTo(new Date(2026,10,24,9,0,0),'physioCountdown');
+}
+
+updateExamCountdowns();
+setInterval(updateExamCountdowns,1000);
+
+// Save data
+const KEY='lajonatiStudyPlan_v1';
+let saved={};
+
+try{
+ saved=JSON.parse(localStorage.getItem(KEY)||'{}');
+}catch(e){
+ saved={};
+}
+
+let completed=saved.completed||{};
+let sessions=Number(saved.sessions||0);
+let notes=saved.notes||{};
+let tasks=saved.tasks||[];
+let studyDays=saved.studyDays||[];
+const total=14;
+
+function save(){
+ localStorage.setItem(KEY,JSON.stringify({
+  completed,sessions,notes,tasks,studyDays
+ }));
+}
+
+// Chapters
+function makeChapters(id,count){
+ const host=document.getElementById(id);
+
+ for(let i=1;i<=count;i++){
+  const key=id+i;
+  const el=document.createElement('label');
+  el.className='chapter'+(completed[key]?' done':'');
+
+  const cb=document.createElement('input');
+  cb.type='checkbox';
+  cb.checked=!!completed[key];
+
+  const span=document.createElement('span');
+  span.textContent='شابتر '+i;
+
+  cb.addEventListener('change',()=>{
+   completed[key]=cb.checked;
+   el.classList.toggle('done',cb.checked);
+
+   if(cb.checked)markStudyDay();
+
+   save();
+   update();
+  });
+
+  el.append(cb,span);
+  host.append(el);
+ }
+}
+
+// Main progress
+function update(){
+ const t=Array.from({length:9},(_,i)=>
+  !!completed['terms'+(i+1)]
+ ).filter(Boolean).length;
+
+ const p=Array.from({length:5},(_,i)=>
+  !!completed['physio'+(i+1)]
+ ).filter(Boolean).length;
+
+ const done=t+p;
+ const pct=Math.round(done/total*100);
+
+ document.getElementById('overall').textContent=pct+'%';
+ document.getElementById('overallBar').style.width=pct+'%';
+ document.getElementById('doneCount').textContent=done;
+ document.getElementById('leftCount').textContent=total-done;
+ document.getElementById('sessions').textContent=sessions;
+
+ document.getElementById('termsPct').textContent=t+' / 9';
+ document.getElementById('physioPct').textContent=p+' / 5';
+
+ document.getElementById('termsBar').style.width=(t/9*100)+'%';
+ document.getElementById('physioBar').style.width=(p/5*100)+'%';
+
+ // Points
+ document.getElementById('pointsTotal').textContent=done*10;
+ document.getElementById('pointsBar').style.width=
+  Math.min(100,(done*10/140)*100)+'%';
+
+ document.getElementById('pointsHint').textContent=
+  done*10>=140
+  ?'وصلتي لأعلى رتبة يا ملكة! 👑'
+  :'باقيلك '+Math.max(0,140-done*10)+' نقطة للمكافأة الكبرى.';
+
+ document.querySelectorAll('.reward').forEach(r=>{
+  r.classList.toggle('unlocked',done*10>=Number(r.dataset.at));
+ });
+
+ // Progress chart
+ document.getElementById('termsChartValue').textContent=Math.round(t/9*100)+'%';
+ document.getElementById('physioChartValue').textContent=Math.round(p/5*100)+'%';
+
+ document.getElementById('termsChartBar').style.height=(t/9*100)+'%';
+ document.getElementById('physioChartBar').style.height=(p/5*100)+'%';
+
+ updateStreak();
+
+ const msg=
+  pct===100?'يا سلام يا لجونتي! خلصتي كل الشباتر، فخورة فيكي! 🥹💗':
+  pct>=75?'واااو! ضايل شوي وتوصلي، كمّلي يا بطلة 🌸':
+  pct>=40?'شغلك حلو يا لجونتي، كل شابتر بقرّبك من هدفك ✨':
+  'كل بداية صعبة، بس إنتِ قدّها يا لجونتي! 💕';
+
+ document.getElementById('encourage').textContent=msg;
+
+ if(done===total)celebrate();
+ else celebrated=false;
+}
+
+// Streak
+function localDateKey(date=new Date()){
+ const y=date.getFullYear();
+ const m=String(date.getMonth()+1).padStart(2,'0');
+ const d=String(date.getDate()).padStart(2,'0');
+ return `${y}-${m}-${d}`;
+}
+
+function markStudyDay(){
+ const today=localDateKey();
+ if(!studyDays.includes(today))studyDays.push(today);
+}
+
+function updateStreak(){
+ const set=new Set(studyDays);
+ const today=new Date();
+ const todayKey=localDateKey(today);
+
+ let cursor=new Date(today.getFullYear(),today.getMonth(),today.getDate());
+
+ if(!set.has(todayKey))cursor.setDate(cursor.getDate()-1);
+
+ let count=0;
+
+ while(set.has(localDateKey(cursor))){
+  count++;
+  cursor.setDate(cursor.getDate()-1);
+ }
+
+ document.getElementById('streakCount').textContent=count;
+
+ document.getElementById('streakMessage').textContent=
+  count>=3?'يا سلام! '+count+' أيام ورا بعض، لجونتي ملتزمة وبتجنن 🔥':
+  count===2?'يومين متتالين! خلي الحماس مكمل 🌷':
+  count===1?'برافو! سجلتي إنجاز اليوم، حافظي على السلسلة 💗':
+  'ابدئي اليوم وسجّلي أول إنجاز حتى تبدأ سلسلتك يا لجونتي!';
+}
+
+// Daily tasks
+function renderTasks(){
+ const host=document.getElementById('taskList');
+ host.innerHTML='';
+
+ if(!tasks.length){
+  const empty=document.createElement('div');
+  empty.className='mini';
+  empty.textContent='لسه ما في مهام. أضيفي أول مهمة يا شطورة!';
+  host.append(empty);
+ }
+
+ tasks.forEach(task=>{
+  const label=document.createElement('label');
+  label.className='task-item'+(task.done?' done':'');
+
+  const cb=document.createElement('input');
+  cb.type='checkbox';
+  cb.checked=!!task.done;
+
+  const span=document.createElement('span');
+  span.textContent=task.text;
+
+  cb.addEventListener('change',()=>{
+   task.done=cb.checked;
+   label.classList.toggle('done',cb.checked);
+
+   if(cb.checked)markStudyDay();
+
+   save();
+   update();
+  });
+
+  label.append(cb,span);
+  host.append(label);
+ });
+}
+
+document.getElementById('addTask').addEventListener('click',()=>{
+ const input=document.getElementById('newTask');
+ const value=input.value.trim();
+
+ if(!value)return;
+
+ tasks.push({text:value,done:false});
+ input.value='';
+
+ save();
+ renderTasks();
+});
+
+document.getElementById('newTask').addEventListener('keydown',e=>{
+ if(e.key==='Enter')document.getElementById('addTask').click();
+});
+
+// Notes
+function renderNotes(){
+ const host=document.getElementById('notesList');
+ host.innerHTML='';
+
+ [['terms','مصطلحات',9],['physio','فسيو',5]].forEach(([prefix,name,count])=>{
+  for(let i=1;i<=count;i++){
+   const row=document.createElement('div');
+   row.className='note-row';
+
+   const label=document.createElement('label');
+   label.textContent=name+' — شابتر '+i;
+
+   const area=document.createElement('textarea');
+   area.className='note-area';
+   area.rows=2;
+   area.placeholder='اكتبي ملاحظتك هون...';
+   area.value=notes[prefix+i]||'';
+
+   area.addEventListener('input',()=>{
+    notes[prefix+i]=area.value;
+    save();
+   });
+
+   row.append(label,area);
+   host.append(row);
+  }
+ });
+}
+
+// Celebration
+let celebrated=false;
+
+function celebrate(){
+ if(celebrated)return;
+ celebrated=true;
+
+ const layer=document.getElementById('confettiLayer');
+ const symbols=['🎉','💗','🌸','✨','🎀','⭐'];
+
+ for(let i=0;i<65;i++){
+  const piece=document.createElement('span');
+  piece.className='confetti-piece';
+  piece.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  piece.style.left=Math.random()*100+'%';
+  piece.style.animationDelay=Math.random()*1.2+'s';
+  piece.style.fontSize=(16+Math.random()*18)+'px';
+  layer.append(piece);
+ }
+
+ document.getElementById('encourage').textContent=
+  'يااا لجونتييي! خلصتي كل الشباتر! فخورة فيكي قد الدنيااا 🥹🎉💗';
+
+ setTimeout(()=>{layer.innerHTML='';},4800);
+}
+
+// Initialize
+renderTasks();
+renderNotes();
+makeChapters('terms',9);
+makeChapters('physio',5);
+update();
+
+// Study timer
+let remaining=25*60;
+let interval=null;
+let running=false;
+
+const clock=document.getElementById('clock');
+const duration=document.getElementById('duration');
+
+function showTime(){
+ clock.textContent=
+  String(Math.floor(remaining/60)).padStart(2,'0')+':'+
+  String(remaining%60).padStart(2,'0');
+}
+
+function stop(){
+ if(interval)clearInterval(interval);
+ interval=null;
+ running=false;
+}
+
+duration.addEventListener('change',()=>{
+ stop();
+ remaining=Number(duration.value)*60;
+
+ document.getElementById('timerLabel').textContent=
+  Number(duration.value)<=10?'وقت الاستراحة ☕':'جلسة تركيز 📚';
+
+ showTime();
+});
+
+document.getElementById('startBtn').addEventListener('click',()=>{
+ if(running)return;
+
+ running=true;
+
+ interval=setInterval(()=>{
+  remaining--;
+  showTime();
+
+  if(remaining<=0){
+   stop();
+   sessions++;
+   markStudyDay();
+   save();
+   update();
+
+   document.getElementById('encourage').textContent=
+    'خلصت الجلسة يا لجونتي! خذي استراحة، إنتِ بطلة 🥳💗';
+  }
+ },1000);
+});
+
+document.getElementById('pauseBtn').addEventListener('click',stop);
+
+document.getElementById('resetBtn').addEventListener('click',()=>{
+ stop();
+ remaining=Number(duration.value)*60;
+ showTime();
+});
+
+showTime();
+</script>
+</body>
+</html>
