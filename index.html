@@ -366,6 +366,8 @@ header p {
   color: var(--primary-dark);
 }
 
+.wizard-step[hidden] { display: none !important; }
+
 .wizard-step {
   background: var(--surface-soft);
   border: 1.5px solid var(--border-light);
@@ -1048,6 +1050,116 @@ footer {
   .card,.subject-block,.plan-day { box-shadow:none !important; break-inside:avoid; }
   #app { display:block !important; }
 }
+
+/* ---- v5 additions ---- */
+.plan-day.today-day { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-light); }
+.day-chip { display:inline-block; font-size:11px; font-weight:800; padding:1px 8px; border-radius:12px; background:var(--accent-warn-bg); color:var(--accent-warn); margin-inline-start:6px; vertical-align:middle; }
+.day-chip.today { background:var(--primary); color:#fff; }
+.day-load-badge.over { background:var(--accent-danger-bg); color:var(--accent-danger); }
+.plan-warn { background:var(--accent-warn-bg); color:var(--accent-warn); border:1px solid var(--accent-warn); border-radius:var(--radius-sm); padding:8px 12px; font-size:13px; font-weight:700; margin-bottom:8px; }
+details.past-days { grid-column:1 / -1; background:var(--surface-soft); border:1px dashed var(--border-light); border-radius:var(--radius-md); padding:10px 14px; }
+details.past-days summary { cursor:pointer; font-weight:800; color:var(--text-muted); font-size:13px; }
+details.past-days .plan-days { margin-top:10px; }
+
+
+/* ===== Redesigned navigation + dashboard ===== */
+.wrap{max-width:1120px;padding-top:18px}
+header{border-radius:22px;padding:22px 24px}
+header h1{letter-spacing:-.4px}
+.app-navigation{position:relative;display:flex;justify-content:flex-start;margin:12px 0 18px;z-index:40}
+.menu-trigger{display:flex;align-items:center;gap:9px;padding:10px 16px;border-radius:13px;background:var(--surface);color:var(--text-main);border:1px solid var(--border-light);box-shadow:var(--shadow-sm);font-size:14px}
+.menu-trigger:first-letter{font-size:20px}
+.section-menu{position:absolute;top:calc(100% + 8px);right:0;width:min(330px,calc(100vw - 32px));padding:8px;background:var(--surface);border:1px solid var(--border-light);border-radius:16px;box-shadow:0 18px 45px rgba(15,23,42,.18);display:grid;gap:4px}
+.section-menu[hidden]{display:none}
+.section-menu button{background:transparent;color:var(--text-main);box-shadow:none;text-align:right;border-radius:10px;padding:11px 12px;font-size:13px}
+.section-menu button:hover{background:var(--primary-light);color:var(--primary-dark)}
+.home-panel{display:block;animation:stepFadeIn .3s ease}
+.home-welcome{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:24px;background:linear-gradient(130deg,#eff6ff,#f0f9ff);border:1px solid #dbeafe;border-radius:20px;margin-bottom:14px;color:#172554}
+[data-theme="dark"] .home-welcome{background:linear-gradient(130deg,#172554,#0c354c);border-color:#254477;color:#f8fafc}
+.home-eyebrow{font-size:11px;font-weight:900;color:var(--primary);letter-spacing:.5px}
+.home-welcome h2{font-size:23px;font-weight:900;margin:4px 0}
+.home-welcome p,.home-section-head p{font-size:12px;color:var(--text-muted)}
+.home-primary{white-space:nowrap;padding:12px 17px}
+.home-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.home-stats article{background:var(--surface);border:1px solid var(--border-light);border-radius:15px;padding:15px 17px;box-shadow:var(--shadow-sm)}
+.home-stats span{display:block;color:var(--text-muted);font-size:12px;font-weight:700}
+.home-stats strong{display:block;color:var(--primary);font-size:25px;font-weight:900;margin-top:2px}
+.home-section{background:var(--surface);border:1px solid var(--border-light);border-radius:18px;padding:17px;margin-top:14px;box-shadow:var(--shadow-sm)}
+.home-section-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:12px}
+.home-section-head h3{font-size:16px;font-weight:900}
+.home-link{background:transparent;color:var(--primary);box-shadow:none;padding:6px;font-size:12px}
+.home-empty{padding:18px;text-align:center;background:var(--surface-soft);border:1px dashed var(--border-light);border-radius:12px;color:var(--text-muted);font-size:13px}
+.home-exam{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--surface-soft);border:1px solid var(--border-light);border-radius:13px;padding:13px}
+.home-exam strong{display:block;font-size:15px}
+.home-exam .remaining{font-size:13px;font-weight:900;color:var(--primary);direction:rtl}
+.home-table-wrap{overflow-x:auto}
+.home-table{width:100%;border-collapse:collapse;font-size:12.5px;min-width:520px}
+.home-table th,.home-table td{padding:10px 9px;text-align:right;border-bottom:1px solid var(--border-light)}
+.home-table th{color:var(--primary-dark);background:var(--surface-soft);font-weight:900}
+.home-table tr:last-child td{border-bottom:0}
+.home-status{font-weight:900;color:var(--accent-success)}
+.home-status.pending{color:var(--accent-warn)}
+.home-shortcuts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}
+.home-shortcuts button{background:var(--surface);color:var(--text-main);border:1px solid var(--border-light);box-shadow:none;padding:13px 8px}
+.app-step-panel{display:none}
+.app-step-panel.active-seq-step{display:block}
+.seq-navigation-bar{display:none!important}
+@media(max-width:650px){
+ .home-welcome{align-items:stretch;flex-direction:column;padding:18px}
+ .home-primary{width:100%}
+ .home-stats{gap:7px}
+ .home-stats article{padding:11px 8px}
+ .home-stats strong{font-size:21px}
+ .home-shortcuts{grid-template-columns:1fr}
+ .home-section{padding:13px}
+}
+
+
+
+/* Special invitation theme: pink, warm and encouraging */
+html[data-girly-theme="true"] {
+  --primary: #ec4899;
+  --primary-dark: #be185d;
+  --primary-light: #fce7f3;
+  --secondary: #f472b6;
+  --surface: #fffafd;
+  --surface-soft: #fff1f7;
+  --text-main: #5b2140;
+  --text-muted: #a45b7d;
+  --border-light: #f7c7df;
+  --accent-success: #c02675;
+  --accent-success-bg: #fce7f3;
+}
+html[data-girly-theme="true"] body {
+  background: radial-gradient(circle at 10% 0%, #ffe4f1 0, transparent 34%), linear-gradient(145deg,#fff7fb,#fff0f7 55%,#fffafd);
+}
+html[data-girly-theme="true"] .card,
+html[data-girly-theme="true"] .login-box,
+html[data-girly-theme="true"] .home-section,
+html[data-girly-theme="true"] .wizard-step,
+html[data-girly-theme="true"] .tool-panel {
+  border-color: #f5bfd9;
+  box-shadow: 0 8px 28px rgba(190,24,93,.08);
+}
+html[data-girly-theme="true"] button:not(.danger-btn) {
+  border-color: #f3a8cd;
+}
+html[data-girly-theme="true"] .brand-tag,
+html[data-girly-theme="true"] .step-badge,
+html[data-girly-theme="true"] .pill {
+  background: #fce7f3;
+  color: #be185d;
+}
+html[data-girly-theme="true"] .home-welcome {
+  background: linear-gradient(130deg,#fce7f3,#fbcfe8 58%,#fdf2f8);
+  border-color: #f9a8d4;
+  color: #831843;
+}
+html[data-girly-theme="true"] .home-welcome p,
+html[data-girly-theme="true"] .home-welcome h2 { color: #831843; }
+html[data-girly-theme="true"] .menu-trigger,
+html[data-girly-theme="true"] .section-menu { border-color:#f3b4d2; }
+
 </style>
 </head>
 
@@ -1062,6 +1174,7 @@ footer {
     <p>فوت بحسابك عشان نحفظ جدولك عالسحابة وما يضيع إشي، أو ادخل عالسريع وبلّش دراسة ع طول 😉</p>
     <form id="loginForm">
       <input id="nameInput" type="text" placeholder="اسمك الحلو (عشان ندلعك جوا) 😍" autocomplete="name" hidden>
+      <input id="inviteCodeInput" type="text" placeholder="رمز الدعوة (اختياري) 💌" autocomplete="off" hidden maxlength="40">
       <input id="emailInput" type="email" placeholder="إيميلك يا غالي" autocomplete="email" required>
       <input id="passwordInput" type="password" placeholder="كلمة السر (8 خانات وطالع)" autocomplete="current-password" minlength="8" required>
       <button id="authSubmit" type="submit">يلا نفوت عالحساب 🚀</button>
@@ -1097,33 +1210,60 @@ footer {
   </div>
 </header>
 
-<nav class="tools-nav" aria-label="التنقل السريع">
-  <a href="#seqStep1">1️⃣ البحث والعد</a>
-  <a href="#seqStep2">2️⃣ المواد والخطة</a>
-  <a href="#seqStep3">3️⃣ الإنجاز والمؤقت</a>
-  <a href="#seqStep4">4️⃣ الجدول اليومي</a>
-  <a href="#seqStep5">5️⃣ الملفات والمراجعة</a>
-  <a href="#seqStep6">6️⃣ العلامات والمعدل</a>
-  <a href="#seqStep7">7️⃣ التخرج والأهداف</a>
-  <a href="#seqStep8">8️⃣ الإعدادات والأرشيف</a>
-</nav>
-
-<aside class="desktop-sidebar" aria-label="القائمة الجانبية">
-  <strong>الخطوات المتسلسلة</strong>
-  <a href="#seqStep1">1. البحث والعد</a>
-  <a href="#seqStep2">2. المواد والخطة</a>
-  <a href="#seqStep3">3. الإنجاز والمؤقت</a>
-  <a href="#seqStep4">4. الجدول اليومي</a>
-  <a href="#seqStep5">5. الملفات والمراجعة</a>
-  <a href="#seqStep6">6. العلامات والمعدل</a>
-  <a href="#seqStep7">7. التخرج والأهداف</a>
-  <a href="#seqStep8">8. الإعدادات والأرشيف</a>
-</aside>
+<div class="app-navigation">
+  <button type="button" class="menu-trigger" id="menuTrigger" aria-expanded="false" aria-controls="sectionMenu">⋮ <span>الأقسام</span></button>
+  <div class="section-menu" id="sectionMenu" hidden>
+    <button type="button" data-page="home">🏠 الرئيسية</button>
+    <button type="button" data-page="2">📚 المواد وإضافة مادة</button>
+    <button type="button" data-page="4">🗓️ الجدول اليومي والأسبوعي</button>
+    <button type="button" data-page="3">📊 الإنجاز ومؤقت الدراسة</button>
+    <button type="button" data-page="1">⏰ الامتحانات والبحث والنسخ الاحتياطي</button>
+    <button type="button" data-page="5">📎 الملفات والمحاضرات والمراجعة</button>
+    <button type="button" data-page="6">🎯 العلامات والمعدل والحضور</button>
+    <button type="button" data-page="7">🎓 التخرج والأهداف والتنبيهات</button>
+    <button type="button" data-page="8">⚙️ الإعدادات والأرشيف</button>
+  </div>
+</div>
 
 <!-- ==========================================
      STEP 1: Search & Exam Countdowns
      ========================================== -->
-<div class="app-step-panel active-seq-step" id="seqStep1">
+<section id="homePanel" class="home-panel">
+  <div class="home-welcome">
+    <div><span class="home-eyebrow">لوحة التحكم</span><h2>ملخصك الدراسي اليوم</h2><p>كل ما تحتاج متابعته يظهر هنا، وباقي الأقسام موجودة في قائمة النقاط الثلاث.</p></div>
+    <button type="button" id="homeAddSubject" class="home-primary">＋ أضف مادة الآن</button>
+  </div>
+  <div class="home-stats" id="homeStats">
+    <article><span>المواد</span><strong id="homeSubjectCount">0</strong></article>
+    <article><span>المهام المتبقية</span><strong id="homePendingCount">0</strong></article>
+    <article><span>نسبة الإنجاز</span><strong id="homeProgress">0%</strong></article>
+  </div>
+  <section class="home-section">
+    <div class="home-section-head"><div><h3>⏳ أقرب امتحان</h3><p>الوقت المتبقي لأقرب موعد مسجل</p></div><button type="button" class="home-link" data-open-page="1">كل الامتحانات ←</button></div>
+    <div id="homeNextExam" class="home-empty">لا توجد امتحانات مسجلة بعد.</div>
+  </section>
+  <section class="home-section">
+    <div class="home-section-head"><div><h3>🗓️ جدول الدراسة</h3><p>المهام مرتبة حسب التاريخ والأولوية</p></div><button type="button" class="home-link" data-open-page="4">عرض الجدول كاملًا ←</button></div>
+    <div id="homeSchedule" class="home-table-wrap"><div class="home-empty">أضف مادة لإنشاء جدولك الدراسي.</div></div>
+  </section>
+  <div class="home-shortcuts">
+    <button type="button" data-open-page="2">📚 إدارة المواد</button>
+    <button type="button" data-open-page="3">🎯 ابدأ جلسة دراسة</button>
+    <button type="button" data-open-page="5">📎 الملفات والمراجعة</button>
+  </div>
+</section>
+
+<div class="app-step-panel" id="seqStep1">
+  <section class="card" id="examSection" style="margin-top:0;">
+    <div class="card-header" style="margin-bottom:4px">
+      <h2>⏰ دير بالك! العد التنازلي للامتحانات 🔥</h2>
+      <span class="mini">كل ثانية بتمر بتقربك من الامتحان.. لا تسرح! 👀</span>
+    </div>
+    <div class="exam-grid" id="dynamicCountdowns">
+      <div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة بالخطوة التالية وخلينا نبلش الجد 💪</div>
+    </div>
+  </section>
+
   <section class="card" id="searchToolsSection">
     <div class="card-header"><h2>🔎 البحث والنسخ الاحتياطي</h2><span class="mini">ابحث في المواد والمهام والملاحظات، أو احفظ نسخة من بياناتك</span></div>
     <div class="tools-toolbar">
@@ -1135,22 +1275,6 @@ footer {
     </div>
     <div id="searchResults" class="search-results" aria-live="polite"></div>
   </section>
-
-  <section class="card" id="examSection">
-    <div class="card-header" style="margin-bottom:4px">
-      <h2>⏰ دير بالك! العد التنازلي للامتحانات 🔥</h2>
-      <span class="mini">كل ثانية بتمر بتقربك من الامتحان.. لا تسرح! 👀</span>
-    </div>
-    <div class="exam-grid" id="dynamicCountdowns">
-      <div class="mini" style="padding:10px;">ما في امتحانات مسجلة لسا يا حلو، ضيف أول مادة بالخطوة التالية وخلينا نبلش الجد 💪</div>
-    </div>
-  </section>
-
-  <div class="seq-navigation-bar">
-    <span></span>
-    <span class="seq-step-indicator">الخطوة 1 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1194,6 +1318,7 @@ footer {
           <input id="examDate" type="date" required>
         </label>
         <div class="step-actions">
+          <button type="button" class="secondary prev-wizard-btn" data-prev="1">⬅️ السابق</button>
           <button type="button" class="next-step-btn" data-next="3">التالي ⬇️</button>
         </div>
       </div>
@@ -1207,6 +1332,7 @@ footer {
           <input id="examTime" type="time" required value="09:00">
         </label>
         <div class="step-actions">
+          <button type="button" class="secondary prev-wizard-btn" data-prev="2">⬅️ السابق</button>
           <button type="button" class="next-step-btn" data-next="4">التالي ⬇️</button>
         </div>
       </div>
@@ -1220,6 +1346,7 @@ footer {
           <input id="chapterCount" type="number" min="1" max="60" required value="5">
         </label>
         <div class="step-actions">
+          <button type="button" class="secondary prev-wizard-btn" data-prev="3">⬅️ السابق</button>
           <button type="button" class="next-step-btn" data-next="5">التالي ⬇️</button>
         </div>
       </div>
@@ -1233,6 +1360,7 @@ footer {
           <input id="dailyHours" type="number" min="0.5" max="16" step="0.5" required value="3">
         </label>
         <div class="step-actions">
+          <button type="button" class="secondary prev-wizard-btn" data-prev="4">⬅️ السابق</button>
           <button type="button" class="next-step-btn" data-next="6">التالي ⬇️</button>
         </div>
       </div>
@@ -1246,6 +1374,7 @@ footer {
           <input id="startDate" type="date" required>
         </label>
         <div class="step-actions">
+          <button type="button" class="secondary prev-wizard-btn" data-prev="5">⬅️ السابق</button>
           <button type="button" class="next-step-btn" data-next="7">التالي ⬇️</button>
         </div>
       </div>
@@ -1267,7 +1396,8 @@ footer {
         </div>
 
         <div style="margin-top:12px; display:flex; gap:10px; flex-wrap:wrap;">
-          <button type="submit">➕ اعتمد المادة وطلّع الجدول 🚀</button>
+          <button type="button" class="secondary prev-wizard-btn" data-prev="6">⬅️ السابق</button>
+          <button type="submit">➕ اعتمد المادة وورجيني الجدول 🚀</button>
         </div>
       </div>
 
@@ -1278,12 +1408,6 @@ footer {
       </div>
     </form>
   </section>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 2 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1384,12 +1508,6 @@ footer {
       <textarea class="note-area" id="generalNotes" placeholder="اكتب هون أي ملاحظة مهمة، قانون، أو إشي الدكتور ركّز عليه بالمحاضرة..."></textarea>
     </section>
   </div>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 3 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1403,6 +1521,7 @@ footer {
         <p class="mini" id="planSummary">ضيف موادك فوق عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.</p>
       </div>
     </div>
+    <div id="planWarnings"></div>
     <div id="generatedPlan" class="plan-days"></div>
   </section>
 
@@ -1417,12 +1536,6 @@ footer {
     </div><div class="tool-actions"><button type="button" id="addWeeklyTaskBtn">➕ أضف للجلسات</button><button type="button" class="secondary" id="catchUpBtn">🧯 أنشئ خطة تعويض للمتأخر</button></div></div>
     <div id="weeklyView" class="week-days"></div>
   </section>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 4 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1462,12 +1575,6 @@ footer {
     <div class="card-header"><div><h2>🔁 المراجعة المتباعدة</h2><p class="mini">عند إنهاء شابتر، بنضيف مراجعات بعد يوم و3 أيام و7 أيام تلقائياً</p></div></div>
     <div id="reviewList" class="tool-list"></div>
   </section>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 5 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1516,12 +1623,6 @@ footer {
     </div><div class="tool-actions"><button type="submit">حفظ السجل</button></div></form>
     <div id="attendanceSummary" class="tool-grid" style="margin-top:10px"></div><div id="attendanceList" class="tool-list"></div>
   </section>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 6 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1552,12 +1653,6 @@ footer {
     <div class="card-header"><div><h2>🔔 مركز التنبيهات</h2><p class="mini">امتحانات قريبة، مهام متأخرة ومراجعات مستحقة — تنبيهات داخل المنصة بدون AI</p></div><button class="secondary" type="button" id="markNotificationsReadBtn">تحديد كمقروء</button></div>
     <div id="notificationsList" class="tool-list"></div>
   </section>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 7 من 8</span>
-    <button type="button" class="next-seq-btn">التالي ➡️</button>
-  </div>
 </div>
 
 <!-- ==========================================
@@ -1587,12 +1682,6 @@ footer {
     <div class="card-header"><h2>🗑️ سلة المحذوفات</h2><button type="button" class="danger-btn" id="emptyTrashBtn">إفراغ السلة</button></div>
     <div id="trashList" class="tool-list"></div>
   </section>
-
-  <div class="seq-navigation-bar">
-    <button type="button" class="secondary prev-seq-btn">⬅️ السابق</button>
-    <span class="seq-step-indicator">الخطوة 8 من 8</span>
-    <span></span>
-  </div>
 </div>
 
 <div class="confetti-layer" id="confettiLayer"></div>
@@ -1611,27 +1700,33 @@ window.addEventListener('error', (e) => {
 const NEON_AUTH_URL = "https://ep-noisy-snow-benr3avo.neonauth.c-9.us-east-2.aws.neon.tech/neondb/auth";
 const NEON_DATA_URL = "https://ep-noisy-snow-benr3avo.apirest.c-9.us-east-2.aws.neon.tech/neondb/rest/v1";
 
-const LOCAL_KEY = 'mohammad_rum_study_plan_v3';
-const GUEST_FLAG = 'mohammad_rum_guest_mode';
+const LOCAL_PREFIX = 'mohammad_rum_planner_v4:';
+const LEGACY_LOCAL_KEY = 'mohammad_rum_study_plan_v3';
 const SESSION_KEY = 'mohammad_rum_neon_session';
 
 let currentUserId = null;
 let currentUserName = '';
-let accessToken = null;
 let isGuestMode = false;
-let cloudReady = false;
+let appReady = false;
 let saveTimer = null;
 let authMode = 'signin';
+let cloudError = '';
+let cloudSaveInFlight = false;
+let cloudSaveQueued = false;
+
+const defaultPrefs = () => ({
+  weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2},
+  reminderDays: 3, defaultFocusMinutes: 25, fontScale: 1,
+  requiredGradCredits: 0, externalGradCredits: 0, semesterName: '',
+  weeklyTargetHours: 20, notificationsReadAt: '', theme: 'light', girlyMode: false,
+  availabilitySaved: false
+});
 
 let state = {
-  subjects: [],
-  schedule: [],
-  sessions: 0,
-  tasks: [],
-  generalNotes: '',
-  studyDays: [],
-  reviews: [], timeLogs: [], grades: [], attendance: [], goals: [], activity: [], trash: [], archives: [], weeklyTasks: [], resources: [], lectures: [],
-  prefs: { weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2}, reminderDays: 3, defaultFocusMinutes: 25, fontScale: 1, requiredGradCredits: 0, externalGradCredits: 0, semesterName: '', weeklyTargetHours: 20, notificationsReadAt: '', theme: 'light' }
+  subjects: [], schedule: [], sessions: 0, tasks: [], generalNotes: '', studyDays: [],
+  reviews: [], timeLogs: [], grades: [], attendance: [], goals: [], activity: [], trash: [],
+  archives: [], weeklyTasks: [], resources: [], lectures: [], planWarnings: [], savedAt: 0,
+  prefs: defaultPrefs()
 };
 
 const jordanianFlirtQuotes = [
@@ -1648,12 +1743,12 @@ function applyTheme(theme) {
   const selected = theme === 'dark' ? 'dark' : 'light';
   document.documentElement.setAttribute('data-theme', selected);
   if (state?.prefs) state.prefs.theme = selected;
-  if (currentUserId && cloudReady) saveState();
 }
 applyTheme(state.prefs.theme || 'light');
 themeToggle.addEventListener('click', () => {
   const cur = document.documentElement.getAttribute('data-theme');
   applyTheme(cur === 'dark' ? 'light' : 'dark');
+  if (appReady) saveState();
 });
 
 // UI Elements
@@ -1662,6 +1757,7 @@ const app = document.getElementById('app');
 const authForm = document.getElementById('loginForm');
 const authModeBtn = document.getElementById('authModeBtn');
 const nameInput = document.getElementById('nameInput');
+const inviteCodeInput = document.getElementById('inviteCodeInput');
 const emailInput = document.getElementById('emailInput');
 const passwordInput = document.getElementById('passwordInput');
 const authSubmit = document.getElementById('authSubmit');
@@ -1680,17 +1776,45 @@ function updateWelcomeGreeting(name) {
   }
 }
 
+function applyGirlyTheme(enabled) {
+  const active = Boolean(enabled);
+  document.documentElement.setAttribute('data-girly-theme', active ? 'true' : 'false');
+  if (!active) {
+    updateWelcomeGreeting(currentUserName);
+    return;
+  }
+  const firstName = (currentUserName || '').trim().split(' ')[0];
+  welcomeGreeting.textContent = firstName
+    ? `يا عيونّي يا ${firstName} 💗 يلا يا شطورة، اليوم إنجاز جديد!` 
+    : 'يا عيونّي 💗 يلا يا شطورة، اليوم إنجاز جديد!';
+  const mainTitle = document.querySelector('#app header h1');
+  if (mainTitle) mainTitle.textContent = 'مخطط أحلامك الوردية 🎀';
+  const headerCopy = document.querySelector('#app header .header-top p');
+  if (headerCopy) headerCopy.textContent = 'كل خطوة بتقربيك من حلمك يا قمر، وإنتِ قدّها وقدود 💕';
+  const homeTitle = document.querySelector('#homePanel .home-welcome h2');
+  if (homeTitle) homeTitle.textContent = 'صباح الإنجاز يا أحلى شطورة 🌸';
+  const homeCopy = document.querySelector('#homePanel .home-welcome p');
+  if (homeCopy) homeCopy.textContent = 'رتبنا يومك عشان تركزي وتبدعي، وخليكي متذكرة إنك بتقدري تعمليها 💗';
+  const homeAdd = document.getElementById('homeAddSubject');
+  if (homeAdd) homeAdd.textContent = '＋ يلا نضيف مادة يا بطلة 🎀';
+  const encourage = document.getElementById('encourage');
+  if (encourage) encourage.textContent = 'يا قلبي، كل صفحة بتدرسيها هي خطوة أقرب لنجاحك. فخورة فيكي من هسا! 💗';
+}
+
 function showApp() {
   loginScreen.style.display = 'none';
   app.style.display = 'block';
+  appReady = true;
+  showSeqStep('home');
   updateWelcomeGreeting(currentUserName);
+  applyGirlyTheme(state?.prefs?.girlyMode);
   const quoteEl = document.getElementById('encourage');
-  if (quoteEl) {
-    quoteEl.textContent = jordanianFlirtQuotes[Math.floor(Math.random() * jordanianFlirtQuotes.length)];
-  }
+  if (quoteEl) quoteEl.textContent = jordanianFlirtQuotes[Math.floor(Math.random() * jordanianFlirtQuotes.length)];
+  applyGirlyTheme(state?.prefs?.girlyMode);
 }
 
 function showLogin() {
+  appReady = false;
   app.style.display = 'none';
   loginScreen.style.display = 'flex';
 }
@@ -1700,6 +1824,8 @@ authModeBtn.addEventListener('click', () => {
   const signingUp = authMode === 'signup';
   nameInput.hidden = !signingUp;
   nameInput.required = signingUp;
+  inviteCodeInput.hidden = !signingUp;
+  if (!signingUp) inviteCodeInput.value = '';
   passwordInput.autocomplete = signingUp ? 'new-password' : 'current-password';
   authSubmit.textContent = signingUp ? 'اعمل الحساب وفوت 🚀' : 'يلا نفوت عالحساب 🚀';
   authModeBtn.textContent = signingUp ? 'عندك حساب من قبل؟ فوت من هون 😉' : 'جديد هون؟ اعمل حسابك بثواني يا قمر ✨';
@@ -1707,6 +1833,7 @@ authModeBtn.addEventListener('click', () => {
   authStatus.textContent = '';
 });
 
+// ---------- Auth ----------
 async function neonAuthRequest(endpoint, body) {
   const res = await fetch(`${NEON_AUTH_URL}${endpoint}`, {
     method: 'POST',
@@ -1717,58 +1844,33 @@ async function neonAuthRequest(endpoint, body) {
   const text = await res.text();
   let json = {};
   try { json = text ? JSON.parse(text) : {}; } catch (_) {}
-  if (!res.ok) {
-    throw new Error(json?.message || json?.error || `صار في مشكلة صغيرة (${res.status})`);
-  }
+  if (!res.ok) throw new Error(json?.message || json?.error || `صار في مشكلة صغيرة (${res.status})`);
   return json;
 }
 
 async function neonGetSession() {
-  const res = await fetch(`${NEON_AUTH_URL}/get-session`, {
-    method: 'GET',
-    credentials: 'include'
-  });
+  const res = await fetch(`${NEON_AUTH_URL}/get-session`, { method: 'GET', credentials: 'include' });
   if (!res.ok) return null;
-  return await res.json();
+  const json = await res.json();
+  return json;
 }
 
-async function neonDbRead(userId, token) {
-  const headers = { 'Accept': 'application/json' };
-  if (token) headers['Authorization'] = `Bearer ${token}`;
-  const res = await fetch(`${NEON_DATA_URL}/study_plans?user_id=eq.${encodeURIComponent(userId)}&select=data&limit=1`, {
-    method: 'GET',
-    headers,
-    credentials: 'include'
-  });
-  if (!res.ok) {
-    const errText = await res.text();
-    throw new Error(`DB Read Error (${res.status}): ${errText}`);
-  }
-  return await res.json();
-}
-
-async function neonRpcRequest(functionName, args, token) {
-  const headers = { 'Content-Type': 'application/json', 'Accept': 'application/json' };
-  if (token) headers['Authorization'] = `Bearer ${token}`;
-  const res = await fetch(`${NEON_DATA_URL}/rpc/${functionName}`, {
-    method: 'POST', headers, credentials: 'include', body: JSON.stringify(args || {})
-  });
-  const bodyText = await res.text();
-  let body = null;
-  try { body = bodyText ? JSON.parse(bodyText) : null; } catch (_) { body = bodyText; }
-  if (!res.ok) {
-    const message = typeof body === 'string' ? body : (body?.message || body?.details || body?.hint || JSON.stringify(body));
-    throw new Error(`قاعدة البيانات رفضت العملية (${res.status}): ${message}`);
-  }
-  return body;
-}
-
-async function neonDbLoadNormalized(token) {
-  return neonRpcRequest('load_academic_state', {}, token);
-}
-
-async function neonDbSaveNormalized(payload, token) {
-  return neonRpcRequest('save_academic_state', { p_state: payload }, token);
+// قاعدة البيانات (Data API) بتطلب JWT حقيقي، مش توكن الجلسة العادي.
+// الـ JWT بيجي بهيدر "set-auth-jwt" من get-session (أو من /token).
+async function getJwt() {
+  try {
+    const res = await fetch(`${NEON_AUTH_URL}/get-session`, { method: 'GET', credentials: 'include' });
+    const h = res.headers.get('set-auth-jwt');
+    if (h) return h;
+  } catch (_) {}
+  try {
+    const res = await fetch(`${NEON_AUTH_URL}/token`, { method: 'GET', credentials: 'include' });
+    if (res.ok) {
+      const j = await res.json();
+      if (j?.token) return j.token;
+    }
+  } catch (_) {}
+  return null;
 }
 
 authForm.addEventListener('submit', async (e) => {
@@ -1781,42 +1883,41 @@ authForm.addEventListener('submit', async (e) => {
     const email = emailInput.value.trim();
     const password = passwordInput.value;
     let result;
+    const pendingInvite = JSON.parse(localStorage.getItem('mohammad_rum_pending_girly_invite') || 'null');
+    const activateGirlyMode = (authMode === 'signup' && inviteCodeInput.value.trim().toLocaleLowerCase() === 'حمودتي') || (authMode === 'signin' && pendingInvite?.email === email && pendingInvite?.enabled === true);
 
     if (authMode === 'signup') {
-      result = await neonAuthRequest('/sign-up/email', {
-        name: nameInput.value.trim(),
-        email,
-        password
-      });
+      result = await neonAuthRequest('/sign-up/email', { name: nameInput.value.trim(), email, password });
     } else {
-      result = await neonAuthRequest('/sign-in/email', {
-        email,
-        password
-      });
+      result = await neonAuthRequest('/sign-in/email', { email, password });
     }
 
     let user = result?.user ?? result?.data?.user ?? null;
-    let token = result?.token ?? result?.session?.token ?? result?.data?.token ?? null;
-
     if (!user?.id) {
       const sess = await neonGetSession();
       user = sess?.user ?? null;
-      token = token || sess?.session?.token || null;
     }
 
     if (!user?.id) {
+      if (authMode === 'signup' && activateGirlyMode) {
+        localStorage.setItem('mohammad_rum_pending_girly_invite', JSON.stringify({ email, enabled: true }));
+      }
       authMode = 'signin';
       nameInput.hidden = true;
+      inviteCodeInput.hidden = true;
       authSubmit.textContent = 'يلا نفوت عالحساب 🚀';
       authStatus.textContent = 'يسعد دينك! حسابك صار جاهز، سجل دخولك هسا 😍';
       return;
     }
 
     const resolvedName = user.name || nameInput.value.trim() || email.split('@')[0];
-    isGuestMode = false;
-    localStorage.removeItem(GUEST_FLAG);
-    localStorage.setItem(SESSION_KEY, JSON.stringify({ userId: user.id, name: resolvedName, token }));
-    await enterCloudDashboard(user.id, token, resolvedName);
+    await enterAccount(user.id, resolvedName);
+    if (activateGirlyMode) {
+      state.prefs.girlyMode = true;
+      applyGirlyTheme(true);
+      localStorage.removeItem('mohammad_rum_pending_girly_invite');
+      saveState();
+    }
   } catch (err) {
     console.error(err);
     loginError.textContent = err?.message || 'شكله النت بعافية شوي.. جرب ادخل عالسريع من الزر اللي تحت ⚡';
@@ -1830,61 +1931,46 @@ document.getElementById('guestBtn').addEventListener('click', () => {
   isGuestMode = true;
   currentUserId = null;
   currentUserName = '';
-  accessToken = null;
-  cloudReady = false;
-  localStorage.removeItem(GUEST_FLAG);
-  applyData({});
+  applyData(readLocal() || {});
   applyTheme(state.prefs.theme || 'light');
   showApp();
-  syncStatus.textContent = 'وضع تجربة مؤقت — البيانات لا تُحفظ. سجّل الدخول للحفظ في قاعدة البيانات.';
   renderAll();
+  syncStatus.textContent = 'وضع بدون حساب — بياناتك محفوظة على هذا الجهاز فقط ✓';
 });
 
 document.getElementById('logoutBtn').addEventListener('click', async () => {
-  if (!isGuestMode) {
-    try { await neonAuthRequest('/sign-out', {}); } catch (_) {}
-  }
-  localStorage.removeItem(GUEST_FLAG);
+  if (!isGuestMode) { try { await neonAuthRequest('/sign-out', {}); } catch (_) {} }
   localStorage.removeItem(SESSION_KEY);
   clearInterval(timerInterval);
-  if (saveTimer) clearTimeout(saveTimer);
-  uploadedResourceIds.clear();
-  cloudSaveQueued = false;
   isRunning = false;
+  if (saveTimer) clearTimeout(saveTimer);
+  cloudSaveQueued = false;
   currentUserId = null;
   currentUserName = '';
-  accessToken = null;
-  cloudReady = false;
+  isGuestMode = false;
+  cloudError = '';
+  applyData({});
   showLogin();
 });
 
 function applyData(raw = {}) {
+  const arr = (v) => Array.isArray(v) ? v : [];
+  const base = defaultPrefs();
+  const rawPrefs = raw.prefs && typeof raw.prefs === 'object' ? raw.prefs : {};
   state = {
-    subjects: Array.isArray(raw.subjects) ? raw.subjects : [],
-    schedule: Array.isArray(raw.schedule) ? raw.schedule : [],
-    sessions: Number(raw.sessions || 0),
-    tasks: Array.isArray(raw.tasks) ? raw.tasks : [],
+    subjects: arr(raw.subjects), schedule: arr(raw.schedule),
+    sessions: Number(raw.sessions || 0), tasks: arr(raw.tasks),
     generalNotes: typeof raw.generalNotes === 'string' ? raw.generalNotes : '',
-    studyDays: Array.isArray(raw.studyDays) ? raw.studyDays : [],
-    reviews: Array.isArray(raw.reviews) ? raw.reviews : [],
-    timeLogs: Array.isArray(raw.timeLogs) ? raw.timeLogs : [],
-    grades: Array.isArray(raw.grades) ? raw.grades : [],
-    attendance: Array.isArray(raw.attendance) ? raw.attendance : [],
-    goals: Array.isArray(raw.goals) ? raw.goals : [],
-    activity: Array.isArray(raw.activity) ? raw.activity : [],
-    trash: Array.isArray(raw.trash) ? raw.trash : [],
-    archives: Array.isArray(raw.archives) ? raw.archives : [],
-    weeklyTasks: Array.isArray(raw.weeklyTasks) ? raw.weeklyTasks : [],
-    resources: Array.isArray(raw.resources) ? raw.resources : [],
-    lectures: Array.isArray(raw.lectures) ? raw.lectures : [],
-    prefs: { weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2}, reminderDays: 3, defaultFocusMinutes: 25, fontScale: 1, requiredGradCredits: 0, externalGradCredits: 0, semesterName: '', weeklyTargetHours: 20, notificationsReadAt: '', theme: 'light', ...(raw.prefs && typeof raw.prefs === 'object' ? raw.prefs : {}), weeklyHours: {0:3,1:3,2:3,3:3,4:3,5:2,6:2, ...(raw.prefs?.weeklyHours || {})} }
+    studyDays: arr(raw.studyDays), reviews: arr(raw.reviews), timeLogs: arr(raw.timeLogs),
+    grades: arr(raw.grades), attendance: arr(raw.attendance), goals: arr(raw.goals),
+    activity: arr(raw.activity), trash: arr(raw.trash), archives: arr(raw.archives),
+    weeklyTasks: arr(raw.weeklyTasks), resources: arr(raw.resources), lectures: arr(raw.lectures),
+    planWarnings: arr(raw.planWarnings), savedAt: Number(raw.savedAt || 0),
+    prefs: { ...base, ...rawPrefs, weeklyHours: { ...base.weeklyHours, ...(rawPrefs.weeklyHours || {}) } }
   };
 }
 
-const uploadedResourceIds = new Set();
-let cloudSaveInFlight = false;
-let cloudSaveQueued = false;
-
+// ---------- Files (IndexedDB) : الملفات بتضل على الجهاز، مش جوا الداتا ----------
 function dataUrlFromBlob(blob) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -1894,114 +1980,153 @@ function dataUrlFromBlob(blob) {
   });
 }
 
-async function attachLegacyFilesFromIndexedDb() {
-  for (const resource of (state.resources || [])) {
-    if (resource.fileName && !resource.fileData) {
+// ملفات قديمة كانت مخزنة جوا الداتا كنص كبير: ننقلها لمخزن الملفات المحلي
+async function migrateInlineFiles() {
+  const list = [...state.resources, ...state.trash.filter(t => t.type === 'resource' && t.payload).map(t => t.payload)];
+  for (const r of list) {
+    if (r.fileData && r.id) {
       try {
-        const oldFile = await plannerFileGet(resource.id);
-        if (oldFile?.blob) resource.fileData = await dataUrlFromBlob(oldFile.blob);
-      } catch (err) { console.warn('Legacy file migration skipped:', resource.id, err); }
+        const blob = await (await fetch(r.fileData)).blob();
+        await plannerFilePut({ id: r.id, blob });
+        delete r.fileData;
+        r.hasFile = true;
+      } catch (err) { console.warn('File migration skipped:', r.id, err); }
+    } else if (r.fileName && !r.hasFile) {
+      try { if (await plannerFileGet(r.id)) r.hasFile = true; } catch (_) {}
     }
   }
 }
 
-function collectUploadedResourceIds(sourceState) {
-  const ids = [];
-  (sourceState.resources || []).forEach(r => { if (r.fileData && r.id) ids.push(r.id); });
-  (sourceState.trash || []).forEach(t => {
-    if (t.type === 'resource' && t.payload?.id && t.payload?.fileData) ids.push(t.payload.id);
-  });
-  return ids;
+// ---------- Local storage (دايماً شغال) ----------
+const localKey = () => LOCAL_PREFIX + (currentUserId || 'guest');
+
+function readLocal() {
+  try {
+    const raw = localStorage.getItem(localKey());
+    if (raw) return JSON.parse(raw);
+    if (currentUserId) {
+      const legacy = localStorage.getItem(`${LEGACY_LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LEGACY_LOCAL_KEY);
+      if (legacy) return JSON.parse(legacy);
+    }
+  } catch (err) { console.warn('Local read failed', err); }
+  return null;
 }
 
-function makeDatabaseSnapshot() {
-  const snapshot = JSON.parse(JSON.stringify(state));
-  snapshot.resources.forEach(r => { if (uploadedResourceIds.has(r.id)) delete r.fileData; });
-  snapshot.trash.forEach(t => {
-    if (t.type === 'resource' && t.payload?.id && uploadedResourceIds.has(t.payload.id)) delete t.payload.fileData;
-  });
-  return snapshot;
+function makeSnapshot() {
+  const snap = JSON.parse(JSON.stringify(state));
+  snap.resources.forEach(r => { if (r.hasFile) delete r.fileData; });
+  snap.trash.forEach(t => { if (t.type === 'resource' && t.payload?.hasFile) delete t.payload.fileData; });
+  return snap;
 }
 
-async function enterCloudDashboard(userId, token, userName = '') {
+function writeLocal() {
+  try { localStorage.setItem(localKey(), JSON.stringify(makeSnapshot())); return true; }
+  catch (err) { console.warn('Local write failed', err); return false; }
+}
+
+// ---------- Cloud (جدول واحد بسيط: study_plans) ----------
+async function cloudRequest(path, { method = 'GET', body, prefer } = {}) {
+  const jwt = await getJwt();
+  if (!jwt) throw new Error('ما قدرت أجيب تصريح الدخول للسحابة. اعمل خروج وادخل من جديد.');
+  const headers = { 'Accept': 'application/json', 'Authorization': `Bearer ${jwt}` };
+  if (body) headers['Content-Type'] = 'application/json';
+  if (prefer) headers['Prefer'] = prefer;
+  const res = await fetch(`${NEON_DATA_URL}${path}`, { method, headers, body: body ? JSON.stringify(body) : undefined });
+  const text = await res.text();
+  let json = null;
+  try { json = text ? JSON.parse(text) : null; } catch (_) { json = text; }
+  if (!res.ok) {
+    const msg = typeof json === 'string' ? json : (json?.message || json?.hint || JSON.stringify(json));
+    if (res.status === 404 || /study_plans|relation|schema cache/i.test(String(msg))) {
+      throw new Error('جدول study_plans مش موجود أو ما إله صلاحيات. شغّل ملف database_setup.sql مرة وحدة في Neon SQL Editor.');
+    }
+    throw new Error(`قاعدة البيانات رفضت العملية (${res.status}): ${msg}`);
+  }
+  return json;
+}
+
+async function cloudLoad() {
+  const rows = await cloudRequest(`/study_plans?user_id=eq.${encodeURIComponent(currentUserId)}&select=data&limit=1`);
+  return Array.isArray(rows) && rows[0]?.data ? rows[0].data : null;
+}
+
+async function cloudSave(snapshot) {
+  const updated = await cloudRequest(`/study_plans?user_id=eq.${encodeURIComponent(currentUserId)}`, {
+    method: 'PATCH', body: { data: snapshot }, prefer: 'return=representation'
+  });
+  if (Array.isArray(updated) && updated.length) return;
+  await cloudRequest('/study_plans', { method: 'POST', body: { user_id: currentUserId, data: snapshot } });
+}
+
+async function enterAccount(userId, userName = '') {
   currentUserId = userId;
   currentUserName = userName;
-  accessToken = token;
   isGuestMode = false;
+  cloudError = '';
   authStatus.textContent = '';
+  loginError.textContent = '';
+  localStorage.setItem(SESSION_KEY, JSON.stringify({ userId, name: userName }));
+
+  const local = readLocal();
+  applyData(local || {});
+  applyTheme(state.prefs.theme || 'light');
   showApp();
-  syncStatus.textContent = 'بنجيب بياناتك من قاعدة البيانات... ⏳';
-  cloudReady = false;
+  renderAll();
+  showSeqStep('home');
+  syncStatus.textContent = 'محفوظ على جهازك ✓ — بنفحص السحابة... ⏳';
+  await migrateInlineFiles();
 
   try {
-    const normalized = await neonDbLoadNormalized(accessToken);
-    if (normalized && typeof normalized === 'object' && !Array.isArray(normalized)) {
-      applyData(normalized);
+    const cloud = await cloudLoad();
+    const localTime = Number(local?.savedAt || 0);
+    const cloudTime = Number(cloud?.savedAt || 0);
+    const useCloud = cloud && (!local || cloudTime >= localTime);
+    if (useCloud) {
+      applyData(cloud);
       applyTheme(state.prefs.theme || 'light');
-      state.resources.forEach(r => { if (r.fileData) uploadedResourceIds.add(r.id); });
-      state.trash.forEach(t => { if (t.type === 'resource' && t.payload?.fileData) uploadedResourceIds.add(t.payload.id); });
+      applyGirlyTheme(state.prefs.girlyMode);
+      await migrateInlineFiles();
+      writeLocal();
+      renderAll();
+      showSeqStep('home');
+      syncStatus.textContent = 'تم جلب بياناتك من السحابة ✓ ☁️';
     } else {
-      let legacy = null;
-      try {
-        const rows = await neonDbRead(currentUserId, accessToken);
-        if (Array.isArray(rows) && rows[0]?.data) legacy = rows[0].data;
-      } catch (legacyErr) { console.info('No legacy study_plans record found:', legacyErr.message); }
-      if (!legacy) {
-        try { legacy = JSON.parse(localStorage.getItem(`${LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LOCAL_KEY) || 'null'); }
-        catch (_) { legacy = null; }
-      }
-      applyData(legacy || {});
-      applyTheme(state.prefs.theme || 'light');
-      await attachLegacyFilesFromIndexedDb();
-      await neonDbSaveNormalized(state, accessToken);
-      collectUploadedResourceIds(state).forEach(id => uploadedResourceIds.add(id));
+      await cloudSave(makeSnapshot());
+      syncStatus.textContent = 'بياناتك محفوظة على جهازك وعلى السحابة ✓ ☁️';
     }
-
-    cloudReady = true;
-    syncStatus.textContent = 'متصل بقاعدة البيانات — جميع بيانات الحساب محفوظة ✓';
-    renderAll();
   } catch (err) {
-    console.error('Normalized database connection failed:', err);
-    cloudReady = false;
-    let legacyCache = {};
-    try { legacyCache = JSON.parse(localStorage.getItem(`${LOCAL_KEY}:${currentUserId}`) || localStorage.getItem(LOCAL_KEY) || '{}'); } catch (_) {}
-    applyData(legacyCache);
-    syncStatus.textContent = 'قاعدة البيانات غير مهيّأة أو الاتصال فشل. نفّذ ملف smart_academic_planner_database.sql في Neon أولاً.';
-    renderAll();
-    loginError.textContent = 'الحساب اتصل، لكن جداول المنصة الجديدة غير جاهزة. شغّل ملف SQL المرفق من Neon SQL Editor ثم حدّث الصفحة.';
+    console.error('Cloud sync failed:', err);
+    cloudError = err.message || String(err);
+    syncStatus.textContent = 'شغال وبياناتك محفوظة على جهازك ✓ — السحابة متوقفة (اضغط هون للتفاصيل)';
   }
 }
 
 function saveState() {
+  state.savedAt = Date.now();
+  const ok = writeLocal();
   if (isGuestMode || !currentUserId) {
-    syncStatus.textContent = 'وضع تجربة مؤقت — سجّل الدخول حتى تُحفظ البيانات في قاعدة البيانات.';
+    syncStatus.textContent = ok ? 'محفوظ على هذا الجهاز ✓ (بدون حساب)' : 'تعذر الحفظ — مساحة المتصفح ممتلئة، صدّر نسخة احتياطية.';
     return;
   }
-  if (!cloudReady) {
-    syncStatus.textContent = 'غير محفوظ — قاعدة البيانات غير متصلة أو لم يتم إعداد الجداول بعد.';
-    return;
-  }
-
-  syncStatus.textContent = 'جاري حفظ بياناتك في PostgreSQL...';
+  syncStatus.textContent = ok ? 'محفوظ على جهازك ✓ — جاري المزامنة مع السحابة...' : 'تعذر الحفظ المحلي — مساحة المتصفح ممتلئة.';
   if (saveTimer) clearTimeout(saveTimer);
-  saveTimer = setTimeout(() => { flushCloudSave(); }, 650);
+  saveTimer = setTimeout(flushCloudSave, 1200);
 }
 
 async function flushCloudSave() {
-  if (!cloudReady || !currentUserId) return;
+  if (!currentUserId || isGuestMode) return;
   if (cloudSaveInFlight) { cloudSaveQueued = true; return; }
   cloudSaveInFlight = true;
   do {
     cloudSaveQueued = false;
-    const snapshot = makeDatabaseSnapshot();
-    const newlyUploadedIds = collectUploadedResourceIds(snapshot).filter(id => !uploadedResourceIds.has(id));
     try {
-      await neonDbSaveNormalized(snapshot, accessToken);
-      newlyUploadedIds.forEach(id => uploadedResourceIds.add(id));
-      syncStatus.textContent = 'انحفظت كل بياناتك في قاعدة البيانات ✓';
+      await cloudSave(makeSnapshot());
+      cloudError = '';
+      syncStatus.textContent = 'انحفظت بياناتك على جهازك وعلى السحابة ✓ ☁️';
     } catch (err) {
-      console.error('Database save failed:', err);
-      syncStatus.textContent = 'فشل الحفظ في قاعدة البيانات. لا تغلق الصفحة قبل معالجة الاتصال.';
+      console.error('Cloud save failed:', err);
+      cloudError = err.message || String(err);
+      syncStatus.textContent = 'محفوظ على جهازك ✓ — السحابة متوقفة (اضغط هون للتفاصيل)';
       cloudSaveQueued = false;
       break;
     }
@@ -2009,58 +2134,62 @@ async function flushCloudSave() {
   cloudSaveInFlight = false;
 }
 
+syncStatus.style.cursor = 'pointer';
+syncStatus.addEventListener('click', async () => {
+  if (!currentUserId || isGuestMode) return;
+  if (cloudError) alert(`سبب توقف السحابة:\n${cloudError}\n\nرح أجرب المزامنة من جديد هسا.`);
+  syncStatus.textContent = 'بنجرب المزامنة... ⏳';
+  await flushCloudSave();
+});
+
 // Sequential App Steps Navigation Logic
-let currentSeqStep = 1;
 const totalSeqSteps = 8;
+const pageOrder = [2,4,3,1,5,6,7,8];
+let currentSeqStep = 0;
 
 function showSeqStep(stepNum) {
-  if (stepNum < 1 || stepNum > totalSeqSteps) return;
-  currentSeqStep = stepNum;
-  document.querySelectorAll('.app-step-panel').forEach(panel => {
-    panel.classList.remove('active-seq-step');
-  });
-  const targetPanel = document.getElementById(`seqStep${currentSeqStep}`);
-  if (targetPanel) {
-    targetPanel.classList.add('active-seq-step');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+  if (stepNum === 0 || stepNum === 'home') {
+    currentSeqStep = 0;
+    document.querySelectorAll('.app-step-panel').forEach(panel => panel.classList.remove('active-seq-step'));
+    document.getElementById('homePanel').style.display = 'block';
+    window.scrollTo({top:0,behavior:'smooth'});
+    closeSectionMenu();
+    return;
   }
+  const actual = Number(stepNum);
+  if (!Number.isInteger(actual) || actual < 1 || actual > 8) return;
+  currentSeqStep = actual;
+  document.getElementById('homePanel').style.display = 'none';
+  document.querySelectorAll('.app-step-panel').forEach(panel => panel.classList.remove('active-seq-step'));
+  const targetPanel = document.getElementById(`seqStep${actual}`);
+  if (targetPanel) targetPanel.classList.add('active-seq-step');
   document.querySelectorAll('.seq-step-indicator').forEach(ind => {
-    ind.textContent = `الخطوة ${currentSeqStep} من ${totalSeqSteps}`;
+    ind.textContent = `قسم ${pageOrder.indexOf(actual)+1} من ${totalSeqSteps}`;
   });
+  window.scrollTo({top:0,behavior:'smooth'});
+  closeSectionMenu();
 }
-
-document.querySelectorAll('.next-seq-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (currentSeqStep < totalSeqSteps) {
-      showSeqStep(currentSeqStep + 1);
-    }
+function closeSectionMenu(){
+  const menu=document.getElementById('sectionMenu'),trigger=document.getElementById('menuTrigger');
+  if(menu)menu.hidden=true;
+  if(trigger)trigger.setAttribute('aria-expanded','false');
+}
+document.getElementById('menuTrigger').addEventListener('click',()=>{
+  const menu=document.getElementById('sectionMenu'),trigger=document.getElementById('menuTrigger');
+  menu.hidden=!menu.hidden;trigger.setAttribute('aria-expanded',String(!menu.hidden));
+});
+document.getElementById('sectionMenu').querySelectorAll('[data-page]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const page = btn.dataset.page==='home' ? 0 : Number(btn.dataset.page);
+    if (page === 2) resetWizard();
+    showSeqStep(page);
   });
 });
-
-document.querySelectorAll('.prev-seq-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    if (currentSeqStep > 1) {
-      showSeqStep(currentSeqStep - 1);
-    }
-  });
-});
-
-document.querySelectorAll('.tools-nav a, .desktop-sidebar a').forEach(link => {
-  link.addEventListener('click', (e) => {
-    e.preventDefault();
-    const href = link.getAttribute('href');
-    const targetEl = document.querySelector(href);
-    if (targetEl) {
-      const parentStep = targetEl.closest('.app-step-panel');
-      if (parentStep) {
-        const stepId = parentStep.id;
-        const stepNum = parseInt(stepId.replace('seqStep', ''));
-        if (!isNaN(stepNum)) {
-          showSeqStep(stepNum);
-        }
-      }
-    }
-  });
+document.getElementById('homeAddSubject').addEventListener('click',()=>{ resetWizard(); showSeqStep(2); });
+document.querySelectorAll('[data-open-page]').forEach(btn=>btn.addEventListener('click',()=>showSeqStep(Number(btn.dataset.openPage))));
+document.addEventListener('click',e=>{
+  const nav=document.querySelector('.app-navigation');
+  if(nav&&!nav.contains(e.target))closeSectionMenu();
 });
 
 // Step-by-Step Wizard Form inside Step 2
@@ -2079,22 +2208,22 @@ const stepTitles = {
   7: "الخطوة 7 من 7 — صعوبة الشابترات واعتمد! 🎉"
 };
 
-let currentMaxStep = 1;
+let currentWizardStep = 1;
 
 function updateWizardIndicator(stepNum) {
-  currentMaxStep = Math.max(currentMaxStep, stepNum);
-  wizardProgressText.textContent = stepTitles[currentMaxStep] || "";
+  currentWizardStep = stepNum;
+  wizardProgressText.textContent = stepTitles[currentWizardStep] || "";
   let dots = "";
   for (let i = 1; i <= 7; i++) {
-    if (i < currentMaxStep) dots += "🟢";
-    else if (i === currentMaxStep) dots += "🔵";
+    if (i < currentWizardStep) dots += "🟢";
+    else if (i === currentWizardStep) dots += "🔵";
     else dots += "⚪";
   }
   wizardStepDots.textContent = dots;
 }
 
 function resetWizard() {
-  currentMaxStep = 1;
+  currentWizardStep = 1;
   for (let i = 1; i <= 7; i++) {
     const stepEl = document.getElementById(`step-${i}`);
     stepEl.hidden = i !== 1;
@@ -2106,6 +2235,25 @@ function resetWizard() {
 }
 
 document.getElementById('resetWizardBtn').addEventListener('click', resetWizard);
+
+document.querySelectorAll('.prev-wizard-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const previous = Number(btn.dataset.prev);
+    const currentEl = document.getElementById(`step-${previous + 1}`);
+    const previousEl = document.getElementById(`step-${previous}`);
+    if (!currentEl || !previousEl) return;
+    currentEl.hidden = true;
+    previousEl.hidden = false;
+    previousEl.classList.remove('completed-step');
+    const nextBtn = previousEl.querySelector('.next-step-btn');
+    if (nextBtn) nextBtn.style.display = 'inline-flex';
+    updateWizardIndicator(previous);
+    const input = previousEl.querySelector('input, select');
+    if (input) input.focus();
+    previousEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  });
+});
+
 
 document.querySelectorAll('#seqStep2 .next-step-btn').forEach(btn => {
   btn.addEventListener('click', () => {
@@ -2208,106 +2356,118 @@ function buildChapterInputs() {
 chapterCountInput.addEventListener('input', buildChapterInputs);
 buildChapterInputs();
 
-// Simple & Logical Scheduling Algorithm
+// Smart Scheduling Algorithm (v5): global capacity, local-date safe, respects done/manual items
+const DIFF_EST = { easy: 60, medium: 90, hard: 150 };
+const daysBetween = (a, b) => Math.round((new Date(b + 'T12:00:00') - new Date(a + 'T12:00:00')) / 86400000);
+
+// كم دقيقة بتقدر تدرس بهاليوم (كل المواد مع بعض)
+function dayCapacityMinutes(dateStr) {
+  if (state.prefs.availabilitySaved) {
+    const dow = new Date(dateStr + 'T12:00:00').getDay();
+    return Math.max(0, Number(state.prefs.weeklyHours?.[dow] ?? 3)) * 60;
+  }
+  const maxDaily = Math.max(1, ...state.subjects.map(s => Number(s.dailyHours) || 0));
+  return maxDaily * 60;
+}
+
 function regenerateFullSchedule() {
-  const oldDoneMap = new Map(state.schedule.map(item => [item.id, item.done]));
-  const newSchedule = [];
+  const today = todayISO();
+  const oldItems = state.schedule || [];
+  const oldDone = new Map(oldItems.map(i => [i.id, !!i.done]));
+  const subjectIds = new Set(state.subjects.map(s => s.id));
 
-  const sortedSubjects = [...state.subjects].sort((a, b) =>
-    `${a.examDate}T${a.examTime}`.localeCompare(`${b.examDate}T${b.examTime}`)
-  );
+  // المنجز أو اللي نقلته بإيدك بضل مكانه
+  const keep = new Map();
+  oldItems.forEach(i => { if (!i.isExam && subjectIds.has(i.subjectId) && (i.done || i.manual)) keep.set(i.id, i); });
 
-  sortedSubjects.forEach(sub => {
-    const start = new Date(sub.startDate + 'T00:00:00');
-    const exam = new Date(sub.examDate + 'T00:00:00');
-    const totalDaysBeforeExam = Math.floor((exam - start) / 86400000);
+  const used = {};
+  const addUse = (d, m) => { used[d] = (used[d] || 0) + (Number(m) || 0); };
+  keep.forEach(i => addUse(i.date, i.minutes));
+  (state.weeklyTasks || []).forEach(w => { if (!w.done) addUse(w.date, w.minutes); });
 
-    if (totalDaysBeforeExam < 1) {
-      throw new Error(`يا حلو تاريخ امتحان "${sub.name}" لازم يكون بعد تاريخ البداية بيوم واحد عالأقل!`);
-    }
+  const result = [];
+  const warnings = [];
+  const sorted = [...state.subjects].sort((a, b) =>
+    `${a.examDate}T${a.examTime}`.localeCompare(`${b.examDate}T${b.examTime}`));
 
-    const studyDaysCount = totalDaysBeforeExam >= 2 ? totalDaysBeforeExam - 1 : 1;
-    const weights = { easy: 1, medium: 2, hard: 3 };
-    const totalWeight = sub.chapters.reduce((acc, ch) => acc + weights[ch.difficulty], 0);
-    const totalAvailableMinutes = studyDaysCount * Number(sub.dailyHours) * 60;
-
-    const weightedChapters = sub.chapters.map(ch => {
-      const w = weights[ch.difficulty];
-      const mins = Math.max(30, Math.round((w / totalWeight) * totalAvailableMinutes));
-      return { ...ch, weight: w, minutes: mins };
-    });
-
-    const targetWeightPerDay = totalWeight / studyDaysCount;
-    let currentDayIdx = 0;
-    let accumulatedWeight = 0;
-
-    weightedChapters.forEach((ch) => {
-      if (
-        accumulatedWeight > 0 &&
-        accumulatedWeight + ch.weight > targetWeightPerDay * 1.15 &&
-        currentDayIdx < studyDaysCount - 1
-      ) {
-        currentDayIdx++;
-        accumulatedWeight = 0;
-      }
-
-      const taskDate = new Date(start);
-      taskDate.setDate(taskDate.getDate() + currentDayIdx);
-      const dateStr = taskDate.toISOString().slice(0, 10);
-      const taskId = `${sub.id}-ch-${ch.num}`;
-
-      newSchedule.push({
-        id: taskId,
-        subjectId: sub.id,
-        subjectName: sub.name,
-        chapterNum: ch.num,
-        difficulty: ch.difficulty,
-        date: dateStr,
-        minutes: ch.minutes,
-        isRevision: false,
-        isExam: false,
-        done: ch.done || oldDoneMap.get(taskId) || false
-      });
-
-      accumulatedWeight += ch.weight;
-    });
-
-    if (totalDaysBeforeExam >= 2) {
-      const revDate = new Date(exam);
-      revDate.setDate(revDate.getDate() - 1);
-      const revDateStr = revDate.toISOString().slice(0, 10);
-      const revId = `${sub.id}-revision`;
-      newSchedule.push({
-        id: revId,
-        subjectId: sub.id,
-        subjectName: sub.name,
-        chapterNum: 0,
-        difficulty: 'revision',
-        date: revDateStr,
-        minutes: Math.round(Number(sub.dailyHours) * 60),
-        isRevision: true,
-        isExam: false,
-        done: oldDoneMap.get(revId) || false
-      });
-    }
-
+  sorted.forEach(sub => {
+    const dailyMin = Math.max(30, Math.round(Number(sub.dailyHours || 1) * 60));
+    const effStart = sub.startDate > today ? sub.startDate : today;
+    const gap = daysBetween(effStart, sub.examDate);
+    const hasRevision = gap >= 2;
+    const lastStudyDay = addDaysISO(sub.examDate, hasRevision ? -2 : -1);
+    const revId = `${sub.id}-revision`;
     const examId = `${sub.id}-exam`;
-    newSchedule.push({
-      id: examId,
-      subjectId: sub.id,
-      subjectName: sub.name,
-      chapterNum: 0,
-      difficulty: 'exam',
-      date: sub.examDate,
-      examTime: sub.examTime,
-      minutes: 0,
-      isRevision: false,
-      isExam: true,
-      done: oldDoneMap.get(examId) || false
+
+    const pending = [];
+    sub.chapters.forEach(ch => {
+      const id = `${sub.id}-ch-${ch.num}`;
+      const k = keep.get(id);
+      if (k && (ch.done || k.manual)) { k.done = !!ch.done; result.push(k); }
+      else if (!ch.done) pending.push({ ch, id });
+    });
+
+    if (pending.length && gap >= 1) {
+      const win = [];
+      for (let d = effStart; d <= lastStudyDay; d = addDaysISO(d, 1)) if (dayCapacityMinutes(d) > 0) win.push(d);
+
+      const freeOn = d => Math.max(0, Math.min(dailyMin, dayCapacityMinutes(d) - (used[d] || 0)));
+      const need = pending.reduce((s, p) => s + DIFF_EST[p.ch.difficulty], 0);
+      const available = win.reduce((s, d) => s + freeOn(d), 0);
+      const scale = Math.min(1.8, Math.max(0.6, (available * 0.9) / need));
+      const minsFor = p => Math.min(dailyMin, Math.max(30, Math.round(DIFF_EST[p.ch.difficulty] * scale / 5) * 5));
+
+      let di = 0, placedToday = 0, overflow = 0;
+      pending.forEach((p, idx) => {
+        const mins = minsFor(p);
+        // نوزّع الشابترات بالتساوي على الأيام المتاحة بدل ما نكدّسها أول أيام
+        const wanted = win.length ? Math.floor(idx * win.length / pending.length) : 0;
+        if (wanted > di) { di = wanted; placedToday = 0; }
+        let target = null;
+        while (di < win.length) {
+          const d = win[di];
+          const room = Math.min(dailyMin - placedToday, dayCapacityMinutes(d) - (used[d] || 0));
+          if (room >= mins * 0.85) { target = d; break; }
+          di++; placedToday = 0;
+        }
+        let isOver = false;
+        if (!target) { target = win.length ? win[win.length - 1] : effStart; isOver = true; overflow++; }
+        else placedToday += mins;
+        addUse(target, mins);
+        result.push({
+          id: p.id, subjectId: sub.id, subjectName: sub.name, chapterNum: p.ch.num,
+          difficulty: p.ch.difficulty, date: target, minutes: mins,
+          isRevision: false, isExam: false, done: false, overflow: isOver
+        });
+      });
+      if (overflow) warnings.push(`⚠️ وقت "${sub.name}" ما بكفي: ${overflow} شابتر انحشروا بآخر يوم. زيد ساعات الدراسة اليومية أو قدّم تاريخ البداية.`);
+    } else if (pending.length) {
+      warnings.push(`⚠️ امتحان "${sub.name}" اليوم أو فات، وعندك ${pending.length} شابتر ما انخلصوا.`);
+    }
+
+    if (hasRevision) {
+      if (keep.has(revId)) result.push(keep.get(revId));
+      else {
+        const rd = addDaysISO(sub.examDate, -1);
+        const free = Math.max(0, dayCapacityMinutes(rd) - (used[rd] || 0));
+        const mins = Math.max(60, Math.min(dailyMin, free));
+        addUse(rd, mins);
+        result.push({
+          id: revId, subjectId: sub.id, subjectName: sub.name, chapterNum: 0, difficulty: 'revision',
+          date: rd, minutes: mins, isRevision: true, isExam: false, done: oldDone.get(revId) || false
+        });
+      }
+    }
+
+    result.push({
+      id: examId, subjectId: sub.id, subjectName: sub.name, chapterNum: 0, difficulty: 'exam',
+      date: sub.examDate, examTime: sub.examTime, minutes: 0,
+      isRevision: false, isExam: true, done: oldDone.get(examId) || false
     });
   });
 
-  state.schedule = newSchedule;
+  state.schedule = result;
+  state.planWarnings = warnings;
 }
 
 document.getElementById('subjectForm').addEventListener('submit', (e) => {
@@ -2357,7 +2517,8 @@ document.getElementById('subjectForm').addEventListener('submit', (e) => {
     document.getElementById('subjectPrerequisites').value = '';
     resetWizard();
     triggerConfetti();
-    showSeqStep(3); // Move automatically to Step 3 (Progress & Tasks) upon adding a subject!
+    document.getElementById('examDate').value = '';
+    showSeqStep(4); // الجدول اللي انعمل للتو
   } catch (err) {
     alert(err.message);
   }
@@ -2382,6 +2543,8 @@ document.getElementById('clearSubjectsBtn').addEventListener('click', () => {
   state.subjects.forEach(sub => state.trash.unshift({ id:`trash-${Date.now()}-${sub.id}`, type:'subject', title:sub.name, payload:sub, schedule:state.schedule.filter(t=>t.subjectId===sub.id), deletedAt:new Date().toISOString() }));
   state.subjects = [];
   state.schedule = [];
+  state.reviews = [];
+  state.planWarnings = [];
   logActivity('حذف جميع المواد','نُقلت المواد إلى سلة المحذوفات');
   saveState();
   renderAll();
@@ -2521,6 +2684,7 @@ function renderSubjectsAndProgress() {
         state.trash.unshift({ id: `trash-${Date.now()}`, type: 'subject', title: sub.name, payload: sub, schedule: state.schedule.filter(t => t.subjectId === sub.id), deletedAt: new Date().toISOString() });
         state.subjects = state.subjects.filter(s => s.id !== sub.id);
         state.schedule = state.schedule.filter(t => t.subjectId !== sub.id);
+        state.reviews = state.reviews.filter(r => r.subjectId !== sub.id);
         logActivity('حذف مادة', `نُقلت مادة ${sub.name} إلى سلة المحذوفات`);
         saveState();
         renderAll();
@@ -2601,8 +2765,15 @@ function renderSubjectsAndProgress() {
 
 function renderGeneratedSchedule() {
   const host = document.getElementById('generatedPlan');
+  const warnHost = document.getElementById('planWarnings');
   const summaryEl = document.getElementById('planSummary');
   host.innerHTML = '';
+  warnHost.innerHTML = '';
+  const today = todayISO();
+
+  (state.planWarnings || []).forEach(w => {
+    const d = document.createElement('div'); d.className = 'plan-warn'; d.textContent = w; warnHost.append(d);
+  });
 
   if (state.schedule.length === 0) {
     summaryEl.textContent = 'ضيف موادك بالخطوة السابقة عشان تشوف كل يوم شو عليك بالضبط وبدون عجقة.';
@@ -2611,38 +2782,40 @@ function renderGeneratedSchedule() {
 
   const studyTasks = state.schedule.filter(t => !t.isExam);
   const doneTasks = studyTasks.filter(t => t.done).length;
+  const late = studyTasks.filter(t => !t.done && t.date < today).length;
   const pct = studyTasks.length ? Math.round((doneTasks / studyTasks.length) * 100) : 0;
-  summaryEl.textContent = `إنجازك بالخطة: خلّصت ${doneTasks} من أصل ${studyTasks.length} مهمة (${pct}%) — وحش! 💪`;
+  summaryEl.textContent = `إنجازك بالخطة: خلّصت ${doneTasks} من أصل ${studyTasks.length} مهمة (${pct}%)` +
+    (late ? ` — عندك ${late} مهمة متأخرة، اضغط «خطة تعويض» بالمخطط الأسبوعي تحت 🧯` : ' — ماشي عالجدول 💪');
 
   const grouped = {};
-  [...state.schedule]
-    .sort((a, b) => a.date.localeCompare(b.date))
-    .forEach(item => {
-      (grouped[item.date] ??= []).push(item);
-    });
+  [...state.schedule].sort((a, b) => a.date.localeCompare(b.date)).forEach(item => { (grouped[item.date] ??= []).push(item); });
 
   const diffAr = { easy: 'سهل', medium: 'متوسط', hard: 'صعب' };
+  const pastDoneCards = [];
 
-  Object.entries(grouped).forEach(([dateStr, items]) => {
+  const buildDay = (dateStr, items) => {
     const hasExam = items.some(i => i.isExam);
     const totalMins = items.reduce((acc, i) => acc + (i.minutes || 0), 0);
     const hoursFormatted = (totalMins / 60).toFixed(1).replace(/\.0$/, '');
+    const isToday = dateStr === today;
+    const isLate = dateStr < today && items.some(i => !i.isExam && !i.done);
 
     const card = document.createElement('div');
-    card.className = 'plan-day' + (hasExam ? ' exam-highlight' : '');
+    card.className = 'plan-day' + (hasExam ? ' exam-highlight' : '') + (isToday ? ' today-day' : '');
 
     const header = document.createElement('div');
     header.className = 'plan-day-header';
-
     const title = document.createElement('h3');
-    title.textContent = new Date(dateStr + 'T12:00:00').toLocaleDateString('ar-JO', {
-      weekday: 'long', month: 'long', day: 'numeric'
-    });
+    title.textContent = new Date(dateStr + 'T12:00:00').toLocaleDateString('ar-JO', { weekday: 'long', month: 'long', day: 'numeric' });
+    if (isToday) { const c = document.createElement('span'); c.className = 'day-chip today'; c.textContent = 'اليوم'; title.append(c); }
+    if (isLate) { const c = document.createElement('span'); c.className = 'day-chip'; c.textContent = 'متأخر'; title.append(c); }
 
+    const cap = dayCapacityMinutes(dateStr);
     const loadBadge = document.createElement('span');
-    loadBadge.className = 'day-load-badge';
-    loadBadge.textContent = totalMins > 0 ? `دراسة: ${hoursFormatted} ساعة` : 'يوم الحسم 🏆🔥';
-
+    loadBadge.className = 'day-load-badge' + (totalMins > cap + 1 && totalMins > 0 ? ' over' : '');
+    loadBadge.textContent = totalMins > 0
+      ? `دراسة: ${hoursFormatted} ساعة${totalMins > cap + 1 ? ' • أكتر من المتاح' : ''}`
+      : 'يوم الحسم 🏆🔥';
     header.append(title, loadBadge);
     card.append(header);
 
@@ -2651,7 +2824,6 @@ function renderGeneratedSchedule() {
       let typeClass = `task-${item.difficulty}`;
       if (item.isRevision) typeClass = 'task-revision';
       if (item.isExam) typeClass = 'task-exam';
-
       row.className = `plan-task ${typeClass}` + (item.done ? ' done' : '');
 
       const cb = document.createElement('input');
@@ -2659,23 +2831,16 @@ function renderGeneratedSchedule() {
       cb.checked = !!item.done;
 
       const span = document.createElement('span');
-      if (item.isExam) {
-        span.textContent = `🏆 امتحان ${item.subjectName} — الساعة ${item.examTime} (فالك الفل!)`;
-      } else if (item.isRevision) {
-        span.textContent = `🔄 مراجعة شاملة: ${item.subjectName} (${item.minutes} دقيقة)`;
-      } else {
-        span.textContent = `📘 ${item.subjectName} — شابتر ${item.chapterNum} (${diffAr[item.difficulty]}) • ${item.minutes} دقيقة`;
-      }
+      if (item.isExam) span.textContent = `🏆 امتحان ${item.subjectName} — الساعة ${item.examTime} (فالك الفل!)`;
+      else if (item.isRevision) span.textContent = `🔄 مراجعة شاملة: ${item.subjectName} (${item.minutes} دقيقة)`;
+      else span.textContent = `📘 ${item.subjectName} — شابتر ${item.chapterNum} (${diffAr[item.difficulty]}) • ${item.minutes} دقيقة${item.overflow ? ' ⚠️' : ''}`;
 
       cb.addEventListener('change', () => {
         item.done = cb.checked;
         if (!item.isExam && !item.isRevision) {
           const sub = state.subjects.find(s => s.id === item.subjectId);
           const ch = sub?.chapters.find(c => c.num === item.chapterNum);
-          if (ch) {
-            ch.done = cb.checked;
-            if (cb.checked) createSpacedReviews(sub, ch);
-          }
+          if (ch) { ch.done = cb.checked; if (cb.checked) createSpacedReviews(sub, ch); }
         }
         if (cb.checked) {
           markStudyDay();
@@ -2689,9 +2854,26 @@ function renderGeneratedSchedule() {
       row.append(cb, span);
       card.append(row);
     });
+    return card;
+  };
 
-    host.append(card);
+  Object.entries(grouped).forEach(([dateStr, items]) => {
+    const finishedPast = dateStr < today && items.every(i => i.isExam || i.done);
+    const card = buildDay(dateStr, items);
+    if (finishedPast) pastDoneCards.push(card); else host.append(card);
   });
+
+  if (pastDoneCards.length) {
+    const det = document.createElement('details');
+    det.className = 'past-days';
+    const sum = document.createElement('summary');
+    sum.textContent = `✅ أيام سابقة خلصتها (${pastDoneCards.length}) — اضغط للعرض`;
+    const inner = document.createElement('div');
+    inner.className = 'plan-days';
+    pastDoneCards.forEach(c => inner.append(c));
+    det.append(sum, inner);
+    host.prepend(det);
+  }
 }
 
 function renderTasksAndNotes() {
@@ -2763,8 +2945,9 @@ function markStudyDay() {
 let timerInterval = null;
 let timeLeft = 25 * 60;
 let isRunning = false;
-let timerStartedAt = null;
+let timerEndAt = 0;
 let timerSessionMinutes = 25;
+let lastAppliedFocus = null;
 
 const clockEl = document.getElementById('clock');
 const durationSelect = document.getElementById('duration');
@@ -2785,48 +2968,71 @@ function updateClockDisplay() {
   clockEl.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
 }
 
+// تطبيق "مدة جلسة التركيز الافتراضية" من الإعدادات على المؤقت
+function applyDefaultFocus() {
+  const m = Number(state.prefs.defaultFocusMinutes) || 25;
+  if (isRunning || m === lastAppliedFocus) return;
+  lastAppliedFocus = m;
+  if (![...durationSelect.options].some(o => Number(o.value) === m)) {
+    const o = document.createElement('option');
+    o.value = String(m);
+    o.textContent = `${m} دقيقة — مدتك المفضلة ⭐`;
+    durationSelect.prepend(o);
+  }
+  durationSelect.value = String(m);
+  timeLeft = m * 60;
+  updateClockDisplay();
+}
+
+function finishTimerSession() {
+  clearInterval(timerInterval);
+  isRunning = false;
+  startBtn.textContent = 'يلا بلّش! 🚀';
+  const focusMins = Math.max(1, Number(timerSessionMinutes || durationSelect.value));
+  if (focusMins > 10) {
+    state.sessions++;
+    state.timeLogs.unshift({ id: `time-${Date.now()}`, date: todayISO(), minutes: focusMins, subject: '', source: 'مؤقت التركيز', note: 'جلسة مكتملة' });
+    markStudyDay();
+    logActivity('جلسة تركيز', `أنهيت جلسة تركيز لمدة ${focusMins} دقيقة`);
+  } else {
+    logActivity('استراحة', `انتهت استراحة لمدة ${focusMins} دقائق`);
+  }
+  timeLeft = parseInt(durationSelect.value) * 60;
+  updateClockDisplay();
+  saveState();
+  renderSubjectsAndProgress();
+  renderTimeLogs();
+  triggerConfetti();
+  alert('يسعد دينك يا وحش! خلصت الجلسة بنجاح، خذلك بريك وكافئ حالك ☕🎉');
+}
+
 startBtn.addEventListener('click', () => {
   if (isRunning) return;
+  if (timeLeft <= 0) timeLeft = parseInt(durationSelect.value) * 60;
   isRunning = true;
-  timerStartedAt = Date.now();
-  timerSessionMinutes = Math.max(1, Math.round((parseInt(durationSelect.value) * 60 - timeLeft) / 60 + (timeLeft / 60)));
+  timerSessionMinutes = parseInt(durationSelect.value);
+  timerEndAt = Date.now() + timeLeft * 1000;
   startBtn.textContent = 'شغالين تركيز.. لا تفتح الريلز! 👀🔥';
   timerInterval = setInterval(() => {
-    if (timeLeft > 0) {
-      timeLeft--;
-      updateClockDisplay();
-    } else {
-      clearInterval(timerInterval);
-      isRunning = false;
-      startBtn.textContent = 'يلا بلّش! 🚀';
-      const focusMins = Math.max(1, Number(timerSessionMinutes || durationSelect.value));
-      if (focusMins > 10) {
-        state.sessions++;
-        state.timeLogs.unshift({ id: `time-${Date.now()}`, date: todayISO(), minutes: focusMins, subject: '', source: 'مؤقت التركيز', note: 'جلسة مكتملة' });
-        markStudyDay();
-        logActivity('جلسة تركيز', `أنهيت جلسة تركيز لمدة ${focusMins} دقيقة`);
-      } else {
-        logActivity('استراحة', `انتهت استراحة لمدة ${focusMins} دقائق`);
-      }
-      saveState();
-      renderSubjectsAndProgress();
-      triggerConfetti();
-      alert('يسعد دينك يا وحش! خلصت الجلسة بنجاح، خذلك بريك وكافئ حالك ☕🎉');
-    }
-  }, 1000);
+    // نحسب من الوقت الحقيقي عشان المؤقت ما يتأخر لما التبويب يكون بالخلفية
+    timeLeft = Math.max(0, Math.ceil((timerEndAt - Date.now()) / 1000));
+    updateClockDisplay();
+    if (timeLeft <= 0) finishTimerSession();
+  }, 500);
 });
 
 pauseBtn.addEventListener('click', () => {
+  if (!isRunning) return;
+  timeLeft = Math.max(0, Math.ceil((timerEndAt - Date.now()) / 1000));
   clearInterval(timerInterval);
   isRunning = false;
-  timerStartedAt = null;
+  updateClockDisplay();
   startBtn.textContent = 'كمّل الجلسة 💪';
 });
 
 resetBtn.addEventListener('click', () => {
   clearInterval(timerInterval);
   isRunning = false;
-  timerStartedAt = null;
   timeLeft = parseInt(durationSelect.value) * 60;
   updateClockDisplay();
   startBtn.textContent = 'يلا بلّش! 🚀';
@@ -2876,37 +3082,69 @@ function renderWeeklyAvailability() {
     label.append(input); host.append(label);
   });
 }
+let weekOffset = 0;
 function renderWeeklyView() {
-  const host=document.getElementById('weeklyView'); if(!host) return; host.innerHTML='';
-  const now=new Date(); const sunday=new Date(now); sunday.setDate(now.getDate()-now.getDay());
-  for(let i=0;i<7;i++){
-    const day=new Date(sunday); day.setDate(sunday.getDate()+i); const date=isoDate(day);
-    const items=[...state.schedule.filter(x=>x.date===date),...state.weeklyTasks.filter(x=>x.date===date)];
-    const planned=items.reduce((sum,x)=>sum+(Number(x.minutes)||0),0); const available=Number(state.prefs.weeklyHours?.[i] ?? 3)*60;
-    const box=document.createElement('div'); box.className='week-day';
-    const h=document.createElement('h4'); h.textContent=`${DAY_NAMES_AR[i]} • ${day.getDate()}/${day.getMonth()+1}`;
-    const meta=document.createElement('div'); meta.className='tool-muted'; meta.textContent=`${(planned/60).toFixed(1)} / ${(available/60).toFixed(1)} ساعة`;
-    box.append(h,meta);
-    if(!items.length){const empty=document.createElement('div');empty.className='tool-muted';empty.textContent='ما في مهام';box.append(empty);}
-    items.forEach(item=>{
-      const row=document.createElement('div');row.className='week-task'+(item.done?' done':'');
-      const title=document.createElement('div');title.textContent=item.isExam?`🏆 امتحان ${item.subjectName}`:item.isRevision?`🔁 مراجعة ${item.subjectName}`:item.subjectName?`${item.subjectName} • شابتر ${item.chapterNum||''}`:item.title;
+  const host = document.getElementById('weeklyView'); if (!host) return; host.innerHTML = '';
+  const now = new Date(); now.setHours(12, 0, 0, 0);
+  const sunday = new Date(now); sunday.setDate(now.getDate() - now.getDay() + weekOffset * 7);
+  const today = todayISO();
+  const lastDayOfWeek = new Date(sunday); lastDayOfWeek.setDate(sunday.getDate() + 6);
+  const label = document.getElementById('weekLabel');
+  if (label) label.textContent = `${sunday.getDate()}/${sunday.getMonth() + 1} ← ${lastDayOfWeek.getDate()}/${lastDayOfWeek.getMonth() + 1}`;
+
+  for (let i = 0; i < 7; i++) {
+    const day = new Date(sunday); day.setDate(sunday.getDate() + i); const date = isoDate(day);
+    const items = [...state.schedule.filter(x => x.date === date), ...state.weeklyTasks.filter(x => x.date === date)];
+    const planned = items.reduce((sum, x) => sum + (Number(x.minutes) || 0), 0);
+    const available = dayCapacityMinutes(date);
+    const box = document.createElement('div'); box.className = 'week-day';
+    if (date === today) box.style.borderColor = 'var(--primary)';
+    const h = document.createElement('h4'); h.textContent = `${DAY_NAMES_AR[i]} • ${day.getDate()}/${day.getMonth() + 1}`;
+    const meta = document.createElement('div'); meta.className = 'tool-muted'; meta.textContent = `${(planned / 60).toFixed(1)} / ${(available / 60).toFixed(1)} ساعة`;
+    box.append(h, meta);
+    if (!items.length) { const empty = document.createElement('div'); empty.className = 'tool-muted'; empty.textContent = 'ما في مهام'; box.append(empty); }
+    items.forEach(item => {
+      const row = document.createElement('div'); row.className = 'week-task' + (item.done ? ' done' : '');
+      const title = document.createElement('div');
+      title.textContent = item.isExam ? `🏆 امتحان ${item.subjectName}` : item.isRevision ? `🔁 مراجعة ${item.subjectName}` : item.subjectName ? `${item.subjectName} • شابتر ${item.chapterNum || ''}` : item.title;
       row.append(title);
-      if(item.id){
-        const dateInput=document.createElement('input');dateInput.type='date';dateInput.value=item.date;dateInput.title='انقل المهمة لتاريخ آخر';
-        dateInput.addEventListener('change',()=>{item.date=dateInput.value;saveState();renderAll();}); row.append(dateInput);
+      if (item.id && !item.isExam) {
+        const dateInput = document.createElement('input'); dateInput.type = 'date'; dateInput.value = item.date; dateInput.title = 'انقل المهمة لتاريخ آخر';
+        dateInput.addEventListener('change', () => {
+          if (!dateInput.value) { dateInput.value = item.date; return; }
+          const sub = item.subjectId ? state.subjects.find(s => s.id === item.subjectId) : null;
+          if (sub && dateInput.value >= sub.examDate) {
+            alert('لازم تنقل المهمة لتاريخ قبل يوم الامتحان 😉');
+            dateInput.value = item.date; return;
+          }
+          item.date = dateInput.value;
+          if (item.subjectId) item.manual = true; // ما نرجّعها لمكانها لما نرتب الجدول من جديد
+          saveState(); renderAll();
+        });
+        row.append(dateInput);
       }
-      if(item.title && !item.subjectId){
-        const controls=document.createElement('div');controls.style.display='flex';controls.style.gap='4px';
-        const done=document.createElement('button');done.type='button';done.className='secondary';done.style.padding='3px 6px';done.textContent=item.done?'إلغاء':'إنجاز';done.addEventListener('click',()=>{item.done=!item.done;saveState();renderAll();});
-        const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='×';del.addEventListener('click',()=>{state.weeklyTasks=state.weeklyTasks.filter(x=>x.id!==item.id);saveState();renderAll();});controls.append(done,del);row.append(controls);
+      if (item.title && !item.subjectId) {
+        const controls = document.createElement('div'); controls.style.display = 'flex'; controls.style.gap = '4px';
+        const done = document.createElement('button'); done.type = 'button'; done.className = 'secondary'; done.style.padding = '3px 6px'; done.textContent = item.done ? 'إلغاء' : 'إنجاز'; done.addEventListener('click', () => { item.done = !item.done; saveState(); renderAll(); });
+        const del = document.createElement('button'); del.type = 'button'; del.className = 'danger-btn'; del.textContent = '×'; del.addEventListener('click', () => { state.weeklyTasks = state.weeklyTasks.filter(x => x.id !== item.id); saveState(); renderAll(); }); controls.append(done, del); row.append(controls);
       }
       box.append(row);
     });
-    if(planned>available){const warn=document.createElement('div');warn.className='status-warn';warn.textContent='حمولة أعلى من المتاح';box.append(warn);}
+    if (planned > available) { const warn = document.createElement('div'); warn.className = 'status-warn'; warn.textContent = 'حمولة أعلى من المتاح'; box.append(warn); }
     host.append(box);
   }
 }
+(function setupWeekNav() {
+  const host = document.getElementById('weeklyView');
+  const nav = document.createElement('div');
+  nav.className = 'tool-actions';
+  nav.style.cssText = 'margin:10px 0 0;align-items:center;flex-wrap:wrap';
+  nav.innerHTML = '<button type="button" class="secondary" id="weekPrev">➡️ الأسبوع السابق</button><button type="button" class="secondary" id="weekToday">هذا الأسبوع</button><button type="button" class="secondary" id="weekNext">الأسبوع القادم ⬅️</button><span class="mini" id="weekLabel"></span>';
+  host.before(nav);
+  document.getElementById('weekPrev').addEventListener('click', () => { weekOffset--; renderWeeklyView(); });
+  document.getElementById('weekNext').addEventListener('click', () => { weekOffset++; renderWeeklyView(); });
+  document.getElementById('weekToday').addEventListener('click', () => { weekOffset = 0; renderWeeklyView(); });
+})();
 function renderReviews() {
   const host=document.getElementById('reviewList'); if(!host) return; host.innerHTML='';
   const list=[...state.reviews].sort((a,b)=>a.dueDate.localeCompare(b.dueDate));
@@ -2922,11 +3160,11 @@ function renderReviews() {
   });
 }
 function gradePointFromPercent(p){ if(p>=90)return 4; if(p>=85)return 3.7; if(p>=80)return 3.3; if(p>=75)return 3; if(p>=70)return 2.7; if(p>=65)return 2.3; if(p>=60)return 2; if(p>=50)return 1; return 0; }
-function currentGpa(){const items=state.grades.filter(g=>Number(g.finalExpected)!==null && g.finalExpected!=='' && Number(g.credits)>0);const credits=items.reduce((a,g)=>a+Number(g.credits),0);const points=items.reduce((a,g)=>a+gradePointFromPercent(Number(g.percent))*Number(g.credits),0);return {gpa:credits?points/credits:null,credits};}
+function currentGpa(){const items=state.grades.filter(g=>g.finalExpected!==''&&g.finalExpected!==null&&g.finalExpected!==undefined&&Number(g.credits)>0);const credits=items.reduce((a,g)=>a+Number(g.credits),0);const points=items.reduce((a,g)=>a+gradePointFromPercent(Number(g.percent))*Number(g.credits),0);return {gpa:credits?points/credits:null,credits};}
 function renderGrades(){
   const list=document.getElementById('gradesList');const summary=document.getElementById('gpaSummary');if(!list||!summary)return;list.innerHTML='';summary.innerHTML='';
   if(!state.grades.length)list.innerHTML='<div class="tool-empty">أضف نتائجك لتظهر هون.</div>';
-  state.grades.forEach((g,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const t=document.createElement('div');t.className='tool-item-title';t.textContent=`${g.subject} — ${Number(g.percent).toFixed(1)}%`;
+  state.grades.forEach((g,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const t=document.createElement('div');t.className='tool-item-title';t.textContent=g.finalExpected===''||g.finalExpected==null?`${g.subject} — بدون علامة نهائية بعد`:`${g.subject} — ${Number(g.percent).toFixed(1)}%`;
     const m=document.createElement('div');m.className='tool-muted';m.textContent=`${g.semester||'الفصل الحالي'} • ${g.credits} ساعات • المتوقع/المسجل`;
     main.append(t,m);const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.trash.unshift({id:`trash-${Date.now()}`,type:'grade',title:g.subject,payload:g,deletedAt:new Date().toISOString()});state.grades.splice(i,1);saveState();renderAll();});row.append(main,del);list.append(row);});
   const result=currentGpa();const box=document.createElement('div');box.className='tool-item';box.textContent=result.gpa===null?'أدخل علامة نهائية متوقعة أو فعلية لمادتين أو أكثر لحساب المعدل.':`المعدل التقديري على سلم 4: ${result.gpa.toFixed(2)} / 4 • ${result.credits} ساعة محتسبة`;summary.append(box);
@@ -2994,16 +3232,58 @@ document.getElementById('clearActivityBtn').addEventListener('click',()=>{if(con
 function renderTrash(){const host=document.getElementById('trashList');host.innerHTML='';if(!state.trash.length){host.innerHTML='<div class="tool-empty">السلة فارغة.</div>';return;}state.trash.forEach((item,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${item.title} • ${item.type}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`تاريخ الحذف: ${formatDateAr((item.deletedAt||'').slice(0,10))}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const restore=document.createElement('button');restore.type='button';restore.className='secondary';restore.textContent='استعادة';restore.addEventListener('click',()=>{if(item.type==='subject'){state.subjects.push(item.payload);state.schedule.push(...(item.schedule||[]));}else if(item.type==='task')state.tasks.push(item.payload);else if(item.type==='grade')state.grades.push(item.payload);else if(item.type==='resource')state.resources.push(item.payload);state.trash.splice(i,1);logActivity('استعادة عنصر',`تمت استعادة ${item.title}`);saveState();renderAll();});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='نهائي';del.addEventListener('click',()=>{state.trash.splice(i,1);saveState();renderTrash();});actions.append(restore,del);row.append(main,actions);host.append(row);});}
 document.getElementById('emptyTrashBtn').addEventListener('click',async()=>{if(confirm('حذف كل محتويات سلة المحذوفات نهائياً؟')){for(const item of state.trash){if(item.type==='resource'){try{await plannerFileDelete(item.payload.id);}catch(_){}}}state.trash=[];saveState();renderTrash();}});
 
-function renderPrefs(){document.getElementById('semesterName').value=state.prefs.semesterName||'';document.getElementById('weeklyTargetHours').value=state.prefs.weeklyTargetHours??20;document.getElementById('reminderDays').value=state.prefs.reminderDays??3;document.getElementById('defaultFocusMinutes').value=state.prefs.defaultFocusMinutes??25;document.getElementById('fontScale').value=String(state.prefs.fontScale??1);document.getElementById('requiredGradCredits').value=state.prefs.requiredGradCredits||'';document.getElementById('externalGradCredits').value=state.prefs.externalGradCredits||0;document.documentElement.style.fontSize=`${(state.prefs.fontScale||1)*16}px`;}
-document.getElementById('savePreferencesBtn').addEventListener('click',()=>{state.prefs.reminderDays=Number(document.getElementById('reminderDays').value||0);state.prefs.defaultFocusMinutes=Number(document.getElementById('defaultFocusMinutes').value||25);state.prefs.fontScale=Number(document.getElementById('fontScale').value||1);document.documentElement.style.fontSize=`${state.prefs.fontScale*16}px`;saveState();document.getElementById('settingsMessage').textContent='تم حفظ الإعدادات بنجاح.';renderNotifications();});
+function renderPrefs(){document.getElementById('semesterName').value=state.prefs.semesterName||'';document.getElementById('weeklyTargetHours').value=state.prefs.weeklyTargetHours??20;document.getElementById('reminderDays').value=state.prefs.reminderDays??3;document.getElementById('defaultFocusMinutes').value=state.prefs.defaultFocusMinutes??25;document.getElementById('fontScale').value=String(state.prefs.fontScale??1);document.getElementById('requiredGradCredits').value=state.prefs.requiredGradCredits||'';document.getElementById('externalGradCredits').value=state.prefs.externalGradCredits||0;document.documentElement.style.fontSize=`${(state.prefs.fontScale||1)*16}px`;if(typeof applyDefaultFocus==='function')applyDefaultFocus();}
+document.getElementById('savePreferencesBtn').addEventListener('click',()=>{state.prefs.reminderDays=Number(document.getElementById('reminderDays').value||0);state.prefs.defaultFocusMinutes=Number(document.getElementById('defaultFocusMinutes').value||25);state.prefs.fontScale=Number(document.getElementById('fontScale').value||1);document.documentElement.style.fontSize=`${state.prefs.fontScale*16}px`;applyDefaultFocus();saveState();document.getElementById('settingsMessage').textContent='تم حفظ الإعدادات بنجاح.';renderNotifications();});
 document.getElementById('browserNotificationsBtn').addEventListener('click',async()=>{const el=document.getElementById('settingsMessage');if(!('Notification'in window)){el.textContent='المتصفح لا يدعم إشعارات النظام.';return;}try{const permission=await Notification.requestPermission();el.textContent=permission==='granted'?'تم تفعيل إشعارات المتصفح. افتح المنصة لمراجعة التنبيهات.':'لم يتم السماح بالإشعارات.';if(permission==='granted'){const notes=buildNotifications().slice(0,3);if(notes.length)new Notification('منصة الإنجاز الأكاديمي',{body:notes.map(n=>n.text).join(' | ')});}}catch(_){el.textContent='تعذر تفعيل الإشعارات في هذا المتصفح.';}});
 
 function renderSubjectPickers(){const a=document.getElementById('attendanceSubject');if(!a)return;const current=a.value;a.innerHTML='';state.subjects.forEach(sub=>{const o=document.createElement('option');o.value=sub.id;o.textContent=sub.name;a.append(o);});if(state.subjects.some(s=>s.id===current))a.value=current;}
 
-document.getElementById('saveAvailabilityBtn').addEventListener('click',()=>{const hours={};document.querySelectorAll('#weeklyAvailability input').forEach(inp=>{hours[inp.dataset.day]=Math.max(0,Math.min(16,Number(inp.value)||0));});state.prefs.weeklyHours=hours;saveState();renderWeeklyView();});
+document.getElementById('saveAvailabilityBtn').addEventListener('click',()=>{
+  const hours={};
+  document.querySelectorAll('#weeklyAvailability input').forEach(inp=>{hours[inp.dataset.day]=Math.max(0,Math.min(16,Number(inp.value)||0));});
+  state.prefs.weeklyHours=hours;
+  state.prefs.availabilitySaved=true;
+  if(state.subjects.length && confirm('تعيد ترتيب الجدول حسب ساعاتك الجديدة؟ (اللي خلصته واللي نقلته بإيدك بضل مكانه)')){
+    regenerateFullSchedule();
+  }
+  saveState();renderAll();
+});
 document.getElementById('weeklyTaskDate').value=todayISO();
 document.getElementById('addWeeklyTaskBtn').addEventListener('click',()=>{const title=document.getElementById('weeklyTaskTitle').value.trim(),date=document.getElementById('weeklyTaskDate').value,minutes=Number(document.getElementById('weeklyTaskMinutes').value);if(!title||!date||minutes<=0){alert('اكتب اسم الجلسة وحدد التاريخ والمدة.');return;}state.weeklyTasks.push({id:`week-${Date.now()}`,title,date,minutes,priority:document.getElementById('weeklyTaskPriority').value,done:false});logActivity('جلسة أسبوعية',`أضفت جلسة ${title}`);document.getElementById('weeklyTaskTitle').value='';saveState();renderAll();});
-document.getElementById('catchUpBtn').addEventListener('click',()=>{const today=todayISO();const late=state.schedule.filter(x=>!x.done&&!x.isExam&&x.date<today).sort((a,b)=>({hard:0,medium:1,easy:2,revision:3}[a.difficulty]??4)-({hard:0,medium:1,easy:2,revision:3}[b.difficulty]??4));if(!late.length){alert('ما في مهام متأخرة تحتاج تعويض.');return;}let day=addDaysISO(today,0),used=0;late.forEach(task=>{let limit=(Number(state.prefs.weeklyHours?.[new Date(day+'T12:00:00').getDay()]??3))*60;if(limit<=0)limit=120;if(used+Number(task.minutes||30)>limit){day=addDaysISO(day,1);used=0;limit=Number(state.prefs.weeklyHours?.[new Date(day+'T12:00:00').getDay()]??3)*60||120;}task.date=day;used+=Number(task.minutes||30);});logActivity('خطة تعويض',`تمت إعادة توزيع ${late.length} مهمة متأخرة`);saveState();renderAll();alert(`تم نقل ${late.length} مهمة إلى الأيام القادمة حسب الساعات المتاحة.`);});
+document.getElementById('catchUpBtn').addEventListener('click',()=>{
+  const today=todayISO();
+  const late=state.schedule.filter(x=>!x.done&&!x.isExam&&x.date<today);
+  if(!late.length){alert('ما في مهام متأخرة تحتاج تعويض.');return;}
+  const lateIds=new Set(late.map(x=>x.id));
+  const used={};
+  [...state.schedule.filter(x=>!lateIds.has(x.id)),...state.weeklyTasks].forEach(x=>{if(x.date<today)return;used[x.date]=(used[x.date]||0)+(Number(x.minutes)||0);});
+  const NO_EXAM='9999-12-31';
+  const examOf=t=>state.subjects.find(s=>s.id===t.subjectId)?.examDate||NO_EXAM;
+  const rank={hard:0,medium:1,easy:2,revision:3};
+  late.sort((a,b)=>examOf(a).localeCompare(examOf(b))||((rank[a.difficulty]??4)-(rank[b.difficulty]??4)));
+  let squeezed=0, afterExam=0;
+  late.forEach(task=>{
+    const mins=Number(task.minutes)||30;
+    const exam=examOf(task);
+    const lastDay=exam===NO_EXAM?addDaysISO(today,30):addDaysISO(exam,-1); // لازم تنتهي قبل الامتحان
+    let target=null;
+    if(lastDay>=today){
+      for(let d=today;d<=lastDay;d=addDaysISO(d,1)){
+        const room=dayCapacityMinutes(d)-(used[d]||0);
+        if(room>=mins*0.85){target=d;break;}
+      }
+    }
+    if(!target){target=lastDay>=today?lastDay:today;squeezed++;if(lastDay<today)afterExam++;}
+    task.date=target;
+    used[target]=(used[target]||0)+mins;
+  });
+  logActivity('خطة تعويض',`تمت إعادة توزيع ${late.length} مهمة متأخرة`);
+  saveState();renderAll();
+  let msg=`تم نقل ${late.length} مهمة للأيام القادمة، وكلها قبل موعد امتحانها.`;
+  if(squeezed)msg+=`\n⚠️ ${squeezed} مهمة انحشرت بأيام مليانة لأن الوقت ضيق، فكّر تزيد ساعاتك.`;
+  if(afterExam)msg+=`\n⚠️ ${afterExam} مهمة امتحانها اليوم أو فات.`;
+  alert(msg);
+});
 
 document.getElementById('globalSearch').addEventListener('input', e => {
   const q = e.target.value.trim().toLowerCase();
@@ -3083,9 +3363,42 @@ document.getElementById('globalSearch').addEventListener('input', e => {
   });
 });
 document.getElementById('printPlanBtn').addEventListener('click',()=>window.print());
-document.getElementById('exportBackupBtn').addEventListener('click',()=>{try{const backup={...JSON.parse(JSON.stringify(state)),exportedAt:new Date().toISOString(),backupVersion:2};const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`smart-academic-planner-${todayISO()}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);logActivity('نسخة احتياطية','تم تصدير نسخة تشمل بيانات قاعدة البيانات والمرفقات');saveState();}catch(err){alert(`تعذر تصدير النسخة: ${err.message}`);}});
+document.getElementById('exportBackupBtn').addEventListener('click',async()=>{
+  try{
+    const backup={...JSON.parse(JSON.stringify(makeSnapshot())),exportedAt:new Date().toISOString(),backupVersion:3,attachmentFiles:[]};
+    for(const r of state.resources){
+      if(r.hasFile){const f=await plannerFileGet(r.id);if(f?.blob)backup.attachmentFiles.push({id:r.id,dataUrl:await dataUrlFromBlob(f.blob)});}
+    }
+    const blob=new Blob([JSON.stringify(backup,null,2)],{type:'application/json'});
+    const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=`smart-academic-planner-${todayISO()}.json`;a.click();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
+    logActivity('نسخة احتياطية','تم تصدير نسخة احتياطية كاملة');saveState();
+  }catch(err){alert(`تعذر تصدير النسخة: ${err.message}`);}
+});
 document.getElementById('importBackupBtn').addEventListener('click',()=>document.getElementById('importBackupFile').click());
-document.getElementById('importBackupFile').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const raw=JSON.parse(await file.text());if(!raw||typeof raw!=='object'||!Array.isArray(raw.subjects)||!Array.isArray(raw.schedule))throw new Error('صيغة الملف غير صحيحة');if(!confirm('سيتم استبدال بيانات المنصة في قاعدة البيانات بالنسخة المختارة. هل تريد المتابعة؟'))return;applyData(raw);for(const item of (raw.attachmentFiles||[])){if(item.dataUrl){const resource=state.resources.find(r=>r.id===item.id);if(resource)resource.fileData=item.dataUrl;}}uploadedResourceIds.clear();logActivity('استيراد نسخة','تم استيراد نسخة احتياطية');saveState();renderAll();alert('تم استيراد النسخة إلى قاعدة البيانات.');}catch(err){alert(`تعذر استيراد الملف: ${err.message}`);}finally{e.target.value='';}});
+document.getElementById('importBackupFile').addEventListener('change',async e=>{
+  const file=e.target.files?.[0];if(!file)return;
+  try{
+    const raw=JSON.parse(await file.text());
+    if(!raw||typeof raw!=='object'||!Array.isArray(raw.subjects))throw new Error('صيغة الملف غير صحيحة');
+    if(!confirm('رح تتبدل بيانات المنصة الحالية بالنسخة المختارة. بدك تكمل؟'))return;
+    applyData(raw);
+    applyTheme(state.prefs.theme||'light');
+    for(const item of (raw.attachmentFiles||[])){
+      if(item.dataUrl&&item.id){
+        const blob=await (await fetch(item.dataUrl)).blob();
+        await plannerFilePut({id:item.id,blob});
+        const resource=state.resources.find(r=>r.id===item.id);
+        if(resource){resource.hasFile=true;delete resource.fileData;}
+      }
+    }
+    await migrateInlineFiles();
+    logActivity('استيراد نسخة','تم استيراد نسخة احتياطية');
+    saveState();renderAll();
+    alert('تم استيراد النسخة بنجاح ✅');
+  }catch(err){alert(`تعذر استيراد الملف: ${err.message}`);}
+  finally{e.target.value='';}
+});
 
 let plannerFilesDbPromise = null;
 function plannerFilesDb(){
@@ -3107,15 +3420,15 @@ function renderResourcesAndLectures(){
   const resourcesHost=document.getElementById('resourcesList'),lecturesHost=document.getElementById('lecturesList');if(!resourcesHost||!lecturesHost)return;
   fillResourceAndLectureSubjects();resourcesHost.innerHTML='';lecturesHost.innerHTML='';
   if(!state.resources.length)resourcesHost.innerHTML='<div class="tool-empty">لم تتم إضافة ملفات أو روابط بعد.</div>';
-  state.resources.forEach((r,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`📄 ${r.title}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`${getSubjectName(r.subjectId)} • ${r.fileName||r.url||'رابط/ملف'}${r.note?' • '+r.note:''}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const open=document.createElement('button');open.type='button';open.className='secondary';open.textContent=r.url?'فتح الرابط':'تنزيل';open.addEventListener('click',async()=>{try{if(r.url){window.open(r.url,'_blank','noopener');return;}let blob=null;if(r.fileData){blob=await (await fetch(r.fileData)).blob();}else{const found=await plannerFileGet(r.id);if(found?.blob)blob=found.blob;}if(!blob){alert('محتوى الملف غير موجود في قاعدة البيانات. ارفع الملف مرة أخرى.');return;}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=r.fileName||r.title;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(err){alert(err.message||'تعذر تنزيل الملف');}});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.trash.unshift({id:`trash-${Date.now()}`,type:'resource',title:r.title,payload:r,deletedAt:new Date().toISOString()});state.resources.splice(i,1);logActivity('حذف ملف',`نُقل المورد ${r.title} إلى سلة المحذوفات`);saveState();renderResourcesAndLectures();});actions.append(open,del);row.append(main,actions);resourcesHost.append(row);});
+  state.resources.forEach((r,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`📄 ${r.title}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`${getSubjectName(r.subjectId)} • ${r.fileName||r.url||'رابط/ملف'}${r.note?' • '+r.note:''}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const open=document.createElement('button');open.type='button';open.className='secondary';open.textContent=r.url?'فتح الرابط':'تنزيل';open.addEventListener('click',async()=>{try{if(r.url){window.open(r.url,'_blank','noopener');return;}let blob=null;if(r.fileData){blob=await (await fetch(r.fileData)).blob();}else{const found=await plannerFileGet(r.id);if(found?.blob)blob=found.blob;}if(!blob){alert('الملف مش موجود على هذا الجهاز (المرفقات بتتخزن على الجهاز اللي رفعتها منه). ارفعه من جديد أو استورد نسخة احتياطية.');return;}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=r.fileName||r.title;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}catch(err){alert(err.message||'تعذر تنزيل الملف');}});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.trash.unshift({id:`trash-${Date.now()}`,type:'resource',title:r.title,payload:r,deletedAt:new Date().toISOString()});state.resources.splice(i,1);logActivity('حذف ملف',`نُقل المورد ${r.title} إلى سلة المحذوفات`);saveState();renderResourcesAndLectures();});actions.append(open,del);row.append(main,actions);resourcesHost.append(row);});
   if(!state.lectures.length)lecturesHost.innerHTML='<div class="tool-empty">سجّل أول محاضرة حتى تتابع إنجازك.</div>';
   state.lectures.forEach((l,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';const title=document.createElement('div');title.className='tool-item-title';title.textContent=`${l.status==='done'?'✅':l.status==='recorded'?'🎧':'⏳'} ${l.title}`;const meta=document.createElement('div');meta.className='tool-muted';meta.textContent=`${getSubjectName(l.subjectId)} • ${formatDateAr(l.date)} • ${l.minutes} دقيقة • ${l.status==='done'?'منجزة':l.status==='recorded'?'مسجلة':'لم تُدرس'}`;main.append(title,meta);const actions=document.createElement('div');actions.style.display='flex';actions.style.gap='5px';const toggle=document.createElement('button');toggle.type='button';toggle.className='secondary';toggle.textContent=l.status==='done'?'إعادة فتح':'تمت';toggle.addEventListener('click',()=>{l.status=l.status==='done'?'pending':'done';saveState();renderResourcesAndLectures();});const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.lectures.splice(i,1);saveState();renderResourcesAndLectures();});actions.append(toggle,del);row.append(main,actions);lecturesHost.append(row);});
 }
 document.getElementById('lectureDate').value=todayISO();
 document.getElementById('resourceForm').addEventListener('submit',async e=>{
-  e.preventDefault();const title=document.getElementById('resourceTitle').value.trim(),file=document.getElementById('resourceFile').files?.[0],url=document.getElementById('resourceUrl').value.trim();if(!title||(!file&&!url)){alert('أدخل اسم المورد واختر ملفاً أو أضف رابطاً.');return;}if(file&&url){alert('اختر ملفاً أو رابطاً، وليس الاثنين معاً.');return;}if(url&&!/^https?:\/\//i.test(url)){alert('الرابط يجب أن يبدأ بـ https:// أو http://');return;}if(file&&file.size>3*1024*1024){alert('للحفظ داخل قاعدة البيانات، الحد الأقصى للملف الواحد 3 ميغابايت.');return;}
+  e.preventDefault();const title=document.getElementById('resourceTitle').value.trim(),file=document.getElementById('resourceFile').files?.[0],url=document.getElementById('resourceUrl').value.trim();if(!title||(!file&&!url)){alert('أدخل اسم المورد واختر ملفاً أو أضف رابطاً.');return;}if(file&&url){alert('اختر ملفاً أو رابطاً، وليس الاثنين معاً.');return;}if(url&&!/^https?:\/\//i.test(url)){alert('الرابط يجب أن يبدأ بـ https:// أو http://');return;}if(file&&file.size>25*1024*1024){alert('الحد الأقصى للملف الواحد 25 ميغابايت.');return;}
   const id=`resource-${Date.now()}`;const record={id,title,subjectId:document.getElementById('resourceSubject').value,fileName:file?.name||'',fileType:file?.type||'',size:file?.size||0,url,note:document.getElementById('resourceNote').value.trim(),createdAt:new Date().toISOString()};
-  try{if(file)record.fileData=await dataUrlFromBlob(file);state.resources.unshift(record);logActivity('إضافة مورد دراسي',`أضفت ${title}`);document.getElementById('resourceTitle').value='';document.getElementById('resourceFile').value='';document.getElementById('resourceUrl').value='';document.getElementById('resourceNote').value='';saveState();renderResourcesAndLectures();}catch(err){alert(`تعذر تجهيز المورد للحفظ: ${err.message}`);}
+  try{if(file){await plannerFilePut({id,blob:file});record.hasFile=true;}state.resources.unshift(record);logActivity('إضافة مورد دراسي',`أضفت ${title}`);document.getElementById('resourceTitle').value='';document.getElementById('resourceFile').value='';document.getElementById('resourceUrl').value='';document.getElementById('resourceNote').value='';saveState();renderResourcesAndLectures();}catch(err){alert(`تعذر تجهيز المورد للحفظ: ${err.message}`);}
 });
 document.getElementById('lectureForm').addEventListener('submit',e=>{e.preventDefault();const subjectId=document.getElementById('lectureSubject').value;if(!subjectId){alert('أضف مادة أولاً حتى تربط المحاضرة بها.');return;}const item={id:`lecture-${Date.now()}`,subjectId,title:document.getElementById('lectureTitle').value.trim(),date:document.getElementById('lectureDate').value,minutes:Number(document.getElementById('lectureMinutes').value)||50,status:document.getElementById('lectureStatus').value};state.lectures.unshift(item);logActivity('إضافة محاضرة',`أضفت محاضرة ${item.title}`);document.getElementById('lectureTitle').value='';saveState();renderResourcesAndLectures();});
 
@@ -3126,7 +3439,35 @@ function renderTimeLogs(){const host=document.getElementById('timeLogList');if(!
   const subjectSel=document.getElementById('manualTimeSubject');if(subjectSel){const val=subjectSel.value;subjectSel.innerHTML='<option value="">بدون تحديد</option>';state.subjects.forEach(s=>{const o=document.createElement('option');o.value=s.id;o.textContent=s.name;subjectSel.append(o);});subjectSel.value=val;}
   if(!state.timeLogs.length){host.innerHTML='<div class="tool-empty">وقت الدراسة المسجل سيظهر هنا.</div>';return;}state.timeLogs.slice(0,30).forEach((l,i)=>{const row=document.createElement('div');row.className='tool-item';const main=document.createElement('div');main.className='tool-item-main';main.innerHTML=`<div class="tool-item-title">${l.minutes} دقيقة • ${escapeHtml(l.source||'دراسة')}</div><div class="tool-muted">${formatDateAr(l.date)} ${l.subject?'• '+escapeHtml(l.subject):''} ${l.note?'• '+escapeHtml(l.note):''}</div>`;const del=document.createElement('button');del.type='button';del.className='danger-btn';del.textContent='حذف';del.addEventListener('click',()=>{state.timeLogs.splice(i,1);saveState();renderTimeLogs();});row.append(main,del);host.append(row);});}
 
+function renderHomeDashboard(){
+  const subjects=Array.isArray(state.subjects)?state.subjects:[];
+  const study=state.schedule.filter(x=>!x.isExam);
+  const done=study.filter(x=>x.done).length;
+  const pending=study.length-done;
+  const pct=study.length?Math.round(done/study.length*100):0;
+  document.getElementById('homeSubjectCount').textContent=subjects.length;
+  document.getElementById('homePendingCount').textContent=pending;
+  document.getElementById('homeProgress').textContent=pct+'%';
+  const nextHost=document.getElementById('homeNextExam');
+  const now=Date.now();
+  const exams=subjects.map(s=>({...s,at:new Date(`${s.examDate}T${s.examTime||'09:00'}:00`).getTime()}))
+    .filter(s=>Number.isFinite(s.at)&&s.at>=now).sort((a,b)=>a.at-b.at);
+  if(!exams.length) nextHost.innerHTML='<div class="home-empty">لا توجد امتحانات قادمة. أضف مادة وحدد موعد امتحانها.</div>';
+  else{
+    const e=exams[0],ms=e.at-now,days=Math.floor(ms/86400000),hours=Math.floor(ms%86400000/3600000),mins=Math.floor(ms%3600000/60000);
+    nextHost.innerHTML=`<div class="home-exam"><div><strong>${escapeHtml(e.name)}</strong><span class="mini">${escapeHtml(e.examDate)} • ${escapeHtml(e.examTime||'09:00')}</span></div><div class="remaining">${days?`${days} يوم `:''}${hours} ساعة ${mins} دقيقة</div></div>`;
+  }
+  const host=document.getElementById('homeSchedule');
+  const rows=[...state.schedule].sort((a,b)=>String(a.date).localeCompare(String(b.date))).slice(0,12);
+  if(!rows.length){host.innerHTML='<div class="home-empty">لا يوجد جدول بعد. أضف موادك وسيتم ترتيب خطة الدراسة تلقائيًا.<br><br><button type="button" onclick="showSeqStep(2)">＋ أضف مواد الآن</button></div>';return;}
+  host.innerHTML=`<table class="home-table"><thead><tr><th>التاريخ</th><th>المادة / المهمة</th><th>النوع</th><th>الحالة</th></tr></thead><tbody>${rows.map(t=>{
+    const sub=subjects.find(x=>x.id===t.subjectId);
+    return `<tr><td>${escapeHtml(t.date||'—')}</td><td>${escapeHtml(sub?.name||t.title||t.text||'مهمة دراسية')}</td><td>${t.isExam?'امتحان':`شابتر ${escapeHtml(String(t.chapterNum||''))}`}</td><td class="home-status ${t.done?'':'pending'}">${t.done?'مكتملة':'قيد الإنجاز'}</td></tr>`;
+  }).join('')}</tbody></table>`;
+}
+
 function renderAll() {
+  renderHomeDashboard();
   renderCountdownsAndHeader();
   renderSubjectsAndProgress();
   renderGeneratedSchedule();
@@ -3149,25 +3490,27 @@ function renderAll() {
 }
 
 (async function boot() {
-  localStorage.removeItem(GUEST_FLAG);
   try {
-    const savedSess = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
-    if (savedSess?.userId) {
-      await enterCloudDashboard(savedSess.userId, savedSess.token, savedSess.name || '');
-      return;
-    }
     const sess = await neonGetSession();
     if (sess?.user?.id) {
       const uName = sess.user.name || (sess.user.email ? sess.user.email.split('@')[0] : '');
-      await enterCloudDashboard(sess.user.id, sess?.session?.token || null, uName);
+      await enterAccount(sess.user.id, uName);
       return;
     }
   } catch (err) {
-    console.warn('Session restore skipped:', err);
+    console.warn('Session check skipped:', err);
   }
-
+  try {
+    const saved = JSON.parse(localStorage.getItem(SESSION_KEY) || 'null');
+    if (saved?.userId) {
+      // الجلسة انتهت أو النت مقطوع: بنفتح بياناتك المحلية وبتقدر تعيد الدخول للمزامنة
+      await enterAccount(saved.userId, saved.name || '');
+      return;
+    }
+  } catch (_) {}
   showLogin();
 })();
+
 </script>
 
 </body>
